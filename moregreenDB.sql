@@ -22,12 +22,11 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`member` (
 -- Table `moregreen`.`funding`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `moregreen`.`funding` (
-  `f_num` INT NOT NULL AUTO_INCREMENT, #펀딩 번호
+  `f_num` INT NOT NULL AUTO_INCREMENT, #펀딩 번호	
   `f_title` VARCHAR(60) NOT NULL, #펀딩 명칭
   `f_content` VARCHAR(16000) NOT NULL, #내용
-  `m_id` VARCHAR(60), #작성자 ID
   `f_days` INT NOT NULL, #펀딩 기간
-  `f_enddate` DATE NOT NULL DEFAULT (SELECT DATE_ADD(NOW(), INTERVAL 1 DAY)), #마감일
+  `f_enddate` DATE NOT NULL, #마감일
   `f_target` INT NOT NULL DEFAULT 500000, #목표 금액
   `f_totalmoney` INT NOT NULL DEFAULT 0, #현재 금액
   `f_rate` DOUBLE NOT NULL NULL DEFAULT 0.0, #펀딩률
@@ -36,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`funding` (
   `f_price` INT NOT NULL, #리워드 금액
   `f_bname` VARCHAR(60) NOT NULL, #상호명
   `f_bnum` CHAR(10) NOT NULL, #사업자 번호
+  `f_regdate` DATE NOT NULL DEFAULT (current_date()), #신청 일자
   #`member_m_num` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`f_num`)
  # CONSTRAINT `fk_funding_member1`
