@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
+<th:block
+	th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
+
+	<section id="wrap">
+
+	<section class="items-grid section custom-padding">
+	
+	
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-title">
+								<h2 class="wow fadeInUp" data-wow-delay=".4s">펀딩 상세보기</h2>
+						
+							</div>
+						</div>
+					</div>
+					</div>
+	
+
+		<section class="item-details section">
+		<div class="container">
+			<div class="wow fadeInUp" data-wow-delay=".4s">
+				<div class="top-area">
+					<div class="row">
+						<div class="col-lg-6 col-md-12 col-12">
+							<div class="product-img">
+								<main id="gallery">
+									<div class="main-img">
+										<img src="/img/items-grid/img1.jpg" id="current" alt="#">
+									</div>
+									<!-- 	<div class="img">
+										<img src="/img/items-grid/img1.jpg" class="img"
+											alt="#">
+
+									</div> -->
+								</main>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-12 col-12">
+							<div class="product-info">
+								<h2 class="title">친환경 프로젝트 1</h2>
+
+								<h5 class="price">목표금액 000,000원</h5>
+								<h5 class="price">모금된금액 000,000원</h5>
+								<h6 class="">리워드 명</h6>
+								<div class="list-info">
+									<h4>Informations</h4>
+									<ul>
+										<li><span>Condition:</span> New</li>
+										<li><span>Brand:</span> Apple</li>
+										<li><span>Model:</span> Mackbook Pro</li>
+
+									</ul>
+
+									<div class="button">
+										<a href="javascript:void(0)" class="like"><i
+											class="lni lni-heart"></i> 찜하기</a>
+										<a class="btn" th:href="@{/funding/fundingPurchase}">
+										
+										펀딩하기</a>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item-details-blocks">
+					<div class="row">
+						<div class="col-lg-8 col-md-7 col-12">
+
+							<div class="single-block description">
+								<h3>소제목</h3>
+								<p>내용</p>
+								<ul>
+									<li>내용</li>
+									<li>내용</li>
+									<li>내용</li>
+									<li>내용</li>
+								</ul>
+								<p>내용</p>
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+				</div>
+				</div>
+				
+
+			</div>
+
+		</section>
+	
+	</section>
+
+
+	</section>
+</th:block>
+</html>

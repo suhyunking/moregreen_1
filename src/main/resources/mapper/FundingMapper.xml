@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="site.moregreen.basic.funding.FundingMapper">
+  
+  <insert id="createFunding" parameterType="site.moregreen.basic.command.FundingDto">
+  		<selectKey resultType="int" keyProperty="f_num" order="AFTER">
+ 			select max(f_num) as f_num 
+			from funding
+ 		</selectKey>
+  	insert into funding(
+  						f_title,
+  						f_bname,
+  						f_content,
+  						f_reward,
+  						f_enddate,
+  						f_price,
+  						f_bnum,
+  						f_days
+  						)
+  				values(
+  					   #{f_title},
+  					   #{f_bname},
+  					   #{f_content},
+  					   #{f_reward},
+  					   (SELECT DATE_ADD(NOW(), INTERVAL #{f_days} DAY)),
+  					   #{f_price},
+  					   #{f_bnum},
+  					   #{f_days}
+  					   )
+  </insert>
+  
+  <insert id="createFundingFile" parameterType="site.moregreen.basic.command.UploadDto">
+ 		insert into image(
+ 						 i_name,
+					     i_path,
+					     i_uuid,
+					     funding_f_num					     
+					     )
+		 		 values(
+		 				#{name},
+		 			   	#{path},
+		 			  	#{uuid},
+		 			  	#{f_num}
+		 			   )				
+ 	</insert>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </mapper>

@@ -1,0 +1,125 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./include/layout :: setContent( ~{:: .container-fluid}  ) }">
+
+	<div class="container-fluid py-4">
+		<div class="d-sm-flex justify-content-between">
+			<div class="d-flex">
+				<div class="dropdown d-inline">
+					<a href="javascript:;"
+						class="btn btn-outline-dark dropdown-toggle "
+						data-bs-toggle="dropdown" id="navbarDropdownMenuLink2"> 결제 상태 </a>
+					<ul class="dropdown-menu dropdown-menu-lg-start px-2 py-3"
+						aria-labelledby="navbarDropdownMenuLink2"
+						data-popper-placement="left-start">
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">결제 완료</a></li>
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">결제 취소</a></li>
+						<li>
+							<hr class="horizontal dark my-2">
+						</li>
+						<li><a class="dropdown-item border-radius-md text-danger"
+							href="javascript:;">필터 초기화</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="ms-md-auto pe-md-3">
+				<div class="input-group input-group-outline">
+					<label class="form-label">주문 검색</label> 
+					<input type="text" class="form-control">
+				</div>	
+			</div>
+			<div>
+				<button class="btn btn-icon btn-outline-dark ms-2 export">검색</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="mb-0">펀딩 주문내역</h5>
+						<p class="text-sm mb-0">모든 펀딩 주문 목록을 확인할 수 있습니다.</p>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-flush" id="datatable-search">
+							<thead class="thead-light">
+								<tr>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">번호</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩 명칭</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩률</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">회원명</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">금액</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">결제 상태</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">결제일</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">결제 정보</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="my-2 text-xs">1</span>
+									</td>
+									<td class="font-weight-normal">
+										<span class="my-2 text-xs">동물복지 유정란</span>
+									</td>
+									<td class="text-xs font-weight-normal">
+										<span class="my-2 text-xs">80%</span>
+									</td>
+									<td class="text-xs font-weight-normal">
+										<span class="my-2 text-xs">test123@gmail.com</span>
+									</td>
+									<td class="text-xs font-weight-normal">
+										<span class="my-2 text-xs">14,020원</span>
+									</td>
+									<td class="text-xs font-weight-normal">
+										<span class="my-2 text-xs">결제 완료</span>
+									</td>
+									<td class="text-xs font-weight-normal">
+										<span class="my-2 text-xs">2022-09-14</span>
+									</td>
+									<td class="text-xs font-weight-normal">
+										<span class="my-2 text-xs">카카오페이</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="dataTable-bottom">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">4</a></li>
+									<li class="page-item"><a class="page-link" href="#">5</a></li>
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+									</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+</th:block>
+</html>

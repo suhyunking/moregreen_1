@@ -1,0 +1,154 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./include/layout :: setContent( ~{:: .container-fluid}  ) }">
+
+	<div class="container-fluid py-4">
+		<div class="d-sm-flex justify-content-between">
+			<div class="d-flex">
+				<div class="dropdown d-inline">
+					<a href="javascript:;"
+						class="btn btn-outline-dark dropdown-toggle "
+						data-bs-toggle="dropdown" id="navbarDropdownMenuLink2"> 진행 상태 </a>
+					<ul class="dropdown-menu dropdown-menu-lg-start px-2 py-3"
+						aria-labelledby="navbarDropdownMenuLink2"
+						data-popper-placement="left-start">
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">전체</a></li>
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">진행중</a></li>
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">성공</a></li>
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">실패</a></li>
+						<li>
+							<hr class="horizontal dark my-2">
+						</li>
+						<li><a class="dropdown-item border-radius-md text-danger"
+							href="javascript:;">필터 초기화</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="d-flex">
+				<div class="dropdown d-inline">
+					<a href="javascript:;"
+						class="btn btn-outline-dark dropdown-toggle "
+						data-bs-toggle="dropdown" id="navbarDropdownMenuLink2"> 진행 상태 </a>
+					<ul class="dropdown-menu dropdown-menu-lg-start px-2 py-3"
+						aria-labelledby="navbarDropdownMenuLink2"
+						data-popper-placement="left-start">
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">전체</a></li>
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">진행중</a></li>
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">성공</a></li>
+						<li><a class="dropdown-item border-radius-md"
+							href="javascript:;">실패</a></li>
+						<li>
+							<hr class="horizontal dark my-2">
+						</li>
+						<li><a class="dropdown-item border-radius-md text-danger"
+							href="javascript:;">필터 초기화</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="ms-md-auto pe-md-3">
+				<div class="input-group input-group-outline">
+					<label class="form-label">펀딩 검색</label> 
+					<input type="text" class="form-control">
+				</div>	
+			</div>
+			<div>
+				<button class="btn btn-icon btn-outline-dark ms-2 export">검색</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header pb-0">
+						<div class="d-lg-flex">
+							<div>
+								<h5 class="mb-0">펀딩 관리</h5>
+								<p class="text-sm mb-0">모든 펀딩 목록을 관리할 수 있습니다.</p>
+							</div>
+						</div>
+					</div>
+					<div class="card-body px-0 pb-0">
+						<div class="table-responsive">
+							<table class="table align-middle" id="funding-list">
+								<thead class="thead-light">
+									<tr>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">번호</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩 명칭</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">등록일자</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">마감일자</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">리워드명</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">리워드 가격</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">목표 금액</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">모금된 금액</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩률</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">진행 상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-sm">243598234</td>
+										<td>
+											<div class="d-flex">
+												<a title="상세보기(클릭)" th:href="@{/admin/fundingModify}">
+													<h6 class="ms-3 my-auto">친환경 크라우드 펀딩</h6>
+												</a>
+											</div>
+										</td>
+										<td class="text-sm">2022-08-19</td>
+										<td class="text-sm">2022-09-19</td>
+										<td class="text-sm">동물복지 유정란</td>
+										<td class="text-sm">150,000원</td>
+										<td class="text-sm">450,000원</td>
+										<td class="text-sm">900,000원</td>
+										<td class="text-sm">50%</td>
+										<td class="text-sm"><span class="badge text-bg-success">진행중</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="dataTable-bottom">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">4</a></li>
+									<li class="page-item"><a class="page-link" href="#">5</a></li>
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+									</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</th:block>
+</html>
