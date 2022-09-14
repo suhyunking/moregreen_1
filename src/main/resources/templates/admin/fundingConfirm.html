@@ -91,13 +91,13 @@ input[type=submit] {
 	</div>
 	</br>
 	<div style="padding-bottom: 40px;">
-		<form action="">
+		<form name="actionForm" action="####" method="####" >
 			<div class="row" style="display: flex;">
 				<div class="col-25">
 					<label for="f_num">번호</label>
 				</div>
 				<div class="col-75">
-					<input id="f_num" type="text" readonly></input>
+					<input id="f_num" type="text" th:value="${dto.f_num}" readonly></input>
 				</div>
 			</div>
 			
@@ -106,7 +106,7 @@ input[type=submit] {
 					<label for="f_title">프로젝트 명칭</label>
 				</div>
 				<div class="col-75">
-					<input id="f_title"></input>
+					<input id="f_title" th:value="${dto.f_title}"></input>
 				</div>
 			</div>
 			
@@ -137,7 +137,7 @@ input[type=submit] {
 					<label for="f_bname">상호명</label>
 				</div>
 				<div class="col-75">
-					<input id="f_bname" readonly></input>
+					<input id="f_bname" th:value="${dto.f_bname}" readonly></input>
 				</div>
 			</div>
 			
@@ -146,7 +146,7 @@ input[type=submit] {
 					<label for="f_target">목표 금액</label>
 				</div>
 				<div class="col-75">
-					<input id="f_target" readonly></input>
+					<input id="f_target" th:value="${dto.f_target}" readonly></input>
 				</div>
 			</div>
 			
@@ -155,7 +155,7 @@ input[type=submit] {
 					<label for="f_reward">리워드 명칭</label>
 				</div>
 				<div class="col-75">
-					<input id="f_reward" readonly></input>
+					<input id="f_reward" th:value="${dto.f_reward}" readonly></input>
 				</div>
 			</div>
 			
@@ -164,7 +164,7 @@ input[type=submit] {
 					<label for="f_money">리워드 금액</label>
 				</div>
 				<div class="col-75">
-					<input id="f_money" readonly></input>
+					<input id="f_money" th:value="${dto.f_price}" readonly></input>
 				</div>
 			</div>
 			
@@ -195,7 +195,7 @@ input[type=submit] {
 					<label for="f_content">프로젝트 내용</label>
 				</div>
 				<div class="col-75">
-					<textarea id="editor"></textarea>
+					<textarea id="editor">[[${dto.f_content}]]</textarea>
 				</div>
 			</div>
 			
@@ -204,7 +204,7 @@ input[type=submit] {
 					<label for="f_bnum">사업자 등록번호</label>
 				</div>
 				<div class="col-75">
-					<input id="f_bnum" readonly></input>
+					<input id="f_bnum" th:value="${dto.f_bnum}" readonly></input>
 				</div>
 			</div>
 			
@@ -219,8 +219,8 @@ input[type=submit] {
 			<br>
 			
 			<div class="row">
-				<button type="submit" class="btn btn-success" style="width: auto; margin: auto;">승인</button>
-				<button type="submit" class="btn btn-warning" style="width: auto; margin: auto;">반려</button>
+				<button class="btn btn-success" style="width: auto; margin: auto;" th:onclick="|funding_accept()|">승인</button>
+				<button class="btn btn-warning" style="width: auto; margin: auto;" th:onclick="|funding_reject()|">반려</button>
 			</div>
 		</form>
 	</div>
@@ -233,5 +233,21 @@ input[type=submit] {
 	} ).catch( error => { console.error( error );
 	});
 </script> -->
+
+<script th:inline="javascript">
+	function funding_accept() {
+		event.preventDefault(); //태그가 가진 기본이벤트 중지
+		document.actionForm.action = "fundingAccept";
+		document.actionForm.method = "post";
+		document.actionForm.submit(); //서브밋
+	}
+
+	/*function funding_reject() {
+		event.preventDefault();
+		document.actionForm.action = "fundingReject";
+		document.actionForm.method = "post";
+		document.actionForm.submit(); //서브밋
+	}*/
+</script>
 
 </html>

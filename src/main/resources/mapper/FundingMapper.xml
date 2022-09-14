@@ -4,7 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="site.moregreen.basic.funding.FundingMapper">
-  
+
+  <select id="selectFundigList" parameterType="site.moregreen.basic.util.Criteria" resultType="FundingDto">
+
+	select *
+	from funding
+	where f_status in (3,4,5)
+
+  </select>
+
   <insert id="createFunding" parameterType="site.moregreen.basic.command.FundingDto">
   		<selectKey resultType="int" keyProperty="f_num" order="AFTER">
  			select max(f_num) as f_num 
@@ -46,9 +54,50 @@
 		 			  	#{f_num}
 		 			   )				
  	</insert>
+
+	<select id="selectFundingApplyList" parameterType="site.moregreen.basic.util.Criteria" resultType="FundingDto">
+
+		select *
+		from funding
+		where f_status in (1,2)
+		order by f_num desc
+		limit #{pageStart}, #{amount}
+
+	</select>
+
+	<select id="selectTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
+
+		select count(*) as total
+		from funding
+		<if test="searchName != '' and searchName != null">
+			and prod_name like concat('%', #{searchName} ,'%')
+		</if>
+		<if test="searchContent != '' and searchContent != null">
+			and prod_content like concat('%', #{searchContent}, '%')
+		</if>
+		<if test="startDate != '' and startDate != null">
+			<![CDATA[and date_format(prod_enddate, '%Y-%m-%d')  >= date_format(#{startDate}, '%Y-%m-%d')]]>
+		</if>
+		<if test="endDate != '' and endDate != null">
+			<![CDATA[and date_format(prod_enddate, '%Y-%m-%d')  < date_format(#{endDate}, '%Y-%m-%d')]]>
+		</if>
+	</select>
+
+	<select id="selectFundingDetail" parameterType="int" resultType="FundingDto">
+
+		select *
+		from funding
+		where f_num = #{f_num}
+
+	</select>
   
-  
-  
+	<update id="fundingAccept" parameterType="int">
+
+		update funding
+		set f_status = 3
+		where f_num = #{f_num}
+
+	</update>
   
   
   

@@ -1,21 +1,20 @@
 package site.moregreen.basic.funding;
 
-import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.UUID;
-
-import org.hibernate.Criteria;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
-import net.coobird.thumbnailator.Thumbnailator;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.UploadDto;
+import site.moregreen.basic.util.Criteria;
+
+import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.UUID;
 
 @Service("fundingService")
 @Transactional(readOnly = true) //service impl에서 모든 method에 적용됨 (select에서 사용)
@@ -99,7 +98,33 @@ public class FundingServiceImpl implements FundingService{
 		
 		return 0;
 	}
-		
+
+	@Override
+	public List<FundingDto> retrieveFundingApplyList(Criteria cri) {
+		return fundingMapper.selectFundingApplyList(cri);
+	}
+
+	@Override
+	public int retrieveTotal(Criteria cri) {
+		return fundingMapper.selectTotal(cri);
+	}
+
+	@Override
+	public FundingDto retrieveFundingDetail(int f_num) {
+		return fundingMapper.selectFundingDetail(f_num);
+	}
+
+	@Override
+	public List<UploadDto> retrieveFundingDetailImg(int f_num) {
+		return fundingMapper.selectFundingDetailImg(f_num);
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int fundingAccept(int f_num) {
+		return fundingMapper.fundingAccept(f_num);
+	}
+
 	// 조회
 	@Override
 	public List<FundingDto> retriveFundingList(Criteria cri) {

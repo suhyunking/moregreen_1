@@ -73,20 +73,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="text-sm">2</td>
+									<tr th:each="dto : ${list}">
+										<td class="text-sm">[[${dto.f_num}]]</td>
 										<td>
 											<div class="d-flex">
-												<a title="상세보기(클릭)" th:href="@{/admin/fundingConfirm}">
-													<h6 class="ms-3 my-auto">친환경 크라우드 펀딩</h6>
+												<a title="상세보기(클릭)" th:href="@{/admin/fundingConfirm(f_num=${dto.f_num})}">
+													<h6 class="ms-3 my-auto">[[${dto.f_title}]]</h6>
 												</a>
 											</div>
 										</td>
-										<td class="text-sm">2022-09-19</td>
-										<td class="text-sm">30일</td>
-										<td class="text-sm">동물복지</td>
+										<td class="text-sm">[[${dto.f_regdate}]]</td>
+										<td class="text-sm">[[${dto.f_days}]]일</td>
+										<td class="text-sm">[[${dto.f_reward}]]</td>
 										<td class="text-sm">test123@gmail.com</td>
-										<td class="text-sm">심사중</td>
+
+										<td th:if="${dto.f_status} == 1" class="text-sm"><span class="badge text-bg-success">심사중</span></td>
+										<td th:if="${dto.f_status} == 2" class="text-sm">반려</td>
+
 									</tr>
 								</tbody>
 							</table>

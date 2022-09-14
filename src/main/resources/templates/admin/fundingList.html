@@ -107,23 +107,25 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="text-sm">243598234</td>
+									<tr th:each="dto : ${list}">
+										<td class="text-sm">[[${dto.f_num}]]</td>
 										<td>
 											<div class="d-flex">
-												<a title="상세보기(클릭)" th:href="@{/admin/fundingModify}">
-													<h6 class="ms-3 my-auto">친환경 크라우드 펀딩</h6>
+												<a title="상세보기(클릭)" th:href="@{/admin/fundingModify(f_num=${dto.f_num})}">
+													<h6 class="ms-3 my-auto">[[${dto.f_title}]]</h6>
 												</a>
 											</div>
 										</td>
-										<td class="text-sm">2022-08-19</td>
-										<td class="text-sm">2022-09-19</td>
-										<td class="text-sm">동물복지 유정란</td>
-										<td class="text-sm">150,000원</td>
-										<td class="text-sm">450,000원</td>
-										<td class="text-sm">900,000원</td>
-										<td class="text-sm">50%</td>
-										<td class="text-sm"><span class="badge text-bg-success">진행중</span></td>
+										<td class="text-sm">[[${dto.f_regdate}]]</td>
+										<td class="text-sm">[[${dto.f_enddate}]]</td>
+										<td class="text-sm">[[${dto.f_reward}]]</td>
+										<td class="text-sm">[[${dto.f_price}]]원</td>
+										<td class="text-sm">[[${dto.f_target}]]원</td>
+										<td class="text-sm">[[${dto.f_totalmoney}]]원</td>
+										<td class="text-sm">[[${dto.f_rate}]]%</td>
+										<td th:if="${dto.f_status} == 3" class="text-sm"><span class="badge text-bg-success">진행중</span></td>
+										<td th:if="${dto.f_status} == 4" class="text-sm"><span class="badge text-bg-success">성공</span></td>
+										<td th:if="${dto.f_status} == 5" class="text-sm"><span class="badge text-bg-success">실패</span></td>
 									</tr>
 								</tbody>
 							</table>
