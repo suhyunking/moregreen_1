@@ -55,7 +55,7 @@
 						$("#olmessage").text("사용 가능한 ID입니다.");
 						$("#olmessage").addClass("olmessaget");
 						$("#olmessage").removeClass("olmessagef");
-						$(".join").attr("type", "submit");
+						$("#join").attr("type", "submit");
 					}
 				}
 			})
@@ -67,14 +67,14 @@
 	        var confirmMsg=document.getElementById('confirmMsg');
 	        var correctColor="blue";
 	        var wrongColor="red";
-		console.log(password);
-		console.log(passwordConfirm);
 	        if(password.value==passwordConfirm.value){
 	            confirmMsg.style.color=correctColor;
 	            confirmMsg.innerHTML="비밀번호 일치"
+	            	$("#join").attr("type", "submit");
 	        } else{
 	            confirmMsg.style.color=wrongColor;
 	            confirmMsg.innerHTML="비밀번호 불일치";
+	            $("#join").attr("type", "button");
 	        }
 
 	        });
@@ -94,19 +94,16 @@
 			<div class="page-header min-vh-100">
 				<div class="container">
 					<div class="row">
-						<div
-							class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-
+						<div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
 						</div>
-						<div
-							class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+						<div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
 							<div class="card card-plain">
 								<div class="card-header">
 									<h4 class="font-weight-bolder">회원가입</h4>
 									<p class="mb-0">아이디, 이메일, 비밀번호를 입력해주세요</p>
 								</div>
 								<div class="card-body">
-									<form th:action="@{/member/join}" method="post" >
+									<form th:action="@{/member/MemberReg}" method="post" >
 										<div class="input-group input-group-outline mb-3">
 
 											<input type="text" id=m_id name=m_id class="form-control"
@@ -142,14 +139,13 @@
 
 										<div class="text-center">
 											<button type="button"
-												class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0 join">가입하기</button>
+												class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" id="join">가입하기</button>
 										</div>
 									</form>
 								</div>
 								<div class="card-footer text-center pt-0 px-lg-2 px-1">
 									<p class="mb-2 text-sm mx-auto">
-										이미 계정이 있으신가요? <a th:href="@{/member/login}"
-											class="text-primary text-gradient font-weight-bold">로그인</a>
+										이미 계정이 있으신가요? <a th:href="@{/member/memberLogin}" class="text-primary text-gradient font-weight-bold">로그인</a>
 									</p>
 								</div>
 							</div>

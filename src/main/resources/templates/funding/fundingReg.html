@@ -18,7 +18,7 @@
 					</div>
 					
 					<form name="fundingForm" action="fundingForm" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="m_id" th:value="${session.member.m_id}">
+						<input type="hidden" name="member_m_num" th:value="${session.member.m_num}">
 						<div class="container">
 							<div class="input-group mb-3">
 								<span class="input-group-text" >프로젝트 명칭</span>
@@ -64,7 +64,7 @@
 	
 							<div class="input-group mb-3">
 								<label class="input-group-text" for="inputGroupFile01">사업자 등록증</label>
-								<input type="file" class="upload-hidden" id="file" name="file">
+								<input type="file" class="upload-hidden" id="file" name="file" accept=".jpg, .png">
 							</div>
 	
 						

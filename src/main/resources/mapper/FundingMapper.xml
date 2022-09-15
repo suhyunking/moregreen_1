@@ -10,6 +10,7 @@
 	select *
 	from funding
 	where f_status in (3,4,5)
+	order by f_num desc;
 
   </select>
 
@@ -20,23 +21,25 @@
  		</selectKey>
   	insert into funding(
   						f_title,
-  						f_bname,
   						f_content,
-  						f_reward,
+  						f_days,
   						f_enddate,
+  						f_reward,
   						f_price,
+  						f_bname,
   						f_bnum,
-  						f_days
+  						member_m_num
   						)
   				values(
   					   #{f_title},
-  					   #{f_bname},
   					   #{f_content},
-  					   #{f_reward},
+  					   #{f_days},
   					   (SELECT DATE_ADD(NOW(), INTERVAL #{f_days} DAY)),
+  					   #{f_reward},
   					   #{f_price},
+  					   #{f_bname},
   					   #{f_bnum},
-  					   #{f_days}
+  					   #{member_m_num}
   					   )
   </insert>
   
@@ -48,8 +51,8 @@
 					     funding_f_num					     
 					     )
 		 		 values(
-		 				#{name},
-		 			   	#{path},
+		 				#{filename},
+		 			   	#{filepath},
 		 			  	#{uuid},
 		 			  	#{f_num}
 		 			   )				
@@ -90,13 +93,25 @@
 		where f_num = #{f_num}
 
 	</select>
+	
+	<select id="selectFundingDetailImg" parameterType="int" resultType="UploadDto">
+
+		select i_name as filename, i_path as filepath, i_uuid as uuid
+		from image
+		where funding_f_num = #{f_num}
+
+	</select>
   
 	<update id="fundingAccept" parameterType="int">
-
 		update funding
 		set f_status = 3
 		where f_num = #{f_num}
-
+	</update>
+	
+	<update id="fundingReject" parameterType="int">
+		update funding
+		set f_status = 2
+		where f_num = #{f_num}
 	</update>
   
   

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.jaxb.SpringDataJaxb.PageDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -41,10 +40,10 @@ public class FundingController {
 		
 		List<FundingDto> list = fundingService.retriveFundingList(cri); //데이터
 		int total = fundingService.retrieveTotal(cri); //전체게시글수
-		PageDto pageDto= new PageDto(cri, total); //페이지네이션
+		//PageDto pageDto= new PageDto(cri, total); //페이지네이션
 		
 		model.addAttribute("list", list);
-		model.addAttribute("pageDto", pageDto);
+		//model.addAttribute("pageDto", pageDto);
 		
 		return "funding/fundingList";
 	}
@@ -66,7 +65,10 @@ public class FundingController {
 
 	@PostMapping("/fundingForm")
 	public String fundingForm(@Valid FundingDto dto, Errors errors, Model model,
-						  	  @RequestParam("file") List<MultipartFile> files ) {
+						  	  @RequestParam("file") List<MultipartFile> files) {
+		
+		System.out.println("========2=========" + dto.getMember_m_num());
+		
 		
 		if(errors.hasErrors()) {
 			List<FieldError> list = errors.getFieldErrors();

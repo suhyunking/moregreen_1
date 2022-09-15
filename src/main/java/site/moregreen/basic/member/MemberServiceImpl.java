@@ -3,6 +3,8 @@ package site.moregreen.basic.member;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
@@ -41,6 +43,11 @@ public class MemberServiceImpl implements MemberService {
 		public MemberDto loginMember(MemberDto memberDto) {
 
 			return memberMapper.login(memberDto);
+		}
+
+		@Override
+		public void logout(HttpSession session) {
+			
 		}
 
 }

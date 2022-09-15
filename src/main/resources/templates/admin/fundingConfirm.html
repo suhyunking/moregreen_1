@@ -91,7 +91,8 @@ input[type=submit] {
 	</div>
 	</br>
 	<div style="padding-bottom: 40px;">
-		<form name="actionForm" action="####" method="####" >
+		<form name="actionForm" action="###" method="###" >
+		
 			<div class="row" style="display: flex;">
 				<div class="col-25">
 					<label for="f_num">번호</label>
@@ -115,7 +116,7 @@ input[type=submit] {
 					<label for="f_days">프로젝트 기간</label>
 				</div>
 				<div class="col-75">
-	       			<select id="f_days" name="f_days" onFocus="this.initialSelect = this.selectedIndex;" onChange="this.selectedIndex = this.initialSelect;" style="color: #a3a0a0;">
+	       			<select id="f_days" name="f_days" onFocus="this.initialSelect = this.selectedIndex;" onChange="this.selectedIndex = this.initialSelect;" style="color: #a3a0a0;" disabled>
 			          	<option value="30">30일</option>
 			          	<option value="60">60일</option>
 			          	<option value="90">90일</option>
@@ -173,9 +174,9 @@ input[type=submit] {
 					<label>대표 사진</label>
 				</div>
 				<div class="col-75">
-					<input type="file" name="file" id="main_file">
-					<input type="file" name="file" id="main_file">
-					<input type="file" name="file" id="main_file">
+					<input type="file" name="file" id="main_file" disabled>
+					<input type="file" name="file" id="main_file" disabled>
+					<input type="file" name="file" id="main_file" disabled>
 				</div>
 			</div>
 			
@@ -184,9 +185,9 @@ input[type=submit] {
 					<label>내용 사진</label>
 				</div>
 				<div class="col-75">
-					<input type="file" name="file" id="main_file">
-					<input type="file" name="file" id="main_file">
-					<input type="file" name="file" id="main_file">
+					<input type="file" name="file" id="main_file" disabled>
+					<input type="file" name="file" id="main_file" disabled>
+					<input type="file" name="file" id="main_file" disabled>
 				</div>
 			</div>
 			
@@ -209,18 +210,22 @@ input[type=submit] {
 			</div>
 			
 			<div class="row">
+			<th:block th:each="uploadDto : ${list}">
 				<div class="col-25">
 					<label>사업자등록증</label>
 				</div>
 				<div class="col-75">
-					<input type="file" name="file" id="main_file">
+						<img th:src="'/upload/' + ${uploadDto.filepath} + '/' + ${uploadDto.uuid} + '_' + ${uploadDto.filename}">
 				</div>
+			</th:block>
 			</div>
 			<br>
 			
+			<input type="hidden" name="f_num" th:value="${dto.f_num}">
+			
 			<div class="row">
-				<button class="btn btn-success" style="width: auto; margin: auto;" th:onclick="|funding_accept()|">승인</button>
-				<button class="btn btn-warning" style="width: auto; margin: auto;" th:onclick="|funding_reject()|">반려</button>
+				<a class="btn btn-success" style="width: auto; margin: auto;" th:onclick="|funding_accept()|">승인</a>
+				<a class="btn btn-danger" style="width: auto; margin: auto;" th:onclick="|funding_reject()|">반려</a>
 			</div>
 		</form>
 	</div>
@@ -237,17 +242,20 @@ input[type=submit] {
 <script th:inline="javascript">
 	function funding_accept() {
 		event.preventDefault(); //태그가 가진 기본이벤트 중지
+		console.log( document.actionForm );
 		document.actionForm.action = "fundingAccept";
 		document.actionForm.method = "post";
-		document.actionForm.submit(); //서브밋
+		document.actionForm.submit(); //서브밋 
 	}
 
-	/*function funding_reject() {
+	function funding_reject() {
 		event.preventDefault();
 		document.actionForm.action = "fundingReject";
 		document.actionForm.method = "post";
 		document.actionForm.submit(); //서브밋
-	}*/
+	}
+	
+	console.log(uploadDto.filepath)
 </script>
 
 </html>
