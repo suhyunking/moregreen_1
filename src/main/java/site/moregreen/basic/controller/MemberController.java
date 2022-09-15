@@ -32,9 +32,9 @@ public class MemberController {
 	@Qualifier("memberService")
 	MemberService memberService;
 	
-	@GetMapping("/join")
+	@GetMapping("/memberReg")
 	public String join() {
-		return "member/join";
+		return "member/memberReg";
 	}
 	
 	@ResponseBody
@@ -44,7 +44,7 @@ public class MemberController {
 		return result;
 	}
 	
-	@PostMapping("/join")
+	@PostMapping("/MemberReg")
 	public String joinForm(@Valid MemberDto memberDto, Errors errors, Model model) {
 		if(errors.hasErrors()) {
 			//회원가입 실패 시 입력 데이터 유지
@@ -55,7 +55,7 @@ public class MemberController {
 			for(String key: validatorResult.keySet()) {
 				model.addAttribute(key, validatorResult.get(key));
 			}
-			return"/member/join";
+			return"/member/memberReg";
 		}
 		memberService.registerMember(memberDto);
 		return "redirect:/index";
@@ -63,9 +63,9 @@ public class MemberController {
 	
 	
 	
-	@GetMapping("/login")
+	@GetMapping("/memberLogin")
 	public String login() {
-		return "member/login";
+		return "member/memberLogin";
 	}
 	
 	@PostMapping("/loginForm")
@@ -87,6 +87,28 @@ public class MemberController {
 		}
 		 return"redirect:/index";
 	 }
-	 
+	
+	@GetMapping("/memberFindId")
+	public String findid() {
+		return "member/memberFindId";
+	}
+	
+	@GetMapping("/memberFindIdResult")
+	public String findidResult() {
+		return "member/memberFindIdResult";
+	}
+	
+	
+	@GetMapping("/memberFindPw")
+	public String memberFindPw() {
+		return "member/memberFindPw";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		//logger.info("Logout success");
+		return "redirect:/";
+	}
 	
 }
