@@ -58,7 +58,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="card-body px-0 pb-0">
+					<div class="card-body px-0 pb-0"><!-- test -->
 						<div class="table-responsive">
 							<table class="table align-middle" id="funding-list">
 								<thead class="thead-light">
@@ -74,7 +74,7 @@
 								</thead>
 								<tbody>
 									<tr th:each="dto : ${list}">
-										<td class="text-sm">[[${dto.f_num}]]</td>
+										<td class="text-sm">[[${dto.f_num}]]</td><!--test -->
 										<td>
 											<div class="d-flex">
 												<a title="상세보기(클릭)" th:href="@{/admin/fundingConfirm(f_num=${dto.f_num})}">
