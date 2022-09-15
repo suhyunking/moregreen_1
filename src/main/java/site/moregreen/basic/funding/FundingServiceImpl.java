@@ -126,10 +126,10 @@ public class FundingServiceImpl implements FundingService{
 	}
 	
 	// 이미지 조회
-	@Override
-	public List<UploadDto> retrieveFundingListImg(Criteria cri) {
-		return fundingMapper.selectFundingListImg(cri);
-	}
+//	@Override
+//	public List<UploadDto> retrieveFundingListImg(Criteria cri) {
+//		return fundingMapper.selectFundingListImg(cri);
+//	}
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
