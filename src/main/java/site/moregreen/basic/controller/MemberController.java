@@ -77,9 +77,10 @@ public class MemberController {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 			//System.out.println("로그인 안됨");
+			 return"redirect:/member/login";
 		} else {
 			session.setAttribute("member", member);
-			//session.setMaxInactiveInterval(1800);
+			session.setMaxInactiveInterval(1800);
 			//System.out.println("로그인 됨");
 			//System.out.println(member);
 			

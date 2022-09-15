@@ -20,6 +20,25 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
+  
+    <script src="/js/jquery-3.6.0.js"></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+  <script>
+   $(document).ready(function(){
+	   $("#btn").on("click",function(){
+		   
+	        
+	        if($("#idmsg").val().length == 0 || $("#pwmsg").val().length == 0){
+	            alert("아이디와 비밀번호를 입력해주세요");
+	            return
+	        } else{
+	            $("#loginForm").submit();
+	        }
+	   });
+	   
+        
+   });
+</script>
 </head>
 
 <body class="bg-gray-200">
@@ -47,11 +66,11 @@
                 <form th:action="@{/member/loginForm}" method="post" role="form" class="text-start">
                   <div class="input-group input-group-outline my-3">
                    
-                    <input type="text" name=m_id placeholder="아이디" class="form-control">
+                    <input type="text" name=m_id placeholder="아이디" class="form-control" id="idmsg">
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     
-                    <input type="password" name="m_pw" placeholder="비밀번호" class="form-control">
+                    <input type="password" name="m_pw" placeholder="비밀번호" class="form-control" id="pwmsg">
                   </div>
                   
                     <p class="mt-4 text-sm text-center">
@@ -62,7 +81,7 @@
                     <a th:href="@{###}" class="text-primary text-gradient font-weight-bold">비밀번호 찾기</a>
                    
                   <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">로그인하기</button>
+                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2" id="btn">로그인하기</button>
                   </div>
                   <p class="mt-4 text-sm text-center">
                     계정이 없으신가요?

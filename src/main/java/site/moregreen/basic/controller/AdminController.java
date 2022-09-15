@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,10 @@ public class AdminController {
 		
 	@Autowired
 	@Qualifier("fundingService")
-	FundingService fundingService;
+	FundingService fundingService;	
+
+	@Value("${project.upload.path}")
+	private String uploadPath;
 
 	@Autowired
 	@Qualifier("memberService")
@@ -39,8 +43,13 @@ public class AdminController {
 		return "admin/adminportal";
 	}
 	
+
+	//로그인
+
+
 	@GetMapping("/login")
 	public String signIn() {
+		
 		return "admin/adminSignin";
 	}
 	
@@ -65,7 +74,7 @@ public class AdminController {
 		
 		return"redirect:/admin/login";
 	}
-	
+
 	@GetMapping("/fundingList")
 	public String fundingList(Model model, Criteria cri, HttpSession session) {
 
