@@ -10,6 +10,7 @@
 	select *
 	from funding
 	where f_status in (3,4,5)
+	order by f_num desc;
 
   </select>
 
@@ -90,13 +91,25 @@
 		where f_num = #{f_num}
 
 	</select>
+	
+	<select id="selectFundingDetailImg" parameterType="int" resultType="UploadDto">
+
+		select *
+		from image
+		where funding_f_num = #{f_num}
+
+	</select>
   
 	<update id="fundingAccept" parameterType="int">
-
 		update funding
 		set f_status = 3
 		where f_num = #{f_num}
-
+	</update>
+	
+	<update id="fundingReject" parameterType="int">
+		update funding
+		set f_status = 2
+		where f_num = #{f_num}
 	</update>
   
   

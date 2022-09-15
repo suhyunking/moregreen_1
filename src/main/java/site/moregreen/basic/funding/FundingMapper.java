@@ -17,13 +17,13 @@ public interface FundingMapper {
 	public List<FundingDto> selectFundigList(Criteria cri); // 펀딩 목록 조회
 
 	public FundingDto selectFundingDetail(int f_num); // 상세조회
-
 	public List<UploadDto> selectFundingDetailImg(int f_num); // 이미지 상세 조회
 
 	public void createFunding(FundingDto dto); // 등록
 	public int createFundingFile(UploadDto dto);
 
-	public int fundingAccept(int f_num);
+	public void fundingAccept(int f_num);
+	public void fundingReject(int f_num);
 
 	public List<ImageDto> getDetailImg(int f_num); // 상세 페이지 이미지 조회
 

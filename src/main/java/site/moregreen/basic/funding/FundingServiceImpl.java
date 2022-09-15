@@ -59,17 +59,17 @@ public class FundingServiceImpl implements FundingService{
 			//실제파일명 (브라우저별로 조금씩 다를수가있음)
 			String origin = file.getOriginalFilename();
 			//저장할파일명(경로가 \\가 들어오는 경우 잘라서 처리)
-			String name = origin.substring(origin.lastIndexOf("\\") + 1);
+			String filename = origin.substring(origin.lastIndexOf("\\") + 1);
 			//파일사이즈
 			long size = file.getSize();
 			//랜덤이름
 			String uuid = UUID.randomUUID().toString();
 			//날짜경로
-			String path = makeFolder();
+			String filepath = makeFolder();
 			//업로드경로
-			String saveName = uploadPath + "\\"+ path  +"\\"+ uuid + "_" + name;
+			String saveName = uploadPath + "\\"+ filepath  +"\\"+ uuid + "_" + filename;
 			//썸네일경로
-			String thumbnailName = uploadPath + "\\"+ path  +"\\thumb_"+ uuid + "_" + name;
+			String thumbnailName = uploadPath + "\\"+ filepath  +"\\thumb_"+ uuid + "_" + filename;
 			
 //			System.out.println(filename);
 //			System.out.println(size);
@@ -88,8 +88,8 @@ public class FundingServiceImpl implements FundingService{
 			}
 			
 			fundingMapper.createFundingFile(UploadDto.builder()
-											  .name(name)
-											  .path(path)
+											  .filename(filename)
+											  .filepath(filepath)
 											  .uuid(uuid)
 											  .f_num(f_num)
 											  .build()
@@ -119,12 +119,6 @@ public class FundingServiceImpl implements FundingService{
 		return fundingMapper.selectFundingDetailImg(f_num);
 	}
 
-	@Transactional(rollbackFor = Exception.class)
-	@Override
-	public int fundingAccept(int f_num) {
-		return fundingMapper.fundingAccept(f_num);
-	}
-
 	// 조회
 	@Override
 	public List<FundingDto> retriveFundingList(Criteria cri) {
@@ -132,11 +126,22 @@ public class FundingServiceImpl implements FundingService{
 		return fundingMapper.selectFundigList(cri);
 	}
 
-	// 상세 조회
+	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public FundingDto retriveFundingDetail(int f_num) {
+	public int fundingAccept(int f_num) {
+		
+		fundingMapper.fundingAccept(f_num);
+		
+		return 0;
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int fundingReject(int f_num) {
 
-		return null;
+		fundingMapper.fundingReject(f_num);
+		
+		return 0;
 	}
 
 	
