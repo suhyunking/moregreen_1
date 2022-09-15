@@ -21,7 +21,7 @@ import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.member.MemberService;
 import site.moregreen.basic.util.Criteria;
-import site.moregreen.basic.util.PageVO;
+import site.moregreen.basic.util.PageVo;
 
 @Controller
 @RequestMapping("/admin")
@@ -80,7 +80,7 @@ public class AdminController {
 
 		List<FundingDto> list = fundingService.retriveFundingList(cri);
 		int total = fundingService.retrieveTotal(cri);
-		PageVO pageVO = new PageVO(cri, total);
+		PageVo pageVO = new PageVo(cri, total);
 
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);
@@ -93,7 +93,7 @@ public class AdminController {
 
 		List<FundingDto> list = fundingService.retrieveFundingApplyList(cri);
 		int total = fundingService.retrieveTotal(cri);
-		PageVO pageVO = new PageVO(cri, total);
+		PageVo pageVO = new PageVo(cri, total);
 
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);

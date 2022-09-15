@@ -10,16 +10,15 @@ public class Criteria extends MemberDto {
 	private int amount; //데이터 개수
 	
 	//검색키워드 추가
-	private String searchName; //상품명
-	private String searchContent; //상품내용
-	private String searchPrice; //상품가격
-	private String startDate; //시작일
-	private String endDate; //종료일
+	private String searchF_title; //펀딩명 검색
+
+	//정렬
+	private String f_num; //최신순
+	private String f_endDate; //종료일
 	
 	//JPA에서 사용할 검색 키워드 추가 (화면에서 사용되는 검색 키워드)
-	private String writer;
-	private String title;
-	private String content;
+	private String f_title;
+
 	
 	public Criteria() {
 		this(1, 10);
