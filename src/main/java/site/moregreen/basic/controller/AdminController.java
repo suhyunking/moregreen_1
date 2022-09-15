@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.util.Criteria;
-import site.moregreen.basic.util.PageVO;
+import site.moregreen.basic.util.PageVo;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -40,7 +40,7 @@ public class AdminController {
 
 		List<FundingDto> list = fundingService.retriveFundingList(cri);
 		int total = fundingService.retrieveTotal(cri);
-		PageVO pageVO = new PageVO(cri, total);
+		PageVo pageVO = new PageVo(cri, total);
 
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);
@@ -53,7 +53,7 @@ public class AdminController {
 
 		List<FundingDto> list = fundingService.retrieveFundingApplyList(cri);
 		int total = fundingService.retrieveTotal(cri);
-		PageVO pageVO = new PageVO(cri, total);
+		PageVo pageVO = new PageVo(cri, total);
 
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);
