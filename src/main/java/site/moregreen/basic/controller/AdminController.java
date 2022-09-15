@@ -1,62 +1,102 @@
 package site.moregreen.basic.controller;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+=======
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+=======
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+<<<<<<< HEAD
 
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVO;
+=======
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 
+<<<<<<< HEAD
+=======
+import site.moregreen.basic.command.FundingDto;
+import site.moregreen.basic.command.MemberDto;
+import site.moregreen.basic.funding.FundingService;
+import site.moregreen.basic.member.MemberService;
+
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
+		
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;
 	
+<<<<<<< HEAD
 	@Value("${project.upload.path}")
 	private String uploadPath;
 
+=======
+	@Autowired
+	@Qualifier("memberService")
+	MemberService memberService;
+	
+	
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 	@GetMapping("/adminportal")
 	public String adminportal() {
 		return "admin/adminportal";
 	}
-
-	@GetMapping("/signIn")
+	
+	@GetMapping("/login")
 	public String signIn() {
 		return "admin/adminSignin";
 	}
-
+	
+	@PostMapping("/loginForm")
+	public String loginForm(MemberDto memberDto, HttpServletRequest req, RedirectAttributes rttr ) throws Exception {
+		HttpSession session =req.getSession();
+		 MemberDto member=  memberService.loginMember(memberDto);
+		
+		 
+		 if(member.getM_id().equals("admin")) {
+			 session.setAttribute("member", member);
+				session.setMaxInactiveInterval(1800);
+				//System.out.println("admin 로그인 됨");
+				//System.out.println(member);
+				return"redirect:/admin/adminportal";
+		} else {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("msg", false);
+			//System.out.println("로그인 안됨");
+			
+		}
+		
+		return"redirect:/admin/login";
+	}
+	
 	@GetMapping("/fundingList")
-	public String fundingList(Model model, Criteria cri, HttpSession session) {
-
-		List<FundingDto> list = fundingService.retriveFundingList(cri);
-		int total = fundingService.retrieveTotal(cri);
-		PageVO pageVO = new PageVO(cri, total);
-
-		model.addAttribute("list", list);
-		model.addAttribute("pageVO", pageVO);
-
+	public String fundingList() {
 		return "admin/fundingList";
 	}
+<<<<<<< HEAD
 
 	@GetMapping("/fundingApplyList")
 	public String fundingApplyList(Model model, Criteria cri, HttpSession session) {
@@ -72,7 +112,11 @@ public class AdminController {
 	}
 	
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 	@GetMapping("/fundingConfirm")
+<<<<<<< HEAD
 	public String fundingConfirm(@RequestParam("f_num") int f_num,
 								 Model model) {
 
@@ -82,7 +126,15 @@ public class AdminController {
 		List<UploadDto> list = fundingService.retrieveFundingDetailImg(f_num);
 		model.addAttribute("list", list);
 
+=======
+	public String fundingConfirm() {
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 		return "admin/fundingConfirm";
+	}
+	
+	@GetMapping("/fundingApplyList")
+	public String fundingApplyList() {
+		return "admin/fundingApplyList";
 	}
 
 	//이미지 처리
@@ -119,32 +171,38 @@ public class AdminController {
 		
 		return "admin/fundingModify";
 	}
-
+	
 	@PostMapping("/modifyFunding")
 	public String modifyFunding(FundingDto dto, RedirectAttributes RA) {
-
+		
 		boolean result = fundingService.modifyFunding(dto);
 		//메시지처리(리다이렉트 시 1회성 메시지를 보내는 방법)
-		if (result) {
+		if(result) {
 			RA.addFlashAttribute("msg", "수정 되었습니다");
 		} else {
 			RA.addFlashAttribute("msg", "수정에 실패했습니다");
 		}
-
+		
 		return "redirect:/admin/fundingList";
+	}
 
+<<<<<<< HEAD
 		//수정기능
 	}
 
 
 	@GetMapping("/orderList")
+=======
+	@GetMapping("orderList")
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 	public String orderList() {
 		return "admin/orderList";
 	}
 	
-	@GetMapping("/userList")
+	@GetMapping("userList")
 	public String userList() {
 		return "admin/userList";
+<<<<<<< HEAD
 	}
 	
 
@@ -160,6 +218,8 @@ public class AdminController {
 		}
 
 		return "redirect:/admin/fundingApplyList";
+=======
+>>>>>>> branch 'master' of https://github.com/ciscons/moregreen.git
 	}
 	
 	@PostMapping("/fundingReject")
@@ -178,4 +238,3 @@ public class AdminController {
 	
 
 }
-
