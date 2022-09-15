@@ -213,7 +213,9 @@ input[type=submit] {
 			<th:block th:each="uploadDto : ${list}">
 				<div class="col-25">
 					<label>사업자등록증</label>
-					<img id="image" th:src="@{D:/boot/upload/${uploadDto.filepath}/${uploadDto.uuid}_${uploadDto.filename}}" >
+				</div>
+				<div class="col-75">
+						<img th:src="'/upload/' + ${uploadDto.filepath} + '/' + ${uploadDto.uuid} + '_' + ${uploadDto.filename}">
 				</div>
 			</th:block>
 			</div>
