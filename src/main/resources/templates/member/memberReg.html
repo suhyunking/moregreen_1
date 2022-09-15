@@ -55,7 +55,7 @@
 						$("#olmessage").text("사용 가능한 ID입니다.");
 						$("#olmessage").addClass("olmessaget");
 						$("#olmessage").removeClass("olmessagef");
-						$(".join").attr("type", "submit");
+						$("#join").attr("type", "submit");
 					}
 				}
 			})
@@ -67,14 +67,14 @@
 	        var confirmMsg=document.getElementById('confirmMsg');
 	        var correctColor="blue";
 	        var wrongColor="red";
-		console.log(password);
-		console.log(passwordConfirm);
 	        if(password.value==passwordConfirm.value){
 	            confirmMsg.style.color=correctColor;
 	            confirmMsg.innerHTML="비밀번호 일치"
+	            	$("#join").attr("type", "submit");
 	        } else{
 	            confirmMsg.style.color=wrongColor;
 	            confirmMsg.innerHTML="비밀번호 불일치";
+	            $("#join").attr("type", "button");
 	        }
 
 	        });
@@ -139,7 +139,7 @@
 
 										<div class="text-center">
 											<button type="button"
-												class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0 join">가입하기</button>
+												class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" id="join">가입하기</button>
 										</div>
 									</form>
 								</div>
