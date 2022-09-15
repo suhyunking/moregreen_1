@@ -55,7 +55,7 @@ public class MemberController {
 			for(String key: validatorResult.keySet()) {
 				model.addAttribute(key, validatorResult.get(key));
 			}
-			return"/member/memberReg";
+			return"member/memberReg";
 		}
 		memberService.registerMember(memberDto);
 		return "redirect:/index";
