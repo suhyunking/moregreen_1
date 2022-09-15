@@ -3,7 +3,7 @@ package site.moregreen.basic.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.funding.FundingService;
+import site.moregreen.basic.util.Criteria;
 
 @Controller
 @RequestMapping("/funding")
@@ -30,13 +31,30 @@ public class FundingController {
 	@Qualifier("fundingService")
 	FundingService fundingService;
 
+	
+	
 	@GetMapping("/fundingList")
-	public String fundingList() {
+	public String fundingList(@Valid FundingDto dto, Errors errors, Model model, HttpSession session, 
+		  	  @RequestParam("file") List<MultipartFile> files, Criteria cri) {
+		String f_num = (String)session.getAttribute("f_num");
+		cri.setF_num(f_num);
+		
+		List<FundingDto> list = fundingService.retriveFundingList(cri); //데이터
+		int total = fundingService.retrieveTotal(cri); //전체게시글수
+		//PageDto pageDto= new PageDto(cri, total); //페이지네이션
+		
+		model.addAttribute("list", list);
+		//model.addAttribute("pageDto", pageDto);
+		
 		return "funding/fundingList";
 	}
+	
+	
+	
 
 	@GetMapping("fundingDetail")
 	public String fundingDetail(@RequestParam("f_num") int f_num,  Model mode) {
+		
 		return "funding/fundingDetail";
 	}
 
@@ -50,9 +68,7 @@ public class FundingController {
 	public String fundingForm(@Valid FundingDto dto, Errors errors, Model model,
 						  	  @RequestParam("file") List<MultipartFile> files) {
 		
-		System.out.println("========2=========" + dto.getMember_m_num());
-		
-		
+		System.out.println("================" + dto.getM_num());
 		if(errors.hasErrors()) {
 			List<FieldError> list = errors.getFieldErrors();
 			for(FieldError err : list) {

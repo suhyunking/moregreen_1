@@ -2,9 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <th:block
 	th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
- <style>
- 
- </style>
+	<style>
+</style>
 	<body>
 		<section id="wrap">
 
@@ -34,251 +33,83 @@
 								<option value="1">전체</option>
 								<option value="2">진행중</option>
 								<option value="3">종료</option>
-							</select> 
-							
-							<select class="form-select" id="inputGroupSelect02">
+							</select> <select class="form-select" id="inputGroupSelect02">
 
 								<option value="1">최신순</option>
 								<option value="2">관심순</option>
 								<option value="3">종료임박</option>
 							</select>
-						
+
 						</div>
 					</div>
+					</div>
+						</section>
+					
 
 					<div class="single-head">
 						<div class="row">
-							<div class="input-group">
+							<div class="input-group"  >
 
-								<div class="col-lg-4 col-md-6 col-12 ">
+								<div class="col-lg-4 col-md-6 col-12 " th:each="dto : ${list}">
 
 									<!-- Start Single Grid -->
 									<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-										<div class="image">
-											<a href="fundingDetail" class="thumbnail"><img
-												src="/img/items-grid/img1.jpg" alt="#"></a>
-										
-										</div>
+								<!-- 		<div class="image">
+											<a th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" class="thumbnail">
+											<img th:src="@{'/static/' + ${dto.uuid}}" alt="UploadDto"></a>
+
+										</div> -->
 										<div class="content">
 											<div class="top-content">
-												<a >상호명</a>
-												<h3 class="title">
-													<a href="fundingDetail">친환경 프로젝트 명</a>
+											<p th:text="${dto.f_num}"></p>
+												<p th:text="${dto.f_bname}"></p>
+												<h3 class="title" th:text="${dto.f_title}">
+													<a th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" >
+													</a>
 												</h3>
 
 
 												<ul class="info-list">
-													<li>%%%%%%</li>
-													<li><a ><i
-															class="lni lni-timer"></i> 2022-00-00까지</a></li>
+													<li><p th:text="${dto.f_rate}"></p></li>
+													<li><p class="lni lni-timer" th:text="${dto.f_enddate} + '까지'"></p>
+															
+													</li>
 												</ul>
 											</div>
 											<div class="bottom-content">
-												<p class="price">
-													누적금액 : <span>00,000원</span>
+												
+												<p class="price" th:text="'총 금액 :' + ${dto.f_totalmoney} + '원'">
+												
 												</p>
 
 											</div>
 										</div>
 									</div>
 									<!-- End Single Grid -->
-									
-						</div>
-								
-								
-								
-								<div class="col-lg-4 col-md-6 col-12">
 
-									<!-- Start Single Grid -->
-									<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-										<div class="image">
-											<a href="fundingDetail" class="thumbnail"><img
-												src="/img/items-grid/img1.jpg" alt="#"></a>
-										
-										</div>
-										<div class="content">
-											<div class="top-content">
-												<a >상호명</a>
-												<h3 class="title">
-													<a href="fundingDetail">친환경 프로젝트 명</a>
-												</h3>
-
-
-												<ul class="info-list">
-													<li>%%%%%%</li>
-													<li><a ><i
-															class="lni lni-timer"></i> 2022-00-00까지</a></li>
-												</ul>
-											</div>
-											<div class="bottom-content">
-												<p class="price">
-													누적금액 : <span>00,000원</span>
-												</p>
-
-											</div>
-										</div>
-									</div>
-									<!-- End Single Grid -->
-									
 								</div>
-								<div class="col-lg-4 col-md-6 col-12">
-
-									<!-- Start Single Grid -->
-									<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-										<div class="image">
-											<a href="fundingDetail" class="thumbnail"><img
-												src="/img/items-grid/img1.jpg" alt="#"></a>
-										
-										</div>
-										<div class="content">
-											<div class="top-content">
-												<a >상호명</a>
-												<h3 class="title">
-													<a href="fundingDetail">친환경 프로젝트 명</a>
-												</h3>
 
 
-												<ul class="info-list">
-													<li>%%%%%%</li>
-													<li><a ><i
-															class="lni lni-timer"></i> 2022-00-00까지</a></li>
-												</ul>
-											</div>
-											<div class="bottom-content">
-												<p class="price">
-													누적금액 : <span>00,000원</span>
-												</p>
-
-											</div>
-										</div>
-									</div>
-									<!-- End Single Grid -->
-									
-								</div>
-								
-								<div class="col-lg-4 col-md-6 col-12">
-
-									<!-- Start Single Grid -->
-									<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-										<div class="image">
-											<a href="fundingDetail" class="thumbnail"><img
-												src="/img/items-grid/img1.jpg" alt="#"></a>
-										
-										</div>
-										<div class="content">
-											<div class="top-content">
-												<a >상호명</a>
-												<h3 class="title">
-													<a href="fundingDetail">친환경 프로젝트 명</a>
-												</h3>
-
-
-												<ul class="info-list">
-													<li>%%%%%%</li>
-													<li><a ><i
-															class="lni lni-timer"></i> 2022-00-00까지</a></li>
-												</ul>
-											</div>
-											<div class="bottom-content">
-												<p class="price">
-													누적금액 : <span>00,000원</span>
-												</p>
-
-											</div>
-										</div>
-									</div>
-									<!-- End Single Grid -->
-									
-								</div>
-								<div class="col-lg-4 col-md-6 col-12">
-
-									<!-- Start Single Grid -->
-									<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-										<div class="image">
-											<a href="fundingDetail" class="thumbnail"><img
-												src="/img/items-grid/img1.jpg" alt="#"></a>
-										
-										</div>
-										<div class="content">
-											<div class="top-content">
-												<a >상호명</a>
-												<h3 class="title">
-													<a href="fundingDetail">친환경 프로젝트 명</a>
-												</h3>
-
-
-												<ul class="info-list">
-													<li>%%%%%%</li>
-													<li><a ><i
-															class="lni lni-timer"></i> 2022-00-00까지</a></li>
-												</ul>
-											</div>
-											<div class="bottom-content">
-												<p class="price">
-													누적금액 : <span>00,000원</span>
-												</p>
-
-											</div>
-										</div>
-									</div>
-									<!-- End Single Grid -->
-									
-								</div>
-								<div class="col-lg-4 col-md-6 col-12">
-
-									<!-- Start Single Grid -->
-									<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-										<div class="image">
-											<a href="fundingDetail" class="thumbnail"><img
-												src="/img/items-grid/img1.jpg" alt="#"></a>
-										
-										</div>
-										<div class="content">
-											<div class="top-content">
-												<a >상호명</a>
-												<h3 class="title">
-													<a href="fundingDetail">친환경 프로젝트 명</a>
-												</h3>
-
-
-												<ul class="info-list">
-													<li>%%%%%%</li>
-													<li><a ><i
-															class="lni lni-timer"></i> 2022-00-00까지</a></li>
-												</ul>
-											</div>
-											<div class="bottom-content">
-												<p class="price">
-													누적금액 : <span>00,000원</span>
-												</p>
-
-											</div>
-										</div>
-									</div>
-									<!-- End Single Grid -->
-									
-								</div>
 							</div>
 
 						</div>
 					</div>
 
-
-					<div class="btn-toolbar justify-content-between" role="toolbar"
-						aria-label="Toolbar with button groups" align="center">
-						<div class="btn-group" role="group" aria-label="First group">
-							<button type="button" class="btn btn-outline-secondary">1</button>
-							<button type="button" class="btn btn-outline-secondary">2</button>
-							<button type="button" class="btn btn-outline-secondary">3</button>
-							<button type="button" class="btn btn-outline-secondary">4</button>
-							<button type="button" class="btn btn-outline-secondary">5</button>
-						</div>
-
+			<div class="container" align="right">
+				<div class="btn-toolbar justify-content-between" role="toolbar"
+					aria-label="Toolbar with button groups" align="center">
+					<div class="btn-group" role="group" aria-label="First group">
+						<button type="button" class="btn btn-outline-secondary">1</button>
+						<button type="button" class="btn btn-outline-secondary">2</button>
+						<button type="button" class="btn btn-outline-secondary">3</button>
+						<button type="button" class="btn btn-outline-secondary">4</button>
+						<button type="button" class="btn btn-outline-secondary">5</button>
 					</div>
 
-					<!-- /End Items Grid Area -->
 				</div>
-			</section>
+			</div>
+			<!-- /End Items Grid Area -->
+			
 		</section>
 	</body>
 

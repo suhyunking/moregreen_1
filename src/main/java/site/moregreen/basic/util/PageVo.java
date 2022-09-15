@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Data //getter, setter, toSTring
-public class PageVO {
+public class PageVo {
 	
 	//criteria클래스를 받아서 화면에 그려질 페이지네이션을 계산
 	private int start; //페이지네이션 시작번호
@@ -25,7 +25,7 @@ public class PageVO {
 	
 	
 	//생성자는 반드시 Criteria클래스와 total을 받는다.
-	public PageVO(Criteria cri, int total) {
+	public PageVo(Criteria cri, int total) {
 		this.page = cri.getPage();
 		this.amount = cri.getAmount();
 		this.total = total;
