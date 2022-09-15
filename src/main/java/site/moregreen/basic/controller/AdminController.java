@@ -1,5 +1,10 @@
 package site.moregreen.basic.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -9,13 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import site.moregreen.basic.command.FundingDto;
+import site.moregreen.basic.command.MemberDto;
 import site.moregreen.basic.funding.FundingService;
+import site.moregreen.basic.member.MemberService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVO;
-
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -24,17 +29,44 @@ public class AdminController {
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;
-
+	
+	@Autowired
+	@Qualifier("memberService")
+	MemberService memberService;
+	
 	@GetMapping("/adminportal")
 	public String adminportal() {
 		return "admin/adminportal";
 	}
-
-	@GetMapping("/signIn")
+	
+	//로그인
+	@GetMapping("/login")
 	public String signIn() {
+		
 		return "admin/adminSignin";
 	}
-
+	
+	@PostMapping("/loginForm")
+	public String loginForm(MemberDto memberDto, HttpServletRequest req, RedirectAttributes rttr ) throws Exception {
+		HttpSession session =req.getSession();
+		 MemberDto member=  memberService.loginMember(memberDto);
+		
+		 
+		 if(member.getM_id().equals("admin")) {
+			 session.setAttribute("member", member);
+				session.setMaxInactiveInterval(1800);
+				//System.out.println("admin 로그인 됨");
+				//System.out.println(member);
+				return"redirect:/admin/adminportal";
+		} else {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("msg", false);
+			//System.out.println("로그인 안됨");
+			
+		}
+		
+		return"redirect:/admin/login";
+	}
 	@GetMapping("/fundingList")
 	public String fundingList(Model model, Criteria cri, HttpSession session) {
 

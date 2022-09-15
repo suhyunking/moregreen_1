@@ -34,7 +34,7 @@ public class MemberController {
 	
 	@GetMapping("/join")
 	public String join() {
-		return "member/join";
+		return "member/memberReg";
 	}
 	
 	@ResponseBody
@@ -55,7 +55,7 @@ public class MemberController {
 			for(String key: validatorResult.keySet()) {
 				model.addAttribute(key, validatorResult.get(key));
 			}
-			return"/member/join";
+			return"/member/memberReg";
 		}
 		memberService.registerMember(memberDto);
 		return "redirect:/index";
@@ -77,6 +77,7 @@ public class MemberController {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 			//System.out.println("로그인 안됨");
+			 return"redirect:/member/login";
 		} else {
 			session.setAttribute("member", member);
 			//session.setMaxInactiveInterval(1800);
