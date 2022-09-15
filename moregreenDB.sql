@@ -36,13 +36,13 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`funding` (
   `f_bname` VARCHAR(60) NOT NULL, #상호명
   `f_bnum` CHAR(10) NOT NULL, #사업자 번호
   `f_regdate` DATE NOT NULL DEFAULT (current_date()), #신청 일자
-  #`member_m_num` INT NOT NULL DEFAULT 1,
-  PRIMARY KEY (`f_num`)
- # CONSTRAINT `fk_funding_member1`
- #   FOREIGN KEY (`member_m_num`)	
- #   REFERENCES `moregreen`.`member` (`m_num`)
- #   ON DELETE NO ACTION
- #   ON UPDATE NO ACTIONmembermember
+  `member_m_num` INT NOT NULL,
+  PRIMARY KEY (`f_num`),
+  CONSTRAINT `fk_funding_member1`
+    FOREIGN KEY (`member_m_num`)
+    REFERENCES `moregreen`.`member` (`m_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 );
 #insert into funding (f_title, f_content, f_days, f_reward, f_price, f_bname, f_bnum) values('test', 'test', 30, 'test', 30000, 'test', '111111');
 -- -----------------------------------------------------

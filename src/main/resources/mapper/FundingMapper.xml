@@ -21,23 +21,25 @@
  		</selectKey>
   	insert into funding(
   						f_title,
-  						f_bname,
   						f_content,
-  						f_reward,
+  						f_days,
   						f_enddate,
+  						f_reward,
   						f_price,
+  						f_bname,
   						f_bnum,
-  						f_days
+  						member_m_num
   						)
   				values(
   					   #{f_title},
-  					   #{f_bname},
   					   #{f_content},
-  					   #{f_reward},
+  					   #{f_days},
   					   (SELECT DATE_ADD(NOW(), INTERVAL #{f_days} DAY)),
+  					   #{f_reward},
   					   #{f_price},
+  					   #{f_bname},
   					   #{f_bnum},
-  					   #{f_days}
+  					   #{member_m_num}
   					   )
   </insert>
   
