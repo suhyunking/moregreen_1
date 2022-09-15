@@ -112,30 +112,6 @@ public class AdminController {
 		return "admin/fundingApplyList";
 	}
 
-	//이미지 처리
-	@GetMapping("/display")
-	public byte[] display(@RequestParam("filename") String filename,
-			@RequestParam("filepath") String filepath,
-			@RequestParam("uuid") String uuid) {
-		
-		//업로드경로
-		String saveName = uploadPath + "\\"+ filepath  +"\\"+ uuid + "_" + filename;
-		//썸네일경로
-		String thumbnailName = uploadPath + "\\"+ filepath  +"\\thumb_"+ uuid + "_" + filename;
-		
-		byte[] result = null;
-		
-		try {
-			File file = new File(thumbnailName);
-			result = FileCopyUtils.copyToByteArray(file);
-		} catch (IOException e) {
-			System.out.println("이미지 경로 참조에러");
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
-	
 	// 펀딩 수정 페이지로 이동
 	@GetMapping("/fundingModify")
 	public String fundingModify(@RequestParam("f_num") int f_num,
