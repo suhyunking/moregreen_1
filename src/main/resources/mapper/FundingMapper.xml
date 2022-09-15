@@ -49,8 +49,8 @@
 					     funding_f_num					     
 					     )
 		 		 values(
-		 				#{name},
-		 			   	#{path},
+		 				#{filename},
+		 			   	#{filepath},
 		 			  	#{uuid},
 		 			  	#{f_num}
 		 			   )				
@@ -94,7 +94,7 @@
 	
 	<select id="selectFundingDetailImg" parameterType="int" resultType="UploadDto">
 
-		select *
+		select i_name as filename, i_path as filepath, i_uuid as uuid
 		from image
 		where funding_f_num = #{f_num}
 

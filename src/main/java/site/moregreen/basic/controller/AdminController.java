@@ -1,6 +1,4 @@
 package site.moregreen.basic.controller;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,10 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,14 +29,10 @@ public class AdminController {
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;
-	
-	@Value("${project.upload.path}")
-	private String uploadPath;
 
 	@Autowired
 	@Qualifier("memberService")
 	MemberService memberService;
-	
 	
 	@GetMapping("/adminportal")
 	public String adminportal() {
@@ -75,7 +67,15 @@ public class AdminController {
 	}
 	
 	@GetMapping("/fundingList")
-	public String fundingList() {
+	public String fundingList(Model model, Criteria cri, HttpSession session) {
+
+		List<FundingDto> list = fundingService.retriveFundingList(cri);
+		int total = fundingService.retrieveTotal(cri);
+		PageVO pageVO = new PageVO(cri, total);
+
+		model.addAttribute("list", list);
+		model.addAttribute("pageVO", pageVO);
+
 		return "admin/fundingList";
 	}
 
@@ -107,11 +107,6 @@ public class AdminController {
 		return "admin/fundingConfirm";
 	}
 	
-	@GetMapping("/fundingApplyList")
-	public String fundingApplyList() {
-		return "admin/fundingApplyList";
-	}
-
 	// 펀딩 수정 페이지로 이동
 	@GetMapping("/fundingModify")
 	public String fundingModify(@RequestParam("f_num") int f_num,
