@@ -76,6 +76,10 @@ public class FundingController {
 	public String fundingForm(@Valid FundingDto dto, Errors errors, Model model,
 						  	  @RequestParam("file") List<MultipartFile> files) {
 		
+		files.forEach(f -> {
+			System.out.println(f.toString());
+		});
+		
 		if(errors.hasErrors()) {
 			List<FieldError> list = errors.getFieldErrors();
 			for(FieldError err : list) {

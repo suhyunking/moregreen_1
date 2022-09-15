@@ -78,6 +78,8 @@
 	  from funding f
 	       left outer join image i 
 	       on f.f_num = i.funding_f_num 
+	  where f.f_status in (3,4,5)
+	  order by f.f_num desc;
 
   </select>
 
