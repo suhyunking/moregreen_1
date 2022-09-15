@@ -20,10 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import site.moregreen.basic.command.FundingDto;
-import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.util.Criteria;
-import site.moregreen.basic.util.PageVo;
 
 @Controller
 @RequestMapping("/funding")
@@ -32,24 +30,26 @@ public class FundingController {
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;
+
+	
 	
 	@GetMapping("/fundingList")
-	public String fundingList(Model model, 
-							  Criteria cri, 
-							  HttpSession session ){
+	public String fundingList(@Valid FundingDto dto, Errors errors, Model model, HttpSession session, 
+		  	  @RequestParam("file") List<MultipartFile> files, Criteria cri) {
+		String f_num = (String)session.getAttribute("f_num");
+		cri.setF_num(f_num);
 		
-		List<FundingDto> fundingList = fundingService.retriveFundingList(cri);
-		int total = fundingService.retrieveTotal(cri);
-		PageVo pageVO = new PageVo(cri, total);
-
-		model.addAttribute("fundingList", fundingList);
-		model.addAttribute("pageVO", pageVO);
+		List<FundingDto> list = fundingService.retriveFundingList(cri); //데이터
+		int total = fundingService.retrieveTotal(cri); //전체게시글수
+		//PageDto pageDto= new PageDto(cri, total); //페이지네이션
 		
-		List<UploadDto> fileList = fundingService.retrieveFundingListImg(cri);
-		model.addAttribute("fileList", fileList);
+		model.addAttribute("list", list);
+		//model.addAttribute("pageDto", pageDto);
 		
 		return "funding/fundingList";
 	}
+	
+	
 	
 
 	@GetMapping("fundingDetail")

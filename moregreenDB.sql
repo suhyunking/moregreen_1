@@ -44,8 +44,6 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`funding` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
-
-#select f_num as f_num1 from funding;
 #insert into funding (f_title, f_content, f_days, f_reward, f_price, f_bname, f_bnum) values('test', 'test', 30, 'test', 30000, 'test', '111111');
 -- -----------------------------------------------------
 -- Table `moregreen`.`like`
@@ -149,4 +147,4 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`image` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
-select f_num as f_num, f_title as f_title, f_content as f_content, f_days as f_days, f_enddate as f_enddate, f_target as f_target, f_totalmoney as f_totalmoney, f_rate as f_rate, f_status as f_status, f_reward as f_reward, f_price as f_price, f_bname as f_bname, f_bnum as f_bnum from funding where f_status in (3,4,5) order by f_num desc;
+

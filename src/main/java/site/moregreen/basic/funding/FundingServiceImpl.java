@@ -122,13 +122,8 @@ public class FundingServiceImpl implements FundingService{
 	// 조회
 	@Override
 	public List<FundingDto> retriveFundingList(Criteria cri) {
+
 		return fundingMapper.selectFundigList(cri);
-	}
-	
-	// 이미지 조회
-	@Override
-	public List<UploadDto> retrieveFundingListImg(Criteria cri) {
-		return fundingMapper.selectFundingListImg(cri);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -148,8 +143,6 @@ public class FundingServiceImpl implements FundingService{
 		
 		return 0;
 	}
-
-	
 
 	
 }

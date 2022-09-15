@@ -1,110 +1,117 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <th:block
-   th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
- <style>
- 
- </style>
-   <body>
-      <section id="wrap">
+	th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
+	<style>
+</style>
+	<body>
+		<section id="wrap">
 
-         <!-- Start Items Grid Area -->
-         <section class="items-grid section custom-padding">
-            <div class="container">
-               <div class="row">
-                  <div class="col-12">
-                     <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">펀딩하기</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">환경 배려가 생존을 위해 꼭
-                           필요한 시대입니다.</p>
-                     </div>
-                  </div>
-               </div>
-               <!-- serch / dropbox -->
-               <div class="d-sm-flex justify-content-between">
-                  <div class="ms-md-left pe-md-3">
-                     <div class="input-group input-group-outline">
-                        <input type="text" class="form-control" placeholder="펀딩명을 입력하세요">
-                        <button class="btn btn-icon btn-outline-dark ms-2 export">검색</button>
-                     </div>
-                  </div>
-                  <div class="btn-group">
-                     <select class="form-select" id="inputGroupSelect01">
+			<!-- Start Items Grid Area -->
+			<section class="items-grid section custom-padding">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-title">
+								<h2 class="wow fadeInUp" data-wow-delay=".4s">펀딩하기</h2>
+								<p class="wow fadeInUp" data-wow-delay=".6s">환경 배려가 생존을 위해 꼭
+									필요한 시대입니다.</p>
+							</div>
+						</div>
+					</div>
+					<!-- serch / dropbox -->
+					<div class="d-sm-flex justify-content-between">
+						<div class="ms-md-left pe-md-3">
+							<div class="input-group input-group-outline">
+								<input type="text" class="form-control" placeholder="펀딩명을 입력하세요">
+								<button class="btn btn-icon btn-outline-dark ms-2 export">검색</button>
+							</div>
+						</div>
+						<div class="btn-group">
+							<select class="form-select" id="inputGroupSelect01">
 
-                        <option value="1">전체</option>
-                        <option value="2">진행중</option>
-                        <option value="3">종료</option>
-                     </select> 
-                     
-                     <select class="form-select" id="inputGroupSelect02">
+								<option value="1">전체</option>
+								<option value="2">진행중</option>
+								<option value="3">종료</option>
+							</select> <select class="form-select" id="inputGroupSelect02">
 
-                        <option value="1">최신순</option>
-                        <option value="2">관심순</option>
-                        <option value="3">종료임박</option>
-                     </select>
-                  
-                  </div>
-               </div>
+								<option value="1">최신순</option>
+								<option value="2">관심순</option>
+								<option value="3">종료임박</option>
+							</select>
 
-               <div class="single-head">
-                  <div class="row">
-                     <div class="input-group">
+						</div>
+					</div>
+					</div>
+						</section>
+					
 
-                        <div class="col-lg-4 col-md-6 col-12 " th:each="dto : ${list}">
+					<div class="single-head">
+						<div class="row">
+							<div class="input-group"  >
 
-                           <!-- Start Single Grid -->
-                           <div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-                              <div class="image">
-                                 <a href="fundingDetail" class="thumbnail">
-                                 <img src="/img/items-grid/img1.jpg" alt="#"></a>
-                              </div>
-                              <div class="content">
-                                 <div class="top-content">
-                                    <a >[[${dto.f_bname}]]</a>
-                                    <h3 class="title">
-                                       <a href="fundingDetail">[[${dto.f_title}]]</a>
-                                    </h3>
+								<div class="col-lg-4 col-md-6 col-12 " th:each="dto : ${list}">
 
+									<!-- Start Single Grid -->
+									<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
+								<!-- 		<div class="image">
+											<a th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" class="thumbnail">
+											<img th:src="@{'/static/' + ${dto.uuid}}" alt="UploadDto"></a>
 
-                                    <ul class="info-list">
-                                       <li>[[${dto.f_rate}]]%</li>
-                                       <li><a ><i
-                                             class="lni lni-timer"></i> [[${dto.f_enddate}]]까지</a></li>
-                                    </ul>
-                                 </div>
-                                 <div class="bottom-content">
-                                    <p class="price">
-                                       누적금액 : <span>[[${dto.f_totalmoney}]]원</span>
-                                    </p>
-
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- End Single Grid -->
-                  		</div>
-                     </div>
-
-                  </div>
-               </div>
+										</div> -->
+										<div class="content">
+											<div class="top-content">
+											<p th:text="${dto.f_num}"></p>
+												<p th:text="${dto.f_bname}"></p>
+												<h3 class="title" th:text="${dto.f_title}">
+													<a th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" >
+													</a>
+												</h3>
 
 
-               <div class="btn-toolbar justify-content-between" role="toolbar"
-                  aria-label="Toolbar with button groups" align="center">
-                  <div class="btn-group" role="group" aria-label="First group">
-                     <button type="button" class="btn btn-outline-secondary">1</button>
-                     <button type="button" class="btn btn-outline-secondary">2</button>
-                     <button type="button" class="btn btn-outline-secondary">3</button>
-                     <button type="button" class="btn btn-outline-secondary">4</button>
-                     <button type="button" class="btn btn-outline-secondary">5</button>
-                  </div>
+												<ul class="info-list">
+													<li><p th:text="${dto.f_rate}"></p></li>
+													<li><p class="lni lni-timer" th:text="${dto.f_enddate} + '까지'"></p>
+															
+													</li>
+												</ul>
+											</div>
+											<div class="bottom-content">
+												
+												<p class="price" th:text="'총 금액 :' + ${dto.f_totalmoney} + '원'">
+												
+												</p>
 
-               </div>
+											</div>
+										</div>
+									</div>
+									<!-- End Single Grid -->
 
-               <!-- /End Items Grid Area -->
-            </div>
-         </section>
-      </section>
-   </body>
+								</div>
+
+
+							</div>
+
+						</div>
+					</div>
+
+			<div class="container" align="right">
+				<div class="btn-toolbar justify-content-between" role="toolbar"
+					aria-label="Toolbar with button groups" align="center">
+					<div class="btn-group" role="group" aria-label="First group">
+						<button type="button" class="btn btn-outline-secondary">1</button>
+						<button type="button" class="btn btn-outline-secondary">2</button>
+						<button type="button" class="btn btn-outline-secondary">3</button>
+						<button type="button" class="btn btn-outline-secondary">4</button>
+						<button type="button" class="btn btn-outline-secondary">5</button>
+					</div>
+
+				</div>
+			</div>
+			<!-- /End Items Grid Area -->
+			
+		</section>
+	</body>
 
 </th:block>
 </html>
