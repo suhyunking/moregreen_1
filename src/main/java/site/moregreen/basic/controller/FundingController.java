@@ -3,8 +3,6 @@ package site.moregreen.basic.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +48,7 @@ public class FundingController {
 	public String fundingForm(@Valid FundingDto dto, Errors errors, Model model,
 						  	  @RequestParam("file") List<MultipartFile> files) {
 		
-		System.out.println("========2=========" + dto.getMember_m_num());
-		
-		
+		System.out.println("================" + dto.getM_num());
 		if(errors.hasErrors()) {
 			List<FieldError> list = errors.getFieldErrors();
 			for(FieldError err : list) {

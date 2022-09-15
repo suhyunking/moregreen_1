@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 //Java 제네릭 클래스 (클래스에 고정된 형태로 값을 사용하는게 아니라, member를 넣고 싶을 땐 <Member> 이런식으로 저장 값이 달라도 기능만 똑같이 사용할 수 있다.
 @Data
-public class PageDTO<T> {
+public class PageDto<T> {
 
 	//page nation을 그리는 class
 	private int start;
@@ -28,7 +28,7 @@ public class PageDTO<T> {
 	
 	//Constructor
 	//여기에 들어오는 T도 생성할 당시에 전달받은 T의 값과 동일하다. 
-	public PageDTO(Page<T> pageable) {
+	public PageDto(Page<T> pageable) {
 		this.page = pageable.getNumber() + 1; //1번 페이지
 		this.amount = pageable.getSize();
 		this.pageTotal = pageable.getTotalPages();

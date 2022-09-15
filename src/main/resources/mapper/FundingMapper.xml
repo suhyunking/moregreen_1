@@ -39,7 +39,7 @@
   					   #{f_price},
   					   #{f_bname},
   					   #{f_bnum},
-  					   #{member_m_num}
+  					   #{m_num}
   					   )
   </insert>
   

@@ -18,7 +18,7 @@
   
   <!-- 로그인 -->  
   <select id="login" parameterType="site.moregreen.basic.command.MemberDto" resultType="site.moregreen.basic.command.MemberDto">
-        SELECT m_id, m_pw FROM member
+        SELECT m_id, m_pw, m_num FROM member
         WHERE m_id = #{m_id} AND m_pw = #{m_pw}
     </select>
   </mapper>
