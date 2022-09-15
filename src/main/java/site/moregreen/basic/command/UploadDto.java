@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class UploadDto {
 
 	private Integer upload_no; //pk
-	private String name;
-	private String path;
+	private String filename;
+	private String filepath;
 	private String uuid;
 	private Integer f_num; //fk
 }
