@@ -117,12 +117,14 @@
  						 i_name,
 					     i_path,
 					     i_uuid,
-					     funding_f_num					     
+					     i_type,
+					     funding_f_num	
 					     )
 		 		 values(
 		 				#{filename},
 		 			   	#{filepath},
 		 			  	#{uuid},
+		 			  	#{filetype},
 		 			  	#{f_num}
 		 			   )				
  	</insert>

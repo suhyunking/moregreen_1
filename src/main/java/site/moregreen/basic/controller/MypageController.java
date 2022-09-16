@@ -17,9 +17,9 @@ public class MypageController {
 		return "mypage/fundingLikeList";
 	}
 	
-	@GetMapping("/myProgectList")
-	public String myProgectList() {
-		return "mypage/myProgectList";
+	@GetMapping("/myProjectList")
+	public String myProjectList() {
+		return "mypage/myProjectList";
 	}
 	
 	@GetMapping("/purchaseDetail")
@@ -31,6 +31,12 @@ public class MypageController {
 	public String purchaseList() {
 		return "mypage/purchaseList";
 	}
+	
+	@GetMapping("/test")
+	public String test() {
+		return "mypage/test";
+	}
+	
 	
 //	@GetMapping(value = "/like/{userid}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 //	@ResponseBody
