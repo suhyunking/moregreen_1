@@ -18,7 +18,7 @@ public interface FundingService {
 //		public List<UploadDto> retrieveFundingListImg(Criteria cri);
 
 		// 등록
-		public int addFunding(FundingDto dto, List<MultipartFile> files);
+		public int addFunding(FundingDto dto, List<MultipartFile> files, List<MultipartFile> mainFiles, List<MultipartFile> contentFiles);
 
 		// 펀딩 신청 목록 조회
 		public List<FundingDto> retrieveFundingApplyList(Criteria cri);
