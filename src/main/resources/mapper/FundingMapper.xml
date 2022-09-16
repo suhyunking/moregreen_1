@@ -86,6 +86,9 @@
 	  on f.f_num = i.funding_f_num 
 	  where f.f_status in (3,4,5)
       and i.i_type = 1
+      <if test="searchName != '' and searchName != null"> 
+	  and f.f_title like concat('%', #{searchName} ,'%')
+	  </if>
       group by f_num
 	  order by f.f_num desc;
 
@@ -137,13 +140,20 @@
 		 			   )				
  	</insert>
 
-	<select id="selectFundingApplyList" parameterType="site.moregreen.basic.util.Criteria" resultType="FundingDto">
+	<select id="selectFundingApplyList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
 
-		select *
+		select f_num as f_num,
+			   f_title as f_title,
+			   f_days as f_days,
+			   f_status as f_status,
+			   f_bname as f_bname,
+			   (select m.m_id from member m where m.m_num = member_m_num) as m_id,
 		from funding
-		where f_status in (1,2)
-		order by f_num desc
-		limit #{pageStart}, #{amount}
+	 	where f_status in (1,2)
+	 	<if test="searchName != '' and searchName != null"> 
+	    and f_title like concat('%', #{searchName} ,'%')
+	    </if>
+	    order by f_num desc;
 
 	</select>
 

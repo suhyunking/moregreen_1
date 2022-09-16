@@ -26,8 +26,8 @@ public interface FundingMapper {
 
 	public List<ImageDto> getDetailImg(int f_num); // 상세 페이지 이미지 조회
 
-
 	public List<FundingDto> selectFundingApplyList(Criteria cri); // 프로젝트 신청 목록 조회
+	
 	public int selectTotal(Criteria cri); //전체 게시글수
 
 }

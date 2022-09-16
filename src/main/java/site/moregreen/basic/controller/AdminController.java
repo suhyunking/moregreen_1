@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.MemberDto;
-import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.member.MemberService;
 import site.moregreen.basic.util.Criteria;
@@ -43,7 +42,6 @@ public class AdminController {
 		return "admin/adminportal";
 	}
 
-	//로그인
 
 	@GetMapping("/login")
 	public String signIn() {
@@ -85,7 +83,7 @@ public class AdminController {
 
 		return "admin/fundingList";
 	}
-
+	
 	@GetMapping("/fundingApplyList")
 	public String fundingApplyList(Model model, Criteria cri, HttpSession session) {
 
