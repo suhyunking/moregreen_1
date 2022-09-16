@@ -184,7 +184,8 @@
 													type="button" data-bs-toggle="dropdown"
 													aria-expanded="false" th:if="${session.member!=null}" >[[${session.member.m_id}]]</button>
 												<ul class="dropdown-menu">
-													<li><a class="dropdown-item" th:href="@{/main/myPage}">내 정보</a></li>
+													<!-- <li><a class="dropdown-item" th:href="@{/main/myPage}">내 정보</a></li> -->
+													<li><a class="dropdown-item" th:href="@{/mypage/purchaseList1}">내 정보</a></li>																					
 													<li><a class="dropdown-item" th:href="@{/funding/fundingReg}">펀딩개설하기</a></li>
 													<li><a th:if="${session.member !=null}" class="dropdown-item" th:href="@{/member/logout}">로그아웃</a></li>
 													
