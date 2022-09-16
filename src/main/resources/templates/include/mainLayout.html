@@ -26,8 +26,9 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
 <!-- ========================= CSS here ========================= -->
-<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/bootstrap.min1.css" />
 <link rel="stylesheet" href="../css/LineIcons.2.0.css" />
+
 <link rel="stylesheet" href="../css/animate.css" />
 <link rel="stylesheet" href="../css/tiny-slider.css" />
 <link rel="stylesheet" href="../css/glightbox.min.css" />
@@ -37,6 +38,7 @@
 <link rel="stylesheet" href="/css/tiny-slider1.css" />
 <link rel="stylesheet" href="/css/glightbox.min1.css" />
 <link rel="stylesheet" href="/css/main1.css" />
+
 
 	</head>
 
@@ -189,7 +191,8 @@
 													type="button" data-bs-toggle="dropdown"
 													aria-expanded="false" th:if="${session.member!=null}" >[[${session.member.m_id}]]</button>
 												<ul class="dropdown-menu">
-													<li><a class="dropdown-item" th:href="@{/main/myPage}">내 정보</a></li>
+													<!-- <li><a class="dropdown-item" th:href="@{/main/myPage}">내 정보</a></li> -->
+													<li><a class="dropdown-item" th:href="@{/mypage/purchaseList1}">내 정보</a></li>																					
 													<li><a class="dropdown-item" th:href="@{/funding/fundingReg}">펀딩개설하기</a></li>
 													<li><a th:if="${session.member !=null}" class="dropdown-item" th:href="@{/member/logout}">로그아웃</a></li>
 													
@@ -296,11 +299,11 @@
 		</a>
 
 		<!-- ========================= JS here ========================= -->
-		<script src="../js/bootstrap.min.js"></script>
-		<script src="../js/wow.min.js"></script>
-		<script src="../js/tiny-slider.js"></script>
-		<script src="../js/glightbox.min.js"></script>
-		<script src="../js/main.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/wow.min.js"></script>
+		<script src="/js/tiny-slider.js"></script>
+		<script src="/js/glightbox.min.js"></script>
+		<script src="/js/main.js"></script>
 		<script type="text/javascript">
 		
         //========= Category Slider 

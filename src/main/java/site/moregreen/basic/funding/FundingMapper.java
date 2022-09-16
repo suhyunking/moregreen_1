@@ -15,10 +15,8 @@ public interface FundingMapper {
 	
 
 	public List<FundingDto> selectFundigList(Criteria cri); // 펀딩 목록 조회
-//	public List<UploadDto> selectFundingListImg(Criteria cri); // 펀딩 이미지 목록 조회
 
-	public FundingDto selectFundingDetail(int f_num); // 상세조회
-	public List<UploadDto> selectFundingDetailImg(int f_num); // 이미지 상세 조회
+	public List<FundingDto> selectFundingDetail(int f_num); // 상세조회
 
 	public void createFunding(FundingDto dto); // 등록
 	public int createFundingFile(UploadDto dto);
@@ -28,8 +26,8 @@ public interface FundingMapper {
 
 	public List<ImageDto> getDetailImg(int f_num); // 상세 페이지 이미지 조회
 
-
 	public List<FundingDto> selectFundingApplyList(Criteria cri); // 프로젝트 신청 목록 조회
+	
 	public int selectTotal(Criteria cri); //전체 게시글수
 
 }

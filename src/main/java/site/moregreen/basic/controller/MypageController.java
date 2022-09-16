@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/mypage")
 public class MypageController {
-	
+
 	@GetMapping("/fundingLikeList")
 	public String fundingLikeList() {	
 		return "mypage/fundingLikeList";
@@ -35,6 +35,32 @@ public class MypageController {
 	@GetMapping("/test")
 	public String test() {
 		return "mypage/test";
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////////////
+	@GetMapping("/fundingLikeList1")
+	public String fundingLikeList1() {	
+		return "mypage/fundingLikeList1";
+	}
+	
+	@GetMapping("/myProjectList1")
+	public String myProjectList1() {
+		return "mypage/myProjectList1";
+	}
+	
+	@GetMapping("/purchaseDetail1")
+	public String purchaseDetail1() {
+		return "mypage/purchaseDetail1";
+	}
+	
+	@GetMapping("/purchaseList1")
+	public String purchaseList1() {
+		return "mypage/purchaseList1";
+	}
+
+	@GetMapping("/test1")
+	public String test1() {
+		return "include/test1";
 	}
 	
 	

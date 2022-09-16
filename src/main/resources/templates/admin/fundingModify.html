@@ -92,7 +92,7 @@ input[type=submit] {
 	</div>
 	</br>
 	<div style="padding-bottom: 40px;">
-		<form action="">
+		<form action="" th:each="dto : ${fundingList}">
 			<div class="row" style="display: flex;">
 				<div class="col-25">
 					<label for="f_num">번호</label>
@@ -138,7 +138,7 @@ input[type=submit] {
 					<label for="m_id">신청자 아이디</label>
 				</div>	
 				<div class="col-75">
-					<input id="m_id" readonly></input>
+					<input id="m_id" th:value="${dto.m_id}" readonly></input>
 				</div>
 			</div>
 			
@@ -192,9 +192,11 @@ input[type=submit] {
 					<label>대표 사진</label>
 				</div>
 				<div class="col-75">
-					<input type="file" name="file" id="main_file" disabled>
-					<input type="file" name="file" id="main_file" disabled>
-					<input type="file" name="file" id="main_file" disabled>
+					<th:block th:each="file : ${dto.files}">
+						<th:block th:if="${file.i_type == 1}">
+							<img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+						</th:block>
+					</th:block>
 				</div>
 			</div>
 			
@@ -203,9 +205,11 @@ input[type=submit] {
 					<label>내용 사진</label>
 				</div>
 				<div class="col-75">
-					<input type="file" name="file" id="main_file" disabled>
-					<input type="file" name="file" id="main_file" disabled>
-					<input type="file" name="file" id="main_file" disabled>
+					<th:block th:each="file : ${dto.files}">
+						<th:block th:if="${file.i_type == 2}">
+							<img th:src="'/upload/content_' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+						</th:block>
+					</th:block>
 				</div>
 			</div>
 			
@@ -229,10 +233,14 @@ input[type=submit] {
 			
 			<div class="row">
 				<div class="col-25">
-					<label>사업자등록증</label>
+					<label>사업자 등록증</label>
 				</div>
 				<div class="col-75">
-					<input type="file" name="file" id="main_file" disabled>
+					<th:block th:each="file : ${dto.files}">
+						<th:block th:if="${file.i_type == 0}">
+							<img th:src="'/upload/' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+						</th:block>
+					</th:block>
 				</div>
 			</div>
 			<br>

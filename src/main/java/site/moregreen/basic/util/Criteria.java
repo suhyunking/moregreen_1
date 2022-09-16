@@ -10,7 +10,7 @@ public class Criteria extends MemberDto {
 	private int amount; //데이터 개수
 	
 	//검색키워드 추가
-	private String searchF_title; //펀딩명 검색
+	private String searchName; //펀딩명 검색
 
 	//정렬
 	private String f_num; //최신순

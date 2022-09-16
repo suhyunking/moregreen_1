@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.MemberDto;
-import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.member.MemberService;
 import site.moregreen.basic.util.Criteria;
@@ -42,9 +41,6 @@ public class AdminController {
 	public String adminportal() {
 		return "admin/adminportal";
 	}
-	
-
-	//로그인
 
 
 	@GetMapping("/login")
@@ -87,7 +83,7 @@ public class AdminController {
 
 		return "admin/fundingList";
 	}
-
+	
 	@GetMapping("/fundingApplyList")
 	public String fundingApplyList(Model model, Criteria cri, HttpSession session) {
 
@@ -106,12 +102,8 @@ public class AdminController {
 	public String fundingConfirm(@RequestParam("f_num") int f_num,
 								 Model model) {
 
-		FundingDto dto = fundingService.retrieveFundingDetail(f_num);
-		model.addAttribute("dto", dto);
-
-		List<UploadDto> list = fundingService.retrieveFundingDetailImg(f_num);
-		model.addAttribute("list", list);
-
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
 
 		return "admin/fundingConfirm";
 	}
@@ -121,8 +113,8 @@ public class AdminController {
 	public String fundingModify(@RequestParam("f_num") int f_num,
 								Model model) {
 		
-		FundingDto dto = fundingService.retrieveFundingDetail(f_num);
-		model.addAttribute("dto", dto);
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
 		
 		return "admin/fundingModify";
 	}

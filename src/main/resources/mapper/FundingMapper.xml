@@ -46,7 +46,8 @@
 	  <result property="f_price" column="f_price"/>
 	  <result property="f_bname" column="f_bname"/>
 	  <result property="f_bnum" column="f_bnum"/>
-	  <result property="m_num" column="m_num"/>
+	  <result property="m_num" column="member_m_num"/>
+	  <result property="m_id" column="m_id"/>
 	  <result property="f_regdate" column="f_regdate"/>
   <collection property="files" ofType="UploadDto">
     <id property="upload_no" column="inum"/> <!-- column은 DB의 column 이름, property는 DTO의 명칭  -->
@@ -74,6 +75,8 @@
 		   f.f_price as f_price,
 		   f.f_bname as f_bname,
 		   f.f_bnum as f_bnum,
+		   f.f_regdate as f_regdate,
+		   f.member_m_num as m_num,
 		   i.i_num as i_num,
 		   i.i_name as filename,
 		   i.i_path as filepath,
@@ -83,6 +86,9 @@
 	  on f.f_num = i.funding_f_num 
 	  where f.f_status in (3,4,5)
       and i.i_type = 1
+      <if test="searchName != '' and searchName != null"> 
+	  and f.f_title like concat('%', #{searchName} ,'%')
+	  </if>
       group by f_num
 	  order by f.f_num desc;
 
@@ -134,13 +140,20 @@
 		 			   )				
  	</insert>
 
-	<select id="selectFundingApplyList" parameterType="site.moregreen.basic.util.Criteria" resultType="FundingDto">
+	<select id="selectFundingApplyList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
 
-		select *
+		select f_num as f_num,
+			   f_title as f_title,
+			   f_days as f_days,
+			   f_status as f_status,
+			   f_bname as f_bname,
+			   (select m.m_id from member m where m.m_num = member_m_num) as m_id,
 		from funding
-		where f_status in (1,2)
-		order by f_num desc
-		limit #{pageStart}, #{amount}
+	 	where f_status in (1,2)
+	 	<if test="searchName != '' and searchName != null"> 
+	    and f_title like concat('%', #{searchName} ,'%')
+	    </if>
+	    order by f_num desc;
 
 	</select>
 
@@ -150,11 +163,30 @@
 		from funding
 	</select>
 
-	<select id="selectFundingDetail" parameterType="int" resultType="FundingDto">
+	<select id="selectFundingDetail" parameterType="int" resultMap="selectFundingListMap">
 
-		select *
-		from funding
-		where f_num = #{f_num}
+		select f.f_num as f_num,
+			   f.f_title as f_title,
+			   f.f_content as f_content,
+			   f.f_days as f_days,
+			   f.f_enddate as f_enddate,
+			   f.f_target as f_target,
+			   f.f_totalmoney as f_totalmoney,
+			   f.f_rate as f_rate,
+			   f.f_status as f_status,
+			   f.f_reward as f_reward,
+			   f.f_price as f_price,
+			   f.f_bname as f_bname,
+			   f.f_bnum as f_bnum,
+			   (select m.m_id from member m where m.m_num = f.member_m_num) as m_id,
+			   i.i_num as i_num,
+			   i.i_name as filename,
+			   i.i_path as filepath,
+			   i.i_uuid as uuid,
+			   i.i_type as i_type
+		from funding f left outer join image i 
+	  	on f.f_num = i.funding_f_num 
+	 	where f.f_num = #{f_num}
 
 	</select>
 	
