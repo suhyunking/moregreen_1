@@ -19,5 +19,4 @@ public interface MemberService {
 	public MemberDto loginMember(MemberDto memberDto);
 	//회원 로그아웃
 	public void logout(HttpSession session);
-	public int findIdCheck(String m_email);
 }

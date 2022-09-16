@@ -50,9 +50,6 @@ public class MemberServiceImpl implements MemberService {
 			
 		}
 
-		@Override
-		public int findIdCheck(String m_email) {
-			return memberMapper.findid(m_email);
-		}
+	
 
 }
