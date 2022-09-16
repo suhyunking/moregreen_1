@@ -61,7 +61,7 @@ public class FundingController {
 	
 
 	@GetMapping("fundingDetail")
-	public String fundingDetail(@RequestParam("f_num") int f_num,  Model mode) {
+	public String fundingDetail() {
 		
 		return "funding/fundingDetail";
 	}
@@ -140,6 +140,12 @@ public class FundingController {
 	public String fundingDetail2() {
 		
 		return "funding/fundingDetail2";
+	}
+	
+	@GetMapping("fundingDetail3")
+	public String fundingDetail3() {
+		
+		return "funding/fundingDetail3";
 	}
 
 }
