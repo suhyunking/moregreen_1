@@ -57,6 +57,12 @@ public class MypageController {
 	public String purchaseList1() {
 		return "mypage/purchaseList1";
 	}
+
+	@GetMapping("/test1")
+	public String test1() {
+		return "include/test1";
+	}
+	
 	
 //	@GetMapping(value = "/like/{userid}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 //	@ResponseBody
