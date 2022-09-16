@@ -49,8 +49,7 @@ public class FundingServiceImpl implements FundingService{
 	// 등록
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int addFunding(FundingDto dto, List<MultipartFile> files) {
-		int i = 1;
+	public int addFunding(FundingDto dto, List<MultipartFile> files, List<MultipartFile> mainFiles, List<MultipartFile> contentFiles) {
 		fundingMapper.createFunding(dto);
 		
 		int f_num = dto.getF_num();
@@ -88,10 +87,87 @@ public class FundingServiceImpl implements FundingService{
 											  .filepath(filepath)
 											  .uuid(uuid)
 											  .f_num(f_num)
+											  .filetype(0)
 											  .build()
 											);
-			System.out.println("사진 등록 완료" + i);
-			i++;
+			
+		}
+		
+		for(MultipartFile file: mainFiles) {
+			//실제파일명 (브라우저별로 조금씩 다를수가있음)
+			String origin = file.getOriginalFilename();
+			//저장할파일명(경로가 \\가 들어오는 경우 잘라서 처리)
+			String filename = origin.substring(origin.lastIndexOf("\\") + 1);
+			//파일사이즈
+			long size = file.getSize();
+			//랜덤이름
+			String uuid = UUID.randomUUID().toString();
+			//날짜경로
+			String filepath = makeFolder(dto.getF_num());
+			//업로드경로
+			String saveName = uploadPath + "\\" + filepath + "\\main_" + uuid + "_" + filename;
+			//썸네일경로
+			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
+			
+			try {
+				File saveFile = new File(saveName); 
+				file.transferTo(saveFile); //파일업로드
+				//썸네일 생성 업로드
+				//Thumbnailator.createThumbnail(saveFile, new File(thumbnailName) , 160, 160);
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("업로드중 에러 발생");
+			}
+			
+			fundingMapper.createFundingFile(UploadDto.builder()
+											  .filename(filename)
+											  .filepath(filepath)
+											  .uuid(uuid)
+											  .f_num(f_num)
+											  .filetype(1)
+											  .build()
+											);
+			
+		}
+		
+		for(MultipartFile file: contentFiles) {
+			//실제파일명 (브라우저별로 조금씩 다를수가있음)
+			String origin = file.getOriginalFilename();
+			//저장할파일명(경로가 \\가 들어오는 경우 잘라서 처리)
+			String filename = origin.substring(origin.lastIndexOf("\\") + 1);
+			//파일사이즈
+			long size = file.getSize();
+			//랜덤이름
+			String uuid = UUID.randomUUID().toString();
+			//날짜경로
+			String filepath = makeFolder(dto.getF_num());
+			//업로드경로
+			String saveName = uploadPath + "\\" + filepath + "\\content_" + uuid + "_" + filename;
+			//썸네일경로
+			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
+			
+			try {
+				File saveFile = new File(saveName); 
+				file.transferTo(saveFile); //파일업로드
+				//썸네일 생성 업로드
+				//Thumbnailator.createThumbnail(saveFile, new File(thumbnailName) , 160, 160);
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("업로드중 에러 발생");
+			}
+			
+			fundingMapper.createFundingFile(UploadDto.builder()
+											  .filename(filename)
+											  .filepath(filepath)
+											  .uuid(uuid)
+											  .f_num(f_num)
+											  .filetype(2)
+											  .build()
+											);
 			
 		}
 		

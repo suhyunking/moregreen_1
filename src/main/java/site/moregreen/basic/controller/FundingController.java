@@ -74,11 +74,9 @@ public class FundingController {
 
 	@PostMapping("/fundingForm")
 	public String fundingForm(@Valid FundingDto dto, Errors errors, Model model,
-						  	  @RequestParam("file") List<MultipartFile> files) {
-		
-		files.forEach(f -> {
-			System.out.println(f.toString());
-		});
+						  	  @RequestParam("file") List<MultipartFile> files,
+						  	@RequestParam("mainFile") List<MultipartFile> mainFiles,
+						  	@RequestParam("contentFile") List<MultipartFile> contentFiles) {
 		
 		if(errors.hasErrors()) {
 			List<FieldError> list = errors.getFieldErrors();
@@ -103,7 +101,27 @@ public class FundingController {
 			}
 		}
 		
-		int result = fundingService.addFunding(dto, files);
+		mainFiles = mainFiles.stream().filter( (f) -> !f.isEmpty()).collect(Collectors.toList());
+		//이미지파일검증
+		for(MultipartFile f : mainFiles ) {
+			if( f.getContentType().contains("image") == false ) { //이미지가 아닌경우 다시 등록화면으로
+				model.addAttribute("dto", dto);
+				model.addAttribute("valid_files", "이미지 형식만 등록 가능합니다");
+				return "funding/fundingReg";
+			}
+		}
+		
+		contentFiles = contentFiles.stream().filter( (f) -> !f.isEmpty()).collect(Collectors.toList());
+		//이미지파일검증
+		for(MultipartFile f : contentFiles ) {
+			if( f.getContentType().contains("image") == false ) { //이미지가 아닌경우 다시 등록화면으로
+				model.addAttribute("dto", dto);
+				model.addAttribute("valid_files", "이미지 형식만 등록 가능합니다");
+				return "funding/fundingReg";
+			}
+		}
+		
+		int result = fundingService.addFunding(dto, files, mainFiles, contentFiles);
 		return "redirect:/funding/fundingList";
 
 	}
