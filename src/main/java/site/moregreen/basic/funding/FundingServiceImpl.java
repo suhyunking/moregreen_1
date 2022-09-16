@@ -64,9 +64,9 @@ public class FundingServiceImpl implements FundingService{
 			//랜덤이름
 			String uuid = UUID.randomUUID().toString();
 			//날짜경로
-			String filepath = makeFolder(dto.getF_num());
+//			String filepath = makeFolder(dto.getF_num());
 			//업로드경로
-			String saveName = uploadPath + "\\" + filepath + "\\" + uuid + "_" + filename;
+			String saveName = uploadPath + "\\" + uuid + "_" + filename;
 			//썸네일경로
 			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 			
@@ -84,7 +84,7 @@ public class FundingServiceImpl implements FundingService{
 			
 			fundingMapper.createFundingFile(UploadDto.builder()
 											  .filename(filename)
-											  .filepath(filepath)
+//											  .filepath(filepath)
 											  .uuid(uuid)
 											  .f_num(f_num)
 											  .filetype(0)
@@ -103,9 +103,9 @@ public class FundingServiceImpl implements FundingService{
 			//랜덤이름
 			String uuid = UUID.randomUUID().toString();
 			//날짜경로
-			String filepath = makeFolder(dto.getF_num());
+//			String filepath = makeFolder(dto.getF_num());
 			//업로드경로
-			String saveName = uploadPath + "\\" + filepath + "\\main_" + uuid + "_" + filename;
+			String saveName = uploadPath + "\\main_" + uuid + "_" + filename;
 			//썸네일경로
 			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 			
@@ -123,7 +123,7 @@ public class FundingServiceImpl implements FundingService{
 			
 			fundingMapper.createFundingFile(UploadDto.builder()
 											  .filename(filename)
-											  .filepath(filepath)
+//											  .filepath(filepath)
 											  .uuid(uuid)
 											  .f_num(f_num)
 											  .filetype(1)
@@ -142,9 +142,9 @@ public class FundingServiceImpl implements FundingService{
 			//랜덤이름
 			String uuid = UUID.randomUUID().toString();
 			//날짜경로
-			String filepath = makeFolder(dto.getF_num());
+//			String filepath = makeFolder(dto.getF_num());
 			//업로드경로
-			String saveName = uploadPath + "\\" + filepath + "\\content_" + uuid + "_" + filename;
+			String saveName = uploadPath + "\\content_" + uuid + "_" + filename;
 			//썸네일경로
 			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 			
@@ -162,7 +162,7 @@ public class FundingServiceImpl implements FundingService{
 			
 			fundingMapper.createFundingFile(UploadDto.builder()
 											  .filename(filename)
-											  .filepath(filepath)
+//											  .filepath(filepath)
 											  .uuid(uuid)
 											  .f_num(f_num)
 											  .filetype(2)
@@ -184,14 +184,10 @@ public class FundingServiceImpl implements FundingService{
 		return fundingMapper.selectTotal(cri);
 	}
 
+	// 펀딩 이미지 포함 상세 조회
 	@Override
-	public FundingDto retrieveFundingDetail(int f_num) {
+	public List<FundingDto> retrieveFundingDetail(int f_num) {
 		return fundingMapper.selectFundingDetail(f_num);
-	}
-
-	@Override
-	public List<UploadDto> retrieveFundingDetailImg(int f_num) {
-		return fundingMapper.selectFundingDetailImg(f_num);
 	}
 
 	// 조회

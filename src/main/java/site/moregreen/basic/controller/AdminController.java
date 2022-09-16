@@ -42,10 +42,8 @@ public class AdminController {
 	public String adminportal() {
 		return "admin/adminportal";
 	}
-	
 
 	//로그인
-
 
 	@GetMapping("/login")
 	public String signIn() {
@@ -106,12 +104,8 @@ public class AdminController {
 	public String fundingConfirm(@RequestParam("f_num") int f_num,
 								 Model model) {
 
-		FundingDto dto = fundingService.retrieveFundingDetail(f_num);
-		model.addAttribute("dto", dto);
-
-		List<UploadDto> list = fundingService.retrieveFundingDetailImg(f_num);
-		model.addAttribute("list", list);
-
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
 
 		return "admin/fundingConfirm";
 	}
@@ -121,8 +115,8 @@ public class AdminController {
 	public String fundingModify(@RequestParam("f_num") int f_num,
 								Model model) {
 		
-		FundingDto dto = fundingService.retrieveFundingDetail(f_num);
-		model.addAttribute("dto", dto);
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
 		
 		return "admin/fundingModify";
 	}

@@ -136,9 +136,6 @@ public class FundingController {
 		return "funding/fundingPurchaseResult";
 	}
 	
-	
-	
-	
 	@GetMapping("fundingDetail2")
 	public String fundingDetail2() {
 		
