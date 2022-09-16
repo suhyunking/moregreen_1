@@ -1,11 +1,11 @@
 package site.moregreen.basic.funding;
 
-import site.moregreen.basic.command.UploadDto;
-import site.moregreen.basic.util.Criteria;
-import org.springframework.web.multipart.MultipartFile;
-import site.moregreen.basic.command.FundingDto;
-
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import site.moregreen.basic.command.FundingDto;
+import site.moregreen.basic.util.Criteria;
 
 public interface FundingService {
 
@@ -27,9 +27,7 @@ public interface FundingService {
 		public int retrieveTotal(Criteria cri);
 
 		// 펀딩 상세조회
-		public FundingDto retrieveFundingDetail(int f_num);
-		// 펀딩 이미지 조회
-		public List<UploadDto> retrieveFundingDetailImg(int f_num);
+		public List<FundingDto> retrieveFundingDetail(int f_num);
 
 		public int fundingAccept(int f_num);
 		public int fundingReject(int f_num);
