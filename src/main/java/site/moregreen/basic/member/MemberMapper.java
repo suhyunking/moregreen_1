@@ -21,4 +21,5 @@ public interface MemberMapper {
 		public MemberDto login(MemberDto memberDto);
 		//회원 로그아웃
 		public void logout(HttpSession session);
+		public int findid(String m_email);
 }

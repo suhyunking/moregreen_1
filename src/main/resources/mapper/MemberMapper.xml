@@ -21,4 +21,10 @@
         SELECT m_id, m_pw, m_num FROM member
         WHERE m_id = #{m_id} AND m_pw = #{m_pw}
     </select>
+    
+    <select id="findid" parameterType="String">
+    	SELECT COUNT(m_email)
+    	FROM member
+    	WHERE m_email=#{m_email};
+    </select>
   </mapper>

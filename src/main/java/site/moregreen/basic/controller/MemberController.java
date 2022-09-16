@@ -40,8 +40,8 @@ public class MemberController {
 	@ResponseBody
 	@GetMapping("/idCheck")
 	public int overlappedID(MemberDto memberDto) throws Exception{
-		int result=memberService.overlappedID(memberDto);
-		return result;
+		
+		return memberService.overlappedID(memberDto);
 	}
 	
 	@PostMapping("/MemberReg")
@@ -69,13 +69,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("/loginForm")
-	 public String loginForm(MemberDto memberDto, HttpServletRequest req, RedirectAttributes rttr ) throws Exception {
+	 public String loginForm(MemberDto memberDto, HttpServletRequest req, RedirectAttributes rttr, Model model ) throws Exception {
 		 
 		 HttpSession session =req.getSession();
 		 MemberDto member=  memberService.loginMember(memberDto);
 		if(member== null) {
 			session.setAttribute("member", null);
-			rttr.addFlashAttribute("msg", false);
+			rttr.addAttribute("msg", false);
+			model.addAttribute("fail", 1);
 			//System.out.println("로그인 안됨");
 			 return"member/memberLogin";
 		} else {
@@ -99,6 +100,7 @@ public class MemberController {
 		return "member/memberFindIdResult";
 	}
 	
+
 	
 	@GetMapping("/memberFindPw")
 	public String memberFindPw() {
