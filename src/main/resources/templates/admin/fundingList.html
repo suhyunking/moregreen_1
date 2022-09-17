@@ -97,17 +97,39 @@
 							<div class="dataTable-bottom">
 								<nav aria-label="Page navigation example">
 									<ul class="pagination">
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										</a></li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item"><a class="page-link" href="#">2</a></li>
-										<li class="page-item"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#">4</a></li>
-										<li class="page-item"><a class="page-link" href="#">5</a></li>
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										</a></li>
+										<li class="page-item">
+											<a class="page-link" th:href="@{fundingList(page=1, 		
+																			  amount=${pageVO.amount},
+																			  searchName=${pageVO.cri.searchName},
+																			  )}" aria-label="Previous"> 
+												<span aria-hidden="true">&laquo;</span>
+											</a>
+										</li>
+										<li th:if="${pageVO.prev}">
+										<li class="page-item"><a class="page-link" th:href="@{fundingList(page=1, 		
+																			  amount=${pageVO.amount},
+																			  searchName=${pageVO.cri.searchName},
+																			  )}">&lt;</a></li>
+										<th:block th:each="num : ${pageVO.pageList}">							 
+										<li th:class="${pageVO.page == num ? 'on' : ''}">
+										<li class="page-item"><a class="page-link" th:href="@{fundingList(page=${num},
+																			  amount=${pageVO.amount},
+																			  searchName=${pageVO.cri.searchName},
+																			  )}">[[${num}]]</a></li>
+										</th:block>
+										<li th:if="${pageVO.next}">
+										<li class="page-item"><a class="page-link" th:href="@{fundingList(page=${pageVO.end + 1},
+																			  amount=${pageVO.amount},
+																			  searchName=${pageVO.cri.searchName},
+																			  )}">&gt;</a></li>
+										<li class="page-item">
+											<a class="page-link" th:href="@{fundingList(page=${pageVO.realEnd},
+																			  amount=${pageVO.amount},
+																			  searchName=${pageVO.cri.searchName},
+																			  )}" aria-label="Next"> 
+												<span aria-hidden="true">&raquo;</span>
+											</a>
+										</li>
 									</ul>
 								</nav>
 							</div>
