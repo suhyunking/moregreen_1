@@ -189,6 +189,28 @@ input[type=submit] {
 			
 			<div class="row">
 				<div class="col-25">
+					<label for="f_bnum">사업자 등록번호</label>
+				</div>
+				<div class="col-75">
+					<input id="f_bnum" th:value="${dto.f_bnum}" readonly></input>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-25">
+					<label>사업자 등록증</label>
+				</div>
+				<div class="col-75">
+					<th:block th:each="file : ${dto.files}">
+						<th:block th:if="${file.i_type == 0}">
+							<img th:src="'/upload/' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+						</th:block>
+					</th:block>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-25">
 					<label>대표 사진</label>
 				</div>
 				<div class="col-75">
@@ -219,28 +241,6 @@ input[type=submit] {
 				</div>
 				<div class="col-75">
 					<textarea id="f_content">[[${dto.f_content}]]</textarea>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-25">
-					<label for="f_bnum">사업자 등록번호</label>
-				</div>
-				<div class="col-75">
-					<input id="f_bnum" th:value="${dto.f_bnum}" readonly></input>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-25">
-					<label>사업자 등록증</label>
-				</div>
-				<div class="col-75">
-					<th:block th:each="file : ${dto.files}">
-						<th:block th:if="${file.i_type == 0}">
-							<img th:src="'/upload/' + ${file.uuid} + '_' + ${file.filename}" alt="#">
-						</th:block>
-					</th:block>
 				</div>
 			</div>
 			<br>
