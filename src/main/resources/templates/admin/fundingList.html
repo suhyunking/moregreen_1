@@ -74,7 +74,7 @@
 										<tr th:each="dto : ${list}">
 											<td class="text-sm">[[${dto.f_num}]]</td>
 											<td>
-												<div class="d-flex">
+												<div class="">
 													<a title="상세보기(클릭)" th:href="@{/admin/fundingModify(f_num=${dto.f_num})}">
 														<h6 class="ms-3 my-auto">[[${dto.f_title}]]</h6>
 													</a>
