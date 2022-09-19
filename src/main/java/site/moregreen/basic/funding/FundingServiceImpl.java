@@ -40,9 +40,9 @@ public class FundingServiceImpl implements FundingService{
 	
 	@Override
 	@Transactional(rollbackFor = RuntimeException.class) //select 외에 동작의 경우 RuntimeException 또는 상속 받은 하위 클래스들에 모두 적용 예외 발생 시 Spring framework에 맞게 바꾸는데, 모든 exception은 runtime exception을 상속받은 exception calss이다. 
-	public boolean modifyFunding(FundingDto dto) {
-		
-		return fundingMapper.updateFunding(dto);
+	public int modifyFunding(FundingDto dto) {
+		fundingMapper.updateFunding(dto);		
+		return 1;
 	}
 	
 	
@@ -193,7 +193,7 @@ public class FundingServiceImpl implements FundingService{
 	// 조회
 	@Override
 	public List<FundingDto> retriveFundingList(Criteria cri) {
-		return fundingMapper.selectFundigList(cri);
+		return fundingMapper.selectAdminFundingList(cri);
 	}
 	
 	// 이미지 조회

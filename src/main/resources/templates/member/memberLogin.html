@@ -21,7 +21,7 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
   
-    <script src="/js/jquery-3.6.0.js"></script>
+   <script src="/js/jquery-3.6.0.js"></script>
 <script src="/js/jquery-3.6.0.min.js"></script>
   <script>
    $(document).ready(function(){
@@ -37,22 +37,21 @@
 	   });
 	   
         
+        
    });
 </script>
 </head>
 
 <body class="bg-gray-200">
-  <div class="container position-sticky z-index-sticky top-0">
-    <div class="row">
-      <div class="col-12">
-        
-      </div>
-    </div>
-  </div>
   <main class="main-content  mt-0">
     <div class="page-header align-items-start min-vh-100" style="background-color: honeydew;">
       <span class="mask opacity-6"></span>
       <div class="container my-auto">
+      <div style="text-align: center;">
+      	<a  th:href="@{/index}">
+			<img src="/img/logo/logo1.png" alt="Logo">      	
+      	</a>
+      </div>
         <div class="row">
           <div class="col-lg-4 col-md-8 col-12 mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
@@ -64,6 +63,13 @@
               </div>
               <div class="card-body">
                 <form th:action="@{/member/loginForm}" method="post" role="form" class="text-start" id="loginForm">
+                  
+                  <div>
+                  <p class="mt-4 text-sm text-center">
+                    
+                    <a th:if="${fail}==1" class="text-primary font-weight-bold">아이디 또는 비밀번호를 확인해주세요.</a>
+                  </div>
+                  
                   <div class="input-group input-group-outline my-3">
                    
                     <input type="text" name=m_id placeholder="아이디" class="form-control" id="idmsg">
@@ -75,7 +81,7 @@
                   
                     <p class="mt-4 text-sm text-center">
                     
-                    <a th:href="@{###}" class="text-primary text-gradient font-weight-bold">아이디 찾기</a>
+                    <a th:href="@{/member/memberFindId}" class="text-primary text-gradient font-weight-bold">아이디 찾기</a>
                   <p class="mt-4 text-sm text-center">
                    
                     <a th:href="@{###}" class="text-primary text-gradient font-weight-bold">비밀번호 찾기</a>

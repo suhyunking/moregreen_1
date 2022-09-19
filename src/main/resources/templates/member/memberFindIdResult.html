@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/moregreen.ico">
   <title>
-    회원 로그인
+    아이디찾기결과
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -37,6 +36,11 @@
     <div class="page-header align-items-start min-vh-100" style="background-color: honeydew;">
       <span class="mask opacity-6"></span>
       <div class="container my-auto">
+        <div style="text-align: center;">
+      	<a  th:href="@{/index}">
+			<img src="/img/logo/logo1.png" alt="Logo">      	
+      	</a>
+      </div>
         <div class="row">
           <div class="col-lg-4 col-md-8 col-12 mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
@@ -51,19 +55,15 @@
                   
                   <p class="mt-4 text-sm text-center">
                   <h5>
-                  {#m_id}
+                 
                   </h5>
                    
                     
                    
                    
                   <div class="text-center">
-                    <a th:href="@{/}" class="text-primary text-gradient font-weight-bold">메인화면으로 돌아가기</a>
+                    <a th:href="@{/index}" class="text-primary text-gradient font-weight-bold">메인화면으로 돌아가기</a>
                   </div>
-                  <p class="mt-4 text-sm text-center">
-                    계정이 없으신가요?
-                    <a th:href="@{/member/memberReg}" class="text-primary text-gradient font-weight-bold">가입하기</a>
-                  </p>
                 </form>
               </div>
             </div>
