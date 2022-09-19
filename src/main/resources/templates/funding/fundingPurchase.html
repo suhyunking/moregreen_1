@@ -8,54 +8,52 @@
 
 
 			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="section-title">
-							<h2 class="wow fadeInUp" data-wow-delay=".4s">결제하기</h2>
-							<p class="wow fadeInUp" data-wow-delay=".6s">배송지를 입력해주시기
-								바랍니다.</p>
+				<div class="col-12">
+					<div class="section-title">
+						<h2 class="wow fadeInUp" data-wow-delay=".4s">결제하기</h2>
+						<p class="wow fadeInUp" data-wow-delay=".6s">배송지를 입력해주시기바랍니다.</p>
+					</div>
+				</div>
+			<section class="item-details section">
+				<div class="container" >
+					<div class="top-area">
+						<div class="row">
+						
+							<div class="text-sm pb-30">
+								<div class="wow fadeInUp" data-wow-delay=".7s">
+									<h5>펀딩 내역</h5>
+									<input class="form-control" type="text"  readonly>
+								</div>
+							</div>
+							<div class="wow fadeInUp" data-wow-delay=".9s">
+								<form class="row g-3">
+									<div class="col-md-6">
+										<label for="inputName" class="form-label">이름</label> 
+										<input type="text" class="form-control" id="inputName">
+									</div>
+									<div class="col-md-6">
+										<label for="inputPhoneNum4" class="form-label">연락처</label> 
+										<input type="text" class="form-control" id="inputPhoneNum">
+									</div>
+									<div class="col-12">
+										<label for="inputAddress" class="form-label">주소</label> 
+										<input type="text" class="form-control" id="inputAddress">
+									</div>
+									<div class="col-12">
+										<label for="inputAddress2" class="form-label">상세주소</label> 
+										<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+									</div>
+									
+									<div class="col-12" align="center">
+										<a type="submit" class="btn btn-primary" th:href="@{/funding/fundingPurchaseResult}">결제하기 </a>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
-					<div class="container">
-					<h3 class="wow fadeInUp" data-wow-delay=".7s">펀딩명</h3>
-					
-					<h5 class="wow fadeInUp" data-wow-delay=".7s">리워드 명</h5>
 				</div>
-</div>
-
-				<div class="wow fadeInUp" data-wow-delay=".9s">
-					<form class="row g-3">
-						<div class="col-md-6">
-							<label for="inputName" class="form-label">이름</label> <input
-								type="text" class="form-control" id="inputName">
-						</div>
-						<div class="col-md-6">
-							<label for="inputPhoneNum4" class="form-label">연락처</label> <input
-								type="text" class="form-control" id="inputPhoneNum">
-						</div>
-						<div class="col-12">
-							<label for="inputAddress" class="form-label">주소</label> <input
-								type="text" class="form-control" id="inputAddress">
-						</div>
-						<div class="col-12">
-							<label for="inputAddress2" class="form-label">상세주소</label> <input
-								type="text" class="form-control" id="inputAddress2"
-								placeholder="Apartment, studio, or floor">
-						</div>
-
-						<div class="col-12" align="center">
-							<a type="submit" class="btn btn-primary"
-								th:href="@{/funding/fundingPurchaseResult}">결제하기 </a>
-						</div>
-					</form>
-
-
-
-				</div>
+			</section>
 			</div>
-
-
-
 		</section>
 	</section>
 </th:block>
