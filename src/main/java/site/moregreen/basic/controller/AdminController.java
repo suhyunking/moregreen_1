@@ -122,9 +122,9 @@ public class AdminController {
 	@PostMapping("/modifyFunding")
 	public String modifyFunding(FundingDto dto, RedirectAttributes RA) {
 		
-		boolean result = fundingService.modifyFunding(dto);
+		int result = fundingService.modifyFunding(dto);
 		//메시지처리(리다이렉트 시 1회성 메시지를 보내는 방법)
-		if(result) {
+		if(result == 1) {
 			RA.addFlashAttribute("msg", "수정 되었습니다");
 		} else {
 			RA.addFlashAttribute("msg", "수정에 실패했습니다");

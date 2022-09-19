@@ -92,13 +92,13 @@ input[type=submit] {
 	</div>
 	</br>
 	<div style="padding-bottom: 40px;">
-		<form action="" th:each="dto : ${fundingList}">
+		<form action="modifyFunding" method="post" th:each="dto : ${fundingList}">
 			<div class="row" style="display: flex;">
 				<div class="col-25">
 					<label for="f_num">번호</label>
 				</div>
 				<div class="col-75">
-					<input id="f_num" type="text" th:value="${dto.f_num}" readonly></input>
+					<input id="f_num" name="f_num" type="text" th:value="${dto.f_num}" readonly></input>
 				</div>
 			</div>
 			
@@ -107,7 +107,7 @@ input[type=submit] {
 					<label for="f_title">펀딩 명칭</label>
 				</div>
 				<div class="col-75">
-					<input id="f_title" th:value="${dto.f_title}"></input>
+					<input id="f_title" name="f_title" th:value="${dto.f_title}"></input>
 				</div>
 			</div>
 			
@@ -240,7 +240,7 @@ input[type=submit] {
 					<label for="f_content">내용</label>
 				</div>
 				<div class="col-75">
-					<textarea id="f_content">[[${dto.f_content}]]</textarea>
+					<textarea name="f_content" id="f_content">[[${dto.f_content}]]</textarea>
 				</div>
 			</div>
 			<br>
