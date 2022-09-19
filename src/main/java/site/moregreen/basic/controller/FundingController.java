@@ -3,9 +3,9 @@ package site.moregreen.basic.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
 //테스트ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹ
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import site.moregreen.basic.command.FundingDto;
-import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
@@ -60,10 +59,19 @@ public class FundingController {
 	}
 	
 
-	@GetMapping("fundingDetail")
-	public String fundingDetail() {
+	@GetMapping("/fundingDetail")
+	public String fundingDetail(@RequestParam("f_num") int f_num, Model model) {
+		List<FundingDto> dto = fundingService.retrieveFundingDetail(f_num);
+		//List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingDto", dto);
+		return "funding/fundingDetail"; 
+	}
+	
+	@PostMapping("/purchaseForm")
+	public String purchaseForm(@Valid FundingDto dto, Errors errors, Model model) {
+		model.addAttribute("dto", dto);	
 		
-		return "funding/fundingDetail";
+		return "redirect:/funding/fundingPurchase";
 	}
 
 		

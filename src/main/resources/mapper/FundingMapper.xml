@@ -22,15 +22,12 @@
 	from funding
 	where f_status in (3,4,5)
 	order by f_num desc;
-
   </select>
   
   <select id="selectFundingListImg" parameterType="site.moregreen.basic.util.Criteria" resultType="UploadDto">
-
 		select i_name as filename, i_path as filepath, i_uuid as uuid
 		from image
 		where funding_f_num = #{f_num}
-
   </select> -->
   <resultMap id="selectFundingListMap" type="FundingDto">
 	  <result property="f_num" column="f_num"/>
@@ -90,7 +87,8 @@
 	  and f.f_title like concat('%', #{searchName} ,'%')
 	  </if>
       group by f_num
-	  order by f.f_num desc;
+	  order by f.f_num desc
+	  limit #{pageStart}, #{amount}
 
   </select>
 
@@ -140,20 +138,22 @@
 		 			   )				
  	</insert>
 
-	<select id="selectFundingApplyList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
+	<select id="selectFundingApplyList" parameterType="site.moregreen.basic.util.Criteria" resultType="FundingDto">
 
-		select f_num as f_num,
-			   f_title as f_title,
-			   f_days as f_days,
-			   f_status as f_status,
-			   f_bname as f_bname,
-			   (select m.m_id from member m where m.m_num = member_m_num) as m_id,
-		from funding
-	 	where f_status in (1,2)
+		select f.f_num as f_num,
+			   f.f_title as f_title,
+			   f.f_days as f_days,
+			   f.f_status as f_status,
+			   f.f_bname as f_bname,
+			   (select m.m_id from member m where m.m_num = f.member_m_num) as m_id,
+			   f.f_regdate as f_regdate
+		from funding f
+	 	where f.f_status in (1,2)
 	 	<if test="searchName != '' and searchName != null"> 
-	    and f_title like concat('%', #{searchName} ,'%')
+	    and f.f_title like concat('%', #{searchName} ,'%')
 	    </if>
-	    order by f_num desc;
+	    order by f.f_num desc
+	    limit #{pageStart}, #{amount}
 
 	</select>
 
