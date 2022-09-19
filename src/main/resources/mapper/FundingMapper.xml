@@ -117,6 +117,9 @@
       <if test="searchName != '' and searchName != null"> 
 	  and f.f_title like concat('%', #{searchName} ,'%')
 	  </if>
+	  <if test="searchStatus != '' and searchStatus != null"> 
+	  and f.f_status = #{searchStatus}
+	  </if>
 	  order by f.f_num desc
 	  limit #{pageStart}, #{amount}
 
@@ -208,6 +211,9 @@
 	 	where f.f_status in (1,2)
 	 	<if test="searchName != '' and searchName != null"> 
 	    and f.f_title like concat('%', #{searchName} ,'%')
+	    </if>
+	    <if test="searchStatus != '' and searchStatus != null"> 
+	    and f.f_status = #{searchStatus} 
 	    </if>
 	    order by f.f_num desc
 	    limit #{pageStart}, #{amount}
