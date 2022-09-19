@@ -54,6 +54,7 @@ public class FundingServiceImpl implements FundingService{
 		
 		int f_num = dto.getF_num();
 		
+		//사업자 등록증 사진 업로드
 		for(MultipartFile file: files) {
 			//실제파일명 (브라우저별로 조금씩 다를수가있음)
 			String origin = file.getOriginalFilename();
@@ -93,6 +94,7 @@ public class FundingServiceImpl implements FundingService{
 			
 		}
 		
+		// 대표 사진 사진 업로드
 		for(MultipartFile file: mainFiles) {
 			//실제파일명 (브라우저별로 조금씩 다를수가있음)
 			String origin = file.getOriginalFilename();
@@ -106,8 +108,6 @@ public class FundingServiceImpl implements FundingService{
 //			String filepath = makeFolder(dto.getF_num());
 			//업로드경로
 			String saveName = uploadPath + "\\main_" + uuid + "_" + filename;
-			//썸네일경로
-			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 			
 			try {
 				File saveFile = new File(saveName); 
@@ -145,8 +145,6 @@ public class FundingServiceImpl implements FundingService{
 //			String filepath = makeFolder(dto.getF_num());
 			//업로드경로
 			String saveName = uploadPath + "\\content_" + uuid + "_" + filename;
-			//썸네일경로
-			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 			
 			try {
 				File saveFile = new File(saveName); 
@@ -193,8 +191,14 @@ public class FundingServiceImpl implements FundingService{
 	// 조회
 	@Override
 	public List<FundingDto> retriveFundingList(Criteria cri) {
-		return fundingMapper.selectAdminFundingList(cri);
+		return fundingMapper.selectFundingList(cri);
 	}
+	
+	// 조회
+		@Override
+		public List<FundingDto> retriveAdminFundingList(Criteria cri) {
+			return fundingMapper.selectAdminFundingList(cri);
+		}
 	
 	// 이미지 조회
 //	@Override

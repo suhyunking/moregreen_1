@@ -11,14 +11,10 @@ public class Criteria extends MemberDto {
 	
 	//검색키워드 추가
 	private String searchName; //펀딩명 검색
-
-	//정렬
-	private String f_num; //최신순
-	private String f_endDate; //종료일
-	
 	//펀딩 상태 필터링
 	private String searchStatus;
-
+	//정렬
+	private String searchAlign; //정렬
 	
 	public Criteria() {
 		this(1, 10);
