@@ -17,7 +17,7 @@ public class Criteria extends MemberDto {
 	private String f_endDate; //종료일
 	
 	//JPA에서 사용할 검색 키워드 추가 (화면에서 사용되는 검색 키워드)
-	private String f_title;
+	private String searchFilter;
 
 	
 	public Criteria() {

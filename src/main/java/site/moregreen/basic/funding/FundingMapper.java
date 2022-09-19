@@ -11,10 +11,11 @@ import java.util.List;
 @Mapper
 public interface FundingMapper {
 
-	public boolean updateFunding(FundingDto dto); //펀딩 수정
+	public void updateFunding(FundingDto dto); //펀딩 수정
 	
 
 	public List<FundingDto> selectFundigList(Criteria cri); // 펀딩 목록 조회
+	public List<FundingDto> selectAdminFundingList(Criteria cri); // 관리자 펀딩 목록 조회
 
 	public List<FundingDto> selectFundingDetail(int f_num); // 상세조회
 

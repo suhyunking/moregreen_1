@@ -14,7 +14,7 @@
 -->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<th:block th:replace="~{./include/layout :: setContent( ~{:: .container-fluid}  ) }">
+<th:block th:replace="~{/include/layout :: setContent( ~{:: .container-fluid}  ) }">
 
 	<div class="container-fluid py-4">
 		<form name="fundingForm" action="fundingList" method="get">
@@ -23,6 +23,7 @@
 					<div class="dropdown d-inline">
 						<a href="javascript:;" class="btn btn-outline-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2"> 진행 상태 </a>
 						<ul class="dropdown-menu dropdown-menu-lg-start px-2 py-3" aria-labelledby="navbarDropdownMenuLink2" data-popper-placement="left-start">
+							 <li><input type="checkbox"><label class="filter01 all">ALL</label></li>
 							<li><a class="dropdown-item border-radius-md" href="#" onclick="handleForm()">전체</a></li>
 							<li><a class="dropdown-item border-radius-md" href="#" onclick="handleForm()">진행중</a></li>
 							<li><a class="dropdown-item border-radius-md" href="#" onclick="handleForm()">성공</a></li>
@@ -95,43 +96,7 @@
 								</table>
 							</div>
 							<div class="dataTable-bottom">
-								<nav aria-label="Page navigation example">
-									<ul class="pagination">
-										<li class="page-item">
-											<a class="page-link" th:href="@{fundingList(page=1, 		
-																			  amount=${pageVO.amount},
-																			  searchName=${pageVO.cri.searchName},
-																			  )}" aria-label="Previous"> 
-												<span aria-hidden="true">&laquo;</span>
-											</a>
-										</li>
-										<li th:if="${pageVO.prev}">
-										<li class="page-item"><a class="page-link" th:href="@{fundingList(page=1, 		
-																			  amount=${pageVO.amount},
-																			  searchName=${pageVO.cri.searchName},
-																			  )}">&lt;</a></li>
-										<th:block th:each="num : ${pageVO.pageList}">							 
-										<li th:class="${pageVO.page == num ? 'on' : ''}">
-										<li class="page-item"><a class="page-link" th:href="@{fundingList(page=${num},
-																			  amount=${pageVO.amount},
-																			  searchName=${pageVO.cri.searchName},
-																			  )}">[[${num}]]</a></li>
-										</th:block>
-										<li th:if="${pageVO.next}">
-										<li class="page-item"><a class="page-link" th:href="@{fundingList(page=${pageVO.end + 1},
-																			  amount=${pageVO.amount},
-																			  searchName=${pageVO.cri.searchName},
-																			  )}">&gt;</a></li>
-										<li class="page-item">
-											<a class="page-link" th:href="@{fundingList(page=${pageVO.realEnd},
-																			  amount=${pageVO.amount},
-																			  searchName=${pageVO.cri.searchName},
-																			  )}" aria-label="Next"> 
-												<span aria-hidden="true">&raquo;</span>
-											</a>
-										</li>
-									</ul>
-								</nav>
+							<th:block th:replace="~{/include/page :: test('fundingList', ${pageVO}) }"></th:block>
 							</div>
 						</div>
 					</div>
