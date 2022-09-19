@@ -39,21 +39,11 @@ public class FundingController {
 		
 		List<FundingDto> fundingList = fundingService.retriveFundingList(cri);
 		
-		fundingList.forEach(f -> {
-			System.out.println(f.toString());
-			f.getFiles().forEach(i -> {
-				System.out.println(i.toString());
-			});
-		});
-		
 		int total = fundingService.retrieveTotal(cri);
 		PageVo pageVo = new PageVo(cri, total);
 
 		model.addAttribute("fundingList", fundingList);
 		model.addAttribute("pageVO", pageVo);
-		
-//		List<UploadDto> fileList = fundingService.retrieveFundingListImg();
-//		model.addAttribute("fileList", fileList);
 		
 		return "funding/fundingList";
 	}
@@ -61,9 +51,8 @@ public class FundingController {
 
 	@GetMapping("/fundingDetail")
 	public String fundingDetail(@RequestParam("f_num") int f_num, Model model) {
-		List<FundingDto> dto = fundingService.retrieveFundingDetail(f_num);
-		//List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
-		model.addAttribute("fundingDto", dto);
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
 		return "funding/fundingDetail"; 
 	}
 	
