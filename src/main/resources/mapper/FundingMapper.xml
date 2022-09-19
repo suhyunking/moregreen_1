@@ -22,15 +22,12 @@
 	from funding
 	where f_status in (3,4,5)
 	order by f_num desc;
-
   </select>
   
   <select id="selectFundingListImg" parameterType="site.moregreen.basic.util.Criteria" resultType="UploadDto">
-
 		select i_name as filename, i_path as filepath, i_uuid as uuid
 		from image
 		where funding_f_num = #{f_num}
-
   </select> -->
   <resultMap id="selectFundingListMap" type="FundingDto">
 	  <result property="f_num" column="f_num"/>
@@ -92,7 +89,7 @@
       group by f_num
 	  order by f.f_num desc
 	  limit #{pageStart}, #{amount}
-
+    
   </select>
   
   <select id="selectAdminFundingList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
@@ -122,6 +119,7 @@
 	  </if>
 	  order by f.f_num desc
 	  limit #{pageStart}, #{amount}
+
 
   </select>
 
