@@ -37,32 +37,6 @@ public class MypageController {
 		return "mypage/test";
 	}
 	
-///////////////////////////////////////////////////////////////////////////////////////////
-	@GetMapping("/fundingLikeList1")
-	public String fundingLikeList1() {	
-		return "mypage/fundingLikeList1";
-	}
-	
-	@GetMapping("/myProjectList1")
-	public String myProjectList1() {
-		return "mypage/myProjectList1";
-	}
-	
-	@GetMapping("/purchaseDetail1")
-	public String purchaseDetail1() {
-		return "mypage/purchaseDetail1";
-	}
-	
-	@GetMapping("/purchaseList1")
-	public String purchaseList1() {
-		return "mypage/purchaseList1";
-	}
-
-	@GetMapping("/test1")
-	public String test1() {
-		return "include/test1";
-	}
-	
 	
 //	@GetMapping(value = "/like/{userid}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 //	@ResponseBody
