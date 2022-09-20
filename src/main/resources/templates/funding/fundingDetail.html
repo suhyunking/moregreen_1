@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
@@ -77,11 +76,16 @@
 											<div class="contact-info">
 												<ul>
 													<li>
-														<a href="" class="mail"> 
-															<i class="lni lni-heart"></i>
+														<a class="mail"> 
+															<i class="lni lni-heart" id="like_check"></i>
+															
 															<span>[[${dto.l_count}]]</span>
 														</a>
 														<a class="btn" th:href="@{/funding/fundingPurchase}">펀딩하기</a>
+														<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  															<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+														</svg> -->
+														
 													</li>
 												</ul>
 											</div>
@@ -175,6 +179,52 @@
 	  totalElement.innerText = total;
 	  amountElement.getAttribute('data-value') = amount;
 	}
+  
+  
+  //https://myit.tistory.com/26
+//좋아요
+  $(document).ready(function () {
+      let likeVal = document.getElementById('like_check').value
+      const boardId = $("#f_num").val();
+      const memberId = $("#m_num").val();
+      console.log(memberId);
+      console.log(likeVal);
+      const likeImg = document.getElementById("likeImg")
+
+      if (likeVal > 0) {
+          likeImg.src = "img/heart-fill.svg";
+      } else {
+          likeImg.src = "img/heart.svg";
+      }
+      // 좋아요 버튼을 클릭 시 실행되는 코드
+      $("#likeImg").on("click", function () {
+          $.ajax({
+              url: '/funding/like',
+              type: 'POST',
+              data: {'f_num': f_num, 'm_num': m_num},
+              success: function (data) {
+                  if (data == 1) {
+                      $("#likeImg").attr("src", "img/heart-fill.svg");
+                      location.href="/board/"+boardId;
+
+                  } else {
+                      $("#likeImg").attr("src", "img/heart.svg");
+                      location.href="/board/"+boardId;
+                  }
+              }, error: function () {
+                  $("#likeImg").attr("src", "/assets/img/like_click.png");
+                  console.log('엥')
+              }
+
+          });
+
+      });
+  });
+  
 	
+	
+	
+
 </script>
+
 </html>
