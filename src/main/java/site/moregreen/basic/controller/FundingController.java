@@ -19,15 +19,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.Setter;
+import lombok.extern.java.Log;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.funding.FundingService;
+import site.moregreen.basic.kakaoPay.KakaoPay;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
+@Log
 @Controller
 @RequestMapping("/funding")
 public class FundingController {
 
+	@Setter(onMethod_ = @Autowired)
+    private KakaoPay kakaopay;
+	
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;
@@ -48,7 +55,6 @@ public class FundingController {
 		return "funding/fundingList";
 	}
 	
-
 	@GetMapping("/fundingDetail")
 	public String fundingDetail(@RequestParam("f_num") int f_num, Model model) {
 		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
@@ -61,6 +67,12 @@ public class FundingController {
 		model.addAttribute("dto", dto);	
 		
 		return "redirect:/funding/fundingPurchase";
+	}
+	
+	@GetMapping("kakaoPaySuccess")
+	public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
+		return "funding/kakaoPaySuccess";
 	}
 
 		
@@ -133,16 +145,4 @@ public class FundingController {
 		return "funding/fundingPurchaseResult";
 	}
 	
-	@GetMapping("fundingDetail2")
-	public String fundingDetail2() {
-		
-		return "funding/fundingDetail2";
-	}
-	
-	@GetMapping("fundingDetail3")
-	public String fundingDetail3() {
-		
-		return "funding/fundingDetail3";
-	}
-
 }
