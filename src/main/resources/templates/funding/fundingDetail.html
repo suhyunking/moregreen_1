@@ -6,6 +6,12 @@
 			<th:block th:each="dto : ${fundingList}">
 			<section class="items-grid section">
 				<section class="item-details section">
+				<form id="purchaseForm" name="purchaseForm" action="purchaseForm" method="post">
+					<input type="hidden" name="p_amount" value="1" id="p_amount">
+					<input type="hidden" name="p_total" th:value="${dto.f_price}" id="p_total">
+					<input type="hidden" name="f_num" th:value="${dto.f_num}" id="f_num">
+					<input type="hidden" name="m_num" th:value="${session.member.m_num}" id="m_num">
+				</form>
 				<div class="wow fadeInUp" data-wow-delay=".6s">
 					<div class="container">
 						<div class="top-area">
@@ -30,7 +36,7 @@
 													<th:block th:each="file, i : ${dto.files}">
 														<th:block th:if="${file.i_type == 1}">
 															<div class="carousel-item" th:classappend="${i.first} ? 'active' : ''" >
-																	<img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+																<img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#">
 															</div>
 														</th:block>
 													</th:block>
@@ -63,9 +69,9 @@
 												<li><span>리워드 금액</span><span id="price" th:text="${dto.f_price}" style="text-align:right"></span>원</li>
 												<li><span>수량</span>
 													<span style="text-align:right">
-														<button class="btn" type="button" onclick='count("minus")' value='-' >-</button>
+														<button class="btn" type="button" onclick='count1("minus")' value='-' >-</button>
 														<a data-value="" id="amount">1</a>
-														<button class="btn" type="button" onclick='count("plus")' value='+' >+</button>
+														<button class="btn" type="button" onclick='count1("plus")' value='+' >+</button>
 													</span> 
 												</li>
 												<li>
@@ -81,7 +87,8 @@
 															<i class="lni lni-heart"></i>
 															<span>[[${dto.l_count}]]</span>
 														</a>
-														<a class="btn" th:href="@{/funding/fundingPurchase}">펀딩하기</a>
+														<a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()">펀딩하기</a>
+														<a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
 													</li>
 												</ul>
 											</div>
@@ -128,6 +135,13 @@
 
 <script type="text/javascript">
 
+	//검색버튼
+	function handleForm() {
+		//폼을 서브밋
+		event.preventDefault(); //a의 이동이벤트를 막는다.
+		document.purchaseForm.submit();
+	}
+
   const current = document.getElementById("current");
   const opacity = 0.6;
   const imgs = document.querySelectorAll(".img");
@@ -146,8 +160,7 @@
   });
   
   // 수량 증가, 감소
-  function count(type)  {
-	   
+  function count1(type)  {
 	  // 결과를 표시할 element 
 	  const amountElement = document.getElementById('amount');
 	  const priceElement = document.getElementById('price');
@@ -173,7 +186,9 @@
 	  
 	  amountElement.innerText = amount;
 	  totalElement.innerText = total;
-	  amountElement.getAttribute('data-value') = amount;
+	  amountElement.setAttribute('data-value', amount);
+	  document.getElementById('p_amount').value = amount;
+	  document.getElementById('p_total').value = total;
 	}
 	
 </script>

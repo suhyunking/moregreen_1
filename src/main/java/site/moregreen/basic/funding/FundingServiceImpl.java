@@ -1,8 +1,6 @@
 package site.moregreen.basic.funding;
 
 import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.util.Criteria;
@@ -222,6 +221,11 @@ public class FundingServiceImpl implements FundingService{
 		fundingMapper.fundingReject(f_num);
 		
 		return 0;
+	}
+
+	@Override
+	public DeliveryDto retrieveDelivery(int m_num) {
+		return fundingMapper.selectDelivery(m_num);
 	}
 
 	
