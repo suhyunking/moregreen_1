@@ -1525,4 +1525,1030 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`image` (
 );
 
 
--- 4 ------------------------------------------------------------------------------------
+-- 1 ------------------------------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'2번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+2 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'2번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+2 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'2번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+2 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'2번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+2 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'2번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+2 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'2번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+2 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+2 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 2 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'3번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+3 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'3번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+3 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'3번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+3 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'3번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+3 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'3번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+3 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'3번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+3 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+3 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 3 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'4번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+4 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'4번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+4 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'4번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+4 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'4번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+4 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'4번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+4 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'4번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+4 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+4 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 4 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'5번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+5 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'5번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+5 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'5번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+5 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'5번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+5 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'5번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+5 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'5번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+5 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+5 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 5 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'6번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+6 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'6번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+6 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'6번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+6 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'6번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+6 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'6번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+6 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'6번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+6 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+6 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 6 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'1번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+1 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'7번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+7 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'7번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+7 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'7번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+7 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'7번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+7 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'7번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+7 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+7 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 7 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'8번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+8 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'8번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+8 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'8번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+8 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'8번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+8 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'8번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+8 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'8번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+8 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+8 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 8 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'9번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+9 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'9번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+9 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'9번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+9 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'9번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+9 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'9번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+9 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'9번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+9 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+9 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 9 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'10번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+10 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'10번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+10 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'10번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+10 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'10번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+10 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'10번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+10 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'10번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+10 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+10 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 10 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'1번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+1 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'1번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+1 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'11번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+11 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'11번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+11 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'11번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+11 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'11번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+11 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+11 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 11 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'12번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+12 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'12번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+12 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'12번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+12 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'12번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+12 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'12번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+12 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'12번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+12 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+12 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 12 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'13번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+13 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'13번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+13 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'13번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+13 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'13번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+13 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'13번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+13 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'13번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+13 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+13 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 13 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'14번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+14 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'14번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+14 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'14번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+14 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'14번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+14 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'14번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+14 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'14번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+14 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+14 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 14 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'15번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+15 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'15번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+15 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'15번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+15 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'15번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+15 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'15번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+15 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'15번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+15 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+15 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 15 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'16번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+16 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'16번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+16 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'16번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+16 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'16번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+16 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'16번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+16 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'16번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+16 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+16 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 16 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'1번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+1 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'1번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+1 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'17번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+17 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'17번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+17 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'17번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+17 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'17번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+17 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+17 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 17 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'18번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+18 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'18번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+18 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'18번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+18 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'18번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+18 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'18번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+18 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'18번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+18 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+18 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 18 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'19번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+19 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'19번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+19 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'19번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+19 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'19번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+19 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'19번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+19 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'19번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+19 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+19 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 19 -------------------------------------------------------------
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'20번프로젝트1.jpg', #이미지 이름
+1, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+20 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'20번프로젝트2.jpg', #이미지 이름
+2, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+20 #펀딩테이블 PK를 외래키로 사용
+);
+
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'20번프로젝트3.jpg', #이미지 이름
+3, #이미지 같은이름을 등록시 uuid추가
+1, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+20 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'20번프로젝트1.jpg', #이미지 이름
+4, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+20 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'20번프로젝트2.jpg', #이미지 이름
+5, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+20 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'20번프로젝트3.jpg', #이미지 이름
+6, #이미지 같은이름을 등록시 uuid추가
+2, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+20 #펀딩테이블 PK를 외래키로 사용
+);
+ INSERT INTO image (i_name, i_uuid, i_type, funding_f_num) VALUES
+(
+'사업자등록증.jpg', #이미지 이름
+7, #이미지 같은이름을 등록시 uuid추가
+0, #ex) 1: 대표이미지 2: 내용이미지 0: 사업자등록이미지 <사진종류>
+20 #펀딩테이블 PK를 외래키로 사용
+);
+
+-- 20 -------------------------------------------------------------
