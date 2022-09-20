@@ -1146,7 +1146,7 @@ ol {
 
 .button .btn {
     display: inline-block;
-    text-transform: capitalize;
+    text-transform: lowercase;
     font-size: 15px;
     font-weight: 500;
     padding: 15px 30px;

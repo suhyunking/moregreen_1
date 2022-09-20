@@ -70,15 +70,7 @@
                      </div>
                   </div>
                </div>
-               <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                  <div class="btn-group" role="group" aria-label="First group">
-                     <button type="button" class="btn btn-outline-secondary">1</button>
-                     <button type="button" class="btn btn-outline-secondary">2</button>
-                     <button type="button" class="btn btn-outline-secondary">3</button>
-                     <button type="button" class="btn btn-outline-secondary">4</button>
-                     <button type="button" class="btn btn-outline-secondary">5</button>
-                  </div>
-               </div>
+               <th:block th:replace="~{/include/page :: fundingList('fundingList', ${pageVO}) }"></th:block>
             </div>
          </form>
          </section>
