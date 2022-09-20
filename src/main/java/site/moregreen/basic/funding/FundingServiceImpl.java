@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
+import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.util.Criteria;
 
@@ -227,6 +228,30 @@ public class FundingServiceImpl implements FundingService{
 	public DeliveryDto retrieveDelivery(int m_num) {
 		return fundingMapper.selectDelivery(m_num);
 	}
+
+	
+	//찜하기
+	@Override
+	public int addFundingLike(LikeDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	//찜하기 취소
+	@Override
+	public int removeFundingLike(int l_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	//찜하기 개수 조회
+	@Override
+	public int retrieveFundingLikeVal(int f_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 	
 

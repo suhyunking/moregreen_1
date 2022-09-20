@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
+import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.util.Criteria;
 
@@ -31,6 +32,14 @@ public interface FundingMapper {
 	public List<FundingDto> selectFundingApplyList(Criteria cri); // 프로젝트 신청 목록 조회
 	
 	public int selectTotal(Criteria cri); //전체 게시글수
+	
+	
+	public int registFundingLike(LikeDto dto); //찜하기
+	public int deleteFundingLike(int l_num); //찜하기 취소
+	public int selectFundingLikeVal(int f_num); //찜하기 개수 조회
+	
+	
+	
 
 }
 
