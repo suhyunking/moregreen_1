@@ -6,6 +6,7 @@
 -- drop table member;
 -- set foreign_key_checks = 1;
 create database moregreen;
+use moregreen;
 
 CREATE TABLE IF NOT EXISTS `moregreen`.`member` (
   `m_num` INT NOT NULL AUTO_INCREMENT,
