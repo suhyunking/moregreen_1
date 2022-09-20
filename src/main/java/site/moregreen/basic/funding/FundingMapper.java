@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.UploadDto;
@@ -25,6 +26,8 @@ public interface FundingMapper {
 
 	public void fundingAccept(int f_num);
 	public void fundingReject(int f_num);
+	
+	public DeliveryDto selectDelivery(int m_num);
 
 	public List<FundingDto> selectFundingApplyList(Criteria cri); // 프로젝트 신청 목록 조회
 	

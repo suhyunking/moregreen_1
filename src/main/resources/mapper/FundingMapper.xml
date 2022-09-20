@@ -237,14 +237,6 @@
 		from funding
 	</select>
 
-	<select id="selectFundingDetailImg" parameterType="int" resultType="UploadDto">
-
-		select i_name as filename, i_uuid as uuid
-		from image
-		where funding_f_num = #{f_num}
-
-	</select>
-  
 	<update id="fundingAccept" parameterType="int">
 		update funding
 		set f_status = 3
@@ -257,7 +249,17 @@
 		where f_num = #{f_num}
 	</update>
   
-  
+  	<select id="selectDelivery" parameterType="int" resultType="DeliveryDto">
+  	
+  		select *
+		from delivery
+		where d_num = (select delivery_d_num
+						from purchase
+						where member_m_num = #{m_num}
+		                group by member_m_num)	
+  	
+  	</select>
+    
   <insert id="addFundingLike" parameterType="site.moregreen.basic.command.LikeDto">
 		insert into f_like (
 							f_num, 
@@ -272,11 +274,5 @@
 	  <delete id="removeFundingLike" parameterType="site.moregreen.basic.command.LikeDto">
 	  	delete from f_like where f_num = #{f_num} and m_num = #{m_num} 
 	  </delete>
-	  
-	  
-  
-  
-  
-  
   
   </mapper>

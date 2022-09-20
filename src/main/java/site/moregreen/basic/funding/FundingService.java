@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.util.Criteria;
@@ -25,6 +26,8 @@ public interface FundingService {
 	
 	// 총 게시글 수 조회
 	public int retrieveTotal(Criteria cri);
+	
+	public DeliveryDto retrieveDelivery(int m_num);
 
 	// 펀딩 상세조회
 	public List<FundingDto> retrieveFundingDetail(int f_num);

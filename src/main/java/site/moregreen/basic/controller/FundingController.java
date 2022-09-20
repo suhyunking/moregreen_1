@@ -22,8 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Setter;
 import lombok.extern.java.Log;
+import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
+import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.command.LikeDto;
+
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.kakaoPay.KakaoPay;
 import site.moregreen.basic.util.Criteria;
@@ -67,10 +70,17 @@ public class FundingController {
 	}
 	
 	@PostMapping("/purchaseForm")
-	public String purchaseForm(@Valid FundingDto dto, Errors errors, Model model) {
-		model.addAttribute("dto", dto);	
+	public String purchaseForm(@RequestParam("f_num") int f_num,
+								@Valid PurchaseDto purchaseDto, 
+								Model model, Error error) {
+		System.out.println(purchaseDto.getP_amount());
+		System.out.println(purchaseDto.getP_total());
+		DeliveryDto deliveryDto = fundingService.retrieveDelivery(purchaseDto.getM_num());
+		model.addAttribute("deliveryDto", deliveryDto);
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
 		
-		return "redirect:/funding/fundingPurchase";
+		return "funding/fundingPurchase";
 	}
 	
 	@GetMapping("kakaoPaySuccess")

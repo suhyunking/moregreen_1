@@ -20,5 +20,6 @@ public class PurchaseDto {
 	private Integer m_num;				//회원 번호 FK
 	private String m_id;				//회원 이름
 	private Integer f_status;			//펀딩 상태
+	private Integer d_num;				//배송지 번호 FK
 	
 }
