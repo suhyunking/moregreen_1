@@ -93,6 +93,7 @@
 	  <if test="searchAlign == 'asc' ">
  			f.f_enddate asc,
  	  </if>
+ 	  f.f_status asc,
  	  f.f_num desc
 	  limit #{pageStart}, #{amount}
     
@@ -251,9 +252,14 @@
   
   	<select id="selectDelivery" parameterType="int" resultType="DeliveryDto">
   	
-  		select *
+  		select d_num as d_num,
+  			   d_name as d_name,
+  			   d_phone as d_phone,
+  			   d_zipcode as d_zipcode,
+  			   d_addr as d_addr,
+  			   d_detailaddr as d_detailaddr
 		from delivery
-		where d_num = (select delivery_d_num
+		where d_num = (select MAX(delivery_d_num)
 						from purchase
 						where member_m_num = #{m_num}
 		                group by member_m_num)	

@@ -73,23 +73,16 @@ public class FundingController {
 	public String purchaseForm(@RequestParam("f_num") int f_num,
 								@Valid PurchaseDto purchaseDto, 
 								Model model, Error error) {
-		System.out.println(purchaseDto.getP_amount());
-		System.out.println(purchaseDto.getP_total());
+		
 		DeliveryDto deliveryDto = fundingService.retrieveDelivery(purchaseDto.getM_num());
 		model.addAttribute("deliveryDto", deliveryDto);
+		
 		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
 		model.addAttribute("fundingList", fundingList);
 		
 		return "funding/fundingPurchase";
 	}
 	
-	@GetMapping("kakaoPaySuccess")
-	public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
-		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
-		return "funding/kakaoPaySuccess";
-	}
-
-		
 	@GetMapping("fundingReg")
 	public String fundingReg() {
 		return "funding/fundingReg";
@@ -155,7 +148,8 @@ public class FundingController {
 	}
 
 	@GetMapping("fundingPurchaseResult")
-	public String fundingPurchaseResult() {
+	public String fundingPurchaseResult(@RequestParam("pg_token") String pg_token, Model model) {
+		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
 		return "funding/fundingPurchaseResult";
 	}
 	

@@ -19,7 +19,7 @@
                                     <div class="col-12">
                                        <div class="card">
                                           <div class="card-header pb-0">
-                                             <h5 class="mb-5">펀딩 내역</h5>
+                                             <h5 class="mb-5" style="text-align:center;">펀딩 내역</h5>
                                           </div>
                                           <div class="card-body px-0 pb-0">
                                              <!-- test -->
@@ -28,20 +28,18 @@
                                                    <thead class="thead-light">
                                                       <tr>
                                                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">주문번호</th>
-                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩명</th>
                                                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">리워드명</th>
-                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">리워드 금액</th>
                                                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">수량</th>
                                                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">합계</th>
+                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">결제수단</th>
                                                       </tr>
                                                    </thead>
-                                                   <tr th:each="dto : ${list}">
-                                                      <td class="text-sm">[[${dto.f_title}]]</td>
-                                                      <td class="text-sm">[[${dto.f_title}]]</td>
-                                                      <td class="text-sm">[[${dto.f_reward}]]</td>
-                                                      <td class="text-sm">[[${dto.f_price}]]</td>
-                                                      <td class="text-sm">[[${dto.f_amount}]]</td>
-                                                      <td class="text-sm">[[${dto.f_total}]]</td>
+                                                   <tr>
+                                                      <td class="text-sm" style="text-align:center;">[[${info.partner_order_id}]]</td>
+                                                      <td class="text-sm" style="text-align:center;">[[${info.item_name}]]</td>
+                                                      <td class="text-sm" style="text-align:center;">[[${info.quantity}]]</td>
+                                                      <td class="text-sm" style="text-align:center;">[[${info.amount.total}]]</td>
+                                                      <td class="text-sm" style="text-align:center;">[[${info.payment_method_type}]]</td>
                                                    </tr>
                                                 </table>
                                              </div>
