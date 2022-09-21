@@ -3,10 +3,9 @@ package site.moregreen.basic.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-//테스트ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹ
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,23 +14,37 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.Setter;
+import lombok.extern.java.Log;
+import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
-import site.moregreen.basic.command.UploadDto;
+import site.moregreen.basic.command.PurchaseDto;
+import site.moregreen.basic.command.LikeDto;
+
 import site.moregreen.basic.funding.FundingService;
+import site.moregreen.basic.kakaoPay.KakaoPay;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
+@Log
 @Controller
 @RequestMapping("/funding")
 public class FundingController {
 
+	@Setter(onMethod_ = @Autowired)
+    private KakaoPay kakaopay;
+	
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;
+
+	
 	
 	@GetMapping("/fundingList")
 	public String fundingList(Model model, 
@@ -40,33 +53,36 @@ public class FundingController {
 		
 		List<FundingDto> fundingList = fundingService.retriveFundingList(cri);
 		
-		fundingList.forEach(f -> {
-			System.out.println(f.toString());
-			f.getFiles().forEach(i -> {
-				System.out.println(i.toString());
-			});
-		});
-		
 		int total = fundingService.retrieveTotal(cri);
 		PageVo pageVo = new PageVo(cri, total);
 
 		model.addAttribute("fundingList", fundingList);
 		model.addAttribute("pageVO", pageVo);
 		
-//		List<UploadDto> fileList = fundingService.retrieveFundingListImg();
-//		model.addAttribute("fileList", fileList);
-		
 		return "funding/fundingList";
 	}
 	
-
-	@GetMapping("fundingDetail")
-	public String fundingDetail() {
-		
-		return "funding/fundingDetail";
+	@GetMapping("/fundingDetail")
+	public String fundingDetail(@RequestParam("f_num") int f_num, Model model) {
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
+		return "funding/fundingDetail"; 
 	}
-
+	
+	@PostMapping("/purchaseForm")
+	public String purchaseForm(@RequestParam("f_num") int f_num,
+								@Valid PurchaseDto purchaseDto, 
+								Model model, Error error) {
 		
+		DeliveryDto deliveryDto = fundingService.retrieveDelivery(purchaseDto.getM_num());
+		model.addAttribute("deliveryDto", deliveryDto);
+		
+		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
+		model.addAttribute("fundingList", fundingList);
+		
+		return "funding/fundingPurchase";
+	}
+	
 	@GetMapping("fundingReg")
 	public String fundingReg() {
 		return "funding/fundingReg";
@@ -132,20 +148,35 @@ public class FundingController {
 	}
 
 	@GetMapping("fundingPurchaseResult")
-	public String fundingPurchaseResult() {
+	public String fundingPurchaseResult(@RequestParam("pg_token") String pg_token, Model model) {
+		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
 		return "funding/fundingPurchaseResult";
 	}
 	
-	@GetMapping("fundingDetail2")
-	public String fundingDetail2() {
-		
-		return "funding/fundingDetail2";
-	}
 	
-	@GetMapping("fundingDetail3")
-	public String fundingDetail3() {
-		
-		return "funding/fundingDetail3";
-	}
-
+	  @ResponseBody
+	  
+	  @PostMapping("/likeUp") public void likeup(@RequestBody LikeDto dto) {
+	  System.out.println("컨트롤러 연결 성공");
+	  
+	  fundingService.addFundingLike(dto);
+	  
+	  }
+	  
+	  @ResponseBody
+	  
+	  @PostMapping("/likeDown") public void likeDown(@RequestBody LikeDto dto) {
+	  System.out.println("좋아요 싫어요!");
+	  fundingService.removeFundingLike(dto.getL_num()); }
+	 	
+	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @PostMapping("/liked/check") public int likedCheck(int idx, String id) { int
+	 * check = fundingService.getLikeCheck(idx, id);
+	 * 
+	 * if(check == 0) { fundingService.addFundingLike(idx, id); }else {
+	 * fundingService.removeFundingLike(idx, id); } return check; }
+	 */	
 }

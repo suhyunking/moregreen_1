@@ -1,8 +1,6 @@
 package site.moregreen.basic.funding;
 
 import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
+import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.util.Criteria;
 
@@ -54,6 +54,7 @@ public class FundingServiceImpl implements FundingService{
 		
 		int f_num = dto.getF_num();
 		
+		//사업자 등록증 사진 업로드
 		for(MultipartFile file: files) {
 			//실제파일명 (브라우저별로 조금씩 다를수가있음)
 			String origin = file.getOriginalFilename();
@@ -93,6 +94,7 @@ public class FundingServiceImpl implements FundingService{
 			
 		}
 		
+		// 대표 사진 사진 업로드
 		for(MultipartFile file: mainFiles) {
 			//실제파일명 (브라우저별로 조금씩 다를수가있음)
 			String origin = file.getOriginalFilename();
@@ -106,8 +108,6 @@ public class FundingServiceImpl implements FundingService{
 //			String filepath = makeFolder(dto.getF_num());
 			//업로드경로
 			String saveName = uploadPath + "\\main_" + uuid + "_" + filename;
-			//썸네일경로
-			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 			
 			try {
 				File saveFile = new File(saveName); 
@@ -145,8 +145,6 @@ public class FundingServiceImpl implements FundingService{
 //			String filepath = makeFolder(dto.getF_num());
 			//업로드경로
 			String saveName = uploadPath + "\\content_" + uuid + "_" + filename;
-			//썸네일경로
-			//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 			
 			try {
 				File saveFile = new File(saveName); 
@@ -193,8 +191,14 @@ public class FundingServiceImpl implements FundingService{
 	// 조회
 	@Override
 	public List<FundingDto> retriveFundingList(Criteria cri) {
-		return fundingMapper.selectAdminFundingList(cri);
+		return fundingMapper.selectFundingList(cri);
 	}
+	
+	// 조회
+		@Override
+		public List<FundingDto> retriveAdminFundingList(Criteria cri) {
+			return fundingMapper.selectAdminFundingList(cri);
+		}
 	
 	// 이미지 조회
 //	@Override
@@ -219,6 +223,35 @@ public class FundingServiceImpl implements FundingService{
 		
 		return 0;
 	}
+
+	@Override
+	public DeliveryDto retrieveDelivery(int m_num) {
+		return fundingMapper.selectDelivery(m_num);
+	}
+
+	
+	//찜하기
+	@Override
+	public int addFundingLike(LikeDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	//찜하기 취소
+	@Override
+	public int removeFundingLike(int l_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	//찜하기 개수 조회
+	@Override
+	public int retrieveFundingLikeVal(int f_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 	
 

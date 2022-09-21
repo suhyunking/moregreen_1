@@ -27,10 +27,10 @@ public class FundingDto {
 	private Integer f_price;		//리워드 금액
 	private String f_bname;			//상호명
 	private String f_bnum;			//사업자 번호
+	private String f_regdate; 		//신청 일자
+	private Integer l_count; 		//찜하기 개수
 	private Integer m_num;			//회원 번호 FK
 	private String m_id;			//신청자 아이디
-	
-	private String f_regdate; 		//신청 일자
 	
 	private List<UploadDto> files = new ArrayList<>(); // 
 	

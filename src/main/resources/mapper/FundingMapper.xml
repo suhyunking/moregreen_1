@@ -22,15 +22,12 @@
 	from funding
 	where f_status in (3,4,5)
 	order by f_num desc;
-
   </select>
   
   <select id="selectFundingListImg" parameterType="site.moregreen.basic.util.Criteria" resultType="UploadDto">
-
 		select i_name as filename, i_path as filepath, i_uuid as uuid
 		from image
 		where funding_f_num = #{f_num}
-
   </select> -->
   <resultMap id="selectFundingListMap" type="FundingDto">
 	  <result property="f_num" column="f_num"/>
@@ -49,19 +46,19 @@
 	  <result property="m_num" column="member_m_num"/>
 	  <result property="m_id" column="m_id"/>
 	  <result property="f_regdate" column="f_regdate"/>
+	  <result property="l_count" column="l_count"/>
   <collection property="files" ofType="UploadDto">
     <id property="upload_no" column="inum"/> <!-- column은 DB의 column 이름, property는 DTO의 명칭  -->
     <result property="i_num" column="i_num"/>
     <result property="filename" column="filename"/>
-    <result property="filepath" column="filepath"/>
     <result property="uuid" column="uuid"/>
     <result property="f_num" column="f_num"/>
     <result property="i_type" column="i_type"/>
   </collection>
 </resultMap>
 
-  <select id="selectFundigList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
-	<!--  -->
+  <select id="selectFundingList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
+
 	select f.f_num as f_num,
 		   f.f_title as f_title,
 		   f.f_content as f_content,
@@ -79,20 +76,27 @@
 		   f.member_m_num as m_num,
 		   i.i_num as i_num,
 		   i.i_name as filename,
-		   i.i_path as filepath,
 		   i.i_uuid as uuid,
 		   i.i_type as i_type
 	  from funding f left outer join image i 
-	  on f.f_num = i.funding_f_num 
+	  				 on f.f_num = i.funding_f_num
 	  where f.f_status in (3,4,5)
       and i.i_type = 1
       <if test="searchName != '' and searchName != null"> 
 	  and f.f_title like concat('%', #{searchName} ,'%')
 	  </if>
-      group by f_num
-	  order by f.f_num desc
+	  <if test="searchStatus != '' and searchStatus != null"> 
+	  and f.f_status = #{searchStatus}
+	  </if>
+      group by f.f_num
+	  order by 
+	  <if test="searchAlign == 'asc' ">
+ 			f.f_enddate asc,
+ 	  </if>
+ 	  f.f_status asc,
+ 	  f.f_num desc
 	  limit #{pageStart}, #{amount}
-
+    
   </select>
   
   <select id="selectAdminFundingList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
@@ -141,9 +145,9 @@
 			   f.f_bname as f_bname,
 			   f.f_bnum as f_bnum,
 			   (select m.m_id from member m where m.m_num = f.member_m_num) as m_id,
+			   (select COUNT(l_num) from f_like l where l.funding_f_num = f.f_num group by (funding_f_num)) as l_count,
 			   i.i_num as i_num,
 			   i.i_name as filename,
-			   i.i_path as filepath,
 			   i.i_uuid as uuid,
 			   i.i_type as i_type
 		from funding f left outer join image i 
@@ -191,7 +195,6 @@
 					     )
 		 		 values(
 		 				#{filename},
-		 			   	#{filepath},
 		 			  	#{uuid},
 		 			  	#{filetype},
 		 			  	#{f_num}
@@ -235,14 +238,6 @@
 		from funding
 	</select>
 
-	<select id="selectFundingDetailImg" parameterType="int" resultType="UploadDto">
-
-		select i_name as filename, i_path as filepath, i_uuid as uuid
-		from image
-		where funding_f_num = #{f_num}
-
-	</select>
-  
 	<update id="fundingAccept" parameterType="int">
 		update funding
 		set f_status = 3
@@ -255,17 +250,35 @@
 		where f_num = #{f_num}
 	</update>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  	<select id="selectDelivery" parameterType="int" resultType="DeliveryDto">
+  	
+  		select d_num as d_num,
+  			   d_name as d_name,
+  			   d_phone as d_phone,
+  			   d_zipcode as d_zipcode,
+  			   d_addr as d_addr,
+  			   d_detailaddr as d_detailaddr
+		from delivery
+		where d_num = (select MAX(delivery_d_num)
+						from purchase
+						where member_m_num = #{m_num}
+		                group by member_m_num)	
+  	
+  	</select>
+    
+  <insert id="addFundingLike" parameterType="site.moregreen.basic.command.LikeDto">
+		insert into f_like (
+							f_num, 
+							m_num
+							)
+					values(
+							 #{f_num},
+							 #{m_num}
+							 )
+	</insert>
+	
+	  <delete id="removeFundingLike" parameterType="site.moregreen.basic.command.LikeDto">
+	  	delete from f_like where f_num = #{f_num} and m_num = #{m_num} 
+	  </delete>
   
   </mapper>

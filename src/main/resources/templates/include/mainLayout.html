@@ -4,8 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
-<title>ClassiGrids - Classified Ads and Listing Website
-	Template.</title>
+<title>MOREGREEN</title>
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" type="image/x-icon"
@@ -26,14 +25,13 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
 <!-- ========================= CSS here ========================= -->
-<link rel="stylesheet" href="../css/bootstrap.min1.css" />
-<link rel="stylesheet" href="../css/LineIcons.2.0.css" />
-
+<link rel="stylesheet" href="/css/bootstrap.min1.css" />
+<link rel="stylesheet" href="/css/LineIcons.2.0.css" />
 <link rel="stylesheet" href="/css/animate.css" />
 <link rel="stylesheet" href="/css/tiny-slider.css" />
 <link rel="stylesheet" href="/css/glightbox.min.css" />
-<link rel="stylesheet" href="/css/main.css" /> 
- <link rel="stylesheet" href="/css/bootstrap.min1.css" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/bootstrap.min1.css" />
 <link rel="stylesheet" href="/css/animate1.css" />
 <link rel="stylesheet" href="/css/tiny-slider1.css" />
 <link rel="stylesheet" href="/css/glightbox.min1.css" />
@@ -82,7 +80,9 @@
 									id="navbarSupportedContent">
 									<ul id="nav" class="navbar-nav ms-auto">
 									<li class="nav-item">
+
                                         <a class=" active dd-menu collapsed" th:href="@{/index}" aria-label="Toggle navigation">홈</a>
+
                                     </li>
                                     
                                     	<li class="nav-item">
@@ -185,7 +185,7 @@
 													aria-expanded="false" th:if="${session.member!=null}" >[[${session.member.m_id}]]</button>
 												<ul class="dropdown-menu">
 													<!-- <li><a class="dropdown-item" th:href="@{/main/myPage}">내 정보</a></li> -->
-													<li><a class="dropdown-item" th:href="@{/mypage/purchaseList1}">내 정보</a></li>																					
+													<li><a class="dropdown-item" th:href="@{/mypage/purchaseList}">내 정보</a></li>																					
 													<li><a class="dropdown-item" th:href="@{/funding/fundingReg}">펀딩개설하기</a></li>
 													<li><a class="dropdown-item" th:href="@{/member/logout}">로그아웃</a></li>
 													
@@ -292,43 +292,25 @@
 		</a>
 
 		<!-- ========================= JS here ========================= -->
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/wow.min.js"></script>
-		<script src="/js/tiny-slider.js"></script>
-		<script src="/js/glightbox.min.js"></script>
-		<script src="/js/main.js"></script>
-		<script type="text/javascript">
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/wow.min.js"></script>
+	<script src="/js/tiny-slider.js"></script>
+	<script src="/js/glightbox.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script th:inline="javascript">
+	
+		$(document).ready(function(){
+			var menu = JSON.parse('[[${menu}]]'); //문자열
+			$(".navbar-nav li a").each(function(index, value){
+				
+				if($(value).attr('href') == menu) {
+					$(value).attr('class', 'nav-link active bg-gradient-primary');
+				}
+			});
+		});
 		
-        //========= Category Slider 
-        tns({
-            container: '.category-slider',
-            items: 3,
-            slideBy: 'page',
-            autoplay: false,
-            mouseDrag: true,
-            gutter: 0,
-            nav: false,
-            controls: true,
-            controlsText: ['<i class="lni lni-chevron-left"></i>', '<i class="lni lni-chevron-right"></i>'],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                540: {
-                    items: 2,
-                },
-                768: {
-                    items: 4,
-                },
-                992: {
-                    items: 5,
-                },
-                1170: {
-                    items: 6,
-                }
-            }
-        });
-    </script>
+	</script>
 	</body>
 </th:block>
 </html>
