@@ -14,10 +14,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Setter;
@@ -25,10 +23,9 @@ import lombok.extern.java.Log;
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.PurchaseDto;
-import site.moregreen.basic.command.LikeDto;
-
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.kakaoPay.KakaoPay;
+import site.moregreen.basic.like.LikeService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
@@ -44,6 +41,9 @@ public class FundingController {
 	@Qualifier("fundingService")
 	FundingService fundingService;
 
+	@Autowired
+	@Qualifier("likeService")
+	LikeService likeService;
 	
 	
 	@GetMapping("/fundingList")
@@ -153,30 +153,5 @@ public class FundingController {
 		return "funding/fundingPurchaseResult";
 	}
 	
-	
-	  @ResponseBody
-	  
-	  @PostMapping("/likeUp") public void likeup(@RequestBody LikeDto dto) {
-	  System.out.println("컨트롤러 연결 성공");
-	  
-	  fundingService.addFundingLike(dto);
-	  
-	  }
-	  
-	  @ResponseBody
-	  
-	  @PostMapping("/likeDown") public void likeDown(@RequestBody LikeDto dto) {
-	  System.out.println("좋아요 싫어요!");
-	  fundingService.removeFundingLike(dto.getL_num()); }
-	 	
-	
-	/*
-	 * @ResponseBody
-	 * 
-	 * @PostMapping("/liked/check") public int likedCheck(int idx, String id) { int
-	 * check = fundingService.getLikeCheck(idx, id);
-	 * 
-	 * if(check == 0) { fundingService.addFundingLike(idx, id); }else {
-	 * fundingService.removeFundingLike(idx, id); } return check; }
-	 */	
+
 }

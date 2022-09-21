@@ -229,27 +229,6 @@ public class FundingServiceImpl implements FundingService{
 		return fundingMapper.selectDelivery(m_num);
 	}
 
-	
-	//찜하기
-	@Override
-	public int addFundingLike(LikeDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	//찜하기 취소
-	@Override
-	public int removeFundingLike(int l_num) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	//찜하기 개수 조회
-	@Override
-	public int retrieveFundingLikeVal(int f_num) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 

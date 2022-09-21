@@ -34,9 +34,6 @@ public interface FundingMapper {
 	public int selectTotal(Criteria cri); //전체 게시글수
 	
 	
-	public int registFundingLike(LikeDto dto); //찜하기
-	public int deleteFundingLike(int l_num); //찜하기 취소
-	public int selectFundingLikeVal(int f_num); //찜하기 개수 조회
 	
 	
 	

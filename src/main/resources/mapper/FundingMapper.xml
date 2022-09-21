@@ -188,7 +188,6 @@
   <insert id="createFundingFile" parameterType="site.moregreen.basic.command.UploadDto">
  		insert into image(
  						 i_name,
-					     i_path,
 					     i_uuid,
 					     i_type,
 					     funding_f_num	
@@ -265,20 +264,6 @@
 		                group by member_m_num)	
   	
   	</select>
-    
-  <insert id="addFundingLike" parameterType="site.moregreen.basic.command.LikeDto">
-		insert into f_like (
-							f_num, 
-							m_num
-							)
-					values(
-							 #{f_num},
-							 #{m_num}
-							 )
-	</insert>
-	
-	  <delete id="removeFundingLike" parameterType="site.moregreen.basic.command.LikeDto">
-	  	delete from f_like where f_num = #{f_num} and m_num = #{m_num} 
-	  </delete>
+ 
   
   </mapper>
