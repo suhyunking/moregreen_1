@@ -82,7 +82,7 @@ public class MemberController {
 		} else {
 			session.setAttribute("member", member);
 			session.setMaxInactiveInterval(1800);
-			//System.out.println("로그인 됨");
+			//System.out.println(session.getAttribute("member"));
 			//System.out.println(member);
 			
 			

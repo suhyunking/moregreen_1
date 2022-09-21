@@ -135,13 +135,22 @@
 		</section>
 </th:block>
 
-<script type="text/javascript">
+<script th:inline="javascript">
 
 	//검색버튼
 	function handleForm() {
+		//alert("alert");
 		//폼을 서브밋
-		event.preventDefault(); //a의 이동이벤트를 막는다.
-		document.purchaseForm.submit();
+		event.preventDefault(); //a의 이동이벤트를 막는다.	
+		var session = [[${session.member}]];
+		//console.log("세션"+ session);
+		if(session == null){
+			alert("로그인 후 이용해주세요");
+			
+		} else{
+			document.purchaseForm.submit();
+		}
+		
 	}
 
   const current = document.getElementById("current");
