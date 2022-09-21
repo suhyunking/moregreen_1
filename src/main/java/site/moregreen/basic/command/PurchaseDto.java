@@ -22,4 +22,10 @@ public class PurchaseDto {
 	private Integer f_status;			//펀딩 상태
 	private Integer d_num;				//배송지 번호 FK
 	
+//	DeliveryDto delieveryDto = DeliveryDto.builder()
+//										  .d_addr(m_id)
+//										  .d_name(m_id)
+//										  .d_phone(d_phone)
+//										  .d_zipcode(m_id)
+//										  .build();
 }

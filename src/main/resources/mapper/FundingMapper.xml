@@ -188,7 +188,6 @@
   <insert id="createFundingFile" parameterType="site.moregreen.basic.command.UploadDto">
  		insert into image(
  						 i_name,
-					     i_path,
 					     i_uuid,
 					     i_type,
 					     funding_f_num	
@@ -236,8 +235,30 @@
 
 		select count(*) as total
 		from funding
+		where f_status in (3,4,5)
+		<if test="searchName != '' and searchName != null"> 
+	    and f_title like concat('%', #{searchName} ,'%')
+	    </if>
+	    <if test="searchStatus != '' and searchStatus != null"> 
+	    and f_status = #{searchStatus} 
+	    </if>
+	    
 	</select>
+	
+	<select id="selectApplyListTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
 
+		select count(*) as total
+		from funding
+		where f_status in (1,2)
+		<if test="searchName != '' and searchName != null"> 
+	    and f_title like concat('%', #{searchName} ,'%')
+	    </if>
+	    <if test="searchStatus != '' and searchStatus != null"> 
+	    and f_status = #{searchStatus} 
+	    </if>
+	    
+	</select>
+	
 	<update id="fundingAccept" parameterType="int">
 		update funding
 		set f_status = 3

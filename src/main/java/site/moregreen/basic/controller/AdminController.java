@@ -89,7 +89,7 @@ public class AdminController {
 	public String fundingApplyList(Model model, Criteria cri, HttpSession session) {
 
 		List<FundingDto> list = fundingService.retrieveFundingApplyList(cri);
-		int total = fundingService.retrieveTotal(cri);
+		int total = fundingService.retrieveApplyListTotal(cri);
 		PageVo pageVO = new PageVo(cri, total);
 
 		model.addAttribute("list", list);
