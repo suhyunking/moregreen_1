@@ -12,7 +12,7 @@
                <section class="item-details section">
                   <div class="container">
                      <div class="top-area">
-                        <div class="row">
+                        <div class="row">\
                            <div class="text-sm pb-30">
                               <div class="wow fadeInUp" data-wow-delay=".7s">
                                  <div class="row">
@@ -38,7 +38,7 @@
                                                       <td class="text-sm" style="text-align:center;">[[${info.partner_order_id}]]</td>
                                                       <td class="text-sm" style="text-align:center;">[[${info.item_name}]]</td>
                                                       <td class="text-sm" style="text-align:center;">[[${info.quantity}]]</td>
-                                                      <td class="text-sm" style="text-align:center;">[[${info.amount.total}]]</td>
+                                                      <td class="text-sm" style="text-align:center;">[[${#numbers.formatInteger(info.amount.total, 3, 'COMMA')}]]</td>
                                                       <td class="text-sm" style="text-align:center;">[[${info.payment_method_type}]]</td>
                                                    </tr>
                                                 </table>
