@@ -20,6 +20,7 @@ import site.moregreen.basic.command.MemberDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.member.MemberService;
 import site.moregreen.basic.util.Criteria;
+import site.moregreen.basic.util.PageDto;
 import site.moregreen.basic.util.PageVo;
 
 @Controller
@@ -43,7 +44,7 @@ public class AdminController {
 	}
 
 
-	@GetMapping("/login")
+	@GetMapping
 	public String signIn() {
 		
 		return "admin/adminSignin";
@@ -138,8 +139,16 @@ public class AdminController {
 		return "admin/orderList";
 	}
 	
-	@GetMapping("userList")
-	public String userList() {
+	@GetMapping("/userList")
+	public String userList(Model model, Criteria cri, HttpSession session) {
+		
+		  System.out.println("================" + cri.getM_id());
+		  List<MemberDto> list= memberService.retrieveMemberList(cri); 
+		  int total=memberService.retrieveTotal(cri); 
+		  PageVo pageVO= new PageVo(cri,total); 
+		  model.addAttribute("list", list); 
+		  model.addAttribute("pageVO", pageVO);
+		 
 		return "admin/userList";
 	}
 	

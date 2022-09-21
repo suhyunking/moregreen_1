@@ -1,6 +1,7 @@
 package site.moregreen.basic.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
 import site.moregreen.basic.command.MemberDto;
+import site.moregreen.basic.util.Criteria;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
@@ -48,6 +50,30 @@ public class MemberServiceImpl implements MemberService {
 		@Override
 		public void logout(HttpSession session) {
 			
+		}
+		
+		//이메일 있는지 확인
+		@Override
+		public int checkemail(MemberDto memberDto) throws Exception {
+			return memberMapper.checkemail(memberDto);
+		}
+		
+		//아이디 찾기
+		@Override
+		public MemberDto findid(MemberDto memberDto) throws Exception {
+			return memberMapper.findid(memberDto);
+		}
+
+		//관리자 회원 목록
+		@Override
+		public List<MemberDto> retrieveMemberList(Criteria cri) {
+			
+			return memberMapper.selectMemberList(cri);
+		}
+
+		@Override
+		public int retrieveTotal(Criteria cri) {
+			return memberMapper.selectTotal(cri);
 		}
 
 	
