@@ -1,5 +1,6 @@
 package site.moregreen.basic.member;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.validation.Errors;
 
 import site.moregreen.basic.command.MemberDto;
+import site.moregreen.basic.util.Criteria;
 
 public interface MemberService {
 	// 회원가입
@@ -19,4 +21,15 @@ public interface MemberService {
 	public MemberDto loginMember(MemberDto memberDto);
 	//회원 로그아웃
 	public void logout(HttpSession session);
+	
+	//이메일 확인
+	public int checkemail(MemberDto memberDto) throws Exception;
+	
+	//아이디 찾기
+	public MemberDto findid(MemberDto memberDto) throws Exception;
+	
+	//관리자 회원목록 
+	public List<MemberDto> retrieveMemberList(Criteria cri);
+	public int retrieveTotal(Criteria cri);
+
 }

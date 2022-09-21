@@ -76,6 +76,46 @@
 								</nav>
 </th:block>
 
+<th:block th:fragment="test3(pageName , pageVO)">
+
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
+										<li class="page-item">
+											<a class="page-link" th:href="@{userList(page=1, 		
+																			  amount=${pageVO.amount},
+																			  searchId=${pageVO.cri.searchId},
+																			  )}" aria-label="Previous"> 
+												<span aria-hidden="true">&laquo;</span>
+											</a>
+										</li>
+										<li th:if="${pageVO.prev}">
+										<li class="page-item"><a class="page-link" th:href="@{userList(page=1, 		
+																			  amount=${pageVO.amount},
+																			  searchId=${pageVO.cri.searchId},
+																			  )}">&lt;</a></li>
+										<th:block th:each="num : ${pageVO.pageList}">							 
+										<li th:class="${pageVO.page == num ? 'on' : ''}">
+										<li class="page-item"><a class="page-link" th:href="@{userList(page=${num},
+																			  amount=${pageVO.amount},
+																			  searchId=${pageVO.cri.searchId},
+																			  )}">[[${num}]]</a></li>
+										</th:block>
+										<li th:if="${pageVO.next}">
+										<li class="page-item"><a class="page-link" th:href="@{userList(page=${pageVO.end + 1},
+																			  amount=${pageVO.amount},
+																			  searchId=${pageVO.cri.searchId},
+																			  )}">&gt;</a></li>
+										<li class="page-item">
+											<a class="page-link" th:href="@{userList(page=${pageVO.realEnd},
+																			  amount=${pageVO.amount},
+																			  searchId=${pageVO.cri.searchId},
+																			  )}" aria-label="Next"> 
+												<span aria-hidden="true">&raquo;</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+</th:block>
 
 <th:block th:fragment="fundingList(pageName , pageVO)">
 	

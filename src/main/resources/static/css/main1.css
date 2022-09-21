@@ -1146,8 +1146,8 @@ ol {
 
 .button .btn {
     display: inline-block;
-    text-transform: lowercase;
     font-size: 15px;
+    text-transform: none;
     font-weight: 500;
     padding: 15px 30px;
     background-color: #4f953b;

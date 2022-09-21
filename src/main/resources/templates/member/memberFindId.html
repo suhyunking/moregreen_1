@@ -22,7 +22,14 @@
   <link id="pagestyle" href="/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
   <script src="/js/jquery-3.6.0.js"></script>
   <script src="/js/jquery-3.6.0.min.js"></script>
-
+<script th:inline="javascript">
+$(document).ready(function(){
+    var msg=[[${msg}]];
+    if(msg){
+    	alert("이메일을 확인해주세요");
+    }
+})
+</script>
 </head>
 
 <body class="bg-gray-200">
@@ -52,7 +59,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <form class="text-start" th:action="@{/member/member}" method="post" id="findID">
+                <form class="text-start" th:action="@{/member/findId}" method="post" id="findID">
                   
                   <div class="input-group input-group-outline mb-3">
                     

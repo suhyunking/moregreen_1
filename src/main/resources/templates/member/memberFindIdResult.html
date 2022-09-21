@@ -21,7 +21,9 @@
   <link id="pagestyle" href="/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
   <script src="/js/jquery-3.6.0.js"></script>
 <script src="/js/jquery-3.6.0.min.js"></script>
-
+<script>
+	
+</script>
 </head>
 
 <body class="bg-gray-200">
@@ -46,23 +48,19 @@
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary border-radius-lg py-3 pe-1">
-                  <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">아이디찾기결과</h4>
+                  <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">아이디찾기 결과</h4>
                 
                 </div>
               </div>
               <div class="card-body">
                 <form class="text-start">
-                  
-                  <p class="mt-4 text-sm text-center">
-                  <h5>
-                 
-                  </h5>
+                  <div class="input-group input-group-outline mb-3">
+                     <h5 class="text-center" >아이디는 [[${member.m_id}]]입니다.</h5>
                    
-                    
-                   
-                   
+                  </div>
+
                   <div class="text-center">
-                    <a th:href="@{/index}" class="text-primary text-gradient font-weight-bold">메인화면으로 돌아가기</a>
+                    <a th:href="@{/member/memberLogin}" class="text-primary text-gradient font-weight-bold">로그인하기</a>
                   </div>
                 </form>
               </div>
