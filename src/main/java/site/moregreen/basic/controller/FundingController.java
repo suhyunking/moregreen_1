@@ -22,10 +22,12 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
+
+import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.funding.FundingService;
-import site.moregreen.basic.kakaoPay.KakaoPay;
-import site.moregreen.basic.like.LikeService;
+import site.moregreen.basic.kakaoPay.KakaoPayService;
+
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
@@ -35,7 +37,7 @@ import site.moregreen.basic.util.PageVo;
 public class FundingController {
 
 	@Setter(onMethod_ = @Autowired)
-    private KakaoPay kakaopay;
+    private KakaoPayService kakaopay;
 	
 	@Autowired
 	@Qualifier("fundingService")

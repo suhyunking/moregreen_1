@@ -655,7 +655,7 @@ INSERT INTO funding (f_title, f_content, f_days, f_enddate, f_target, f_totalmon
 -- Table `moregreen`.`like`
 -- -----------------------------------------------------
 
--- desc f_like; #테이블 구조 보기 
+-- desc likefunding; #테이블 구조 보기 
 
 -- set foreign_key_checks = 0;  
 -- drop table f_like;

@@ -82,7 +82,7 @@ public class MemberController {
 		} else {
 			session.setAttribute("member", member);
 			session.setMaxInactiveInterval(1800);
-			//System.out.println("로그인 됨");
+			//System.out.println(session.getAttribute("member"));
 			//System.out.println(member);
 			
 			
@@ -91,15 +91,21 @@ public class MemberController {
 	 }
 	
 	@GetMapping("/memberFindId")
-	public String findid() {
-		return "member/memberFindId";
+	public String findID() {
+		return "/member/memberFindId";
 	}
 	
-	@GetMapping("/memberFindIdResult")
-	public String findidResult() {
-		return "member/memberFindIdResult";
+	@PostMapping("/findId")
+	public String findId(MemberDto memberDto, Model model) throws Exception {
+		if(memberService.checkemail(memberDto)==0) {
+			model.addAttribute("msg",true);
+			return "/member/memberFindId";
+		}else {
+			model.addAttribute("member", memberService.findid(memberDto));
+			return "/member/memberFindIdResult";
+		}
+		
 	}
-	
 
 	
 	@GetMapping("/memberFindPw")

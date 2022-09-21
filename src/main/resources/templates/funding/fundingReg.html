@@ -55,20 +55,6 @@
 								<span class="input-group-text">원</span>
 							</div>
 	
-	
-							<div class="input-group mb-3">
-								<span class="input-group-text" id="basic-addon1">사업자 등록번호</span>
-								<input type="text" class="form-control" placeholder="사업자 등록번호 작성" name="f_bnum" th:value="${dto != null ? dto.f_bnum : '' }">
-							</div>
-	
-	
-	
-							<div class="input-group mb-3">
-								<label class="input-group-text" for="inputGroupFile01">사업자 등록증</label>
-								<input type="file" class="form-control" id="file" name="file" accept=".jpg, .png">
-							</div>
-							
-<!-- test -->
 							<div class="input-group mb-3">
 								<label class="input-group-text" for="inputGroupFile02">대표 사진</label> 
 								<input type="file" class="form-control" id="mainFile" name="mainFile">
@@ -82,6 +68,18 @@
 								<input type="file" class="form-control" id="contentFile" name="contentFile">
 								<input type="file" class="form-control" id="contentFile" name="contentFile">
 							</div> 
+							
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="basic-addon1">사업자 등록번호</span>
+								<input type="text" class="form-control" placeholder="사업자 등록번호 작성" name="f_bnum" th:value="${dto != null ? dto.f_bnum : '' }">
+							</div>
+	
+	
+	
+							<div class="input-group mb-3">
+								<label class="input-group-text" for="inputGroupFile01">사업자 등록증</label>
+								<input type="file" class="form-control" id="file" name="file" accept=".jpg, .png">
+							</div>
 							
 							<div class="input-group mb-3">
 								<label class="input-group-text" for="inputGroupSelect01">프로젝트 기간(일)</label> 

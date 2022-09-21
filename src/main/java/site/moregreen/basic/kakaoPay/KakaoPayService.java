@@ -10,6 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
@@ -23,16 +24,24 @@ import site.moregreen.basic.command.PurchaseDto;
 
 @Service
 @Log
-public class KakaoPay {
+@Transactional(readOnly = true) //service impl에서 모든 method에 적용됨 (select에서 사용)
+public class KakaoPayService {
+
+	/*
+	 * @Autowired PurchaseMapper purchaseMapper;
+	 */
+	
+	private static final String HOST = "https://kapi.kakao.com";
+	private String m_id;
 	private String orderId = createOrderId();
 
-private static final String HOST = "https://kapi.kakao.com";
+	private KakaoPayReadyVO kakaoPayReadyVO = new KakaoPayReadyVO();
+	private KakaoPayApprovalVO kakaoPayApprovalVO;
 
-    private KakaoPayReadyVO kakaoPayReadyVO = new KakaoPayReadyVO();
-    private KakaoPayApprovalVO kakaoPayApprovalVO;
+
     
     public String kakaoPayReady(FundingDto fundingDto, PurchaseDto purchaseDto, DeliveryDto deliveryDto, MemberDto memberDto) {
- 
+    	
         RestTemplate restTemplate = new RestTemplate();
  
         // 서버로 요청할 Header
@@ -42,6 +51,7 @@ private static final String HOST = "https://kapi.kakao.com";
         headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
         
         kakaoPayReadyVO.setUserId(memberDto.getM_id());
+        this.m_id = memberDto.getM_id();
         
         // 서버로 요청할 Body
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
@@ -60,6 +70,9 @@ private static final String HOST = "https://kapi.kakao.com";
  
         try {
             kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
+            
+//            purchaseMapper.createPurchase();
+            
             return kakaoPayReadyVO.getNext_redirect_pc_url();
  
         } catch (RestClientException e) {
@@ -87,7 +100,7 @@ private static final String HOST = "https://kapi.kakao.com";
         params.add("cid", "TC0ONETIME");
         params.add("tid", kakaoPayReadyVO.getTid());
         params.add("partner_order_id", orderId);
-        params.add("partner_user_id", "dahee0317");
+        params.add("partner_user_id", m_id);
         params.add("pg_token", pg_token);
 //        params.add("total_amount", "2100");
         
