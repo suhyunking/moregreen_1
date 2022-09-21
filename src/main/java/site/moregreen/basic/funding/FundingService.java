@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
-import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.util.Criteria;
 
 public interface FundingService {
@@ -36,15 +35,7 @@ public interface FundingService {
 	public int fundingAccept(int f_num);
 	public int fundingReject(int f_num);
 	
-	//찜하기
-	public int addFundingLike(LikeDto dto);
 	
-	//찜하기 취소
-	public int removeFundingLike(int l_num);
-	
-	//찜하기 개수 조회
-	public int retrieveFundingLikeVal(int f_num);
-
 	
 
 	

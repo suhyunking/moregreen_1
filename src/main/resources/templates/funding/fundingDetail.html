@@ -82,11 +82,16 @@
 											<div class="contact-info">
 												<ul>
 													<li>
-														<a class="mail"> 
-															<i class="lni lni-heart" id="like_check"></i>
+														<!-- <a class="mail"> 
+															<i class="lni lni-heart" onclick='addFundingLike(f_num,m_num)' id="likeImg"></i>
 															
 															<span>[[${dto.l_count}]]</span>
-														</a>
+														</a> -->
+														
+															<button class="btn" type="button" onclick='addFundingLike(f_num,m_num)'><span id="likeImg"></span></button>
+															
+															<span>[[${dto.l_count}]]</span>
+														
 														<a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()">펀딩하기</a>
 														<a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
 													</li>
@@ -200,9 +205,8 @@
 	  document.getElementById('p_total').value = total;
 	}
   
-  
-  //https://myit.tistory.com/26
-//좋아요
+//https://myit.tistory.com/26
+//좋아요_v1
   $(document).ready(function () {
       let likeVal = document.getElementById('like_check').value
       const boardId = $("#f_num").val();
@@ -241,6 +245,37 @@
       });
   });
   
+  //좋아요_v2 https://kimfk567.tistory.com/66
+  function addFundingLike(f_num,m_num){ 
+      $.ajax({
+             type : "POST",  
+             url : "/funding/addFundingLike",       
+             dataType : "json",   
+             data : {'f_num' : f_num ,'m_num' : m_num},
+             error : function () {
+                 $("#likeImg").attr("src", "img/heart.svg");
+                 console.log('LikeError')
+             },
+             success : function(likeCheck) {
+                 
+                     if(likeCheck == 0){
+                    	 $("#likeImg").attr("src", "img/heart.svg");
+                         /* location.href="/fundingDetail/"+f_num; */
+                     	
+                     }
+                     else if (likeCheck == 1){
+                   		$("#likeImg").attr("src", "img/heart-fill.svg");
+                       /*  location.href="/fundingDetail/"+f_num; */
+                      
+
+                 }else if(likeCheck == 2){
+                	 $("#likeImg").attr("src", "img/heart.svg");
+                	 likeCheck = 0;
+                 	
+                 }
+             }
+         });
+  }
 	
 	
 	
