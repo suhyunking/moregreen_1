@@ -282,8 +282,7 @@
 		from delivery
 		where d_num = (select MAX(delivery_d_num)
 						from purchase
-						where member_m_num = #{m_num}
-		                group by member_m_num)	
+						where member_m_num = #{m_num})	
   	
   	</select>
  

@@ -5,24 +5,59 @@
   
 <mapper namespace="site.moregreen.basic.purchase.PurchaseMapper">
    
-   <resultMap id="createPurchaseMap" type="PurchaseDto">
-	  <result property="f_num" column="f_num"/>
-	  <result property="f_title" column="f_title"/>
-	  <result property="f_content" column="f_content"/>
-	  <result property="f_days" column="f_days"/>
-	  <result property="f_enddate" column="f_enddate"/>
-	  <result property="f_target" column="f_target"/>
-	  <result property="f_totalmoney" column="f_totalmoney"/>
-	  <result property="f_rate" column="f_rate"/>
-	  <result property="f_status" column="f_status"/>
-	  <result property="f_reward" column="f_reward"/>
-	  <result property="f_price" column="f_price"/>
-	  <result property="f_bname" column="f_bname"/>
-	  <result property="f_bnum" column="f_bnum"/>
-	  <result property="m_num" column="member_m_num"/>
-	  <result property="m_id" column="m_id"/>
-	  <result property="f_regdate" column="f_regdate"/>
-	  <result property="l_count" column="l_count"/>
-	</resultMap>
+   <insert id="createDelivery" parameterType="DeliveryDto">
+  	    <selectKey resultType="int" keyProperty="d_num" order="AFTER">
+ 			select max(d_num) as d_num
+			from delivery
+ 		</selectKey>
+	 	insert into delivery(
+	 						d_name,
+	 						d_phone,
+	 						d_zipcode,
+	 						d_addr,
+	 						d_detailaddr
+	 						)
+	 				values(
+	 					   #{d_name},
+	 					   #{d_phone},
+	 					   #{d_zipcode},
+	 					   #{d_addr},
+	 					   #{d_detailaddr}
+	 					   )
+	 </insert>
    
+	<insert id="createPurchase" parameterType="PurchaseDto">
+	 	insert into purchase(
+	 						p_payment,
+	 						p_amount,
+	 						p_total,
+	 						p_method,
+	 						p_tid,
+	 						p_date,
+	 						delivery_d_num,
+	 						funding_f_num,
+	 						member_m_num
+	 						)
+	 				values(
+	 					   1,
+	 					   #{p_amount},
+	 					   #{p_total},
+	 					   1,
+	 					   #{p_tid},
+	 					   #{p_date},
+	 					   #{d_num},
+	 					   #{f_num},
+	 					   #{m_num}
+	 					   )
+	 </insert>
+	 
+	 <select id="updateFunding" resultType="int" parameterType="FundingDto">
+
+		update funding
+		set f_rate = #{f_rate},
+			f_totalmoney = #{f_totalmoney}
+		where f_num = #{f_num}
+
+	</select>
+
 </mapper>
