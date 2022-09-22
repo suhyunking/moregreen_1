@@ -9,7 +9,7 @@
 					<input type="hidden" name="p_amount" value="1" id="p_amount">
 					<input type="hidden" name="p_total" th:value="${dto.f_price}" id="p_total">
 					<input type="hidden" name="f_num" th:value="${dto.f_num}" id="f_num">
-					<input th:if="${session.member.m_num} != null" type="hidden" name="m_num" th:value="${session.member.m_num}" id="m_num">
+					<input th:if="${session.member} != null and ${session.member} != ''" type="hidden" name="m_num" th:value="${session.member.m_num}" id="m_num">
 				</form>
 				<div class="wow fadeInUp" data-wow-delay=".6s">
 					<div class="container">
@@ -78,26 +78,33 @@
 												</li>
 											</ul>
 										</div>
+									<form id="addFundingLike" name="addFundingLike" action="addFundingLike" method="post">
 										<div class="button">
 											<div class="contact-info">
 												<ul>
-													<li>
+													<li >
 														<!-- <a class="mail"> 
 															<i class="lni lni-heart" onclick='addFundingLike(f_num,m_num)' id="likeImg"></i>
 															
 															<span>[[${dto.l_count}]]</span>
 														</a> -->
 														
-															<button class="btn" type="button" onclick='addFundingLike(f_num,m_num)'><span id="likeImg"></span></button>
+															<button class="btn" type="button" onclick="addFundingLike()"  id="addFundingLike">
+																<img id="addFundingLike" src="/img/heart.svg">
+																
+															</button>
+															<img src="/img/heart-fill.svg">
+																<img src="/img/heart.svg">
+															<span >[[${dto.l_count}]]</span>
 															
-															<span>[[${dto.l_count}]]</span>
 														
-														<a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()">펀딩하기</a>
+														<a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()" >펀딩하기</a>
 														<a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
 													</li>
 												</ul>
 											</div>
 										</div>
+									</form>
 									</div>
 								</div>
 							</div>
@@ -207,70 +214,73 @@
   
 //https://myit.tistory.com/26
 //좋아요_v1
-  $(document).ready(function () {
+/*   $(document).ready(function () {
       let likeVal = document.getElementById('like_check').value
       const boardId = $("#f_num").val();
       const memberId = $("#m_num").val();
       console.log(memberId);
       console.log(likeVal);
-      const likeImg = document.getElementById("likeImg")
+      const likeImg = document.getElementById("fundingLike")
 
       if (likeVal > 0) {
-          likeImg.src = "img/heart-fill.svg";
+          likeImg.src = "/img/heart-fill.svg";
       } else {
-          likeImg.src = "img/heart.svg";
+          likeImg.src = "/img/heart.svg";
       }
       // 좋아요 버튼을 클릭 시 실행되는 코드
-      $("#likeImg").on("click", function () {
+      $("#fundingLike").on("click", function () {
           $.ajax({
-              url: '/funding/like',
+              url: '/funding/fundingDetail',
               type: 'POST',
               data: {'f_num': f_num, 'm_num': m_num},
               success: function (data) {
                   if (data == 1) {
-                      $("#likeImg").attr("src", "img/heart-fill.svg");
+                      $("#fundingLike").attr("src", "img/heart-fill.svg");
                       location.href="/board/"+boardId;
 
                   } else {
-                      $("#likeImg").attr("src", "img/heart.svg");
+                      $("#fundingLike").attr("src", "img/heart.svg");
                       location.href="/board/"+boardId;
                   }
               }, error: function () {
-                  $("#likeImg").attr("src", "/assets/img/like_click.png");
+                  $("#fundingLike").attr("src", "/assets/img/like_click.png");
                   console.log('엥')
               }
 
           });
 
       });
-  });
+  }); */
   
   //좋아요_v2 https://kimfk567.tistory.com/66
-  function addFundingLike(f_num,m_num){ 
+  function addFundingLike(){ 
+	  
+	  var retrieveFundingLike = [[${f_like.dto}]];
+	  
       $.ajax({
              type : "POST",  
-             url : "/funding/addFundingLike",       
+             url : "/like/addFundingLike",       
              dataType : "json",   
-             data : {'f_num' : f_num ,'m_num' : m_num},
+             data : {'funding_f_num' : f_num ,'member_m_num' : m_num},
              error : function () {
-                 $("#likeImg").attr("src", "img/heart.svg");
+                 $("#addFundingLike").attr("src", "/img/heart.svg");
                  console.log('LikeError')
              },
-             success : function(likeCheck) {
+             success : function(addFundingLike) {
                  
-                     if(likeCheck == 0){
-                    	 $("#likeImg").attr("src", "img/heart.svg");
+                     if(retrieveFundingLike == 0){
+                    	 $("#addFundingLike").attr("src", "/img/heart.svg");
                          /* location.href="/fundingDetail/"+f_num; */
                      	
                      }
-                     else if (likeCheck == 1){
-                   		$("#likeImg").attr("src", "img/heart-fill.svg");
+                     else if (retrieveFundingLike == 1){
+                   		$("#addFundingLike").attr("src", "/img/heart-fill.svg");
                        /*  location.href="/fundingDetail/"+f_num; */
                       
 
-                 }else if(likeCheck == 2){
-                	 $("#likeImg").attr("src", "img/heart.svg");
-                	 likeCheck = 0;
+                 }else if(retrieveFundingLike == 2){
+                	 $("#removeFundingLike").attr("src", "/img/heart.svg");
+                	 
                  	
                  }
              }
