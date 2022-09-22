@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="site.moregreen.basic.MyPage.MyPageMapper">
+		
+	
+	<select id="selectFuningLikeList" parameterType="" resultType="" > 
+		
+		select	f.f_title,
+				f.f_rate,
+				f.f_bname,
+				f.f_enddate
+				i.i_num as i_num,
+			    i.i_name as filename,
+			    i.i_uuid as uuid
+		from f_like l 
+		left outer join funding f
+		on l.funding_f_num = f.f_num
+		left outer join image i
+		on f.f_num = i.funding_f_num
+		where member_m_num = #{m_num}
+		and i.i_type = 1
+		order by l.l_num desc		
+		
+	</select>
+		
+</mapper>
