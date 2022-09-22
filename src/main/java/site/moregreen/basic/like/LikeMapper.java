@@ -8,11 +8,11 @@ import site.moregreen.basic.command.LikeDto;
 public interface LikeMapper {
 
 
-	public LikeDto registFundingLike(LikeDto likeDto); //찜하기
+	public void createFundingLike(LikeDto dto); //찜하기
 	
-	public int deleteFundingLike(int l_num); //찜하기 취소
+	public void deleteFundingLike(LikeDto dto); //찜하기 취소
 	
-	public int fundingLikeCheck(int f_num); //찜하기 중복검사
+	public int retrieveFundingLike(LikeDto dto); //찜하기 중복검사
 
 
 }
