@@ -18,7 +18,7 @@ public class LikeServiceImpl implements LikeService{
 	//찜하기
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int addFundingLike(LikeDto dto) {
+	public LikeDto addFundingLike(LikeDto dto, int f_num, int m_num) {
 		
 		return likeMapper.registFundingLike(dto);
 	}
@@ -36,5 +36,7 @@ public class LikeServiceImpl implements LikeService{
 		
 		return likeMapper.fundingLikeCheck(f_num);
 	}
+
+
 
 }

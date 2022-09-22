@@ -1,6 +1,7 @@
 package site.moregreen.basic.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
@@ -22,12 +23,12 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
-
-import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.kakaoPay.KakaoPayService;
 import site.moregreen.basic.like.LikeService;
+
+import site.moregreen.basic.purchase.PurchaseService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
@@ -37,11 +38,15 @@ import site.moregreen.basic.util.PageVo;
 public class FundingController {
 
 	@Setter(onMethod_ = @Autowired)
-    private KakaoPayService kakaopay;
+    private KakaoPayService kakaopayService;
 	
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;
+	
+	@Autowired
+	@Qualifier("purchaseService")
+	PurchaseService purchaseService;
 
 	@Autowired
 	@Qualifier("likeService")
@@ -150,10 +155,32 @@ public class FundingController {
 	}
 
 	@GetMapping("fundingPurchaseResult")
-	public String fundingPurchaseResult(@RequestParam("pg_token") String pg_token, Model model) {
-		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
+	public String fundingPurchaseResult(@RequestParam("pg_token") String pg_token, 
+										Model model) {
+		
+		Map<String, Object> hashMap = kakaopayService.kakaoPayInfo(pg_token);
+		int result = purchaseService.addPurchase(hashMap);
+		System.out.println("=============================" + result);
+		
+		model.addAttribute("info", hashMap.get("kakaoPayApprovalVO"));
+		
 		return "funding/fundingPurchaseResult";
 	}
 	
-
+	@GetMapping("fundingPurchaseCancel")
+	public String fundingPurchaseCancel() {
+		return "funding/fundingPurchaseCancel";
+	}
+	
+	@GetMapping("fundingPurchaseFail")
+	public String fundingPurchaseFail() {
+		return "funding/fundingPurchaseFail";
+	}
+	
+	@GetMapping("orderList")
+	public String orderList(Model model, 
+							Criteria cri, 
+							HttpSession session ) {
+		return "funding/orderList";
+	}
 }

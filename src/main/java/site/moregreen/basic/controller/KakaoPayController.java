@@ -3,6 +3,7 @@ package site.moregreen.basic.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,7 +19,7 @@ import site.moregreen.basic.purchase.PurchaseService;
 public class KakaoPayController {
 
 	@Setter(onMethod_ = @Autowired)
-    private KakaoPayService kakaopay;
+    private KakaoPayService kakaopayService;
     
 	@Autowired
 	@Qualifier("purchaseService")
@@ -34,9 +35,15 @@ public class KakaoPayController {
     public String kakaoPay(FundingDto fundingDto,
     					   PurchaseDto purchaseDto,
     					   DeliveryDto deliveryDto,
-    					   MemberDto memberDto) {
+    					   MemberDto memberDto,
+    					   Model model) {
     	
-        return "redirect:" + kakaopay.kakaoPayReady(fundingDto, purchaseDto, deliveryDto, memberDto);
+    	model.addAttribute("fundingDto", fundingDto);
+    	model.addAttribute("purchaseDto", purchaseDto);
+    	model.addAttribute("deliveryDto", deliveryDto);
+    	model.addAttribute("memberDto", memberDto);
+    	
+        return "redirect:" + kakaopayService.kakaoPayReady(fundingDto, purchaseDto, deliveryDto, memberDto);
  
     }
 }
