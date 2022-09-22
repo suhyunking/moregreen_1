@@ -76,6 +76,12 @@ public class MemberServiceImpl implements MemberService {
 			return memberMapper.selectTotal(cri);
 		}
 
+		@Override
+		public int retrievePw(String m_id, String m_email) {
+			return memberMapper.findPw(m_id, m_email);
+		}
+
+	
 	
 
 }
