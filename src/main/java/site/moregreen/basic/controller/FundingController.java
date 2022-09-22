@@ -178,4 +178,10 @@ public class FundingController {
 		return "funding/fundingPurchaseFail";
 	}
 	
+	@GetMapping("orderList")
+	public String orderList(Model model, 
+							Criteria cri, 
+							HttpSession session ) {
+		return "funding/orderList";
+	}
 }
