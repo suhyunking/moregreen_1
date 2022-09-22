@@ -27,14 +27,16 @@
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$(".overlappedID").click(function(){
-			// console.log($("#m_id").val());
-			$("#join").attr("type","button");
+		$("#overlappedID").click(function(){
 			const m_id= $("#m_id").val();
+			if(m_id==null|| m_id==""){
+				alert("아이디를 입력해주세요")
+			} else{
+			$("#join").attr("type","button");
 			$.ajax({
 				type:"get",
 				async: false,
-				url: "http://localhost:8383/member/idCheck",
+				url: "/member/idCheck",
 				data: {m_id:m_id},
 				success: function(data){
 					if(data==1){
@@ -48,7 +50,8 @@
 						$("#join").attr("type", "submit");
 					}
 				}
-			})
+			})}
+			
 		});
 		
 		 $(".pwConfirm").keyup(function(){
@@ -109,7 +112,7 @@
                         <span th:style="${'color: red;'}" th:text="${valid_m_id}"></span>	
                     </div>
                     <div class="">
-                    <button type="button" class="btn btn-lg bg-gradient-primary overlappedID">중복확인</button>
+                    <button type="button" class="btn btn-lg bg-gradient-primary" id="overlappedID">중복확인</button>
                     <span id="olmessage"></span>
                     </div>
                     

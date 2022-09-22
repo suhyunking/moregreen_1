@@ -31,5 +31,10 @@ public interface MemberService {
 	//관리자 회원목록 
 	public List<MemberDto> retrieveMemberList(Criteria cri);
 	public int retrieveTotal(Criteria cri);
-
+	
+	
+	public int retrievePw(String m_id, String m_email);
+	
+	
 }
+

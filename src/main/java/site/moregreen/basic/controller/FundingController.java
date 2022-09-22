@@ -27,7 +27,7 @@ import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.kakaoPay.KakaoPayService;
-
+import site.moregreen.basic.like.LikeService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
