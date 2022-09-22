@@ -18,23 +18,27 @@ public class LikeServiceImpl implements LikeService{
 	//찜하기
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public LikeDto addFundingLike(LikeDto dto, int f_num, int m_num) {
+	public int doFundingLike(LikeDto dto) {
 		
-		return likeMapper.registFundingLike(dto);
+		likeMapper.createFundingLike(dto);
+		
+		return 1;
 	}
 
 	//찜하기 취소
+	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int removeFundingLike(int l_num) {
+	public int removeFundingLike(LikeDto dto) {
 		
-		return likeMapper.deleteFundingLike(l_num);
+		likeMapper.deleteFundingLike(dto);
+		
+		return 1;
 	}
 
 	//찜하기 중복검사
 	@Override
-	public int retrieveFundingLike(int f_num) {
-		
-		return likeMapper.fundingLikeCheck(f_num);
+	public int checkFundingLike(LikeDto dto) {
+		return likeMapper.retrieveFundingLike(dto);
 	}
 
 

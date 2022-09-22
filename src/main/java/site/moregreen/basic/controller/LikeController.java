@@ -3,11 +3,9 @@ package site.moregreen.basic.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.java.Log;
@@ -44,49 +42,61 @@ public class LikeController {
 	 * return "/profile/projectInterest"; }
 	 */
 	
-	
-
-	
-	  @ResponseBody
-	 
-	  @RequestMapping("/addFundingLike") 
-	  public void addFundingLike(@RequestBody LikeDto dto, 
-			  						@RequestParam("f_num") int f_num,
-			  						@RequestParam("m_num") int m_num,
-			  						Model model) {
-		  
-	   System.out.println("========컨트롤러 연결 성공===========");
-	  
-	   //찜하기가 되어있는지 확인하기 위해 m_num과 f_num을 보냄
-	  likeService.addFundingLike(dto, m_num, f_num);
-	  //찾은 정보를 likeDto로 담아서 보냄
-	  model.addAttribute("dto", dto);
-	  
-	  
-	 
-	  }
-	 
-	  
-	  @ResponseBody
-	  
-	  @RequestMapping("/removeFundingLike") 
-	  public void removeFundingLike(int l_num) {
-	  System.out.println("좋아요 싫어요!");
-	  likeService.removeFundingLike(l_num); 
-	  }
-	 	
-	  
-	  
-	  @PostMapping("retrieveFundingLike") 
-	  public int retrieveFundingLike(int f_num) { 
-	  int check = likeService.removeFundingLike(f_num);
+	@RequestMapping(value="fundingLike",method=RequestMethod.POST)
+	public @ResponseBody int heart(@ModelAttribute LikeDto likeDto) {
+		int result = likeService.doFundingLike(likeDto); 
 		
-		if(check == 0) { likeService.retrieveFundingLike(f_num); 
-		} else {
-		likeService.retrieveFundingLike(f_num); } 
+		return result;
+	}
+	
+	@RequestMapping(value="deleteFundingLike",method=RequestMethod.POST)
+	public @ResponseBody int deleteHeart(@ModelAttribute LikeDto likeDto) {
+		int result = likeService.removeFundingLike(likeDto); 
 		
-		return check; 
-		}
+		return result;
+	}
+	
+	@RequestMapping(value="checkFundingLike",method=RequestMethod.POST)
+	public @ResponseBody int checkHeart(@ModelAttribute LikeDto likeDto) {
+		int result = likeService.checkFundingLike(likeDto); 
+		
+		return result;
+	}
+	
+//	  @ResponseBody
+//	  
+//	  public void addFundingLike(@RequestBody LikeDto dto, 
+//			  						@RequestParam("f_num") int f_num,
+//			  						@RequestParam("m_num") int m_num,
+//			  						Model model) {
+//		  
+//	   System.out.println("========컨트롤러 연결 성공===========");
+//	  
+//	   //찜하기가 되어있는지 확인하기 위해 m_num과 f_num을 보냄
+//	  likeService.addFundingLike(dto, m_num, f_num);
+//	  //찾은 정보를 likeDto로 담아서 보냄
+//	  model.addAttribute("dto", dto);
+//	 
+//	  }
+	 
+	  
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping("/removeFundingLike") public void removeFundingLike(int
+	 * l_num) { System.out.println("좋아요 싫어요!");
+	 * likeService.removeFundingLike(l_num); }
+	 * 
+	 * 
+	 * 
+	 * @PostMapping("retrieveFundingLike") public int retrieveFundingLike(int f_num)
+	 * { int check = likeService.removeFundingLike(f_num);
+	 * 
+	 * if(check == 0) { likeService.retrieveFundingLike(f_num); } else {
+	 * likeService.retrieveFundingLike(f_num); }
+	 * 
+	 * return check; }
+	 */
 	  
 	  
 /*

@@ -27,7 +27,6 @@ import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.kakaoPay.KakaoPayService;
 import site.moregreen.basic.like.LikeService;
-
 import site.moregreen.basic.purchase.PurchaseService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
@@ -73,6 +72,15 @@ public class FundingController {
 	public String fundingDetail(@RequestParam("f_num") int f_num, Model model) {
 		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
 		model.addAttribute("fundingList", fundingList);
+		FundingDto fundingDto = fundingList.get(0);
+		int heart = 0;
+		
+		if(fundingDto.getL_count() != null) {
+			heart = fundingDto.getL_count();
+		}
+		
+		model.addAttribute("heart", heart);
+		
 		return "funding/fundingDetail"; 
 	}
 	

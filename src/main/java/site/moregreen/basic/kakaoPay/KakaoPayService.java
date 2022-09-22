@@ -110,7 +110,6 @@ public class KakaoPayService {
         try {
             kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
             hashMap.put("kakaoPayApprovalVO", kakaoPayApprovalVO);
-            log.info("" + hashMap);
             
             return hashMap;
         

@@ -89,13 +89,12 @@
 															<span>[[${dto.l_count}]]</span>
 														</a> -->
 														
-															<button class="btn" type="button" onclick="addFundingLike()"  id="addFundingLike">
-																<img id="addFundingLike" src="/img/heart.svg">
-																
+															<button class="btn heart" type="button">
+																<i class="lni lni-heart" id="heart"></i>
+																<span th:if="${dto.l_count != null and dto.l_count != ''}">[[${dto.l_count}]]</span>
+																<span th:unless="${dto.l_count != null and dto.l_count != ''}">0</span>
 															</button>
-															<img src="/img/heart-fill.svg">
-																<img src="/img/heart.svg">
-															<span >[[${dto.l_count}]]</span>
+															
 															
 														
 														<a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()" >펀딩하기</a>
@@ -212,83 +211,68 @@
 	  document.getElementById('p_total').value = total;
 	}
   
-//https://myit.tistory.com/26
-//좋아요_v1
-/*   $(document).ready(function () {
-      let likeVal = document.getElementById('like_check').value
-      const boardId = $("#f_num").val();
-      const memberId = $("#m_num").val();
-      console.log(memberId);
-      console.log(likeVal);
-      const likeImg = document.getElementById("fundingLike")
-
-      if (likeVal > 0) {
-          likeImg.src = "/img/heart-fill.svg";
-      } else {
-          likeImg.src = "/img/heart.svg";
-      }
-      // 좋아요 버튼을 클릭 시 실행되는 코드
-      $("#fundingLike").on("click", function () {
-          $.ajax({
-              url: '/funding/fundingDetail',
-              type: 'POST',
-              data: {'f_num': f_num, 'm_num': m_num},
-              success: function (data) {
-                  if (data == 1) {
-                      $("#fundingLike").attr("src", "img/heart-fill.svg");
-                      location.href="/board/"+boardId;
-
-                  } else {
-                      $("#fundingLike").attr("src", "img/heart.svg");
-                      location.href="/board/"+boardId;
-                  }
-              }, error: function () {
-                  $("#fundingLike").attr("src", "/assets/img/like_click.png");
-                  console.log('엥')
-              }
-
-          });
-
-      });
-  }); */
   
-  //좋아요_v2 https://kimfk567.tistory.com/66
-  function addFundingLike(){ 
-	  
-	  var retrieveFundingLike = [[${f_like.dto}]];
-	  
-      $.ajax({
-             type : "POST",  
-             url : "/like/addFundingLike",       
-             dataType : "json",   
-             data : {'funding_f_num' : f_num ,'member_m_num' : m_num},
-             error : function () {
-                 $("#addFundingLike").attr("src", "/img/heart.svg");
-                 console.log('LikeError')
-             },
-             success : function(addFundingLike) {
-                 
-                     if(retrieveFundingLike == 0){
-                    	 $("#addFundingLike").attr("src", "/img/heart.svg");
-                         /* location.href="/fundingDetail/"+f_num; */
-                     	
-                     }
-                     else if (retrieveFundingLike == 1){
-                   		$("#addFundingLike").attr("src", "/img/heart-fill.svg");
-                       /*  location.href="/fundingDetail/"+f_num; */
-                      
+  
+  
+  $(document).ready(function () {
 
-                 }else if(retrieveFundingLike == 2){
-                	 $("#removeFundingLike").attr("src", "/img/heart.svg");
-                	 
-                 	
-                 }
-             }
-         });
-  }
-	
-	
-	
+      var heartval = [[${heart}]];
+      var heartByClass = $(".heart");
+      var fNumById = $("#f_num");
+      var mNumById = $("#m_num");
+      
+      var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+      $.ajax({
+          url :'/like/checkFundingLike',
+          type :'POST',
+          data : sendData,
+          success : function(data){
+        	  if(data) {
+        	  	$('#heart').prop("class","lni lni-heart-filled");
+        	  }
+          }
+       });
+      
+      $(".heart").on("click", function () {
+    	  event.preventDefault();
+      var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+      
+      $.ajax({
+          url :'/like/checkFundingLike',
+          type :'POST',
+          data : sendData,
+          success : function(data){
+        	  if(data) {
+        		  heartval = heartval - 1;
+        		  $(".heart").prop('name', heartval);
+        		  $(".heart").find('span').html(heartval);
+        		  $('#heart').prop("class","lni lni-heart");
+    			  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+                  
+                  $.ajax({
+                      url :'/like/deleteFundingLike',
+                      type :'POST',
+                      data : sendData
+                  });
+              }
+              else{
+            	  heartval = heartval + 1;
+        		  $(".heart").prop('name', heartval);
+        		  $('#heart').prop("class","lni lni-heart-filled");
+    	    	  $(".heart").find('span').html(heartval);
+        		  
+    	    	  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
+                  
+                  $.ajax({
+                      url :'/like/fundingLike',
+                      type :'POST',
+                      data : sendData
+                  });
+              }
+          }
+      });
+  })
+})
 
 </script>
 
