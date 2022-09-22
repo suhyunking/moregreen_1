@@ -1032,11 +1032,12 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`purchase` (
   `p_amount` INT NULL,
   `p_total` INT NULL,
   `p_method` INT NULL,
-  `p_date` DATE NULL,
+  `p_tid` VARCHAR(60) NULL,
+  `p_date` DATETIME NULL,
   `delivery_d_num` INT NOT NULL,
   `member_m_num` INT NOT NULL,
   `funding_f_num` INT NOT NULL,
-  PRIMARY KEY (`p_num`, `delivery_d_num`),
+  PRIMARY KEY (`p_num`),
   CONSTRAINT `fk_purchase_delivery`
     FOREIGN KEY (`delivery_d_num`)
     REFERENCES `moregreen`.`delivery` (`d_num`)
