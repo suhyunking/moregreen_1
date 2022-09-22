@@ -2,9 +2,15 @@ package site.moregreen.basic.controller;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import site.moregreen.basic.funding.FundingService;
+import site.moregreen.basic.util.Criteria;
 
 
 
@@ -12,8 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mypage")
 public class MypageController {
 
+	@Autowired
+	@Qualifier("fundingService")
+	FundingService fundingService;
+	
 	@GetMapping("/fundingLikeList")
-	public String fundingLikeList() {	
+	public String fundingLikeList(Criteria criteria, Error error, Model model) {	
+		
+		
+		
 		return "mypage/fundingLikeList";
 	}
 	
