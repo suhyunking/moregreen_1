@@ -18,9 +18,11 @@
                      <form class="row g-3" action="/kakaoPay" method="post">
                      	<input type="hidden" name="f_num" th:value="${fundingDto.f_num}">
                      	<input type="hidden" name="f_reward" th:value="${fundingDto.f_reward}">
+                     	<input type="hidden" name="f_totalmoney" th:value="${fundingDto.f_totalmoney}">
                      	<input type="hidden" name="p_amount" th:value="${purchaseDto.p_amount}">
                      	<input type="hidden" name="p_total" th:value="${purchaseDto.p_total}">
                      	<input type="hidden" name="m_id" th:value="${session.member.m_id}">
+                     	<input type="hidden" name="m_num" th:value="${session.member.m_num}">
                         <div class="text-sm pb-30">
                            <div class="wow fadeInUp" data-wow-delay=".7s">
                               <div class="row">

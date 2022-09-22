@@ -1,10 +1,10 @@
 package site.moregreen.basic.purchase;
 
-import site.moregreen.basic.command.DeliveryDto;
-import site.moregreen.basic.command.PurchaseDto;
+import java.util.Map;
 
 public interface PurchaseService {
 	
-	public int addPurchase(PurchaseDto purchaseDto, DeliveryDto deliveryDto);
+	// 배송지, 구매 정보 등록
+	public int addPurchase(Map<String, Object> hashMap);
 	
 }
