@@ -88,15 +88,11 @@
 															
 															<span>[[${dto.l_count}]]</span>
 														</a> -->
-														
 															<button class="btn heart" type="button">
 																<i class="lni lni-heart" id="heart"></i>
 																<span th:if="${dto.l_count != null and dto.l_count != ''}">[[${dto.l_count}]]</span>
 																<span th:unless="${dto.l_count != null and dto.l_count != ''}">0</span>
 															</button>
-															
-															
-														
 														<a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()" >펀딩하기</a>
 														<a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
 													</li>
@@ -210,10 +206,8 @@
 	  document.getElementById('p_amount').value = amount;
 	  document.getElementById('p_total').value = total;
 	}
-  
-  
-  
-  
+
+  // 찜하기
   $(document).ready(function () {
 
       var heartval = [[${heart}]];
