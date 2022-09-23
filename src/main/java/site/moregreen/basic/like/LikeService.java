@@ -5,12 +5,12 @@ import site.moregreen.basic.command.LikeDto;
 public interface LikeService {
 	
 		//찜하기
-		public int addFundingLike(LikeDto dto);
+		public int doFundingLike(LikeDto dto);
 		
 		//찜하기 취소
-		public int removeFundingLike(int l_num);
+		public int removeFundingLike(LikeDto dto);
 		
 		//찜하기 개수 조회
-		public int retrieveFundingLike(int f_num);
+		public int checkFundingLike(LikeDto dto);
 
 }

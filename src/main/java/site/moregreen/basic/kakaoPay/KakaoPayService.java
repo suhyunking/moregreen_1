@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.http.HttpEntity;
@@ -27,17 +29,13 @@ import site.moregreen.basic.command.PurchaseDto;
 @Transactional(readOnly = true) //service impl에서 모든 method에 적용됨 (select에서 사용)
 public class KakaoPayService {
 
-	/*
-	 * @Autowired PurchaseMapper purchaseMapper;
-	 */
-	
 	private static final String HOST = "https://kapi.kakao.com";
 	private String m_id;
 	private String orderId = createOrderId();
 
 	private KakaoPayReadyVO kakaoPayReadyVO = new KakaoPayReadyVO();
 	private KakaoPayApprovalVO kakaoPayApprovalVO;
-
+	Map<String, Object> hashMap = new HashMap<>();
 
     
     public String kakaoPayReady(FundingDto fundingDto, PurchaseDto purchaseDto, DeliveryDto deliveryDto, MemberDto memberDto) {
@@ -63,15 +61,18 @@ public class KakaoPayService {
         params.add("total_amount", purchaseDto.getP_total().toString());
         params.add("tax_free_amount", "0");
         params.add("approval_url", "http://localhost:8383/funding/fundingPurchaseResult");
-        params.add("cancel_url", "http://localhost:8383/kakaoPayCancel");
-        params.add("fail_url", "http://localhost:8383/kakaoPaySuccessFail");
+        params.add("cancel_url", "http://localhost:8383/funding/fundingPurchaseCancel");
+        params.add("fail_url", "http://localhost:8383/funding/fundingPurchaseFail");
  
          HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
  
         try {
             kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
             
-//            purchaseMapper.createPurchase();
+            hashMap.put("fundingDto", fundingDto);
+            hashMap.put("purchaseDto", purchaseDto);
+            hashMap.put("deliveryDto", deliveryDto);
+            hashMap.put("memberDto", memberDto);
             
             return kakaoPayReadyVO.getNext_redirect_pc_url();
  
@@ -85,7 +86,7 @@ public class KakaoPayService {
         
     }
     
-    public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
+    public Map<String, Object> kakaoPayInfo(String pg_token) {
  
         RestTemplate restTemplate = new RestTemplate();
  
@@ -108,9 +109,9 @@ public class KakaoPayService {
         
         try {
             kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
-            log.info("" + kakaoPayApprovalVO);
-          
-            return kakaoPayApprovalVO;
+            hashMap.put("kakaoPayApprovalVO", kakaoPayApprovalVO);
+            
+            return hashMap;
         
         } catch (RestClientException e) {
             // TODO Auto-generated catch block

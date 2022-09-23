@@ -1,5 +1,6 @@
 package site.moregreen.basic.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -113,6 +115,13 @@ public class MemberController {
 		return "member/memberFindPw";
 	}
 	
+	@GetMapping("/findPw")
+    public int findPw(@RequestParam String m_id, @RequestParam String m_email){
+        return memberService.retrievePw(m_id, m_email);
+    }
+	
+	
+    
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

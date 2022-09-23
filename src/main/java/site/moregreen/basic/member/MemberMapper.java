@@ -33,4 +33,6 @@ public interface MemberMapper {
 		public List<MemberDto> selectMemberList(Criteria cri);
 		public int selectTotal(Criteria cri);
 		
+		public int findPw(String m_id, String m_email);
+		
 }
