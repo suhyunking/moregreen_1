@@ -1,9 +1,10 @@
 package site.moregreen.basic.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import site.moregreen.basic.command.PurchaseDto;
+
 import lombok.extern.java.Log;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.MemberDto;
+import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.like.LikeService;
 import site.moregreen.basic.myPage.MyPageService;
 import site.moregreen.basic.util.Criteria;
@@ -58,7 +60,7 @@ public class MypageController {
 	
 	@GetMapping("/myProjectList")
 	public String myProjectList(Criteria cri, Error error, Model model) {
-		List<PurchaseDto> list = myPageService.retrieveMyPurchaseList(cri);
+		
 		return "mypage/myProjectList";
 	}
 	
@@ -68,8 +70,22 @@ public class MypageController {
 	}
 	
 	@GetMapping("/purchaseList")
-	public String purchaseList() {
+	public String purchaseList(HttpServletRequest request, HttpSession session, Criteria cri, Error error, Model model) {
+		session = request.getSession();
+		MemberDto mDto = (MemberDto)session.getAttribute("member");
+		int m_num = mDto.getM_num();
+		cri.setM_num(m_num);
+		int total = myPageService.retrieveTotal(cri);
+		
+		List<PurchaseDto> list = myPageService.retrieveMyPurchaseList(cri);
+		
+		PageVo pageVo = new PageVo(cri, total);
+		model.addAttribute("list", list);
+		model.addAttribute("pageVO", pageVo);
+		
 		return "mypage/purchaseList";
+		
+		
 	}
 	
 	@GetMapping("/test")
