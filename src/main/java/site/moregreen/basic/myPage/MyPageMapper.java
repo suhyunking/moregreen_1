@@ -1,9 +1,8 @@
 package site.moregreen.basic.myPage;
   
 import java.util.List;
-
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
-
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.util.Criteria;

@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="site.moregreen.basic.myPage.MyPageMapper">
-		
 
+	
 	<resultMap id="selectFundingListMap" type="FundingDto">
 	  <result property="f_num" column="f_num"/>
 	  <result property="f_title" column="f_title"/>
@@ -35,7 +35,8 @@
 	  </collection>
 	</resultMap>
 	
-<!-- 	<select id="selectFuningLikeList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap"> 
+
+	<select id="selectFuningLikeList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap"> 
 		
 		select	f.f_num,
 				f.f_title,
@@ -55,7 +56,7 @@
 		group by l.l_num
 		order by l.l_num desc		
 		
-	</select> -->
+	</select>
 		
 	<select id="selectTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
 
@@ -65,7 +66,6 @@
 	    
 	</select>
 		
-	
 	<select id="selectMyPurchaseList" parameterType="site.moregreen.basic.command.FundingDto" resultMap="selectFundingListMap">
 	
 		select f.f_title as f_title,
@@ -91,4 +91,12 @@
 	</select>  
  -->	
 	
+	<select id="selectTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
+
+		select count(*) as total
+		from f_like
+		where member_m_num = #{m_num}
+	    
+	</select>
+		
 </mapper>
