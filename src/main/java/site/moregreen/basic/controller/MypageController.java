@@ -2,6 +2,8 @@ package site.moregreen.basic.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import site.moregreen.basic.funding.FundingService;
+import site.moregreen.basic.command.PurchaseDto;
+import site.moregreen.basic.myPage.MyPageService;
 import site.moregreen.basic.util.Criteria;
 
 
@@ -18,12 +21,14 @@ import site.moregreen.basic.util.Criteria;
 @RequestMapping("/mypage")
 public class MypageController {
 
+	
 	@Autowired
-	@Qualifier("fundingService")
-	FundingService fundingService;
+	@Qualifier("myPageService")
+	MyPageService myPageService;
+
 	
 	@GetMapping("/fundingLikeList")
-	public String fundingLikeList(Criteria criteria, Error error, Model model) {	
+	public String fundingLikeList(Criteria cri, Error error, Model model) {	
 		
 		
 		
@@ -31,7 +36,8 @@ public class MypageController {
 	}
 	
 	@GetMapping("/myProjectList")
-	public String myProjectList() {
+	public String myProjectList(Criteria cri, Error error, Model model) {
+		List<PurchaseDto> list = myPageService.retrieveMyPurchaseList(cri);
 		return "mypage/myProjectList";
 	}
 	
@@ -49,7 +55,8 @@ public class MypageController {
 	public String test() {
 		return "mypage/test";
 	}
-	
+
+
 	
 //	@GetMapping(value = "/like/{userid}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 //	@ResponseBody
