@@ -1,10 +1,9 @@
 package site.moregreen.basic.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import site.moregreen.basic.command.PurchaseDto;
 import lombok.extern.java.Log;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.LikeDto;
@@ -29,9 +28,11 @@ import site.moregreen.basic.util.PageVo;
 @RequestMapping("/mypage")
 public class MypageController {
 
+	
 	@Autowired
 	@Qualifier("myPageService")
 	MyPageService myPageService;
+
 	
 	@Autowired
 	@Qualifier("likeService")
@@ -56,7 +57,8 @@ public class MypageController {
 	}
 	
 	@GetMapping("/myProjectList")
-	public String myProjectList() {
+	public String myProjectList(Criteria cri, Error error, Model model) {
+		List<PurchaseDto> list = myPageService.retrieveMyPurchaseList(cri);
 		return "mypage/myProjectList";
 	}
 	
@@ -74,6 +76,7 @@ public class MypageController {
 	public String test() {
 		return "mypage/test";
 	}
+
 	
 	@PostMapping("/deleteFundingLikeButton")
 	public String deleteFundingLikeButton(@RequestParam("m_num") int m_num, @RequestParam("f_num") int f_num, LikeDto likeDto) {
@@ -87,7 +90,6 @@ public class MypageController {
 		
 	}
 
-	
 	
 //	@GetMapping(value = "/like/{userid}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 //	@ResponseBody

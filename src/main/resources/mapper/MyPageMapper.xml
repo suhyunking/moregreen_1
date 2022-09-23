@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="site.moregreen.basic.myPage.MyPageMapper">
+
 	
 	<resultMap id="selectFundingListMap" type="FundingDto">
 	  <result property="f_num" column="f_num"/>
@@ -21,6 +22,7 @@
 	  <result property="f_bnum" column="f_bnum"/>
 	  <result property="m_num" column="member_m_num"/>
 	  <result property="m_id" column="m_id"/>
+	  <result property="p_date" column="p_date"/>
 	  <result property="f_regdate" column="f_regdate"/>
 	  <result property="l_count" column="l_count"/>
 	  <collection property="files" ofType="UploadDto">
@@ -33,6 +35,7 @@
 	  </collection>
 	</resultMap>
 	
+
 	<select id="selectFuningLikeList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap"> 
 		
 		select	f.f_num,
@@ -43,7 +46,7 @@
 				i.i_num as i_num,
 			    i.i_name as filename,
 			    i.i_uuid as uuid
-		from f_like l 
+		from likeFunding l 
 		left outer join funding f
 		on l.funding_f_num = f.f_num
 		left outer join image i
@@ -55,6 +58,39 @@
 		
 	</select>
 		
+	<select id="selectTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
+
+		select count(*) as total
+		from likeFunding
+		where member_m_num = #{m_num}
+	    
+	</select>
+		
+	<select id="selectMyPurchaseList" parameterType="site.moregreen.basic.command.FundingDto" resultMap="selectFundingListMap">
+	
+		select f.f_title as f_title,
+			   f.f_bname as f_bname,
+			   f.f_status as f_status,
+			   p.p_date as p_date,
+			   p.p_payament as p_payment
+		from purchase p 
+		left outer join funding f
+		on p.f_num = f.f_num
+		where member_m_num = #{m_num}
+		order by p.p_num desc
+	
+	</select>
+	
+	
+	<!-- <select id="selectPurchaseDetail" parameterType="site.moregreen.basic.command.FundingDto" resultMap="selectFundingListMap">
+
+		select 
+		from 
+		where  
+		
+	</select>  
+ -->	
+	
 	<select id="selectTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
 
 		select count(*) as total

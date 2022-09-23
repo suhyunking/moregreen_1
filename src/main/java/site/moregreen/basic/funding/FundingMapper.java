@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
-import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.util.Criteria;
 
