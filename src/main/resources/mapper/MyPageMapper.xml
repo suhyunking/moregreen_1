@@ -23,6 +23,7 @@
 	  <result property="m_num" column="member_m_num"/>
 	  <result property="m_id" column="m_id"/>
 	  <result property="p_date" column="p_date"/>
+	  <result property="p_payment" column="p_payment"/>
 	  <result property="f_regdate" column="f_regdate"/>
 	  <result property="l_count" column="l_count"/>
 	  <collection property="files" ofType="UploadDto">
@@ -66,18 +67,18 @@
 	    
 	</select>
 		
-	<select id="selectMyPurchaseList" parameterType="site.moregreen.basic.command.FundingDto" resultMap="selectFundingListMap">
+	<select id="selectMyPurchaseList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
 	
-		select f.f_title as f_title,
-			   f.f_bname as f_bname,
-			   f.f_status as f_status,
-			   p.p_date as p_date,
-			   p.p_payament as p_payment
+		select f.f_title ,
+			   f.f_bname ,
+			   f.f_status ,
+			   p.p_date ,
+			   p.p_payment 
 		from purchase p 
 		left outer join funding f
-		on p.f_num = f.f_num
-		where member_m_num = #{m_num}
-		order by p.p_num desc
+		on p.funding_f_num = f.f_num
+		where p.member_m_num = #{m_num} 
+		<!-- order by p.p_num desc -->
 	
 	</select>
 	
@@ -91,12 +92,5 @@
 	</select>  
  -->	
 	
-	<select id="selectTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
-
-		select count(*) as total
-		from f_like
-		where member_m_num = #{m_num}
-	    
-	</select>
 		
 </mapper>

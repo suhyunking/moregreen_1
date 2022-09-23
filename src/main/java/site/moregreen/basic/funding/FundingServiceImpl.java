@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.extern.java.Log;
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
-import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.command.UploadDto;
 import site.moregreen.basic.util.Criteria;
 

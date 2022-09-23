@@ -15,9 +15,9 @@ import site.moregreen.basic.command.FundingDto;
   
   public List<PurchaseDto> retrieveMyPurchaseList(Criteria cri);
   
-  
-  public List<PurchaseDto> retrievePurchaseDetail(int f_num);
-  
+	/*
+	 * public List<PurchaseDto> retrievePurchaseDetail(int f_num);
+	 */
   }
  
 

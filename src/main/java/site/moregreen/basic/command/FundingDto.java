@@ -1,6 +1,7 @@
 package site.moregreen.basic.command;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -31,6 +32,9 @@ public class FundingDto {
 	private Integer l_count; 		//찜하기 개수
 	private Integer m_num;			//회원 번호 FK
 	private String m_id;			//신청자 아이디
+	private Date p_date;			//결제 일자
+	private Integer p_payment;		//결제 상태
+	
 	
 	private List<UploadDto> files = new ArrayList<>(); // 
 	
