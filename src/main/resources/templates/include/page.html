@@ -216,3 +216,34 @@
 	</div>
 
 </th:block>
+
+<th:block th:fragment="myProjectList(pageName , pageVO)">
+	
+	<div class="row">
+		<div class="col-12">
+			<div class="pagination center">
+				<ul class="pagination-list">
+					<th:block th:if="${pageVO.prev}">
+					<li><a class="page-link" th:href="@{myProjectList(page=1, 		
+														  amount=${pageVO.amount},
+														  searchName=${pageVO.cri.searchName},
+														  )}"><i class="lni lni-chevron-left"></i></a></li>
+					</th:block>										  
+					<th:block th:each="num : ${pageVO.pageList}">	
+					<li th:classappend="${num} == ${pageVO.cri.page} ? 'active'" class="page-item "><a class="page-link" th:href="@{myProjectList(page=${num},
+																			  amount=${pageVO.amount},
+																			  searchName=${pageVO.cri.searchName},
+																			  )}">[[${num}]]</a></li>
+					</th:block>		
+					<th:block th:if="${pageVO.next}">												 
+					<li class="page-item"><a class="page-link" th:href="@{myProjectList(page=${pageVO.end + 1},
+																			  amount=${pageVO.amount},
+																			  searchName=${pageVO.cri.searchName},
+																			  )}"><i class="lni lni-chevron-right"></i></a></li>
+					</th:block>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</th:block>

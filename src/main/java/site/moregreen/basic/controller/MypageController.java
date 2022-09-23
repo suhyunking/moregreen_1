@@ -59,8 +59,19 @@ public class MypageController {
 	}
 	
 	@GetMapping("/myProjectList")
-	public String myProjectList(Criteria cri, Error error, Model model) {
+	public String myProjectList(HttpServletRequest request, Criteria cri, Error error, Model model, HttpSession session) {
+		session = request.getSession();
 		
+		MemberDto mmDto = (MemberDto)session.getAttribute("member");
+		int m_num = mmDto.getM_num();
+		cri.setM_num(m_num);
+		
+		int total = myPageService.retrieveTotal(cri);
+		PageVo pageVo = new PageVo(cri, total);
+		
+		List<FundingDto> list = myPageService.retrieveMyProjectList(cri);
+		model.addAttribute("list", list);
+		model.addAttribute("pageVO", pageVo);
 		return "mypage/myProjectList";
 	}
 	
