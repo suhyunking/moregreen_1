@@ -91,6 +91,20 @@
 		
 	</select>  
  -->	
+
+	<select id="selectMyProjectList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap"> 
+		
+		select	f.f_num,
+				f.f_title,
+				f.f_price,
+				f.f_bname,
+				f.f_rate,
+				f.f_regdate,
+				f.f_status
+		from funding f
+		where f.f_status in (1,2,3,4,5) and f.member_m_num = #{m_num}
+	  	order by f.f_num desc
 	
+	</select>	
 		
 </mapper>

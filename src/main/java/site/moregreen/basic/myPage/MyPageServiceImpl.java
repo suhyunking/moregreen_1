@@ -32,8 +32,14 @@ import site.moregreen.basic.util.Criteria;
   	public List<PurchaseDto> retrieveMyPurchaseList(Criteria cri) {
 	  
 	  return myPageMapper.selectMyPurchaseList(cri); 
-  }
+  	}
   
+	@Override
+	public List<FundingDto> retrieveMyProjectList(Criteria cri) {
+		return myPageMapper.selectMyProjectList(cri);
+	}
+  	
+  	
 	/*
 	 * @Override public List<PurchaseDto> retrievePurchaseDetail(int f_num) {
 	 * 
