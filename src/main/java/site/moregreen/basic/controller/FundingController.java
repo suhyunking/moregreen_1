@@ -81,7 +81,7 @@ public class FundingController {
 		
 		model.addAttribute("heart", heart);
 		
-		return "funding/fundingDetail"; 
+		return "/funding/fundingDetail"; 
 	}
 	
 	@PostMapping("/purchaseForm")

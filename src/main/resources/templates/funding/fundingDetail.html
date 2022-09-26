@@ -216,6 +216,7 @@
       var mNumById = $("#m_num");
       
       var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+      
       $.ajax({
           url :'/like/checkFundingLike',
           type :'POST',
@@ -228,45 +229,52 @@
        });
       
       $(".heart").on("click", function () {
+    	  var session = [[${session.member}]];
     	  event.preventDefault();
-      var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
-      
-      $.ajax({
-          url :'/like/checkFundingLike',
-          type :'POST',
-          data : sendData,
-          success : function(data){
-        	  if(data) {
-        		  heartval = heartval - 1;
-        		  $(".heart").prop('name', heartval);
-        		  $(".heart").find('span').html(heartval);
-        		  $('#heart').prop("class","lni lni-heart");
-    			  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
-                  
-                  $.ajax({
-                      url :'/like/deleteFundingLike',
-                      type :'POST',
-                      data : sendData
-                  });
-              }
-              else{
-            	  heartval = heartval + 1;
-        		  $(".heart").prop('name', heartval);
-        		  $('#heart').prop("class","lni lni-heart-filled");
-    	    	  $(".heart").find('span').html(heartval);
-        		  
-    	    	  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
-                  
-                  $.ajax({
-                      url :'/like/fundingLike',
-                      type :'POST',
-                      data : sendData
-                  });
-              }
-          }
-      });
-  })
-})
+    	  
+    	  if(session == null){
+  			alert("로그인 후 이용해주세요");
+  			
+  		  } else {
+  			 var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+  		      
+  		      $.ajax({
+  		          url :'/like/checkFundingLike',
+  		          type :'POST',
+  		          data : sendData,
+  		          success : function(data){
+  		        	  if(data) {
+  		        		  heartval = heartval - 1;
+  		        		  $(".heart").prop('name', heartval);
+  		        		  $(".heart").find('span').html(heartval);
+  		        		  $('#heart').prop("class","lni lni-heart");
+  		    			  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+  		                  
+  		                  $.ajax({
+  		                      url :'/like/deleteFundingLike',
+  		                      type :'POST',
+  		                      data : sendData
+  		                  });
+  		              }
+  		              else{
+  		            	  heartval = heartval + 1;
+  		        		  $(".heart").prop('name', heartval);
+  		        		  $('#heart').prop("class","lni lni-heart-filled");
+  		    	    	  $(".heart").find('span').html(heartval);
+  		        		  
+  		    	    	  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
+  		                  
+  		                  $.ajax({
+  		                      url :'/like/fundingLike',
+  		                      type :'POST',
+  		                      data : sendData
+  		                  });
+  		              }
+  		          }
+  		      });
+  		  }
+  	   })
+	})
 
 </script>
 
