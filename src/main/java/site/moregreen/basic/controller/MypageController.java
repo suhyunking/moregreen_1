@@ -75,10 +75,7 @@ public class MypageController {
 		return "mypage/myProjectList";
 	}
 	
-	@GetMapping("/purchaseDetail")
-	public String purchaseDetail() {
-		return "mypage/purchaseDetail";
-	}
+
 	
 	@GetMapping("/purchaseList")
 	public String purchaseList(HttpServletRequest request, HttpSession session, Criteria cri, Error error, Model model) {
@@ -99,6 +96,22 @@ public class MypageController {
 		
 	}
 	
+	
+	
+	/*
+	 * @GetMapping("/purchaseDetail") public String
+	 * purchaseDetail(@RequestParam("p_num") int p_num, Model model) {
+	 * List<PurchaseDto> purchaseList =
+	 * myPageService.retrievePurchaseDetail(p_num);\
+	 * //model.addAttributes("purchaseList", purchaseList);
+	 * 
+	 * PurchaseDto dto = myPageService.retrievePurchaseDetail(map); return
+	 * "mypage/purchaseDetail"; }
+	 */
+	
+	
+	
+	
 	@GetMapping("/test")
 	public String test() {
 		return "mypage/test";
@@ -117,15 +130,6 @@ public class MypageController {
 		
 	}
 
-	
-//	@GetMapping(value = "/like/{userid}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//	@ResponseBody
-//	public ResponseEntity<List<fundingDto>> getLikeListWithUserid(@PathVariable("userid") String userid) {
-//		//유저아이디를 받는다.
-//		log.info("In Controller Userid : " + userid);
-//		
-//		return new ResponseEntity<>(likeService.getLikeListByUserid(userid), HttpStatus.OK);
-//	}
 
 
 }
