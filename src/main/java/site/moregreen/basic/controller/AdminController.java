@@ -26,12 +26,12 @@ import site.moregreen.basic.util.PageVo;
 @RequestMapping("/admin")
 public class AdminController {
 		
+	@Value("${project.upload.path}")
+	private String uploadPath;
+	 
 	@Autowired
 	@Qualifier("fundingService")
 	FundingService fundingService;	
-
-	@Value("${project.upload.path}")
-	private String uploadPath;
 
 	@Autowired()
 	@Qualifier("memberService")
@@ -41,7 +41,6 @@ public class AdminController {
 	public String adminportal() {
 		return "admin/adminportal";
 	}
-
 
 	@GetMapping
 	public String signIn() {

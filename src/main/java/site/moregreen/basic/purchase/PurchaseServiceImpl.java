@@ -55,7 +55,8 @@ public class PurchaseServiceImpl implements PurchaseService{
 		fundingDto.setF_totalmoney(fTotalMoney);
 		
 		double fRate = (double)fTotalMoney / 500000.0 * 100.0;
-		fundingDto.setF_rate(fRate);
+		int fundingRate = (int)Math.floor(fRate);
+		fundingDto.setF_rate(fundingRate);
 		
 		purchaseMapper.updateFunding(fundingDto);
 		
