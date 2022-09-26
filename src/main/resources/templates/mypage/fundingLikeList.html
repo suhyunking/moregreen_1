@@ -73,7 +73,7 @@
 													<p style="text-align:center">펀딩 마감일</p>
 												</div>
 												<div class="col-lg-3 col-md-3 col-12 align-right">
-													<p style="text-align:center">보기 / 삭제</p> 
+													<p style="text-align:center">삭제</p> 
 												</div>
 											</div>
 										</div>
@@ -101,8 +101,6 @@
 												</div>
 												<div class="col-lg-3 col-md-3 col-12 align-right">
 													<ul class="action-btn" style="text-align:center">
-														<li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-														
 														<form name="deleteFundingLikeButton" action="deleteFundinglikeButton" method="post">
 															<input type="hidden" name="m_num" th:value="${session.member.m_num}">
 															<input type="hidden" name="f_num" th:value="${dto.f_num}">
@@ -111,6 +109,7 @@
 													</ul>
 												</div>
 											</div>
+											<br>
 										</th:block>
 										</div>
 										<th:block th:replace="~{/include/page :: fundingLikeList('fundingLikeList', ${pageVO}) }"></th:block>
