@@ -38,13 +38,14 @@ import site.moregreen.basic.util.Criteria;
 	public List<FundingDto> retrieveMyProjectList(Criteria cri) {
 		return myPageMapper.selectMyProjectList(cri);
 	}
+
+	@Override
+	public List<PurchaseDto> retrievePurchaseDetail(int p_num) {
+		return myPageMapper.selectPurchaseDetail(p_num);
+	}
   	
   	
-	/*
-	 * @Override public List<PurchaseDto> retrievePurchaseDetail(int f_num) {
-	 * 
-	 * return null; }
-	 */
+	
   
   
   
