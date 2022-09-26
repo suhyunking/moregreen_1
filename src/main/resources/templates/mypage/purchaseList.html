@@ -23,9 +23,8 @@
 							<div class="col-lg-3 col-md-12 col-12">
 								<div class="dashboard-sidebar">
 									<div class="user-image">
-										<img src="/images/dashboard/user-image.jpg" alt="#">
 										<h3>
-											회원아이디 <span><a href="javascript:void(0)">이름?이메일?</a></span>
+											[[${session.member.m_id}]]
 										</h3>
 									</div>
 									<div class="dashboard-menu">
@@ -37,7 +36,7 @@
 											<li><a href="deleteMember"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
 										</ul>
 										<div class="button">
-											<a class="btn" href="javascript:void(0)">Logout</a>
+											<a class="btn" href="javascript:void(0)" th:href="@{/member/logout}">Logout</a>
 										</div>
 									</div>
 								</div>
