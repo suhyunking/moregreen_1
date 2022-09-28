@@ -80,13 +80,16 @@
 															<span th:if="${dto.f_status} == 5" class="text-sm"><span class="badge text-bg-danger">실패</span></span>		
 														</div>
 														<div class="col-lg-2 col-md-2 col-12" align="center">
-															<div class="YYYY MM DD HH:mm">[[${dto.p_date}]]</div>
+															<div>
+																<span th:text="${#dates.format(dto.p_date, 'yyyy-MM-dd HH:mm')}">[[${dto.p_date}]]</span>
+															</div>
 														</div>
 														<div class="col-lg-2 col-md-2 col-12" align="center">
 															<span th:if="${dto.p_payment} == 1" class="text-sm"><span class="badge text-bg-success bg-gradient">결제완료</span></span>
-															<span th:if="${dto.p_payment} == 2" class="text-sm"><span class="badge text-bg-danger">결제취소</span></span>		
+															<span th:if="${dto.p_payment} == 2" class="text-sm"><span class="badge text-bg-danger">환불완료</span></span>		
 														</div>
 													</div>
+													<br>
 												</th:block>
 											</div>
 											<th:block th:replace="~{/include/page :: purchaseList('purchaseList', ${pageVO}) }"></th:block>
