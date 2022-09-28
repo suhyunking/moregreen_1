@@ -114,5 +114,15 @@
 	    
 		
 	</select>
+	
+	<update id="updatePurchasePayment">
+	
+		update purchase
+		set p_payment = 2
+		where funding_f_num in (select f_num
+							   	from funding
+							   	where f_status = 4)
+	
+	</update>
 
 </mapper>

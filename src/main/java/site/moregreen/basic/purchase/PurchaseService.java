@@ -17,4 +17,6 @@ public interface PurchaseService {
 	
 	public int retrievePurchaseTotal(Criteria cri); 
 	
+	public int modifyPurchasePayment();
+	
 }
