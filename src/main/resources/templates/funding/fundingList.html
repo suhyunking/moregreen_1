@@ -2,6 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
 
+<style>
+.cover {
+    object-fit: cover;
+  }
+  .fill {
+  object-fit: fill;
+}
+</style>
    <body>
       <section id="wrap">
          <section class="items-grid section custom-padding">
@@ -39,12 +47,14 @@
                <div class="single-head">
                   <div class="row">
                      <div class="input-group">
-                        <div class="col-lg-4 col-md-6 col-12 " th:each="dto : ${fundingList}">
+                        <div class="col-lg-4 col-md-6 col-12 " th:each="dto : ${fundingList}" style="height: 600px">
                            <!-- Start Single Grid -->
-                           <div class="single-grid wow fadeInUp" data-wow-delay=".2s">
-                              <div class="image">
-                                 <a class="thumbnail" th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" th:each="file : ${dto.files}">
-                                 <img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#"></a>
+                           <div class="single-grid wow fadeInUp" data-wow-delay=".2s" style="margin-right:10px">
+                              <div class="image" >
+	                              <div class="fill">
+	                                 <a class="thumbnail" th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" th:each="file : ${dto.files}">
+	                                 <img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#" style="height: 300px;width: 430px;"></a>
+	                              </div>
                               </div>
                               <div class="content">
                                  <div class="top-content">
@@ -54,8 +64,9 @@
                                     </h3>
                                     <ul class="info-list">
                                        <li>[[${dto.f_rate}]]%</li>
-                                       <li><a ><i class="lni lni-timer"></i> [[${dto.f_enddate}]]까지</a></li>
-                                    </ul>
+										<li style="text-align: right;">
+										<a> <i class="lni lni-timer"> </i> [[${dto.f_enddate}]]까지 </a></li>
+									</ul>
                                  </div>
                                  <div class="bottom-content">
                                     <p class="price">
@@ -63,12 +74,13 @@
                                     </p>
                                  </div>
                               </div>
-<!--                            </div> -->
-                  		</div>
-                     </div>
-                  </div>
-               </div>
-               <th:block th:replace="~{/include/page :: fundingList('fundingList', ${pageVO}) }"></th:block>
+
+	                  		</div>
+	                     </div>
+	                  </div>
+	               </div>
+	               <th:block th:replace="~{/include/page :: fundingList('fundingList', ${pageVO}) }"></th:block>
+	            </div>
             </div>
          </form>
          </section>
