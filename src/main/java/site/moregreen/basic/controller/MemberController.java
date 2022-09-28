@@ -95,6 +95,8 @@ public class MemberController {
 		 return"redirect:/index";
 	 }
 	
+	
+	
 	@GetMapping("/memberFindId")
 	public String findID() {
 		return "/member/memberFindId";

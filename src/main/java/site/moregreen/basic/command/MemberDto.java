@@ -1,6 +1,6 @@
 package site.moregreen.basic.command;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -36,5 +36,5 @@ private Integer m_num;
 	private String m_email;
 	
 	private char m_exit;
-	private Timestamp m_exitdate;
+	private Date m_exitdate;
 }
