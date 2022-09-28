@@ -40,8 +40,8 @@ import site.moregreen.basic.util.Criteria;
 	}
 
 	@Override
-	public List<PurchaseDto> retrievePurchaseDetail(int p_num) {
-		return myPageMapper.selectPurchaseDetail(p_num);
+	public List<PurchaseDto> retrieveMyPurchaseDetail(int m_num) {
+		return myPageMapper.selectMyPurchaseDetail(m_num);
 	}
   	
   	

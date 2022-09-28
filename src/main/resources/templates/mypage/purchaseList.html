@@ -69,7 +69,7 @@
 												<th:block th:each="dto : ${list}">
 													<div class="row align-items-center">
 														<div class="col-lg-4 col-md-4 col-12">
-															<p><a th:href="@{/mypage/purchaseDetail(f_num=${dto.f_num}, m_num=${session.member.m_num}, p_num=${dto.p_num})}">[[${dto.f_title}]] </a></p>
+															<p><a th:href="@{/mypage/purchaseDetail(m_num=${session.member.m_num})}">[[${dto.f_title}]] </a></p>
 														</div>
 														<div class="col-lg-2 col-md-2 col-12">
 															<p style="text-align:center">[[${dto.f_bname}]]</p>
