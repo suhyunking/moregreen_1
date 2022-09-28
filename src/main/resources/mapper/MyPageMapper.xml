@@ -43,11 +43,13 @@
 	  <result property="f_price" column="f_price"/>
 	  <result property="f_enddate" column="f_enddate"/>
 	  <result property="f_reward" column="f_reward"/>
+	  <result property="p_num" column="p_num"/>
 	  <result property="p_date" column="p_date"/>
 	  <result property="p_payment" column="p_payment"/>
 	  <result property="p_method" column="p_method"/>
 	  <result property="p_amount" column="p_amount"/>
 	  <result property="p_total" column="p_total"/>
+	  <result property="p_tid" column="p_tid"/>
 	  <result property="d_name" column="d_name"/>
 	  <result property="d_phone" column="d_phone"/>
 	  <result property="d_zipcode" column="d_zipcode"/>
@@ -107,17 +109,19 @@
 	</select>
 	
 	
-	<select id="selectMyPurchaseDetail" parameterType="int" resultMap="selectPurchaseListMap">
+	<select id="selectMyPurchaseDetail" parameterType="site.moregreen.basic.command.PurchaseDto" resultType="PurchaseDto">
 
 		select f.f_title,
 			   f.f_num,
 			   f.f_enddate,
 			   f.f_price,
 			   f.f_reward,
+			   p.p_num,
 			   p.p_amount,
 			   p.p_method,
 			   p.p_date,
 			   p.p_total,
+			   p.p_tid,
 			   p.p_payment,
 			   d.d_name,
 			   d.d_phone,
@@ -130,6 +134,7 @@
 		inner join delivery d
 		on p.delivery_d_num = d.d_num
 		where p.member_m_num = #{m_num}
+		and p.p_num = #{p_num}
 		order by p.p_num desc
 		
 	</select>  
