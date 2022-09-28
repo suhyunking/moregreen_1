@@ -168,8 +168,10 @@ public boolean kakaoPayCancel(PurchaseDto purchaseDto) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
         params.add("tid", purchaseDto.getP_tid());
+        log.info("" + purchaseDto.getP_tid());
+        log.info("" + purchaseDto.getP_total().toString());
         params.add("cancel_amount", purchaseDto.getP_total().toString());
-        params.add("tax_free_amount", "0");
+        params.add("cancel_tax_free_amount", "0");
  
          HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
  

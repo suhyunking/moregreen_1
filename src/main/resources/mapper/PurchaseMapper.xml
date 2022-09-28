@@ -59,5 +59,13 @@
 		where f_num = #{f_num}
 
 	</select>
+	
+	<select id="updatePurchase" parameterType="int">
+
+		update purchase
+		set p_payment = 2
+		where p_num = #{p_num}
+
+	</select>
 
 </mapper>

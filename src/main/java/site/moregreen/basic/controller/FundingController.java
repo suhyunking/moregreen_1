@@ -185,6 +185,11 @@ public class FundingController {
 		return "funding/fundingPurchaseFail";
 	}
 	
+	@GetMapping("fundingRefund")
+	public String fundingRefund() {
+		return "funding/fundingRefund";
+	}
+	
 	@GetMapping("orderList")
 	public String orderList(Model model, 
 							Criteria cri, 
