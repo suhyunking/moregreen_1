@@ -41,18 +41,17 @@
 
 							<div class="dashboard-sidebar">
 								<div class="user-image">
-									<img src="/images/dashboard/user-image.jpg" alt="#">
-									<h3>
-										회원아이디 <span><a href="javascript:void(0)"></a></span>
-									</h3>
+									<h5>
+										[[${session.member.m_id}]] 
+									</h5>
 								</div>
 								<div class="dashboard-menu">
 									<ul>
-										<li><a href="purchaseList1"><i
+										<li><a href="purchaseList"><i
 												class="lni lni-dashboard"></i> 펀딩 구매 내역</a></li>
-										<li><a  href="myProjectList1"><i
+										<li><a  href="myProjectList"><i
 												class="lni lni-pencil-alt"></i> 내가 만든 프로젝트</a></li>
-										<li><a href="fundingLikeList1"><i
+										<li><a href="fundingLikeList"><i
 												class="lni lni-heart"></i> 찜목록</a></li>
 										<li><a href="changePw"><i class="lni lni-envelope"></i>
 												PW변경</a></li>
@@ -91,7 +90,7 @@
 													<input type="password" name="m_pw" placeholder="비밀번호"
 														class="form-control" id="pwmsg">
 												</div>
-												<div class="button">
+												<div class="button" align="center">
 										<a class="btn" id="btn">탈퇴하기</a>
 									</div>
 

@@ -1,5 +1,6 @@
 package site.moregreen.basic.purchase;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -41,9 +42,13 @@ public class PurchaseServiceImpl implements PurchaseService{
 		int m_num = mDto.getM_num();
 		String p_tid = kVo.getTid();
 		Date p_date = kVo.getApproved_at();
+		Calendar cal1 = Calendar.getInstance();
+		cal1.setTime(p_date);
+		cal1.add(Calendar.HOUR, -9);
+		
 		
 		purchaseDto.setP_tid(p_tid);
-		purchaseDto.setP_date(p_date);
+		purchaseDto.setP_date(cal1.getTime());
 		purchaseDto.setD_num(d_num);
 		purchaseDto.setF_num(f_num);
 		purchaseDto.setM_num(m_num);
@@ -62,6 +67,12 @@ public class PurchaseServiceImpl implements PurchaseService{
 		
 		
 		return 1;
+	}
+
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public void modifyPurchase(int p_num) {
+		purchaseMapper.updatePurchase(p_num);
 	}
 	
 }
