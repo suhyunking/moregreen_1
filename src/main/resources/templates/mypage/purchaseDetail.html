@@ -7,6 +7,45 @@
 			<!-- top -->
 			<section class="items-grid section custom-padding" >
 				<div class="container">
+
+               <div class="col-12">
+                  <div class="section-title">
+                     <h2 class="wow fadeInUp" data-wow-delay=".4s">마이페이지</h2>
+	                 <p class="wow fadeInUp" data-wow-delay=".6s">펀딩 구매 상세 내역</p>
+                  </div>
+               </div>
+			</div>
+
+
+			<section class="dashboard section">
+				<div class="container">
+					<div class="row">
+						<!-- 						<th:block
+							th:replace="~{./mypage/test :: setContent( ~{:: #wrap}  ) }"></th:block> -->
+
+						<div class="col-lg-3 col-md-12 col-12">
+
+							<div class="dashboard-sidebar">
+								<div class="user-image">
+									<h5>
+										[[${session.member.m_id}]] 
+									</h5>
+								</div>
+								<div class="dashboard-menu">
+									<ul>
+										<li><a class="active" href="purchaseList"><i
+												class="lni lni-dashboard"></i> 펀딩 구매 내역</a></li>
+										<li><a href="myProjectList"><i
+												class="lni lni-pencil-alt"></i> 내가 만든 프로젝트</a></li>
+										<li><a href="fundingLikeList"><i
+												class="lni lni-heart"></i> 찜목록</a></li>
+										<li><a href="changePw"><i
+												class="lni lni-envelope"></i> PW변경</a></li>
+										<li><a href="deleteMember"><i
+												class="lni lni-trash"></i> 회원 탈퇴</a></li>
+
+									</ul>
+
 	               <div class="col-12">
 	                  <div class="section-title">
 	                     <h2 class="wow fadeInUp" data-wow-delay=".4s">마이페이지</h2>
@@ -31,6 +70,7 @@
 											<li><a href="changePw"><i class="lni lni-envelope"></i> PW변경</a></li>
 											<li><a href="deleteMember"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
 										</ul>
+
 									<div class="button">
 										<a class="btn" href="javascript:void(0)" th:href="@{/member/logout}">Logout</a>
 									</div>

@@ -41,10 +41,9 @@
 
 							<div class="dashboard-sidebar">
 								<div class="user-image">
-									<img src="/images/dashboard/user-image.jpg" alt="#">
-									<h3>
-										회원아이디 <span><a href="javascript:void(0)"></a></span>
-									</h3>
+									<h5>
+										[[${session.member.m_id}]] 
+									</h5>
 								</div>
 								<div class="dashboard-menu">
 									<ul>
@@ -91,7 +90,7 @@
 													<input type="password" name="m_pw" placeholder="비밀번호"
 														class="form-control" id="pwmsg">
 												</div>
-												<div class="button">
+												<div class="button" align="center">
 										<a class="btn" id="btn">탈퇴하기</a>
 									</div>
 

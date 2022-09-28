@@ -72,6 +72,33 @@
 
 	        });
 		
+		 $(".overlappedEmail").blur(function(){
+				const m_email= $("#m_email").val();
+				if(m_email==null|| m_email==""){
+					//alert("이메일을 입력해주세요")
+				} else{
+				$("#join").attr("type","button");
+				$.ajax({
+					type:"get",
+					async: false,
+					url: "/member/emailCheck",
+					data: {m_email:m_email},
+					success: function(data){
+						if(data==1){
+							$("#olmessage1").text("이미 사용중인 이메일입니다.");
+							$("#olmessage1").addClass("olmessagef");
+							$("#olmessage1").removeClass("olmessaget");
+						} else{
+							$("#olmessage1").text("사용 가능한 이메일입니다.");
+							$("#olmessage1").addClass("olmessaget");
+							$("#olmessage1").removeClass("olmessagef");
+							$("#join").attr("type", "submit");
+						}
+					}
+				})
+				}
+			});
+		 
 	})
 	
 </script>
@@ -120,21 +147,23 @@
                     <div class="input-group input-group-outline mb-3">
                         <input type="password" id=m_pw name=m_pw placeholder="비밀번호" 
                             class="form-control" >
+                            </div>
                         <span th:style="${'color: red;'}" th:text="${valid_m_pw}"></span>
-                    </div>
+                    
                     <div class="input-group input-group-outline mb-3">
                         <input type="password" id=m_pw_confirm name=m_pw_confirm placeholder="비밀번호 확인"
                             class="form-control pwConfirm"> 
-                        
+                        </div>
                             <span id="confirmMsg"></span>
-                    </div>
+                    
                     
                     <div class="input-group input-group-outline mb-3">
-                        <input type="email" name=m_email 
-                            placeholder="example@xxxx.com" class="form-control">
-                        
+                        <input type="email" name=m_email
+                            placeholder="example@xxxx.com" class="form-control overlappedEmail" id="m_email">
+                        </div>
                         <span th:style="${'color: red;'}" th:text="${valid_m_email}"></span>
-                    </div>
+                    	<span id="olmessage1"></span>
+                    
 
 
 
