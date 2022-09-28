@@ -38,10 +38,10 @@
 
 							<div class="dashboard-sidebar">
 								<div class="user-image">
-									<img src="/images/dashboard/user-image.jpg" alt="#">
-									<h3>
-										회원아이디 <span><a href="javascript:void(0)"></a></span>
-									</h3>
+									
+									<h5>
+										[[${session.member.m_id}]] 
+									</h5>
 								</div>
 								<div class="dashboard-menu">
 									<ul>
@@ -72,23 +72,23 @@
 										th:action="@{/mypage/changePwForm}" method="post">
 
 
-										<div class="input-group input-group-outline my-3">
+										<div class="card-body">
 											<input type="hidden" name="m_id" th:value="${session.member.m_id}">
 											<input type="text" name="m_id"
 												th:value="${session.member.m_id}" class="form-control" disabled/>
-										</div>
-										<div class="input-group input-group-outline mb-3">
+										<span></span>
+										
 											<input type="password" id=m_pw name=m_pw placeholder="변경할 비밀번호"
 												class="form-control"> <span
 												th:style="${'color: red;'}" th:text="${valid_m_pw}"></span>
-										</div>
-										<div class="input-group input-group-outline mb-3">
+										
+										
 											<input type="password" id=m_pw_confirm name=m_pw_confirm
 												placeholder="변경할 비밀번호 확인" class="form-control pwConfirm">
 
 											<span id="confirmMsg"></span>
 										</div>
-										<div class="button">
+										<div class="button" align="center">
 									<a class="btn" id="checkpw">변경하기</a>
 								</div>
 
@@ -99,7 +99,7 @@
 					</div>
 				</div>
 				</div>
-				</div>
+				
 
 			</section>
 		</section>
