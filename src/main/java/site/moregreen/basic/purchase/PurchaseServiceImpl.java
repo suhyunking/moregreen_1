@@ -2,6 +2,7 @@ package site.moregreen.basic.purchase;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.MemberDto;
 import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.kakaoPay.KakaoPayApprovalVO;
+import site.moregreen.basic.util.Criteria;
  
 @Log
 @Service("purchaseService") 
@@ -73,6 +75,16 @@ public class PurchaseServiceImpl implements PurchaseService{
 	@Transactional(rollbackFor = RuntimeException.class)
 	public void modifyPurchase(int p_num) {
 		purchaseMapper.updatePurchase(p_num);
+	}
+
+	@Override
+	public List<PurchaseDto> retrievePurchaseList(Criteria cri) {
+		return purchaseMapper.selectPurchaseList(cri);
+	}
+
+	@Override
+	public int retrievePurchaseTotal(Criteria cri) {
+		return purchaseMapper.selectPurchaseTotal(cri);
 	}
 	
 }

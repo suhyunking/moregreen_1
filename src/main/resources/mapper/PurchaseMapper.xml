@@ -51,21 +51,68 @@
 	 					   )
 	 </insert>
 	 
-	 <select id="updateFunding" resultType="int" parameterType="FundingDto">
-
+	<update id="updateFunding" parameterType="FundingDto">
+	
 		update funding
 		set f_rate = #{f_rate},
 			f_totalmoney = #{f_totalmoney}
 		where f_num = #{f_num}
 
-	</select>
+	</update>
 	
-	<select id="updatePurchase" parameterType="int">
+	<update id="updatePurchase" parameterType="int">
 
 		update purchase
 		set p_payment = 2
 		where p_num = #{p_num}
 
+	</update>
+	
+	<select id="selectPurchaseList" resultType="PurchaseDto" parameterType="site.moregreen.basic.util.Criteria">
+	
+		select p.p_num,
+			   p.p_total,
+			   p.p_payment,
+			   p.p_date,
+			   p.p_method,
+			   f.f_title,
+			   f.f_rate,
+			   f.f_status,
+			   m.m_id
+		from purchase p
+		inner join funding f
+		on p.funding_f_num = f.f_num
+		inner join member m 
+		on p.member_m_num = m.m_num
+		where 1
+		<if test="searchStatus != '' and searchStatus != null"> 
+	    and p.p_payment = #{searchStatus} 
+	    </if>
+	    <if test="searchName != '' and searchName != null"> 
+	    and f.f_title like concat('%', #{searchName} ,'%')
+	    </if>
+		order by p.p_num desc
+		limit #{pageStart}, #{amount}
+		
+			   
+
+	</select>
+	
+	<select id="selectPurchaseTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
+	
+		select count(*) as total
+		from purchase p
+		inner join funding f
+		on p.funding_f_num = f.f_num
+		where 1
+		<if test="searchStatus != '' and searchStatus != null"> 
+	    and p.p_payment = #{searchStatus} 
+	    </if>
+	    <if test="searchName != '' and searchName != null"> 
+	    and f.f_title like concat('%', #{searchName} ,'%')
+	    </if>
+	    
+		
 	</select>
 
 </mapper>

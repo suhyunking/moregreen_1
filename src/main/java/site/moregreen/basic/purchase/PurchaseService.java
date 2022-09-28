@@ -1,6 +1,10 @@
 package site.moregreen.basic.purchase;
 
+import java.util.List;
 import java.util.Map;
+
+import site.moregreen.basic.command.PurchaseDto;
+import site.moregreen.basic.util.Criteria;
 
 public interface PurchaseService {
 	
@@ -9,7 +13,8 @@ public interface PurchaseService {
 
 	public void modifyPurchase(int p_num);
 	
+	public List<PurchaseDto> retrievePurchaseList(Criteria cri);
 	
-	
+	public int retrievePurchaseTotal(Criteria cri); 
 	
 }

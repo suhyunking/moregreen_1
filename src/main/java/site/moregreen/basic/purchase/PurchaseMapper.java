@@ -1,10 +1,13 @@
 package site.moregreen.basic.purchase;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.PurchaseDto;
+import site.moregreen.basic.util.Criteria;
 
 @Mapper
 public interface PurchaseMapper {
@@ -19,4 +22,8 @@ public interface PurchaseMapper {
 	public void updateFunding(FundingDto fundingDto);
 	
 	public void updatePurchase(int p_num);
+	
+	public List<PurchaseDto> selectPurchaseList(Criteria cri);
+	
+	public int selectPurchaseTotal(Criteria cri); 
 }
