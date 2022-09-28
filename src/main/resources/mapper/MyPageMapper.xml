@@ -69,7 +69,8 @@
 		
 	<select id="selectMyPurchaseList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
 	
-		select f.f_title,
+		select f.f_num,
+			   f.f_title,
 			   f.f_bname,
 			   f.f_status,
 			   p.p_date,
@@ -83,7 +84,7 @@
 	</select>
 	
 	
-	<select id="selectPurchaseDetail" parameterType="int" resultMap="selectFundingListMap">
+	<select id="selectMyPurchaseDetail" parameterType="int" resultMap="selectFundingListMap">
 
 		select f.f_title,
 			   f.f_num,

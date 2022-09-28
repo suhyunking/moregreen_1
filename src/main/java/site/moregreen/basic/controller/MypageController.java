@@ -104,21 +104,15 @@ public class MypageController {
 		
 	}
 	
-	
-	
-	/*
-	 * @GetMapping("/purchaseDetail") public String
-	 * purchaseDetail(@RequestParam("p_num") int p_num, Model model) {
-	 * List<PurchaseDto> purchaseList =
-	 * myPageService.retrievePurchaseDetail(p_num);\
-	 * //model.addAttributes("purchaseList", purchaseList);
-	 * 
-	 * PurchaseDto dto = myPageService.retrievePurchaseDetail(map); return
-	 * "mypage/purchaseDetail"; }
-	 */
-	
-	
-	
+	 @GetMapping("/purchaseDetail") 
+	 public String purchaseDetail(@RequestParam("f_num") int f_num, @RequestParam("p_num") int p_num, @RequestParam("m_num") int m_num, Model model) {
+	 List<PurchaseDto> purchaseList = myPageService.retrievePurchaseDetail(p_num);
+	 //model.addAttributes("purchaseList", purchaseList);
+	 
+//	 PurchaseDto dto = myPageService.retrievePurchaseDetail(map); 
+	 return "mypage/purchaseDetail"; 
+	 }
+	 
 	
 	@GetMapping("/test")
 	public String test() {
