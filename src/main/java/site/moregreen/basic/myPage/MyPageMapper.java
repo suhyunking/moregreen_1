@@ -17,7 +17,7 @@ import site.moregreen.basic.util.Criteria;
   public List<PurchaseDto> selectMyPurchaseList(Criteria cri);
   
   //구매 상세페이지 출력 
-  public List<PurchaseDto> selectPurchaseDetail(int p_num); 
+  public List<PurchaseDto> selectMyPurchaseDetail(int m_num); 
   
   public List<FundingDto> selectMyProjectList(Criteria cri);
   

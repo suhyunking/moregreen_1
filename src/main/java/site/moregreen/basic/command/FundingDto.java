@@ -32,6 +32,7 @@ public class FundingDto {
 	private Integer l_count; 		//찜하기 개수
 	private Integer m_num;			//회원 번호 FK
 	private String m_id;			//신청자 아이디
+	private Integer p_num;			//결제 번호
 	private Date p_date;			//결제 일자
 	private Integer p_payment;		//결제 상태
 	

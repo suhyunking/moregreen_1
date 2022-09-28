@@ -105,11 +105,14 @@ public class MypageController {
 	}
 	
 	 @GetMapping("/purchaseDetail") 
-	 public String purchaseDetail(@RequestParam("f_num") int f_num, @RequestParam("p_num") int p_num, @RequestParam("m_num") int m_num, Model model) {
-	 List<PurchaseDto> purchaseList = myPageService.retrievePurchaseDetail(p_num);
-	 //model.addAttributes("purchaseList", purchaseList);
+	 public String purchaseDetail(@RequestParam("m_num") int m_num, Model model) {
+	 List<PurchaseDto> purchaseList = myPageService.retrieveMyPurchaseDetail(m_num);
 	 
-//	 PurchaseDto dto = myPageService.retrievePurchaseDetail(map); 
+	 for(PurchaseDto dto : purchaseList) {
+		 System.out.println(dto.getD_addr());
+	 }
+	 model.addAttribute("purchaseList", purchaseList);
+	 
 	 return "mypage/purchaseDetail"; 
 	 }
 	 
