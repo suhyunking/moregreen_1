@@ -4,10 +4,8 @@
 <th:block
 	th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
 	<body>
-
 		<section id="wrap">
 			<section class="items-grid section custom-padding">
-				
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
@@ -17,44 +15,35 @@
 							</div>
 						</div>
 					</div>
-					
 					<form name="fundingForm" action="fundingForm" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="m_num" th:value="${session.member.m_num}">
 						<div class="container">
 							<div class="input-group mb-3">
 								<span class="input-group-text" >프로젝트 명칭</span>
 								<input type="text" class="form-control" name="f_title" th:value="${dto != null ? dto.f_title : '' }" placeholder="프로젝트 명칭 작성">
-							
 							</div>
-	 								
 							<div class="input-group mb-3">
 								<span class="input-group-text" >상호명</span>
 									<input type="text" class="form-control" name="f_bname" th:value="${dto != null ? dto.f_bname : '' }" placeholder="상호명 작성">
 							</div>
-	
 							<div class="input-group mb-3">
 								<span class="input-group-text">프로젝트 내용</span>
 								<textarea class="form-control" placeholder="내용 작성" name="f_content" th:value="${dto != null ? dto.f_content : '' }"></textarea>
-	
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text">목표 금액</span>
 								<div class="form-control">500,000원</div>
 	
 							</div>
-							
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="basic-addon1">리워드 명칭</span> 
 								<input type="text" class="form-control" placeholder="리워드명 작성" name="f_reward" th:value="${dto != null ? dto.f_reward : '' }">
 							</div>
-	
-	
 							<div class="input-group mb-3">
 								<span class="input-group-text">리워드 금액</span> 
 								<input type="text" class="form-control" placeholder="예) 10000" name="f_price" th:value="${dto != null ? dto.f_price : '' }">
 								<span class="input-group-text">원</span>
 							</div>
-	
 							<div class="input-group mb-3">
 								<label class="input-group-text" for="inputGroupFile02">대표 사진</label> 
 								<input type="file" class="form-control" id="mainFile" name="mainFile">
@@ -68,19 +57,14 @@
 								<input type="file" class="form-control" id="contentFile" name="contentFile">
 								<input type="file" class="form-control" id="contentFile" name="contentFile">
 							</div> 
-							
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="basic-addon1">사업자 등록번호</span>
 								<input type="text" class="form-control" placeholder="사업자 등록번호 작성" name="f_bnum" th:value="${dto != null ? dto.f_bnum : '' }">
 							</div>
-	
-	
-	
 							<div class="input-group mb-3">
 								<label class="input-group-text" for="inputGroupFile01">사업자 등록증</label>
 								<input type="file" class="form-control" id="file" name="file" accept=".jpg, .png">
 							</div>
-							
 							<div class="input-group mb-3">
 								<label class="input-group-text" for="inputGroupSelect01">프로젝트 기간(일)</label> 
 								<select class="form-select" name="f_days" th:value="${dto != null ? dto.f_days : '' }">
@@ -95,9 +79,6 @@
 							<div class="save">신청하기</div></button>
 						</div>
 					</form>
-
-					
-
 				</div>
 			</section>
 		</section>
@@ -105,6 +86,9 @@
 </th:block>
 
 <script>
+let socket = new SockJS(url + '/chat');
+stompClient = Stomp.over(socket);
+
 
 function checkCorporateRegiNumber(number){
 	var numberMap = number.replace(/-/gi, '').split('').map(function (d){

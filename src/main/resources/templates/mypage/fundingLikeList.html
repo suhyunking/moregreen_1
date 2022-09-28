@@ -32,9 +32,12 @@
 						<div class="col-lg-3 col-md-12 col-12">
 							<div class="dashboard-sidebar">
 								<div class="user-image">
+
 									<h5>
 										[[${session.member.m_id}]] 
 									</h5>
+
+									
 								</div>
 								<div class="dashboard-menu">
 									<ul>
@@ -50,7 +53,7 @@
 												class="lni lni-trash"></i> 회원 탈퇴</a></li>
 									</ul>
 									<div class="button">
-										<a class="btn" href="javascript:void(0)">Logout</a>
+										<a class="btn" href="javascript:void(0)" th:href="@{/member/logout}">Logout</a>
 									</div>
 								</div>
 							</div>
@@ -100,11 +103,9 @@
 												</div>
 												<div class="col-lg-3 col-md-3 col-12 align-right">
 													<ul class="action-btn" style="text-align:center">
-														<form name="deleteFundingLikeButton" action="deleteFundinglikeButton" method="post">
-															<input type="hidden" name="m_num" th:value="${session.member.m_num}">
-															<input type="hidden" name="f_num" th:value="${dto.f_num}">
-															<li><a id="delete" type="submit"><i class="lni lni-trash"></i></a></li>
-														</form>
+														<input type="hidden" id="m_num" name="m_num" th:value="${session.member.m_num}">
+														<input type="hidden" id="f_num" name="f_num" th:value="${dto.f_num}">
+														<li><a class="heart" type="submit"><i class="lni lni-trash"></i></a></li>
 													</ul>
 												</div>
 											</div>
@@ -119,8 +120,38 @@
 					</div>
 				</div>
 			</section>
-			
+
 		</section>
 	</body>
 </th:block>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+    var heartByClass = $(".heart");
+    var fNumById = $("#f_num");
+    var mNumById = $("#m_num");
+    $(".heart").on("click", function () {
+    console.log(fNumById.val());
+
+  	  event.preventDefault();
+  	  
+		 var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+	      
+	      $.ajax({
+	          url :'/like/deleteFundingLike',
+	          type :'POST',
+	          data : sendData,
+	          success : function(data){
+	        	  if(data) {
+	        		  alert("찜하기가 취소되었습니다.");
+	        		  location.reload();
+	              }
+	          }
+	      });
+	   })
+	})
+	
+</script>
 </html>

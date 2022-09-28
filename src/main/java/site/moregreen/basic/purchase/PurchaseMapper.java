@@ -18,4 +18,5 @@ public interface PurchaseMapper {
 	//해당 펀딩에 대한 값 update
 	public void updateFunding(FundingDto fundingDto);
 	
+	public void updatePurchase(int p_num);
 }

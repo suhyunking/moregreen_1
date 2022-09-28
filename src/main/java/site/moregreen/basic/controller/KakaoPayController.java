@@ -46,4 +46,17 @@ public class KakaoPayController {
         return "redirect:" + kakaopayService.kakaoPayReady(fundingDto, purchaseDto, deliveryDto, memberDto);
  
     }
+    
+    @PostMapping("/kakaoPayCancel")
+    public String kakaoPayCancel(PurchaseDto purchaseDto, Model model) {
+
+    	boolean result = kakaopayService.kakaoPayCancel(purchaseDto);
+    	if(result) {
+    		purchaseService.modifyPurchase(purchaseDto.getP_num());
+    		//   model.addAttribute("purchaseDto", purchaseDto);
+    		
+    	}
+        return "redirect:/funding/fundingRefund";
+ 
+    }
 }

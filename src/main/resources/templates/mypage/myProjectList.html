@@ -1,8 +1,9 @@
+myProjectList.html
+
 <!-- 펀딩 구매 내역 -->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
-<th:block
-	th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
+<th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
 	<body>
 		<section id="wrap">
 			<div class="breadcrumbs">
@@ -28,9 +29,11 @@
 						<div class="col-lg-3 col-md-12 col-12">
 							<div class="dashboard-sidebar">
 								<div class="user-image">
+
 									<h5>
 										[[${session.member.m_id}]] 
 									</h5>
+
 								</div>
 								<div class="dashboard-menu">
 									<ul>
@@ -41,7 +44,7 @@
 										<li><a href="deleteMember"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
 									</ul>
 									<div class="button">
-										<a class="btn" href="javascript:void(0)">Logout</a>
+										<a class="btn" href="javascript:void(0)" th:href="@{/member/logout}">Logout</a>
 									</div>
 								</div>
 							</div>
@@ -66,26 +69,33 @@
 										<div class="invoice-items default-list-style">
 											<div class="default-list-title">
 												<div class="row align-items-center">
-													<div class="col-lg-4 col-md-4 col-12"><p>프로젝트명</p></div>
-													<div class="col-lg-2 col-md-2 col-12"><p>상호명</p></div>
-													<div class="col-lg-2 col-md-2 col-12"><p>펀딩률</p></div>
-													<div class="col-lg-2 col-md-2 col-12"><p>신청일</p></div>
-													<div class="col-lg-2 col-md-2 col-12"><p>개설 신청 여부</p></div>
+													<div class="col-lg-4 col-md-4 col-12">
+														<p style="text-align:center">프로젝트명</p>
+													</div>
+													<div class="col-lg-2 col-md-2 col-12">
+														<p style="text-align:center">상호명</p>
+													</div>
+													<div class="col-lg-2 col-md-2 col-12">
+														<p style="text-align:center">펀딩률</p></div>
+													<div class="col-lg-2 col-md-2 col-12">
+														<p style="text-align:center">신청일</p></div>
+													<div class="col-lg-2 col-md-2 col-12">
+														<p style="text-align:center">개설 신청 여부</p></div>
 												</div>
 											</div>
 											<div class="single-list">
 												<th:block th:each="dto : ${list}">
 													<div class="row align-items-center">
-														<div class="col-lg-4 col-md-4 col-12"><p th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}">[[${dto.f_title}]]<span>[[${dto.f_price}]]원</span></p></div>
-														<div class="col-lg-2 col-md-2 col-12"><p>[[${dto.f_bname}]]</p></div>
-														<div class="col-lg-2 col-md-2 col-12"><p>[[${dto.f_rate}]]%</p></div>
-														<div class="col-lg-2 col-md-2 col-12"><p>[[${dto.f_regdate}]]</p></div>
-														<div class="col-lg-2 col-md-2 col-12">
-															<td th:if="${dto.f_status} == 1" class="text-sm"><span class="row align-items-center">심사중 </td>
-															<td th:if="${dto.f_status} == 2" class="text-sm"><span class="row align-items-center">반려 </td>
-															<td th:if="${dto.f_status} == 3" class="text-sm"><span class="row align-items-center">진행중 </td>
-															<td th:if="${dto.f_status} == 4" class="text-sm"><span class="row align-items-center">성공 </td>
-															<td th:if="${dto.f_status} == 5" class="text-sm"><span class="row align-items-center">실패 </td>
+														<div class="col-lg-4 col-md-4 col-12"><p th:href="@{/funding/fundingDetail(m_num=${session.member.m_num},p_num=${dto.f_num})}">[[${dto.f_title}]]<span>[[${dto.f_price}]]원</span></p></div>
+														<div class="col-lg-2 col-md-2 col-12" align="center"><p>[[${dto.f_bname}]]</p></div>
+														<div class="col-lg-2 col-md-2 col-12" align="center"><p>[[${dto.f_rate}]]%</p></div>
+														<div class="col-lg-2 col-md-2 col-12" align="center"><p>[[${dto.f_regdate}]]</p></div>
+														<div class="col-lg-2 col-md-2 col-12" align="center">
+															<span th:if="${dto.f_status} == 1" class="text-sm"><span class="badge text-bg-warning">심사중</span></span>
+															<span th:if="${dto.f_status} == 2" class="text-sm"><span class="badge text-bg-danger">반려</span></span>
+															<span th:if="${dto.f_status} == 3" class="text-sm"><span class="badge text-bg-warning">진행중</span></span>
+															<span th:if="${dto.f_status} == 4" class="text-sm"><span class="badge text-bg-success bg-gradient">성공</span></span>
+															<span th:if="${dto.f_status} == 5" class="text-sm"><span class="badge text-bg-danger">실패</span></span>
 														</div>
 													</div>
 												</th:block>
