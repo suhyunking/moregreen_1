@@ -86,5 +86,11 @@ public class PurchaseServiceImpl implements PurchaseService{
 	public int retrievePurchaseTotal(Criteria cri) {
 		return purchaseMapper.selectPurchaseTotal(cri);
 	}
+
+	@Override
+	public int modifyPurchasePayment() {
+		purchaseMapper.updatePurchasePayment();
+		return 1;
+	}
 	
 }
