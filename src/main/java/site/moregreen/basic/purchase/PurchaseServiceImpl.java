@@ -68,5 +68,11 @@ public class PurchaseServiceImpl implements PurchaseService{
 		
 		return 1;
 	}
+
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public void modifyPurchase(int p_num) {
+		purchaseMapper.updatePurchase(p_num);
+	}
 	
 }

@@ -101,11 +101,9 @@
 												</div>
 												<div class="col-lg-3 col-md-3 col-12 align-right">
 													<ul class="action-btn" style="text-align:center">
-														<form name="deleteFundingLikeButton" action="deleteFundinglikeButton" method="post">
-															<input type="hidden" name="m_num" th:value="${session.member.m_num}">
-															<input type="hidden" name="f_num" th:value="${dto.f_num}">
-															<li><a id="delete" type="submit"><i class="lni lni-trash"></i></a></li>
-														</form>
+														<input type="hidden" id="m_num" name="m_num" th:value="${session.member.m_num}">
+														<input type="hidden" id="f_num" name="f_num" th:value="${dto.f_num}">
+														<li><a class="heart" type="submit"><i class="lni lni-trash"></i></a></li>
 													</ul>
 												</div>
 											</div>
@@ -120,35 +118,37 @@
 					</div>
 				</div>
 			</section>
-			<div class="newsletter section">
-				<div class="container">
-					<div class="inner-content">
-						<div class="row align-items-center">
-							<div class="col-lg-6 col-md-6 col-12">
-								<div class="title">
-									<i class="lni lni-alarm"></i>
-									<h2>Newsletter</h2>
-									<p>We don't send spam so don't worry.</p>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-12">
-								<div class="form">
-									<form action="#" method="get" target="_blank"
-										class="newsletter-form">
-										<input name="EMAIL" placeholder="Your email address" type="email">
-										<div class="button">
-											<button class="btn">
-												Subscribe<span class="dir-part"></span>
-											</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</section>
 	</body>
 </th:block>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+    var heartByClass = $(".heart");
+    var fNumById = $("#f_num");
+    var mNumById = $("#m_num");
+    $(".heart").on("click", function () {
+    console.log(fNumById.val());
+
+  	  event.preventDefault();
+  	  
+		 var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+	      
+	      $.ajax({
+	          url :'/like/deleteFundingLike',
+	          type :'POST',
+	          data : sendData,
+	          success : function(data){
+	        	  if(data) {
+	        		  alert("찜하기가 취소되었습니다.");
+	        		  location.reload();
+	              }
+	          }
+	      });
+	   })
+	})
+	
+</script>
 </html>
