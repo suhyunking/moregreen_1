@@ -16,6 +16,8 @@ public class PurchaseDto {
 	private Integer f_num;				//펀딩 번호 FK
 	private String f_title;
 	private String f_price;
+	private Integer f_rate;			//펀딩률
+	private Integer f_status;		//진행 상태
 	private String f_enddate;
 	private String f_reward;
 	
@@ -35,6 +37,7 @@ public class PurchaseDto {
 	private String d_detailaddr;	//상세주
 
 	private Integer m_num;
+	private String m_id;
 	
 }
 
