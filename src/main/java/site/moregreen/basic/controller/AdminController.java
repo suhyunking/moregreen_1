@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import site.moregreen.basic.command.FundingDto;
@@ -51,14 +52,13 @@ public class AdminController {
 	@PostMapping("/loginForm")
 	public String loginForm(MemberDto memberDto, HttpServletRequest req, RedirectAttributes rttr, Model model ) throws Exception {
 		HttpSession session =req.getSession();
-		 MemberDto member=  memberService.loginMember(memberDto);
-		
 		 
-		 if(member.getM_id().equals("admin")) {
+		MemberDto member=  memberService.loginMember(memberDto);
+		//System.out.println(member); 
+		 if(member.getM_id().equals("admin") && member.getM_pw().equals("admin")) {
 			 session.setAttribute("member", member);
 				session.setMaxInactiveInterval(1800);
 				//System.out.println("admin 로그인 됨");
-				//System.out.println(member);
 				return"redirect:/admin/adminportal";
 		} else {
 			session.setAttribute("member", null);
