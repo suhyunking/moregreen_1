@@ -137,7 +137,11 @@
 					                             </div>
 					                             <div class="col-12">
 													<div class="form-group button mb-0" align="center">
-														<a type="submit" class="btn btn-success " th:href="@{/}">결제 취소</a>
+														<form action="/kakaoPayCancle" method="post">
+															<input type="hidden" name="p_tid" th:value="${dto.p_tid}">
+															<input type="hidden" name="p_total" th:value="${dto.p_total}">
+															<button type="submit" class="btn btn-success ">결제 취소</button>
+														</form>
 													</div>
 												</div>
 											</div>

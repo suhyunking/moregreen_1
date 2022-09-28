@@ -17,7 +17,7 @@ import site.moregreen.basic.util.Criteria;
 	public List<PurchaseDto> retrieveMyPurchaseList(Criteria cri);
   
 	
-	public List<PurchaseDto> retrieveMyPurchaseDetail(int m_num);
+	public PurchaseDto retrieveMyPurchaseDetail(PurchaseDto dto);
 	
   
 	//내 프로젝트 목록 조회
