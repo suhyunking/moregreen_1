@@ -3,6 +3,7 @@ package site.moregreen.basic.purchase;
 import java.util.List;
 import java.util.Map;
 
+import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.PurchaseDto;
 import site.moregreen.basic.util.Criteria;
 
@@ -19,4 +20,5 @@ public interface PurchaseService {
 	
 	public int modifyPurchasePayment();
 	
+	public List<PurchaseDto> retrievePurchaseListForCancel(List<FundingDto> fundingList);
 }

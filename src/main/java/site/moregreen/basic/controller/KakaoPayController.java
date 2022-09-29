@@ -53,8 +53,6 @@ public class KakaoPayController {
     	boolean result = kakaopayService.kakaoPayCancel(purchaseDto);
     	if(result) {
     		purchaseService.modifyPurchase(purchaseDto.getP_num());
-    		//   model.addAttribute("purchaseDto", purchaseDto);
-    		
     	}
         return "redirect:/funding/fundingRefund";
  

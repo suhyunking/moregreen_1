@@ -168,8 +168,6 @@ public boolean kakaoPayCancel(PurchaseDto purchaseDto) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
         params.add("tid", purchaseDto.getP_tid());
-        log.info("" + purchaseDto.getP_tid());
-        log.info("" + purchaseDto.getP_total().toString());
         params.add("cancel_amount", purchaseDto.getP_total().toString());
         params.add("cancel_tax_free_amount", "0");
  
@@ -177,7 +175,6 @@ public boolean kakaoPayCancel(PurchaseDto purchaseDto) {
  
         try {
             KakaoPayCancelVO kakaoPayCancelVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/cancel"), body, KakaoPayCancelVO.class);
-            
             
             return true;
  

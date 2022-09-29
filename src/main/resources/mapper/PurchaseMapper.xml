@@ -94,8 +94,30 @@
 		order by p.p_num desc
 		limit #{pageStart}, #{amount}
 		
-			   
-
+	</select>
+	
+	<select id="selectPurchaseListForCancel" resultType="PurchaseDto">
+		
+		select p.p_num,
+			   p.p_total,
+			   p.p_payment,
+			   p.p_date,
+			   p.p_method,
+			   f.f_title,
+			   f.f_rate,
+			   f.f_status,
+			   m.m_id
+		from purchase p
+		inner join funding f
+		on p.funding_f_num = f.f_num
+		inner join member m 
+		on p.member_m_num = m.m_num
+		where p.funding_f_num in 
+		<foreach collection="fundingList" item="list" open="(" close=")" separator=",">
+		#{list.f_num}
+		</foreach>
+		and p.p_payment = 1
+		
 	</select>
 	
 	<select id="selectPurchaseTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
