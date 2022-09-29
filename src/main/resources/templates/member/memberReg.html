@@ -111,6 +111,16 @@
 				}
 			});
 		 
+		 $("#m_pw").focusout(function(){
+	          var pwcheck = /^(?=.*[0-9])(?=.*[a-zA-Z!@#$%^&*]).{8,20}$/;
+	          var confirmMsg1=document.getElementById('confirmMsg1');
+	              if(!pwcheck.test($("#m_pw").val())){
+	            	  confirmMsg1.style.color="red";
+	                 confirmMsg1.innerHTML="영문, 숫자, (특수문자)로 8자이상으로 입력."
+	                 } else{
+	     	            confirmMsg1.innerHTML="";
+	    	         }
+	       })
 	})
 	
 </script>

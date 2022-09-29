@@ -149,8 +149,6 @@ public class AdminController {
 		return "admin/fundingOrderList";
 	}
 	
-	
-	
 	@GetMapping("/userList")
 	public String userList(Model model, Criteria cri, HttpSession session) {
 		

@@ -38,6 +38,9 @@ public class KakaoPayController {
     					   MemberDto memberDto,
     					   Model model) {
     	
+    	System.out.println(deliveryDto.getD_phone());   
+    	
+    	
     	model.addAttribute("fundingDto", fundingDto);
     	model.addAttribute("purchaseDto", purchaseDto);
     	model.addAttribute("deliveryDto", deliveryDto);
