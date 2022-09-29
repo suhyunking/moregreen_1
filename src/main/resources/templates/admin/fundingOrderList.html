@@ -48,8 +48,9 @@
 						<table class="table table-flush" id="datatable-search">
 							<thead class="thead-light">
 								<tr>
-									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">번호</th>
-									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩 명칭</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">구매번호</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩번호</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩명칭</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩률</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">회원명</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">금액</th>
@@ -62,6 +63,9 @@
 								<tr>
 									<td>
 										<span class="my-2 text-xs">[[${dto.p_num}]]</span>
+									</td>
+									<td>
+										<span class="my-2 text-xs">[[${dto.f_num}]]</span>
 									</td>
 									<td class="font-weight-normal">
 										<span class="my-2 text-xs">[[${dto.f_title}]]</span>
@@ -92,7 +96,7 @@
 						</table>
 					</div>
 					<div class="dataTable-bottom">
-						<th:block th:replace="~{/include/page :: test('fundingOrderList', ${pageVO}) }"></th:block>
+						<th:block th:replace="~{/include/page :: fundingOrderList('fundingOrderList', ${pageVO}) }"></th:block>
 					</div>
 					</div>
 				</div>

@@ -75,6 +75,7 @@
 			   p.p_payment,
 			   p.p_date,
 			   p.p_method,
+			   f.f_num,
 			   f.f_title,
 			   f.f_rate,
 			   f.f_status,
@@ -145,7 +146,7 @@
 		where funding_f_num in (select f_num
 							   	from funding
 							   	where f_status = 5)
-		and p_num = #{p_num]
+		and p_num = #{p_num}
 	
 	</update>
 
