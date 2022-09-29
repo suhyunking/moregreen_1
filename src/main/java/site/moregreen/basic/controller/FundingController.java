@@ -190,10 +190,10 @@ public class FundingController {
 		return "funding/fundingRefund";
 	}
 	
-	@GetMapping("orderList")
-	public String orderList(Model model, 
-							Criteria cri, 
-							HttpSession session ) {
-		return "funding/orderList";
-	}
+//	@GetMapping("fundingOrderList")
+//	public String fundingOrderList(Model model, 
+//							Criteria cri, 
+//							HttpSession session ) {
+//		return "funding/fundingOrderList";
+//	}
 }

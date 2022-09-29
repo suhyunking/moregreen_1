@@ -35,8 +35,7 @@ public class PurchaseCancelScheduler {
 	@Qualifier("fundingService")
 	FundingService fundingService;
 	
-//	@Scheduled(cron = "0 0 0 * * *") //매일 정각에 실행
-	@Scheduled(cron = "5 * * * * *") //5초마다 실행
+	@Scheduled(cron = "0 0 0 * * *") //매일 정각에 실행
 	public void run() {
 		List<FundingDto> fundingList = fundingService.retrieveRetiredFundingListForCancel();			//f_status가 5인 펀딩 목록 조회
 		List<PurchaseDto> purchaseList = purchaseService.retrievePurchaseListForCancel(fundingList); 	//f_status가 5인 펀딩에 대한 구매 목록 조회

@@ -31,7 +31,7 @@ public class PurchaseDto {
 	
 	private Integer d_num;				//배송지 번호 FK
 	private String d_name;
-	private Integer d_phone;		//전화번호
+	private String d_phone;		//전화번호
 	private Integer d_zipcode;		//우편번호
 	private String d_addr;			//주소
 	private String d_detailaddr;	//상세주
