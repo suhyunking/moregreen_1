@@ -25,8 +25,41 @@
 <link href="/css/custom1.min.css" rel="stylesheet">
 <link href="/css/custom1.css" rel="stylesheet">
 <th:block th:replace="~{/include/layout :: setContent( ~{:: .container-fluid}  ) }">
-
-	<div class="container-fluid py-4">
+ 
+	<div class="container-fluid py-4"> 
+	<!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <div class="nav toggle" >
+                 
+                  
+                  
+                    <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false" style="padding-right: 15px;" >
+                      <i class="fa fa-envelope-o"></i>
+                      <span class="badge bg-green">6</span>
+                    </a>
+                    
+                    
+                    <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                      <li class="nav-item">
+                        <a class="dropdown-item">
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      </ul>
+                  
+                </div>
+            
+            </div>
+          </div>
+        <!-- /top navigation -->
 		<form name="fundingForm" action="fundingList" method="get">
 			<div class="d-sm-flex justify-content-between">
 				<!-- <div class="d-flex">
@@ -151,6 +184,8 @@
 					<a href="#" class="btn btn-icon btn-outline-dark ms-2 export" onclick="handleForm()">검색</a>
 				</div>
 			</div>
+			
+			 
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
