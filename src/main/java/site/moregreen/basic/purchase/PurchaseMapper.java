@@ -29,6 +29,6 @@ public interface PurchaseMapper {
 	
 	public int selectPurchaseTotal(Criteria cri); 
 	
-	public void updatePurchasePayment();
+	public void updatePurchasePayment(PurchaseDto purchaseDto);
 	
 }

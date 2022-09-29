@@ -18,6 +18,7 @@
                      <form class="row g-3" action="/kakaoPay" method="post">
                      	<input type="hidden" name="f_num" th:value="${fundingDto.f_num}">
                      	<input type="hidden" name="f_reward" th:value="${fundingDto.f_reward}">
+                     	<input type="hidden" name="f_target" th:value="${fundingDto.f_target}">
                      	<input type="hidden" name="f_totalmoney" th:value="${fundingDto.f_totalmoney}">
                      	<input type="hidden" name="p_amount" th:value="${purchaseDto.p_amount}">
                      	<input type="hidden" name="p_total" th:value="${purchaseDto.p_total}">

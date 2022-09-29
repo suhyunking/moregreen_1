@@ -236,13 +236,13 @@ public class FundingServiceImpl implements FundingService{
 		List<FundingDto> list = fundingMapper.selectFundingListForCheckStatus();
 		
 		for(FundingDto dto : list) {
-			
+
 			if(dto.getF_rate() < 100.0) {
 				fundingMapper.updateFundingStatusToFail(dto);
-				log.info(dto.getF_title() + "펀딩 실패");
+				log.info(dto.getF_title() + " 펀딩 실패");
 			}else {
 				fundingMapper.updateFundingStatusToSuccess(dto);
-				log.info(dto.getF_title() + "펀딩 성공");
+				log.info(dto.getF_title() + " 펀딩 성공");
 			}
 		}
 		
