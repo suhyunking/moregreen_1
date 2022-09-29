@@ -277,17 +277,6 @@
   		  }
   	   })
 	})
-	
-	    $("#inputPhoneNum").on("blur", function(phoneNum){
-        var confirmMsg=document.getElementById('confirmMsg');
-        var check = /^(?=.*[0-9]).{11}$/; 
-        if(!check.test($("#inputPhoneNum").val())){      
-            confirmMsg.style.color="red";
-            confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";       
-        }
-	    
-	   });
-
 
 </script>
 

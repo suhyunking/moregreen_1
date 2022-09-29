@@ -164,18 +164,16 @@
     }
     
     
-    $("#inputPhoneNum").on("blur", 
-    		
-    		function(phoneNum){
-        var confirmMsg=document.getElementById('confirmMsg');
-        
-        if($("#inputPhoneNum").val().length==11){
-           confirmMsg.innerHTML="";
-        }else{
+    $("#inputPhoneNum").on("blur", function(phoneNum){
+    	var check = /^(?=.*[0-9]).{11}$/; 
+    	var confirmMsg=document.getElementById('confirmMsg');
+        if(!check.test($("#inputPhoneNum").val())){      
             confirmMsg.style.color="red";
-             confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";
-        }
-        });
+            confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";       
+        } else{
+        	 confirmMsg.innerHTML=""; 
+        }	    
+	   });
     
 </script>
 </html>
