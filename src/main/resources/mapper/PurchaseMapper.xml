@@ -103,6 +103,7 @@
 			   p.p_payment,
 			   p.p_date,
 			   p.p_method,
+			   p.p_tid,
 			   f.f_title,
 			   f.f_rate,
 			   f.f_status,
@@ -137,13 +138,14 @@
 		
 	</select>
 	
-	<update id="updatePurchasePayment">
+	<update id="updatePurchasePayment" parameterType="PurchaseDto">
 	
 		update purchase
 		set p_payment = 2
 		where funding_f_num in (select f_num
 							   	from funding
-							   	where f_status = 4)
+							   	where f_status = 5)
+		and p_num = #{p_num]
 	
 	</update>
 

@@ -60,9 +60,10 @@ public class PurchaseServiceImpl implements PurchaseService{
 		
 		//해당되는 펀딩 값 update
 		int fTotalMoney = fundingDto.getF_totalmoney() + purchaseDto.getP_total();
+		int fTargetMoney = fundingDto.getF_target();
 		fundingDto.setF_totalmoney(fTotalMoney);
 		
-		double fRate = (double)fTotalMoney / 500000.0 * 100.0;
+		double fRate = (double)fTotalMoney / fTargetMoney * 100.0;
 		int fundingRate = (int)Math.floor(fRate);
 		fundingDto.setF_rate(fundingRate);
 		
@@ -90,8 +91,8 @@ public class PurchaseServiceImpl implements PurchaseService{
 
 	@Override
 	@Transactional(rollbackFor = RuntimeException.class)
-	public int modifyPurchasePayment() {
-		purchaseMapper.updatePurchasePayment();
+	public int modifyPurchasePayment(PurchaseDto purchaseDto) {
+		purchaseMapper.updatePurchasePayment(purchaseDto);
 		return 1;
 	}
 

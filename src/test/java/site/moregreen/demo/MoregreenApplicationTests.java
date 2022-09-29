@@ -20,12 +20,12 @@ class MoregreenApplicationTests {
 	@Disabled
 	void test01() {
 		
-		// f_status가 3 인 펀딩 목록 조회
-		List<FundingDto> list = fundingMapper.selectFundingListStatus3();
-		
-		for(FundingDto dto : list) {
-			System.out.println(dto.getF_enddate()); 
-		}
+		/*
+		 * // f_status가 3 인 펀딩 목록 조회 List<FundingDto> list =
+		 * fundingMapper.selectFundingListStatus3();
+		 * 
+		 * for(FundingDto dto : list) { System.out.println(dto.getF_enddate()); }
+		 */
 	}
 
 }

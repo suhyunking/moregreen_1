@@ -38,16 +38,20 @@ public class PurchaseCancelScheduler {
 //	@Scheduled(cron = "0 0 0 * * *") //매일 정각에 실행
 	@Scheduled(cron = "5 * * * * *") //5초마다 실행
 	public void run() {
-		List<FundingDto> fundingList = fundingService.retrieveRetiredFundingListForCancel();
-		List<PurchaseDto> purchaseList = purchaseService.retrievePurchaseListForCancel(fundingList); 
+		List<FundingDto> fundingList = fundingService.retrieveRetiredFundingListForCancel();			//f_status가 5인 펀딩 목록 조회
+		List<PurchaseDto> purchaseList = purchaseService.retrievePurchaseListForCancel(fundingList); 	//f_status가 5인 펀딩에 대한 구매 목록 조회
 		boolean result;
 		
 		for(PurchaseDto purchaseDto : purchaseList) {
 			result = kakaopayService.kakaoPayCancel(purchaseDto);
 			log.info(purchaseDto.getF_title() + "환불 처리 완료" );
 			
+			if(purchaseDto.getP_payment() == 1) {
+				purchaseService.modifyPurchasePayment(purchaseDto);
+				log.info("결제 상태 변경 완료");
+			}
+			System.out.println("===============================================" + result);
 			if(result) {
-				purchaseService.modifyPurchasePayment();
 				
 				LocalDateTime now = LocalDateTime.now();               
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");       

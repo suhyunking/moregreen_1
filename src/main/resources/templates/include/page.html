@@ -108,7 +108,7 @@
 																			  )}">[[${num}]]</a></li>
 										</th:block>
 										<li th:if="${pageVO.next}">
-										<li class="page-item"><a class="page-link" th:href="@{userList(page=${pageVO.end + 1},
+										<li class="page-item"><a class="page-link" th:href="@{userList(page=${pageVO.page + 1},
 																			  amount=${pageVO.amount},
 																			  searchId=${pageVO.cri.searchId},
 																			  )}">&gt;</a></li>
