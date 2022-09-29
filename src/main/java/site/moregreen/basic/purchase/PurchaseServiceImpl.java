@@ -2,6 +2,7 @@ package site.moregreen.basic.purchase;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -92,6 +93,15 @@ public class PurchaseServiceImpl implements PurchaseService{
 	public int modifyPurchasePayment() {
 		purchaseMapper.updatePurchasePayment();
 		return 1;
+	}
+
+	@Override
+	public List<PurchaseDto> retrievePurchaseListForCancel(List<FundingDto> fundingList) {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("fundingList", fundingList);
+		
+		return purchaseMapper.selectPurchaseListForCancel(map);
 	}
 	
 }
