@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
    <section id="wrap">
       <section class="items-grid section custom-padding">
@@ -14,8 +15,9 @@
             <section class="item-details section"></section>
                <div class="container" >
                   <div class="top-area">
+                  
                      <div class="row" th:each="fundingDto : ${fundingList}">
-                     <form class="row g-3" action="/kakaoPay" method="post">
+                     <form class="row g-3" action="/kakaoPay" method="post" onsubmit="return purchaseform_check();">
                      	<input type="hidden" name="f_num" th:value="${fundingDto.f_num}">
                      	<input type="hidden" name="f_reward" th:value="${fundingDto.f_reward}">
                      	<input type="hidden" name="f_target" th:value="${fundingDto.f_target}">
@@ -62,31 +64,32 @@
                         <div class="wow fadeInUp" data-wow-delay=".9s">
 	                        <div class="col-md-6">
 	                           <label for="inputName" class="form-label">받으시는 분</label> 
-	                           <input type="text" class="form-control" id="inputName" name="d_name" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_name}">
+	                           <input type="text" class="form-control" id="d_name" name="d_name" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_name}">
 	                        </div>
 	                        <div class="col-md-6">
 	                           <label for="inputPhoneNum4" class="form-label">연락처</label> 
-	                           <input type="text" class="form-control" id="inputPhoneNum" name="d_phone" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_phone}">
+	                           <input type="text" class="form-control" id="d_phone" name="d_phone" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_phone}">
 	                        </div>
 	                        <span id="confirmMsg"></span>
 	                        <div class="col-md-4">
 	                           <label for="inputAddress" class="form-label">우편번호</label> 
 	                           <input type="button" id="inputAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-	                           <input type="text" class="form-control" id="sample4_postcode" name="d_zipcode" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_zipcode}" >
+	                           <input type="text" class="form-control" id="d_zipcode" name="d_zipcode" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_zipcode}" >
 	                        </div>
 	                        <div class="col-12">
 	                           <label for="inputAddress" class="form-label">도로명주소</label> 
-	                           <input type="text" class="form-control" id="sample4_roadAddress" name="d_addr" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_addr}" placeholder="기본주소" >
+	                           <input type="text" class="form-control" id="d_addr" name="d_addr" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_addr}" placeholder="기본주소" >
 	                        </div>
 	                        <span id="guide" style="color:#999;display:none"></span>
 	                        <div class="col-12">
 	                           <label for="inputAddress2" class="form-label">상세주소</label> 
-	                           <input type="text" class="form-control" id="sample4_detailAddress" name="d_detailaddr" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_detailaddr}" placeholder="상세주소">
+	                           <input type="text" class="form-control" id="d_detailaddr" name="d_detailaddr" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_detailaddr}" placeholder="상세주소">
 	                        </div>
 	                        <!-- <div class="col-12">
 	                           <label for="inputAddress2" class="form-label">참고항목</label> 
 	                           <input type="text" class="form-control" id="sample4_extraAddress" name="d_extraaddr" th:value="${dto != null ? d_detailaddr : '' }" placeholder="상세주소">
 	                        </div> -->
+	                        
                  		</div>
                         <br>
                         <div class="col-12">
@@ -99,10 +102,11 @@
                            </div>
                         </div>
                         <div class="col-12" align="center">
-                           <button class="btn btn-success">결제하기</button>
+                           <button class="btn btn-success" >결제하기</button>
                         </div>
                        	</form>
                         </div>
+                        
                      </div>
                   </div>
                </div>
@@ -164,17 +168,76 @@
     }
     
 
-    $("#inputPhoneNum").on("blur", function(phoneNum){
-    	var check = /^(?=.*[0-9]).{11}$/; 
+    $("#inputPhoneNum").on("blur", function(){
+    	
+    	var phoneCheck = /^01([0|1|6|7|8|9])([0-9]{8})$/;
+    	
     	var confirmMsg=document.getElementById('confirmMsg');
-        if(!check.test($("#inputPhoneNum").val())){      
+        if(!phoneCheck.test($("#inputPhoneNum").val())){      
             confirmMsg.style.color="red";
-            confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";       
+            confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";
+            
         } else{
         	 confirmMsg.innerHTML=""; 
         }	    
 
 	   });
+    
+    
+    
+    function purchaseform_check() {
+    	
+    	var d_name = document.getElementById("d_name");
+    	var d_phone = document.getElementById("d_phone");
+    	var d_zipcode = document.getElementById("d_zipcode");
+    	var d_addr = document.getElementById("d_addr");
+    	var d_detailaddr = document.getElementById("d_detailaddr");
+    	
+    	
+    	
+    	if (d_name.value == ""){
+    		
+    		alert("받으시는 분의 성함을 입력하세요.")
+	    	d_name.focus();
+    		
+	    	return false;
+   		};
+    	
+    	if (d_phone.value == ""){
+    		alert("핸드폰 번호를 입력하세요.")
+	    	d_phone.focus();
+	    	return false;
+    	};
+    	
+    	var phoneCheck = /^01([0|1|6|7|8|9])([0-9]{8})$/;
+    	
+        if(!phoneCheck.test(d_phone.value)){      
+            alert("올바른 핸드폰 번호를 입력하세요");
+            d_phone.focus();
+        	return false;
+        };
+        
+        if(d_zipcode.value == ""){
+        	d_zipcode.focus();
+        	return false;
+        };
+        
+        if(d_addr.value == ""){
+        	d_addr.focus();
+        	return false;
+        };
+        
+        if(d_addrdetail.value == ""){
+        	d_addrdetail.focus();
+        	return false;
+        };
+        
+        document.purchaseForm.submit();
+    	
+    	
+    };
+    
+    
     
 </script>
 </html>
