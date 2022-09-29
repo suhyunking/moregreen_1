@@ -277,6 +277,17 @@
   		  }
   	   })
 	})
+	
+	    $("#inputPhoneNum").on("blur", function(phoneNum){
+        var confirmMsg=document.getElementById('confirmMsg');
+        var check = RegExp(/^[0-9]+$/); 
+        if($("#inputPhoneNum").val().length==11 && check.test($("#inputPhoneNum").val())){
+           confirmMsg.innerHTML="";
+        }else{
+            confirmMsg.style.color="red";
+             confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";
+        }
+        });
 
 
 </script>

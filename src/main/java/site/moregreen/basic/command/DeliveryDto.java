@@ -19,5 +19,3 @@ public class DeliveryDto {
 	private String d_detailaddr;	//상세주소
 	
 }
-	
-
