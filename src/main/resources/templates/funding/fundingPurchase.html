@@ -67,6 +67,7 @@
 	                           <label for="inputPhoneNum4" class="form-label">연락처</label> 
 	                           <input type="text" class="form-control" id="inputPhoneNum" name="d_phone" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_phone}">
 	                        </div>
+	                        <span id="confirmMsg"></span>
 	                        <div class="col-md-4">
 	                           <label for="inputAddress" class="form-label">우편번호</label> 
 	                           <input type="button" id="inputAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
@@ -107,6 +108,8 @@
             </section>
          </section>
    </th:block>
+    <script src="/js/jquery-3.6.0.js"></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
    
    <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -158,5 +161,20 @@
             }
         }).open();
     }
+    
+    
+    $("#inputPhoneNum").on("blur", 
+    		
+    		function(phoneNum){
+        var confirmMsg=document.getElementById('confirmMsg');
+        
+        if($("#inputPhoneNum").val().length==11){
+           confirmMsg.innerHTML="";
+        }else{
+            confirmMsg.style.color="red";
+             confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";
+        }
+        });
+    
 </script>
 </html>

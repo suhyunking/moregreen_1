@@ -1,9 +1,10 @@
+<!--test  -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
       <section id="wrap">
          <th:block th:each="dto : ${fundingList}">
-         <section class="items-grid section">
+          <section class="items-grid section">
             <section class="item-details section">
             <form id="purchaseForm" name="purchaseForm" action="purchaseForm" method="post">
                <input type="hidden" name="p_amount" value="1" id="p_amount">
