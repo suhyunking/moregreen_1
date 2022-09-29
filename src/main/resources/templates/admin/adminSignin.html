@@ -27,6 +27,12 @@
    $(document).ready(function(){
 	   $("#btn").on("click",function(){
 		   
+		   var admin_rule = /'admin'/;
+		   if(!admin_rule.test($("#pwmsg").val())){
+				alert("비밀번호를 올바르게 입력해주세요.");
+				$("#pwmsg").focus();
+				return false;
+				}
 	        
 	        if($("#idmsg").val().length == 0 || $("#pwmsg").val().length == 0){
 	            alert("아이디와 비밀번호를 입력해주세요");
