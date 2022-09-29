@@ -18,7 +18,7 @@ public interface PurchaseService {
 	
 	public int retrievePurchaseTotal(Criteria cri); 
 	
-	public int modifyPurchasePayment();
+	public int modifyPurchasePayment(PurchaseDto purchaseDto);
 	
 	public List<PurchaseDto> retrievePurchaseListForCancel(List<FundingDto> fundingList);
 }
