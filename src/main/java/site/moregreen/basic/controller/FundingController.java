@@ -56,7 +56,7 @@ public class FundingController {
 	public String fundingList(Model model, 
 							  Criteria cri, 
 							  HttpSession session ){
-		
+		cri.setAmount(9);
 		List<FundingDto> fundingList = fundingService.retriveFundingList(cri);
 		
 		int total = fundingService.retrieveTotal(cri);
