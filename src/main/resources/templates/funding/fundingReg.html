@@ -33,15 +33,15 @@
 						</div>
 					</div>
 					<form name="fundingForm" action="fundingForm" method="post" enctype="multipart/form-data" onsubmit="return purchaseform_check();">
-						<input type="hidden" name="m_num" th:value="${session.member.m_num}">
+						<input type="hidden" name="m_num"  th:value="${session.member.m_num}">
 						<div class="container">
 							<div class="input-group mb-3">
 								<span class="input-group-text" >프로젝트 명칭</span>
-								<input type="text" class="form-control" name="f_title" th:value="${dto != null ? dto.f_title : '' }" placeholder="프로젝트 명칭 작성">
+								<input type="text" class="form-control" name="f_title" id="f_title" th:value="${dto != null ? dto.f_title : '' }" placeholder="프로젝트 명칭 작성">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text" >상호명</span>
-									<input type="text" class="form-control" name="f_bname" th:value="${dto != null ? dto.f_bname : '' }" placeholder="상호명 작성">
+									<input type="text" class="form-control" name="f_bname" id="" th:value="${dto != null ? dto.f_bname : '' }" placeholder="상호명 작성">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text">프로젝트 내용</span>
@@ -58,7 +58,7 @@
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="basic-addon1">리워드 명칭</span> 
-								<input type="text" class="form-control" placeholder="리워드명 작성" name="f_reward" th:value="${dto != null ? dto.f_reward : '' }">
+								<input type="text" class="form-control" placeholder="리워드명 작성" name="f_reward" id="" th:value="${dto != null ? dto.f_reward : '' }">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text">리워드 금액</span> 

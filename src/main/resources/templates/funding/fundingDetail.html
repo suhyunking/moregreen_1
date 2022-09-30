@@ -3,9 +3,23 @@
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
       <section id="wrap">
+
          <th:block th:each="dto : ${fundingList}">
+               <section class="items-grid section custom-padding" style="padding-bottom: 0px;">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-title">
+								<h2 class="wow fadeInUp" data-wow-delay=".4s">[[${dto.f_title}]]</h2>
+								<p class="wow fadeInUp" data-wow-delay=".6s">[[${dto.f_bname}]]</p>
+							</div>
+						</div>
+					</div>
+					</div>
+					</section>
           <section class="items-grid section">
-            <section class="item-details section">
+          
+            <section class="item-details section" style="padding-top: 10px;">
             <form id="purchaseForm" name="purchaseForm" action="purchaseForm" method="post">
                <input type="hidden" name="p_amount" value="1" id="p_amount">
                <input type="hidden" name="p_total" th:value="${dto.f_price}" id="p_total">
@@ -16,8 +30,9 @@
                <div class="container">
                   <div class="top-area">
                      <div class="row">
-                        <div class="col-lg-6 col-md-12 col-12">
-                           <div class="product-images">
+                     <div class=""></div>
+                        <div class="col-md-8 col-12">
+                           <div class="product-images" style="height: 480px; width: 750px;">
                               <main id="gallery">
                                  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                                     <div class="carousel-indicators">
@@ -53,7 +68,7 @@
                               </main>
                            </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-12">
+                        <div class="col-md-4 col-12" style="padding: 20px; padding-left: 30px; width: 400px;">
                            <div class="product-info">
                               <h2 class="title">[[${dto.f_title}]]</h2>
                               <p class="location">
@@ -63,7 +78,7 @@
                               <div class="list-info">
                                  <ul>
                                     <li><span>펀딩률</span><span style="text-align:right">[[${dto.f_rate}]]</span>%</li>
-                                    <li><span>D-DAY</span><span style="text-align:right">[[${dto.f_enddate}]]</span></li> <!-- Dto에서 처리 -->
+                                    <li><span>마감일</span><span style="text-align:right">[[${dto.f_enddate}]]</span></li> <!-- Dto에서 처리 -->
                                     <li><span>목표금액</span><span style="text-align:right">[[${dto.f_target}]]</span>원</li>
                                     <li><span>모금된 금액</span><span style="text-align:right">[[${dto.f_totalmoney}]]</span>원</li>
                                     <li><span>리워드 금액</span><span id="price" th:text="${dto.f_price}" style="text-align:right"></span>원</li>
@@ -111,16 +126,14 @@
                <div class="container">
                   <div class="top-area">
                      <div class="row">
-                        <div class="col-lg-6 col-md-12 col-12">
-                           <div class="product-info">
-                              <main id="gallery">
-                                 <div class="main-img" th:each="file : ${dto.files}">
-                                 <th:block th:if="${file.i_type == 2}">
-                                    <img th:src="'/upload/content_' + ${file.uuid} + '_' + ${file.filename}" alt="#" >
-                                 </div>
-                              </main>
-                           </div>
-                        </div>
+                         <div class="product-info" style="text-align: center">
+                            <main id="gallery">
+                               <div class="main-img" th:each="file : ${dto.files}">
+                               <th:block th:if="${file.i_type == 2}">
+                                  <img th:src="'/upload/content_' + ${file.uuid} + '_' + ${file.filename}" alt="#" >
+                               </div>
+                            </main>
+                         </div>
                      </div>
                      <div class="row">
                         <div class = "item-details-blocks">
