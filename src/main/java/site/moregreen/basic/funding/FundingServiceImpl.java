@@ -50,8 +50,8 @@ public class FundingServiceImpl implements FundingService{
 	
 	
 	// 등록
-	@Transactional(rollbackFor = Exception.class)
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int addFunding(FundingDto dto, List<MultipartFile> files, List<MultipartFile> mainFiles, List<MultipartFile> contentFiles) {
 		fundingMapper.createFunding(dto);
 		
@@ -207,6 +207,7 @@ public class FundingServiceImpl implements FundingService{
 		}
 	
 	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
 	public int fundingAccept(int f_num) {
 		
 		fundingMapper.fundingAccept(f_num);

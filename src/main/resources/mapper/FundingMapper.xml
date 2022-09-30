@@ -88,11 +88,9 @@
  	  inner join funding f
 	  on f.f_num = i.funding_f_num
 	  where 1
+	  and f.f_status in (3,4,5)
 	  <if test="searchName != '' and searchName != null"> 
 	  and f.f_title like concat('%', #{searchName} ,'%')
-	  </if>
-	  <if test="searchStatus = '' and searchStatus = null"> 
-	  and f.f_status in (3,4,5)
 	  </if>
 	  <if test="searchStatus != '' and searchStatus != null"> 
 	  and f.f_status = #{searchStatus}
