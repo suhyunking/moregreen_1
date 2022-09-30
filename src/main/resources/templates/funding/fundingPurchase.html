@@ -17,7 +17,7 @@
                   <div class="top-area">
                   
                      <div class="row" th:each="fundingDto : ${fundingList}">
-                     <form class="row g-3" action="/kakaoPay" method="post" onsubmit="return purchaseform_check();">
+                     <form class="row g-3" action="/kakaoPay" method="post">
                      	<input type="hidden" name="f_num" th:value="${fundingDto.f_num}">
                      	<input type="hidden" name="f_reward" th:value="${fundingDto.f_reward}">
                      	<input type="hidden" name="f_target" th:value="${fundingDto.f_target}">
@@ -65,20 +65,23 @@
 	                        <div class="col-md-6">
 	                           <label for="inputName" class="form-label">받으시는 분</label> 
 	                           <input type="text" class="form-control" id="d_name" name="d_name" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_name}">
+	                           <span id="nameCheckMsg"></span>
 	                        </div>
 	                        <div class="col-md-6">
 	                           <label for="inputPhoneNum4" class="form-label">연락처</label> 
-	                           <input type="text" class="form-control" id="d_phone" name="d_phone" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_phone}">
+	                           <input type="text" oninput="keyup()" maxlength="13" class="form-control" id="d_phone" name="d_phone" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_phone}">
+	                           <span id="phoneCheckMsg"></span>
 	                        </div>
-	                        <span id="confirmMsg"></span>
 	                        <div class="col-md-4">
 	                           <label for="inputAddress" class="form-label">우편번호</label> 
 	                           <input type="button" id="inputAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 	                           <input type="text" class="form-control" id="d_zipcode" name="d_zipcode" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_zipcode}" >
+	                           <span id="zipcodeCheckMsg"></span>
 	                        </div>
 	                        <div class="col-12">
 	                           <label for="inputAddress" class="form-label">도로명주소</label> 
 	                           <input type="text" class="form-control" id="d_addr" name="d_addr" th:value="${deliveryDto} != null and ${deliveryDto} != '' ? ${deliveryDto.d_addr}" placeholder="기본주소" >
+	                           <span id="addressCheckMsg"></span>
 	                        </div>
 	                        <span id="guide" style="color:#999;display:none"></span>
 	                        <div class="col-12">
@@ -167,75 +170,64 @@
         }).open();
     }
     
-
-    $("#inputPhoneNum").on("blur", function(){
-    	
-    	var phoneCheck = /^01([0|1|6|7|8|9])([0-9]{8})$/;
-    	
-    	var confirmMsg=document.getElementById('confirmMsg');
-        if(!phoneCheck.test($("#inputPhoneNum").val())){      
-            confirmMsg.style.color="red";
-            confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";
-            
-        } else{
-        	 confirmMsg.innerHTML=""; 
-        }	    
-
-	   });
+    $(document).on("keyup", "#d_phone", function() { 
+    	$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
+    });
     
-    
-    
-    function purchaseform_check() {
-    	
-    	var d_name = document.getElementById("d_name");
-    	var d_phone = document.getElementById("d_phone");
-    	var d_zipcode = document.getElementById("d_zipcode");
-    	var d_addr = document.getElementById("d_addr");
-    	var d_detailaddr = document.getElementById("d_detailaddr");
-    	
-    	
-    	
-    	if (d_name.value == ""){
-    		
-    		alert("받으시는 분의 성함을 입력하세요.")
-	    	d_name.focus();
-    		
-	    	return false;
-   		};
-    	
-    	if (d_phone.value == ""){
-    		alert("핸드폰 번호를 입력하세요.")
-	    	d_phone.focus();
-	    	return false;
-    	};
-    	
-    	var phoneCheck = /^01([0|1|6|7|8|9])([0-9]{8})$/;
-        if(!phoneCheck.test(d_phone.value)){      
-            alert("올바른 핸드폰 번호를 입력하세요");
-            d_phone.focus();
-        	return false;
-        };
-        
-        if(d_zipcode.value == ""){
-        	d_zipcode.focus();
-        	return false;
-        };
-        
-        if(d_addr.value == ""){
-        	d_addr.focus();
-        	return false;
-        };
-        
-        if(d_addrdetail.value == ""){
-        	d_addrdetail.focus();
-        	return false;
-        };
-        
-        document.purchaseForm.submit();
-    	
-    	
-    };
-    
+	$(".btn").on("click", function(){
+		
+	    	var phoneCheck = /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})-([0-9]{3,4})-([0-9]{4})$/;
+	    	var zipcodeCheck = /^([0-9]{5,6})$/;
+	    	var nameCheckMsg = document.getElementById('nameCheckMsg');
+	    	var phoneCheckMsg = document.getElementById('phoneCheckMsg');
+	    	var zipcodeCheckMsg = document.getElementById('zipcodeCheckMsg');
+	    	var addressCheckMsg = document.getElementById('addressCheckMsg');
+	    	
+	    	if(!($("#d_name").val())){      
+	    		nameCheckMsg.style.color="red";
+	    		nameCheckMsg.innerHTML="받으시는 분의 성함을 입력하세요.";
+	            event.preventDefault();
+	        } else{
+	        	nameCheckMsg.innerHTML=""; 
+	        }	
+	    	
+	        if(!($("#d_phone").val())){      
+	        	phoneCheckMsg.style.color="red";
+	            phoneCheckMsg.innerHTML="연락처를 입력하세요";
+	            event.preventDefault();
+	            
+	        } else if(!phoneCheck.test($("#d_phone").val())){
+	        	phoneCheckMsg.style.color="red";
+	            phoneCheckMsg.innerHTML="올바른 연락처 번호를 입력해주세요";
+	            event.preventDefault();
+	            
+	        } else {
+	        	
+	        	phoneCheckMsg.innerHTML=""; 
+	        	
+	        }	    
+	        
+	        if(!($("#d_zipcode").val())){      
+	        	zipcodeCheckMsg.style.color="red";
+	        	zipcodeCheckMsg.innerHTML="우편 번호를 입력하세요";
+	            event.preventDefault();
+	        } else if(!zipcodeCheck.test($("#d_zipcode").val())){
+	        	zipcodeCheckMsg.style.color="red";
+	        	zipcodeCheckMsg.innerHTML="우편 번호는 5자리 또는 6자리입니다.";
+	            event.preventDefault();
+	        } else{
+	        	zipcodeCheckMsg.innerHTML="";
+	        }	    
+	    	
+	        if(!($("#d_addr").val())){      
+	        	addressCheckMsg.style.color="red";
+	        	addressCheckMsg.innerHTML="주소를 입력하세요";
+	            event.preventDefault();
+	        } else{
+	        	addressCheckMsg.innerHTML=""; 
+	        }	    
+		
+	})
     
     
 </script>
