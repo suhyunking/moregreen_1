@@ -21,6 +21,8 @@ public class FundingDto {
 	private Integer f_days;			//펀딩 기간
 	private String f_enddate;		//마감 일자
 	private Integer f_target;		//목표 금액
+	
+	
 	private Integer f_totalmoney;	//현재 금액
 	private Integer f_rate;			//펀딩률
 	private Integer f_status;		//진행 상태
