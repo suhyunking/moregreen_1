@@ -32,7 +32,7 @@
 							</div>
 						</div>
 					</div>
-					<form name="fundingForm" action="fundingForm" method="post" enctype="multipart/form-data">
+					<form name="fundingForm" action="fundingForm" method="post" enctype="multipart/form-data" onsubmit="return purchaseform_check();">
 						<input type="hidden" name="m_num" th:value="${session.member.m_num}">
 						<div class="container">
 							<div class="input-group mb-3">
@@ -96,7 +96,7 @@
 							</div>
 							</div>
 						<div class="mb-3" align="right">
-							<button class="btn btn-primary" type="submit">
+							<button class="btn btn-primary" type="submit" >
 							<div class="save">신청하기</div></button>
 						</div>
 					</form>
@@ -245,6 +245,7 @@ let socket = new SockJS(url + '/chat');
 stompClient = Stomp.over(socket);
 
 
+
 function checkCorporateRegiNumber(number){
 	var numberMap = number.replace(/-/gi, '').split('').map(function (d){
 		return parseInt(d, 10);
@@ -265,6 +266,58 @@ function checkCorporateRegiNumber(number){
 	
 	return false;
 }
+
+function purchaseform_check() {
+	
+	var f_title = document.getElementById("f_title");
+	var f_bname = document.getElementById("f_bname");
+	var f_content = document.getElementById("f_content");
+	var f_reward = document.getElementById("f_reward");
+	var f_price = document.getElementById("f_price");
+	var f_bnum = document.getElementById("f_bnum");
+	
+	
+	
+	if (f_title.value == ""){
+		
+		alert("받으시는 분의 성함을 입력하세요.")
+    	f_title.focus();
+		
+    	return false;
+		};
+	
+	if (f_bname.value == ""){
+		alert("핸드폰 번호를 입력하세요.")
+    	f_bname.focus();
+    	return false;
+	};
+	
+	
+    
+    if(f_content.value == ""){
+    	f_content.focus();
+    	return false;
+    };
+    
+    if(f_reward.value == ""){
+    	f_reward.focus();
+    	return false;
+    };
+    
+    if(f_bnum.value == ""){
+    	f_bnum.focus();
+    	return false;
+    };
+    
+    document.fundingForm.submit();
+	
+	
+};
+
+
+
+
+
 </script>
 </html>
 
