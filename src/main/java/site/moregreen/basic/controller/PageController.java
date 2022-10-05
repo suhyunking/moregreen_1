@@ -37,4 +37,9 @@ public class PageController {
 	public String faq() {
 		return "pages/faq";
 	}
+	
+	@GetMapping("/aboutme")
+	public String aboutme() {
+		return "pages/aboutme";
+	}
 }
