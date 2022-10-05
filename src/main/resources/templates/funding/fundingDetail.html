@@ -51,7 +51,7 @@
                                        <th:block th:each="file, i : ${dto.files}">
                                           <th:block th:if="${file.i_type == 1}">
                                              <div class="carousel-item" th:classappend="${i.first} ? 'active' : ''" >
-                                                <img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#" style="height:500px; width:100%;">                                             </div>
+                                                <img th:src="@{'/upload/main_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" style="height:500px; width:100%;">                                             </div>
                                           </th:block>
                                        </th:block>
                                     </div>
