@@ -57,7 +57,7 @@ public class KakaoPayController {
     	if(result) {
     		purchaseService.modifyPurchase(purchaseDto.getP_num());
     	}
-        return "redirect:/funding/fundingRefund";
+        return "redirect:/sunam/funding/fundingRefund";
  
     }
 }
