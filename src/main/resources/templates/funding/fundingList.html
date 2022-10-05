@@ -31,12 +31,24 @@
 	font-size: 50px;
 }
 
+.circle {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border: 15px solid rgb(163, 151, 198);
+    border-radius: 50%;
+}
+.wrapper {
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 1170px;
+}
 
 
 
 </style>
    <body>
-      <section id="wrap">
+      <section id="wrap">                    
          <section class="items-grid section custom-padding">
          <form name="fundingForm" action="fundingList" method="get">
             <div class="container">
@@ -74,34 +86,43 @@
                      <div class="input-group">
                         <div class="col-lg-4 col-md-6 col-12 " th:each="dto : ${fundingList}" style="height: 600px">
                            <!-- Start Single Grid -->
+                           
                            <div class="single-grid wow fadeInUp" data-wow-delay=".2s" style="margin-right:10px">
-	                              <div class="fill">
-	                                 <a class="thumbnail" th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" th:each="file : ${dto.files}">
-	                                 <img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#" style="height: 300px;width: 430px;"></a>
-	                              </div>
-                              <div class="content">
-                                 <div class="top-content">
-                                    <a >[[${dto.f_bname}]]</a>
-                                    <h3 class="title" style="height: 80px">
-                                       <a th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}">[[${dto.f_title}]]</a>
-                                    </h3>
-                                    <ul class="info-list">
-                                       <li>[[${dto.f_rate}]]%</li>
-										<li style="text-align: right;">
-										<a> <i class="lni lni-timer"> </i> [[${dto.f_enddate}]]까지 </a></li>
-									</ul>
-                                 </div>
-                                 <div class="bottom-content">
-                                    <p class="price">
-                                       누적금액 : <span>[[${dto.f_totalmoney}]]원</span>
-                                    </p>
-                                 </div>
-                              </div>
+	                              <div class="image">
+	                              	<div class="fill">
+		                              	<div class="author" >
+		                                    <span th:if="${dto.f_status} == 3" class="text-sm"><span class="badge text-bg-warning" style="padding: 1em 2em; font-size: 0.9em; color:white">펀딩 진행중</span></span>
+											<span th:if="${dto.f_status} == 4" class="text-sm"><span class="badge text-bg-success bg-gradient" style="padding: 1em 2em; font-size: 0.9em">펀딩 성공</span></span>
+											<span th:if="${dto.f_status} == 5" class="text-sm"><span class="badge text-bg-danger" style="padding: 1em 2em; font-size: 0.9em">펀딩 실패</span></span>					
+	                                	</div>
+	                                	
 
-	                  		</div>
-	                     </div>
-	                  </div>
-	               </div>
+		                                 <a class="thumbnail" th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" th:each="file : ${dto.files}">
+		                                 <img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#" style="height: 300px;width: 430px;"></a>
+	                              	</div>
+	                              </div>
+	                              <div class="content">
+	                                 <div class="top-content">
+	                                    <a >[[${dto.f_bname}]]</a>
+	                                    <h3 class="title" style="height: 80px">
+	                                       <a th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}">[[${dto.f_title}]]</a>
+	                                    </h3>
+	                                    <ul class="info-list">
+	                                       <li>[[${dto.f_rate}]]%</li>
+											<li style="text-align: right;">
+											<a> <i class="lni lni-timer"> </i> [[${dto.f_enddate}]]까지 </a></li>
+										</ul>
+	                                 </div>
+	                                 <div class="bottom-content">
+	                                    <p class="price">
+	                                       누적금액 : <span>[[${dto.f_totalmoney}]]원</span>
+	                                    </p>
+	                                 </div>
+	                              </div>
+	                  			</div>
+		                     </div>
+		                  </div>
+		               </div>
 	               <th:block th:replace="~{/include/page :: fundingList('fundingList', ${pageVO}) }"></th:block>
 	            </div>
             </div>
