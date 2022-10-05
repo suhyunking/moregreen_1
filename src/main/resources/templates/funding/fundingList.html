@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
-<th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
+<th:block th:replace="~{include/mainLayout :: setContent( ~{:: #wrap}  ) }">
 
 <style>
 .cover {
@@ -44,8 +44,6 @@
     max-width: 1170px;
 }
 
-
-
 </style>
    <body>
       <section id="wrap">                    
@@ -86,7 +84,6 @@
                      <div class="input-group">
                         <div class="col-lg-4 col-md-6 col-12 " th:each="dto : ${fundingList}" style="height: 600px">
                            <!-- Start Single Grid -->
-                           
                            <div class="single-grid wow fadeInUp" data-wow-delay=".2s" style="margin-right:10px">
 	                              <div class="image">
 	                              	<div class="fill">
@@ -95,8 +92,6 @@
 											<span th:if="${dto.f_status} == 4" class="text-sm"><span class="badge text-bg-success bg-gradient" style="padding: 1em 2em; font-size: 0.9em">펀딩 성공</span></span>
 											<span th:if="${dto.f_status} == 5" class="text-sm"><span class="badge text-bg-danger" style="padding: 1em 2em; font-size: 0.9em">펀딩 실패</span></span>					
 	                                	</div>
-	                                	
-
 		                                 <a class="thumbnail" th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}" th:each="file : ${dto.files}">
 		                                 <img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#" style="height: 300px;width: 430px;"></a>
 	                              	</div>
@@ -123,7 +118,7 @@
 		                     </div>
 		                  </div>
 		               </div>
-	               <th:block th:replace="~{./include/page :: fundingList('fundingList', ${pageVO}) }"></th:block>
+	               <th:block th:replace="~{/include/page :: fundingList('fundingList', ${pageVO}) }"></th:block>
 	            </div>
             </div>
          </form>
