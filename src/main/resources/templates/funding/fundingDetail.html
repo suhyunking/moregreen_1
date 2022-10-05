@@ -31,7 +31,6 @@
                <div class="container">
                   <div class="top-area">
                      <div class="row">
-                     <div class=""></div>
                         <div class="col-md-8 col-12">
                            <div class="product-images" style="height: 480px; width: 750px;">
                               <main id="gallery">
@@ -72,7 +71,7 @@
                            <div class="list-info">
                            <hr />
                            <a>모금된 금액</a>
-                           <p><strong style="font-size:30px; color:#5A9367" >[[${dto.f_totalmoney}]]</strong> 원 달성</p>
+                           <p class="money"><strong style="font-size:30px; color:#5A9367" >[[${dto.f_totalmoney}]]</strong> 원 달성</p>
                            <a>펀딩률</a>
                            <p style="font-size:30px; color:#5A9367"><strong >[[${dto.f_rate}]]</strong>%</p>
                            <a>마감일자</a>
@@ -279,6 +278,13 @@
   		  }
   	   })
 	})
+	
+	// 숫자 3자리 단위로 , 찍기
+	function numberWithCommas() {
+
+	  $("#money").val(x.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); // 정규식을 이용해서 3자리 마다 , 추가 
+	}
+  
 
 </script>
 
