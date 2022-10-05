@@ -64,7 +64,7 @@ public class AdminController {
 			 session.setAttribute("member", member);
 				session.setMaxInactiveInterval(1800);
 
-				return"redirect:/admin/adminportal";
+				return"redirect:/admin/userList";
 		} else {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
