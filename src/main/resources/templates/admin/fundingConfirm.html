@@ -198,7 +198,7 @@ input[type=submit] {
 				<div class="col-75">
 					<th:block th:each="file : ${dto.files}">
 						<th:block th:if="${file.i_type == 0}">
-							<img th:src="'/upload/' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+							<img th:src="@{'/upload/' + ${file.uuid} + '_' + ${file.filename}}" alt="#">
 						</th:block>
 					</th:block>
 				</div>
