@@ -20,7 +20,6 @@
 							<div class="col-lg-3 col-md-12 col-12">
 								<div class="dashboard-sidebar">
 									<div class="user-image">
-										<!-- <img src="/images/dashboard/user-image.jpg" alt="#"> -->
 										<h3>[[${session.member.m_id}]]</h3>
 									</div>
 									<div class="dashboard-menu">
@@ -100,7 +99,7 @@
 																    </tr>
 																    <tr>
 																      <th scope="col" align="left">결제 정보</th>
-																       <td th:if="${dto.p_payment} == 1" class="text-sm" align="right"><span class="badge text-bg-warning" >카카오페이</span></td>
+																       <td th:if="${dto.p_method} == 1" class="text-sm" align="right"><span class="badge text-bg-warning" >카카오페이</span></td>
 																    </tr>
 																  </thead>
 						                                       </table>
@@ -141,7 +140,8 @@
 															<input type="hidden" name="p_tid" th:value="${dto.p_tid}">
 															<input type="hidden" name="p_total" th:value="${dto.p_total}">
 															<input type="hidden" name="p_num" th:value="${dto.p_num}">
-															<button type="submit" class="btn btn-success ">결제 취소</button>
+															<button th:if="${dto.p_payment} == 2" type="submit" disabled class="btn btn-success ">결제 취소</button>
+															<button th:unless="${dto.p_payment} == 2" type="submit" class="btn btn-success ">결제 취소</button>
 														</form>
 													</div>
 												</div>
