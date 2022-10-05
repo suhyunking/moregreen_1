@@ -15,7 +15,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <script src="https://cdn.tailwindcss.com"></script>
-<th:block th:replace="~{./include/layout :: setContent( ~{:: .container-fluid}  ) }">
+<th:block th:replace="~{/include/layout :: setContent( ~{:: .container-fluid}  ) }">
 
 	<div class="container-fluid py-4">
 		<form name="fundingForm" action="fundingApplyList" method="get">
@@ -80,7 +80,7 @@
 								</table>
 							</div>
 							<div class="dataTable-bottom">
-								<th:block th:replace="~{/include/page :: test1('fundingListList', ${pageVO}) }"></th:block>
+								<th:block th:replace="~{/include/page :: adminFundingApplyList('fundingListList', ${pageVO}) }"></th:block>
 							</div>
 						</div>
 					</div>
