@@ -236,7 +236,6 @@
           return str;
       }
   
-
   // 찜하기
   $(document).ready(function () {
 
@@ -248,7 +247,7 @@
       var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
       
       $.ajax({
-          url :'/sunam/like/checkFundingLike',
+          url :[[@{/like/checkFundingLike'}]],
           type :'POST',
           data : sendData,
           success : function(data){
@@ -271,7 +270,7 @@
             var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
               
               $.ajax({
-                  url :'/sunam/like/checkFundingLike',
+                  url :[[@{/like/checkFundingLike}]],
                   type :'POST',
                   data : sendData,
                   success : function(data){
@@ -283,7 +282,7 @@
                        var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
                           
                           $.ajax({
-                              url :'/sunam/like/deleteFundingLike',
+                              url :[[@{/like/deleteFundingLike}]],
                               type :'POST',
                               data : sendData
                           });
@@ -297,7 +296,7 @@
                         var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
                           
                           $.ajax({
-                              url :'/sunam/like/fundingLike',
+                              url :[[@{/like/fundingLike}]],
                               type :'POST',
                               data : sendData
                           });
