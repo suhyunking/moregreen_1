@@ -14,7 +14,7 @@
 -->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<th:block th:replace="~{./include/layout :: setContent( ~{:: .container-fluid}  ) }">
+<th:block th:replace="~{/include/layout :: setContent( ~{:: .container-fluid}  ) }">
 
 <style>
 
@@ -96,26 +96,61 @@ input[type=submit] {
 
 </style>
     
+    
 <div class="container-fluid py-4">
-	<div class="d-lg-flex">
-		<div>
-			<h5 class="mb-0">프로젝트 신청 승인/반려</h5>
-		</div>
-	</div>
-	</br>
-	<div style="padding-bottom: 40px;">
-		<form name="actionForm" action="###" method="###" th:each="dto : ${fundingList}">
+
+	<div class="container">
 		
-			<div class="row" style="display: flex;">
+	</div>
+	
+		<form name="actionForm" action="###" method="###" th:each="dto : ${fundingList}">
+		     <div class="col-md-12 mb-lg-0 mb-4">
+              	<div class="card mt-4 mb-2">
+                   <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              			<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+               				<h4 class="text-white text-capitalize ps-3">프로젝트 승인 및 반려</h4>
+             		    </div>
+           		  </div>
+                   <div class="card-header pb-0 p-3">
+	                </div>
+                  <div class="card-body p-3">
+	                  <div class="row">
+	                    <div class="col-md-6 mb-md-0 mb-4">
+	                      <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+	                      </div>
+	                    </div>
+	                  </div>
+                 </div>
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-md-6">
+    <label for="f_num" style="display: flex;" class="row">번호</label>
+    <input type="text" th:value="${dto.f_num}" readonly>
+  </div>
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div>
+                    <div class="row" style="display: flex;">
 				<div class="col-25">
-					<label for="f_num">번호</label>
+					<span>번호</span>
 				</div>
 				<div class="col-75">
-					<input id="f_num" type="text" th:value="${dto.f_num}" readonly></input>
+					<input class="form-control" id="f_num" type="text" th:value="${dto.f_num}" readonly></input>
 				</div>
-			</div>
-			
-			<div class="row">
+				 <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+				<div class="row">
 				<div class="col-25">
 					<label for="f_title">프로젝트 명칭</label>
 				</div>
@@ -253,10 +288,19 @@ input[type=submit] {
 			
 			<input type="hidden" name="f_num" th:value="${dto.f_num}">
 			
-			<div class="row">
+			
+			</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
 				<a class="btn btn-success" style="width: auto; margin: auto;" th:onclick="|funding_accept()|">승인</a>
 				<a class="btn btn-danger" style="width: auto; margin: auto;" th:onclick="|funding_reject()|">반려</a>
 			</div>
+            </div>
+			
+			
+			
 		</form>
 	</div>
 </div>

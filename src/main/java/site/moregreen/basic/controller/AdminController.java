@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import site.moregreen.basic.command.FundingDto;
@@ -64,7 +63,7 @@ public class AdminController {
 			 session.setAttribute("member", member);
 				session.setMaxInactiveInterval(1800);
 
-				return"redirect:/admin/adminportal";
+				return"redirect:/admin/userList";
 		} else {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);

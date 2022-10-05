@@ -1,7 +1,7 @@
 <!-- 참여한 펀딩 상세 내역 -->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
-<th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
+<th:block th:replace="~{/include/mainLayout :: setContent( ~{:: #wrap}  ) }">
 	<body>
 		<section id="wrap">
 			<!-- top -->
@@ -99,7 +99,7 @@
 																    </tr>
 																    <tr>
 																      <th scope="col" align="left">결제 정보</th>
-																       <td th:if="${dto.p_payment} == 1" class="text-sm" align="right"><span class="badge text-bg-warning" >카카오페이</span></td>
+																       <td th:if="${dto.p_method} == 1" class="text-sm" align="right"><span class="badge text-bg-warning" >카카오페이</span></td>
 																    </tr>
 																  </thead>
 						                                       </table>

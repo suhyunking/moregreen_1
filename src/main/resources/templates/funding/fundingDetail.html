@@ -1,7 +1,7 @@
-<!--test  -->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
-<th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
+<th:block th:replace="~{/include/mainLayout :: setContent( ~{:: #wrap}  ) }">
 
     <section id="wrap">
 
@@ -31,7 +31,6 @@
                <div class="container">
                   <div class="top-area">
                      <div class="row">
-                     <div class=""></div>
                         <div class="col-md-8 col-12">
                            <div class="product-images" style="height: 480px; width: 750px;">
                               <main id="gallery">
@@ -265,6 +264,7 @@
        });
       
       $(".heart").on("click", function () {
+
 
          var session = [[${session.member}]];
          event.preventDefault();
