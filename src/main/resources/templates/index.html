@@ -2,19 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 <th:block
 	th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }">
-<head>
-<style>
-/* 웹폰트 적용하기 */
-@font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-</style>
 
-
-</head>
 <body>
 	<section id="wrap">
 	<!-- test -->
@@ -30,7 +18,7 @@
                         </div>
                         <!-- Start Hero Text -->
                         
-                        <div class="section-heading button" style="text-shadow:1px 1px 1px #426C0D;">
+                        <div class="section-heading button" style="text-shadow:2px 2px 2px #426C0D;">
                         	<h2 class="wow fadeInUp" >사람들을 More 세상을 Green</h2>
                             <h4 class="wow fadeInUp" data-wow-delay=".5s" style="color: #fff">welcome to More Green</h4><br>
                             <a class="btn" th:href="@{/funding/fundingList}">펀딩바로가기</a>
