@@ -68,8 +68,9 @@
                     </tr>
                   </tbody>
                 </table>
-                <th:block th:replace="~{/include/page :: test3('userList', ${pageVO}) }"></th:block>
-                
+                <div class="dataTable-bottom">
+                <th:block th:replace="~{/include/page :: userList('userList', ${pageVO}) }"></th:block>
+                </div>
                 <!-- <div class="dataTable-bottom">					
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
