@@ -178,7 +178,7 @@ public class FundingController {
 	
 	@GetMapping("fundingPurchaseCancel")
 	public String fundingPurchaseCancel() {
-		return "funding/fundingPurchaseCancel";
+		return "/funding/fundingPurchaseCancel";
 	}
 	
 	@GetMapping("fundingPurchaseFail")
