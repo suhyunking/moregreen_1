@@ -15,7 +15,7 @@
                <div class="container" >
                   <div class="top-area">
                      <div class="row" th:each="fundingDto : ${fundingList}">
-                     <form class="row g-3" action="/kakaoPay" method="post">
+                     <form class="row g-3" action="/kakaoPay" method="post" id="purchaseForm">
                         <input type="hidden" name="f_num" th:value="${fundingDto.f_num}">
                         <input type="hidden" name="f_reward" th:value="${fundingDto.f_reward}">
                         <input type="hidden" name="f_target" th:value="${fundingDto.f_target}">
@@ -224,7 +224,9 @@
             document.getElementById('d_addr').focus();
             return false;
         } 
-	
+        
+        $("#purchaseForm").submit();
+        
 	})
     
 </script>

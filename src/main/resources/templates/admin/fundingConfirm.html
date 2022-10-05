@@ -233,7 +233,7 @@ input[type=submit] {
 				<div class="col-75">
 					<th:block th:each="file : ${dto.files}">
 						<th:block th:if="${file.i_type == 0}">
-							<img th:src="'/upload/' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+							<img th:src="@{'/upload/' + ${file.uuid} + '_' + ${file.filename}}" alt="#">
 						</th:block>
 					</th:block>
 				</div>
@@ -246,7 +246,7 @@ input[type=submit] {
 				<div class="col-75">
 					<th:block th:each="file : ${dto.files}">
 						<th:block th:if="${file.i_type == 1}">
-							<img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+							<img th:src="@{'/upload/main_' + ${file.uuid} + '_' + ${file.filename}}" alt="#">
 						</th:block>
 					</th:block>
 				</div>
@@ -259,7 +259,7 @@ input[type=submit] {
 				<div class="col-75">
 					<th:block th:each="file : ${dto.files}">
 						<th:block th:if="${file.i_type == 2}">
-							<img th:src="'/upload/content_' + ${file.uuid} + '_' + ${file.filename}" alt="#">
+							<img th:src="@{'/upload/content_' + ${file.uuid} + '_' + ${file.filename}}" alt="#">
 						</th:block>
 					</th:block>
 				</div>
@@ -272,17 +272,6 @@ input[type=submit] {
 				<div class="col-75">
 					<textarea id="editor">[[${dto.f_content}]]</textarea>
 				</div>
-			</div>
-			
-			<div class="row">
-			<th:block th:each="uploadDto : ${list}">
-				<div class="col-25">
-					<label>사업자등록증</label>
-				</div>
-				<div class="col-75">
-						<img th:src="'/upload/' + ${uploadDto.filepath} + '/' + ${uploadDto.uuid} + '_' + ${uploadDto.filename}">
-				</div>
-			</th:block>
 			</div>
 			<br>
 			
