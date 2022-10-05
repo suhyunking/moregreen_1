@@ -156,7 +156,7 @@
       //console.log("세션"+ session);
       if(session == null){
          alert("로그인 후 이용해주세요");
-         location.href = "/member/memberLogin";
+         location.href = "/sunam/member/memberLogin";
       } else{
          document.purchaseForm.submit();
       }
@@ -248,7 +248,7 @@
       var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
       
       $.ajax({
-          url :'/like/checkFundingLike',
+          url :'/sunam/like/checkFundingLike',
           type :'POST',
           data : sendData,
           success : function(data){
@@ -271,7 +271,7 @@
             var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
               
               $.ajax({
-                  url :'/like/checkFundingLike',
+                  url :'/sunam/like/checkFundingLike',
                   type :'POST',
                   data : sendData,
                   success : function(data){
@@ -283,7 +283,7 @@
                        var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
                           
                           $.ajax({
-                              url :'/like/deleteFundingLike',
+                              url :'/sunam/like/deleteFundingLike',
                               type :'POST',
                               data : sendData
                           });
@@ -297,7 +297,7 @@
                         var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
                           
                           $.ajax({
-                              url :'/like/fundingLike',
+                              url :'/sunam/like/fundingLike',
                               type :'POST',
                               data : sendData
                           });
