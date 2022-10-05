@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	@GetMapping("/index")
 	public String index() {
-//		빌드 테스트
+//		빌드 테스트1
 		return "/index";
 	}
 }
