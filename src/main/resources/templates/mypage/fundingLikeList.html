@@ -3,7 +3,6 @@
 <html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="zxx">
 
 <th:block th:replace="~{./include/mainLayout :: setContent( ~{:: #wrap}  ) }" >
-
 	<body>
 		<section id="wrap">
 			<!-- top -->
@@ -23,17 +22,12 @@
 			<section class="dashboard section">
 				<div class="container">
 					<div class="row">
-						<!-- 						<th:block
-							th:replace="~{./mypage/test :: setContent( ~{:: #wrap}  ) }"></th:block> -->
 						<div class="col-lg-3 col-md-12 col-12">
 							<div class="dashboard-sidebar">
 								<div class="user-image">
-
 									<h5>
 										[[${session.member.m_id}]] 
 									</h5>
-
-									
 								</div>
 								<div class="dashboard-menu">
 									<ul>
@@ -108,7 +102,7 @@
 											<br>
 										</th:block>
 										</div>
-										<th:block th:replace="~{/include/page :: fundingLikeList('fundingLikeList', ${pageVO}) }"></th:block>
+										<th:block th:replace="~{./include/page :: fundingLikeList('fundingLikeList', ${pageVO}) }"></th:block>
 									</div>
 								</div>
 							</div>
