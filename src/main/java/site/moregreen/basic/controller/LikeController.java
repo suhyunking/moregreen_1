@@ -37,12 +37,12 @@ public class LikeController {
 	}
 
 	@RequestMapping(value="checkFundingLike",method=RequestMethod.POST)
-	public @ResponseBody int checkFundingLike(@ModelAttribute LikeDto likeDto) {
+	public @ResponseBody int checkHeart(@ModelAttribute LikeDto likeDto) {
 		int result = likeService.checkFundingLike(likeDto); 
 		
 		return result;
 	}
-	
+
 
 	 
 }

@@ -146,6 +146,7 @@
 </th:block>
 
 <script th:inline="javascript">
+
    //검색버튼
    function handleForm() {
       //alert("alert");
@@ -155,7 +156,7 @@
       //console.log("세션"+ session);
       if(session == null){
          alert("로그인 후 이용해주세요");
-         
+         location.href = "/member/memberLogin";
       } else{
          document.purchaseForm.submit();
       }
@@ -200,7 +201,7 @@
            amount = parseInt(amount) - 1;
            total = parseInt(price) * parseInt(amount);
          }else if(amount == 1) {
-            alert("더이상 줄일 수 없습니다. ");	
+            alert("더이상 줄일 수 없습니다. ");
          }
      }
      
@@ -210,6 +211,31 @@
      document.getElementById('p_amount').value = amount;
      document.getElementById('p_total').value = total;
    }
+  $(window).on('load', function(){
+      $('.comma').each(function(){
+          var txt = $(this).text();
+          $(this).html(txt.replace(/,/g,''));
+
+          var len = $(this).text().length;
+          for (i = 0; i < len; i ++){
+              $(this).eq(i).text(commaNum($(this).eq(i).text()));
+          }
+      });
+
+      function commaNum(num){
+          var len, point, str;
+          num = num + '';
+          point = num.length % 3
+          len = num.length;
+          str = num.substring(0, point);
+          while (point < len){
+              if (str != '') str += ',';
+              str += num.substring(point, point + 3);
+              point += 3;
+          }
+          return str;
+      }
+  
 
   // 찜하기
   $(document).ready(function () {
@@ -234,70 +260,57 @@
       
       $(".heart").on("click", function () {
 
-    	  var session = [[${session.member}]];
-    	  event.preventDefault();
-    	  
-    	  if(session == null){
-  			alert("로그인 후 이용해주세요");
-  			
-  		  } else {
-  			 var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
-  		      
-  		      $.ajax({
-  		          url :'/like/checkFundingLike',
-  		          type :'POST',
-  		          data : sendData,
-  		          success : function(data){
-  		        	  if(data) {
-  		        		  heartval = heartval - 1;
-  		        		  $(".heart").prop('name', heartval);
-  		        		  $(".heart").find('span').html(heartval);
-  		        		  $('#heart').prop("class","lni lni-heart");
-  		    			  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
-  		                  
-  		                  $.ajax({
-  		                      url :'/like/deleteFundingLike',
-  		                      type :'POST',
-  		                      data : sendData
-  		                  });
-  		              }
-  		              else{
-  		            	  heartval = heartval + 1;
-  		        		  $(".heart").prop('name', heartval);
-  		        		  $('#heart').prop("class","lni lni-heart-filled");
-  		    	    	  $(".heart").find('span').html(heartval);
-  		        		  
-  		    	    	  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
-  		                  
-  		                  $.ajax({
-  		                      url :'/like/fundingLike',
-  		                      type :'POST',
-  		                      data : sendData
-  		                  });
-  		              }
-  		          }
-  		      });
-  		  }
-  	   })
-	})
-	
-	// 숫자 3자리 단위로 , 찍기
-	function numberWithCommas() {
 
-	  $("#money").val(x.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); // 정규식을 이용해서 3자리 마다 , 추가 
-	}
-  
-	    $("#inputPhoneNum").on("blur", function(phoneNum){
-        var confirmMsg=document.getElementById('confirmMsg');
-        var check = /^(?=.*[0-9]).{11}$/; 
-        if(!check.test($("#inputPhoneNum").val())){      
-            confirmMsg.style.color="red";
-            confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";       
-        }
-	    
-	   });
-  	
+         var session = [[${session.member}]];
+         event.preventDefault();
+         
+         if(session == null){
+           alert("로그인 후 이용해주세요");
+           
+          } else {
+            var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+              
+              $.ajax({
+                  url :'/like/checkFundingLike',
+                  type :'POST',
+                  data : sendData,
+                  success : function(data){
+                     if(data) {
+                        heartval = heartval - 1;
+                        $(".heart").prop('name', heartval);
+                        $(".heart").find('span').html(heartval);
+                        $('#heart').prop("class","lni lni-heart");
+                       var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+                          
+                          $.ajax({
+                              url :'/like/deleteFundingLike',
+                              type :'POST',
+                              data : sendData
+                          });
+                      }
+                      else{
+                         heartval = heartval + 1;
+                        $(".heart").prop('name', heartval);
+                        $('#heart').prop("class","lni lni-heart-filled");
+                        $(".heart").find('span').html(heartval);
+                        
+                        var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
+                          
+                          $.ajax({
+                              url :'/like/fundingLike',
+                              type :'POST',
+                              data : sendData
+                          });
+                      }
+                  }
+              });
+          }
+        })
+   })
+  });
+
 
 </script>
+
 
 </html>
