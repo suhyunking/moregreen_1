@@ -83,7 +83,7 @@
 								</nav>
 </th:block>
 
-<th:block th:fragment="test3(pageName , pageVO)">
+<th:block th:fragment="test3(pageName , pageVO)" th:align="center">
 
 								<nav aria-label="Page navigation example">
 									<ul class="pagination">
@@ -130,14 +130,7 @@
 		<div class="col-12">
 			<div class="pagination center">
 				<ul class="pagination-list">
-					<li class="page-item">
-						<a class="page-link" th:href="@{userList(page=1, 		
-														  amount=${pageVO.amount},
-														  searchId=${pageVO.cri.searchId},
-														  )}" aria-label="Previous"> 
-							<i class="lni-angle-double-left"></i>
-						</a>
-					</li>
+					
 					<th:block th:if="${pageVO.prev}">
 					<li><a class="page-link" th:href="@{fundingList(page=1, 		
 														  amount=${pageVO.amount},

@@ -14,6 +14,7 @@ import lombok.extern.java.Log;
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.UploadDto;
+import site.moregreen.basic.like.LikeMapper;
 import site.moregreen.basic.util.Criteria;
 
 @Log
@@ -23,6 +24,9 @@ public class FundingServiceImpl implements FundingService{
 
 	@Autowired
 	FundingMapper fundingMapper;
+	
+	@Autowired
+	LikeMapper likeMapper;
 	
 	@Value("${project.upload.path}")
 	private String uploadPath;
@@ -187,6 +191,11 @@ public class FundingServiceImpl implements FundingService{
 	public int retrieveApplyListTotal(Criteria cri) {
 		return fundingMapper.selectApplyListTotal(cri);
 	}
+	
+	@Override
+	public int likeTotal(Criteria cri) {
+		return likeMapper.likeTotal(cri);
+	}
 
 	// 펀딩 이미지 포함 상세 조회
 	@Override
@@ -251,6 +260,8 @@ public class FundingServiceImpl implements FundingService{
 		
 		return listForCancel;
 	}
+
+	
 
 
 

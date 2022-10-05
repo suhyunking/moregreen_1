@@ -7,17 +7,17 @@
 
        <th:block th:each="dto : ${fundingList}">
              <section class="items-grid section custom-padding" style="padding-bottom: 0px;">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div class="section-title">
-								<h2 class="wow fadeInUp" data-wow-delay=".4s">[[${dto.f_title}]]</h2>
-								<p class="wow fadeInUp" data-wow-delay=".6s"> <i class="lni lni-map-marker"></i> [[${dto.f_bname}]]</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			  </section>
+            <div class="container">
+               <div class="row">
+                  <div class="col-12">
+                     <div class="section-title">
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">[[${dto.f_title}]]</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s"> <i class="lni lni-map-marker"></i> [[${dto.f_bname}]]</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+           </section>
           <section class="items-grid section" style="padding-top: 10px;">
           
             <section class="item-details section" style="padding-top: 10px;">
@@ -72,35 +72,36 @@
                            <div class="list-info">
                            <hr />
                            <a>모금된 금액</a>
-                           <p><strong style="font-size:30px; color:#5A9367" >[[${dto.f_totalmoney}]]</strong> 원 달성</p>
+                           <p class="money"><strong style="font-size:30px; color:#5A9367" class="comma">[[${dto.f_totalmoney}]]</strong> 원 달성</p>
                            <a>펀딩률</a>
                            <p style="font-size:30px; color:#5A9367"><strong >[[${dto.f_rate}]]</strong>%</p>
                            <a>마감일자</a>
                            <p><strong style="font-size:30px; color:#5A9367">[[${dto.f_enddate}]]</strong></p>
                            <a>리워드 금액</a>
-                           <p><strong style="font-size:30px; color:#5A9367" id="price" th:text="${dto.f_price}"></strong>원</p>
+                           <p><strong style="font-size:30px; color:#5A9367" id="price" th:text="${dto.f_price}" class="comma"></strong>원</p>
                           <hr />
                            <a>펀딩할 금액</a>
-                           <p ><strong class="price" style="font-size:35px; color:#55967e" id="total" th:text="${dto.f_price}" ></strong> 원</p>
+                           <p ><strong class="price" style="font-size:35px; color:#55967e" id="total" th:text="${dto.f_price}" ></strong> 원</p> 
+                        
                            <p>수량
                               <span style="text-align:right">
-                             	 <button class="btn" type="button" onclick='count1("minus")' value='-' >-</button>
+                                 <button class="btn" type="button" onclick='count1("minus")' value='-' >-</button>
                                  <a data-value="" id="amount">1</a>
                                  <button class="btn" type="button" onclick='count1("plus")' value='+' >+</button>
                               </span> 
-                       	   </p>
+                             </p>
                            <form id="addFundingLike" name="addFundingLike" action="addFundingLike" method="post">
                               <div class="button">
                                  <div class="contact-info">
                                     <ul>
                                        <li>
-	                                        <button class="btn heart" type="button">
-	                                           <i class="lni lni-heart" id="heart"></i>
-	                                           <span th:if="${dto.l_count != null and dto.l_count != ''}">[[${dto.l_count}]]</span>
-	                                           <span th:unless="${dto.l_count != null and dto.l_count != ''}">0</span>
-	                                        </button>
-	                                        <a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()" >펀딩하기</a>
-	                                        <a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
+                                           <button class="btn heart" type="button">
+                                              <i class="lni lni-heart" id="heart"></i>
+                                              <span th:if="${dto.l_count != null and dto.l_count != ''}">[[${dto.l_count}]]</span>
+                                              <span th:unless="${dto.l_count != null and dto.l_count != ''}">0</span>
+                                           </button>
+                                           <a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()" >펀딩하기</a>
+                                           <a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
                                        </li>
                                     </ul>
                                  </div>
@@ -113,8 +114,8 @@
                </div>
             </div>
 
-			
-					<div class="wow fadeInUp" data-wow-delay=".7s" id="item">
+         
+               <div class="wow fadeInUp" data-wow-delay=".7s" id="item">
                <div class="container" align="center">
                   <div class="top-area" align="center">
 
@@ -161,7 +162,7 @@
       //console.log("세션"+ session);
       if(session == null){
          alert("로그인 후 이용해주세요");
-         
+         location.href = "/member/memberLogin";
       } else{
          document.purchaseForm.submit();
       }
@@ -216,6 +217,31 @@
      document.getElementById('p_amount').value = amount;
      document.getElementById('p_total').value = total;
    }
+  $(window).on('load', function(){
+      $('.comma').each(function(){
+          var txt = $(this).text();
+          $(this).html(txt.replace(/,/g,''));
+
+          var len = $(this).text().length;
+          for (i = 0; i < len; i ++){
+              $(this).eq(i).text(commaNum($(this).eq(i).text()));
+          }
+      });
+
+      function commaNum(num){
+          var len, point, str;
+          num = num + '';
+          point = num.length % 3
+          len = num.length;
+          str = num.substring(0, point);
+          while (point < len){
+              if (str != '') str += ',';
+              str += num.substring(point, point + 3);
+              point += 3;
+          }
+          return str;
+      }
+  
 
   // 찜하기
   $(document).ready(function () {
@@ -240,66 +266,53 @@
       
       $(".heart").on("click", function () {
 
-    	  var session = [[${session.member}]];
-    	  event.preventDefault();
-    	  
-    	  if(session == null){
-  			alert("로그인 후 이용해주세요");
-  			
-  		  } else {
-  			 var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
-  		      
-  		      $.ajax({
-  		          url :'/like/checkFundingLike',
-  		          type :'POST',
-  		          data : sendData,
-  		          success : function(data){
-  		        	  if(data) {
-  		        		  heartval = heartval - 1;
-  		        		  $(".heart").prop('name', heartval);
-  		        		  $(".heart").find('span').html(heartval);
-  		        		  $('#heart').prop("class","lni lni-heart");
-  		    			  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
-  		                  
-  		                  $.ajax({
-  		                      url :'/like/deleteFundingLike',
-  		                      type :'POST',
-  		                      data : sendData
-  		                  });
-  		              }
-  		              else{
-  		            	  heartval = heartval + 1;
-  		        		  $(".heart").prop('name', heartval);
-  		        		  $('#heart').prop("class","lni lni-heart-filled");
-  		    	    	  $(".heart").find('span').html(heartval);
-  		        		  
-  		    	    	  var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
-  		                  
-  		                  $.ajax({
-  		                      url :'/like/fundingLike',
-  		                      type :'POST',
-  		                      data : sendData
-  		                  });
-  		              }
-  		          }
-  		      });
-  		  }
-  	   })
-	})
-
-	
-	    $("#inputPhoneNum").on("blur", function(phoneNum){
-        var confirmMsg=document.getElementById('confirmMsg');
-        var check = /^(?=.*[0-9]).{11}$/; 
-        if(!check.test($("#inputPhoneNum").val())){      
-            confirmMsg.style.color="red";
-            confirmMsg.innerHTML="올바른 핸드폰 번호를 입력하세요";       
-        }
-	    
-	   });
-  
-  	
-
+         var session = [[${session.member}]];
+         event.preventDefault();
+         
+         if(session == null){
+           alert("로그인 후 이용해주세요");
+           
+          } else {
+            var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+              
+              $.ajax({
+                  url :'/like/checkFundingLike',
+                  type :'POST',
+                  data : sendData,
+                  success : function(data){
+                     if(data) {
+                        heartval = heartval - 1;
+                        $(".heart").prop('name', heartval);
+                        $(".heart").find('span').html(heartval);
+                        $('#heart').prop("class","lni lni-heart");
+                       var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
+                          
+                          $.ajax({
+                              url :'/like/deleteFundingLike',
+                              type :'POST',
+                              data : sendData
+                          });
+                      }
+                      else{
+                         heartval = heartval + 1;
+                        $(".heart").prop('name', heartval);
+                        $('#heart').prop("class","lni lni-heart-filled");
+                        $(".heart").find('span').html(heartval);
+                        
+                        var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
+                          
+                          $.ajax({
+                              url :'/like/fundingLike',
+                              type :'POST',
+                              data : sendData
+                          });
+                      }
+                  }
+              });
+          }
+        })
+   })
+  });
 
 
 </script>

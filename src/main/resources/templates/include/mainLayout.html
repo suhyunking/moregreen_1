@@ -105,15 +105,8 @@
                                     	<li class="nav-item">
                                         <a  th:href="@{/funding/fundingList}" aria-label="Toggle navigation">펀딩</a>
                                     </li>
-										<li class="nav-item"><a class=" dd-menu collapsed"
-											href="javascript:void(0)" data-bs-toggle="collapse"
-											data-bs-target="#submenu-1-3"
-											aria-controls="navbarSupportedContent" aria-expanded="false"
-											aria-label="Toggle navigation">소개</a>
-											<ul class="sub-menu collapse" id="submenu-1-3">
-												<li class="nav-item"><a th:href="@{/pages/faq}">FAQ</a></li>
-												<li class="nav-item"><a th:href="@{/pages/aboutme}">소개</a></li>
-											</ul>
+										<li class="nav-item"><a aria-label="Toggle navigation" th:href="@{/pages/faq}">FAQ</a>
+											
 										</li>
 									</ul>
 								</div>
@@ -166,10 +159,12 @@
 							<div class="single-footer f-link">
 							<h3>Quick Links</h3>
 								<ul>
-									<li><a href="javascript:void(0)">소개</a></li>
 									<li><a th:if="${session.member==null}" th:href="@{/member/memberLogin}">로그인</a></li>
 									<li><a th:if="${session.member==null}" th:href="@{/member/memberReg}">회원가입</a></li>
 									<li><a th:href="@{/pages/faq}">FAQ</a></li>
+									<li><a th:href="@{/funding/fundingList}">펀딩</a></li>
+									<li><a th:if="${session.member!=null}" th:href="@{/funding/fundingReg}">펀딩개설신청</a></li>
+									<li><a th:if="${session.member!=null}" th:href="@{/mypage/purchaseList}">마이페이지</a></li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->
