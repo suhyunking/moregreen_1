@@ -78,10 +78,14 @@
 		</section>
 	</body>
 </th:block>
-<script src="../js/jquery-3.6.0.js"></script>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="@{/js/jquery-3.6.0.js}"></script>
+<script src="@{/js/jquery-3.6.0.min.js}"></script>
 <script>
 	$(document).ready(function() {
+		$(".btn").on('click', function(){
+			event.preventDefault()
+	    	alert("비밀번호가 변경되었습니다.");
+		});
 		$("#changePwForm").keyup(function() {
 			var password = document.getElementById('m_pw');
 			var passwordConfirm = document.getElementById('m_pw_confirm');

@@ -146,15 +146,14 @@ public class MypageController {
 	}
 
 	@PostMapping("/changePwForm")
-	public String changePwForm(@Valid MemberDto memberDto, Errors errors, Model model, HttpSession session) {
+	public String changePwForm(@Valid MemberDto memberDto, Errors errors, Model model ) {
 		if (errors.hasErrors()) {
 			Map<String, String> validatorResult = memberService.validateHandling(errors);
 			for (String key : validatorResult.keySet()) {
 				model.addAttribute(key, validatorResult.get(key));
 			}
-			session.invalidate();
 			memberService.updatePw(memberDto);
-			return "redirect:http://localhost:8383/member/memberLogin";
+			return "redirect:/";
 		}
 		return "mypage/changePw";
 	}
