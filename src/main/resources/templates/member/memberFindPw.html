@@ -59,7 +59,7 @@ $(document).ready(function(){
 	    }
 	    else {
 	        $.ajax({
-	        	url: '/findPw',
+	        	url: [[@{'/member/findPw'}]],
 	            type: 'POST',
 	            contentType: 'application/json;charset=utf-8',	            
 	            data: JSON.stringify({
@@ -71,7 +71,7 @@ $(document).ready(function(){
 		            if (result == "1") {
 		                sendEmail();
 		                 alert('임시비밀번호를 전송 했습니다.'); 
-		                 window.location.href='/memberLogin'; 
+		                 window.location.href=[[@{'/member/memberLogin'}]]; 
 		            } else if (result != "1") {
 		                alert('가입되지 않은 이메일입니다.');
 		            }	            
@@ -88,7 +88,7 @@ $(document).ready(function(){
 		const m_id = $('#m_id').val();
 	    const m_email = $('#m_email').val();
 	    $.ajax({
-	    	url: '/sendPwd',
+	    	url: [[@{'/member/sendPwd'}]],
 	        type: 'POST',
 	        contentType: 'application/json;charset=utf-8',
 	        data: JSON.stringify({
