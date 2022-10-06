@@ -59,26 +59,26 @@
                                                 <tr>
                                                     <th>번호</th>
                                                     <td colspan="5">
-                                                        <input type="text" th:value="${dto.f_num}" readonly>
+                                                        <input id="f_num" name="f_num" type="text" th:value="${dto.f_num}" readonly>
                                                       
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th>펀딩 명칭</th>
                                                     <td colspan="5">
-                                                       <input type="text" class="inputw99p" id="f_title" th:value="${dto.f_title}">
+                                                       <input id="f_title" name="f_title"  type="text" class="inputw99p" th:value="${dto.f_title}">
                                                     </td>
                                                 </tr>
                                                   <tr>
                                                     <th>펀딩 기간</th>
                                                     <td colspan="5">
-                                                        <input type="text" id="f_days" th:value="${dto.f_days} +'일'" readonly>
+                                                        <input  type="text" id="f_days" name="f_days" th:value="${dto.f_days}" readonly>
                                                     </td>
                                                 </tr>
                                                   <tr>
                                                     <th>마감일자</th>
                                                     <td colspan="5">
-                                                        <input type="text" id="f_enddate" th:value="${dto.f_enddate}" readonly>
+                                                        <input type="text" id="f_enddate" name="f_enddate" th:value="${dto.f_enddate}" readonly>
                                                     </td>
                                                 </tr>
                                                   <tr>
@@ -170,12 +170,12 @@
                                                     <th>내용</th>
                                                     <td colspan="5">
 											            <div class="col-75" style="overflow: auto; height: 300px;">
-											               <textarea id="editor">[[${dto.f_content}]]</textarea>
+											               <textarea name="f_content" id="editor">[[${dto.f_content}]]</textarea>
 											              
 											            </div>
                                                     </td>
                                                 </tr>
-                                                <input type="hidden" name="f_num" th:value="${dto.f_num}">
+                                                
                                             </table>
                                             <div class="btn_area">
 		                                         <div class="row">
