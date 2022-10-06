@@ -168,6 +168,6 @@ public class MypageController {
 		session.invalidate();
 		memberService.exitMember(memberDto, session);
 
-		return "redirect:http://localhost:8383/";
+		return "redirect:/";
 	}
 }
