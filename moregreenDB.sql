@@ -194,6 +194,22 @@ null
 null
 ); 
 
+ INSERT INTO member(m_id, m_pw, m_email, m_exit, m_exitdate) VALUES
+('admin', 
+'admin',
+'admin@naver.com',
+'N',
+null
+); 
+
+ INSERT INTO member(m_id, m_pw, m_email, m_exit, m_exitdate) VALUES
+('asdfasdf', 
+'asdf1234!',
+'asdf@naver.com',
+'N',
+null
+); 
+
 -- 4 ----------------------------------------------------------------------
 
 -- -----------------------------------------------------
@@ -219,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`funding` (
   `f_reward` VARCHAR(60) NOT NULL, #리워드 명칭
   `f_price` INT NOT NULL, #리워드 금액
   `f_bname` VARCHAR(60) NOT NULL, #상호명
-  `f_bnum` CHAR(10) NOT NULL, #사업자 번호
+  `f_bnum` CHAR(12) NOT NULL, #사업자 번호
   `f_regdate` DATE NOT NULL DEFAULT (current_date()), #신청 일자
   `member_m_num` INT NOT NULL,
   PRIMARY KEY (`f_num`),
@@ -692,7 +708,7 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`likefunding` (
 CREATE TABLE IF NOT EXISTS `moregreen`.`delivery` (
   `d_num` INT NOT NULL AUTO_INCREMENT,
   `d_name` VARCHAR(60) NULL,
-  `d_phone` CHAR(11) NULL,
+  `d_phone` CHAR(13) NULL,
   `d_zipcode` CHAR(5) NULL,
   `d_addr` VARCHAR(60) NULL,
   `d_detailaddr` VARCHAR(60) NULL,
