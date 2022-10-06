@@ -27,7 +27,7 @@
 <th:block th:replace="~{/include/layout :: setContent( ~{:: .container-fluid}  ) }">
  
 	<div class="container-fluid py-4"> 
-		<form name="purchaseForm" action="fundingOrderList" method="get">
+		<form name="fundingOrderList" action="fundingOrderList" method="get">
 			<div class="d-sm-flex justify-content-between">
 				<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
 					<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" name="searchStatus" onchange="submit()">
@@ -116,11 +116,11 @@
 	function handleForm() {
 		//폼을 서브밋
 		event.preventDefault(); //a의 이동이벤트를 막는다.
-		document.fundingForm.submit();
+		document.fundingOrderList.submit();
 	}
 	
 	function submit() {
-		document.fundingForm.submit();
+		document.fundingOrderList.submit();
 	}
 </script>
 </html>
