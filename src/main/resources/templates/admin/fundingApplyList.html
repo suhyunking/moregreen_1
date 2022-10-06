@@ -21,11 +21,13 @@
 		<form name="fundingForm" action="fundingApplyList" method="get">
 			<div class="d-sm-flex justify-content-between">
 				<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-					<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" name="searchStatus" onchange="submit()">
-					  <option th:value="null"  th:selected="${pageVO.cri.searchStatus == '' }">전체</option>
-					  <option th:value="1" th:selected="${pageVO.cri.searchStatus == '1' }">심사중</option>
-					  <option th:value="2" th:selected="${pageVO.cri.searchStatus == '2' }">반려</option>
-					</select>
+	                <div class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" >
+						<select class="form-select" name="searchStatus" onchange="submit()" style=" padding: 0rem 0.5rem 0.5rem; width: 94px; text-align: center;">
+						  <option th:value="null"  th:selected="${pageVO.cri.searchStatus == '' }" style="text-align:center;">전체</option>
+						  <option th:value="1" th:selected="${pageVO.cri.searchStatus == '1' }">심사중</option>
+						  <option th:value="2" th:selected="${pageVO.cri.searchStatus == '2' }">반려</option>
+						</select>
+					</div>
 				</div>
 				<div class="ms-md-auto pe-md-3">
 					<div class="input-group input-group-outline">
