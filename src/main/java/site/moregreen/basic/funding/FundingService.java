@@ -27,6 +27,7 @@ public interface FundingService {
 	// 총 게시글 수 조회
 	public int retrieveTotal(Criteria cri);
 	public int retrieveApplyListTotal(Criteria cri);
+	public int likeTotal(Criteria cri);
 	
 	public DeliveryDto retrieveDelivery(int m_num);
 

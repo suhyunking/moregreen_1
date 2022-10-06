@@ -7,4 +7,5 @@ import site.moregreen.basic.funding.FundingMapper;
 @SpringBootTest(classes = FundingMapper.class)
 class MoregreenApplicationTests {
 	
+
 }
