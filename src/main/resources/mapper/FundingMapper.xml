@@ -97,9 +97,6 @@
 	  </if>
 	  order by 
  			f.f_num = desc,
-	  <if test="searchAlign == 'like'">
-	  		(select count(l.l_num) from likefunding l where l.funding_f_num = f.f_num ) = desc,
- 	  </if>
  	  <if test="searchAlign == 'asc'">
 	  		f.f_enddate = asc,
  	  </if>
