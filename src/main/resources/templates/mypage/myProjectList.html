@@ -82,7 +82,23 @@
 											<div class="single-list">
 												<th:block th:each="dto : ${list}">
 													<div class="row align-items-center">
-														<div class="col-lg-4 col-md-4 col-12"><p th:href="@{/funding/fundingDetail(m_num=${session.member.m_num},p_num=${dto.f_num})}">[[${dto.f_title}]]<span>[[${dto.f_price}]]원</span></p></div>
+														<div class="col-lg-4 col-md-4 col-12">
+															<div class="item-image">
+															<th:block  th:each="file : ${dto.files}">
+																<img th:src="@{'/upload/main_' + ${file.uuid} + '_' + ${file.filename}}" alt="">
+															</th:block>
+															<div class="content">
+																<h3 class="title" >
+																	<a th:href="@{/funding/fundingDetail(f_num=${dto.f_num})}">[[${dto.f_title}]]</a>
+																</h3>
+																<span class="price">[[${dto.f_price}]]원</span>
+															</div>
+														</div>
+															<!-- <th:block  th:each="file : ${dto.files}">
+																<img th:src="@{'/upload/main_' + ${file.uuid} + '_' + ${file.filename}}" alt="test">
+															</th:block>
+															<p th:href="@{/funding/fundingDetail(m_num=${session.member.m_num},p_num=${dto.f_num})}">[[${dto.f_title}]]<span>[[${dto.f_price}]]원</span></p> -->
+														</div>
 														<div class="col-lg-2 col-md-2 col-12" align="center"><p>[[${dto.f_bname}]]</p></div>
 														<div class="col-lg-2 col-md-2 col-12" align="center"><p>[[${dto.f_rate}]]%</p></div>
 														<div class="col-lg-2 col-md-2 col-12" align="center"><p>[[${dto.f_regdate}]]</p></div>

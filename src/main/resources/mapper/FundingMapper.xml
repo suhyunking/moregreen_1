@@ -96,8 +96,9 @@
 	  and f.f_status = #{searchStatus}
 	  </if>
 	  order by 
-	  <if test="searchAlign == 'asc' ">
- 			f.f_enddate asc,
+ 			f.f_num desc,
+ 	  <if test="searchAlign == 'asc'">
+	  		f.f_enddate asc,
  	  </if>
  	  f.f_status asc,
  	  f.f_num desc
