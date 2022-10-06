@@ -29,7 +29,7 @@
 		<form name="fundingForm" action="fundingList" method="get">
 			<div class="d-sm-flex justify-content-between">
 				<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-					<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" name="searchStatus" onchange="submit()">
+					<select class="form-select" name="searchStatus" onchange="submit()" style=" padding: 0rem 1.5rem 0.5rem; width: 94px; text-align: center;">
 					  <option th:value="null"  th:selected="${pageVO.cri.searchStatus == '' }">전체</option>
 					  <option th:value="3" th:selected="${pageVO.cri.searchStatus == '3' }">진행중</option>
 					  <option th:value="4" th:selected="${pageVO.cri.searchStatus == '4' }">성공</option>
