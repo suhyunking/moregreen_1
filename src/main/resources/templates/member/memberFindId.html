@@ -70,12 +70,12 @@
                 <form class="text-start" action="findId" method="post" id="findId">
                   <div class="input-group input-group-outline mb-3">
                     <input type="email" name="m_email" placeholder="이메일" class="form-control" id="emailmsg">
-                    <h5>[[${msg}]]</h5>
                   </div>
+                  <h3 style="color:red">[[${msg}]]</h3>
                   <div class="text-center">
                     <button type="button" id="findIdBtn" class="btn bg-gradient-primary w-100 my-4 mb-2">아이디찾기</button>
                   </div>
-                  <p class="mt-4 text-sm text-center"> 계정이 없으신가요? <a th:href="@{/memberReg}" class="text-primary text-gradient font-weight-bold">가입하기</a>
+                  <p class="mt-4 text-sm text-center"> 계정이 없으신가요? <a th:href="@{/member/memberReg}" class="text-primary text-gradient font-weight-bold">가입하기</a>
                   </p>
                 </form>
               </div>
