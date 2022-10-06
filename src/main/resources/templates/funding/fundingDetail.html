@@ -109,32 +109,30 @@
                   </div>
                </div>
             </div>
-			<div class="wow fadeInUp" data-wow-delay=".7s" id="item">
-               <div class="container" align="center">
-                  <div class="top-area" align="center">
-
+			<div class="wow fadeInUp" data-wow-delay=".7s">
+               <div class="container">
+                  <div class="top-area">
                      <div class="row">
-                         <div class="product-info" style="text-align: center">
-                            <main id="gallery">
-                               <div class="main-img" th:each="file : ${dto.files}">
-                               <th:block th:if="${file.i_type == 2}">
-                                  <img th:src="@{'/upload/content_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" >
-                               </div>
-                            </main>
-                         </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                           <div class="product-info">
+                              <main id="gallery">
+                                 <div class="main-img" th:each="file : ${dto.files}">
+                                 <th:block th:if="${file.i_type == 2}">
+                                    <img th:src="'/upload/content_' + ${file.uuid} + '_' + ${file.filename}" alt="#" >
+                                 </div>
+                              </main>
+                           </div>
+                        </div>
                      </div>
-
-                     <div class="row" align="center" id="item">
-                        <div class = "item-details-blocks" align="center">
-                           <div class="single-block description" style="width: 1200px;" align="center">
-                              [[${dto.f_content}]]
+                     <div class="row">
+                        <div class = "item-details-blocks">
+                           <div class="single-block description" th:utext="${dto.f_content}">
                            </div>
                         </div>         
                      </div>
                   </div>
                </div>
             </div>
-            
             </section>
             <a href="#" class="scroll-top btn-hover"> 
                <i class="lni lni-chevron-up"></i>
