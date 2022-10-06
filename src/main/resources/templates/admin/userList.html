@@ -9,13 +9,11 @@
 			
 			<div class="ms-md-auto pe-md-3">
 				<div class="input-group input-group-outline">
-					<label class="form-label"></label> 
-					<input type="text" name="searchId" th:value="${pageVO.cri.searchId}" class="form-control" placeholder="회원 검색" >
+					<input type="text" name="searchId" th:value="${pageVO.cri.searchName}" class="form-control" placeholder="회원 검색" >
 				</div>	
 			</div>
 			<div>
 				<a th:href="@{###}" class="btn btn-icon btn-outline-dark ms-2 export" onclick="handleForm()">검색</a>
-				
 			</div>
 		</div>
       <div class="row">
