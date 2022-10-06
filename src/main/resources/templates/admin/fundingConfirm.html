@@ -144,7 +144,7 @@ input[type=submit] {
                                                   <tr>
                                                     <th>프로젝트 기간</th>
                                                     <td colspan="5">
-                                                        <input type="text" id="f_days" th:value="${dto.f_days}" readonly>
+                                                        <input type="text" id="f_days" th:value="${dto.f_days} + '일'" readonly>
                                                     </td>
                                                 </tr>
                                                   <tr>
@@ -156,19 +156,25 @@ input[type=submit] {
                                                   <tr>
                                                     <th>목표 금액</th>
                                                     <td colspan="5">
-                                                        <input type="text" id="f_days" th:value="${dto.f_days}" readonly>
+                                                        <input type="text" id="f_target" th:value="${dto.f_target} + '원'" readonly>
                                                     </td>
                                                 </tr>
                                                   <tr>
                                                     <th>리워드 명칭</th>
                                                     <td colspan="5">
-                                                        <input type="text" id="f_days" th:value="${dto.f_days}" readonly>
+                                                        <input type="text" id="f_reward" th:value="${dto.f_reward}" readonly>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>리워드 금액</th>
+                                                    <td colspan="5">
+                                                        <input type="text" id="f_price" th:value="${dto.f_price}+ '원'" readonly>
                                                     </td>
                                                 </tr>
                                         		<tr>
                                                     <th>사업자 등록번호</th>
                                                     <td colspan="10">
-                                                        <input type="text" class="inputw99p" id="f_bname" th:value="${dto.f_bname}" readonly>
+                                                        <input type="text" class="inputw99p" id="f_bnum" th:value="${dto.f_bnum}" readonly>
                                                     </td>
                                                 </tr>
                                                 <tr> 
@@ -208,7 +214,7 @@ input[type=submit] {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>프로젝트 내용</th>
+                                                    <th>내용</th>
                                                     <td colspan="5">
 											            <div class="col-75" style="overflow: auto; height: 300px;">
 											               <textarea id="editor">[[${dto.f_content}]]</textarea>
