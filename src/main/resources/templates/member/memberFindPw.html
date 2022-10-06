@@ -36,8 +36,8 @@
 	font-style: Italic;
 }
 </style>
-<script src="../js/jquery-3.6.0.js"></script>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/jquery-3.6.0.js}"></script>
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 <script>
 $(document).ready(function(){
 	$('#checkEmail').on('click', function(){
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	    }
 	    else {
 	        $.ajax({
-	        	url: '/member/findPw',
+	        	url: [[@{'/member/findPw'}]],
 	            type: 'POST',
 	            contentType: 'application/json;charset=utf-8',	            
 	            data: JSON.stringify({
@@ -88,7 +88,7 @@ $(document).ready(function(){
 		const m_id = $('#m_id').val();
 	    const m_email = $('#m_email').val();
 	    $.ajax({
-	    	url: '/member/sendPwd',
+	    	url: [[@{'/member/sendPwd'}]],
 	        type: 'POST',
 	        contentType: 'application/json;charset=utf-8',
 	        data: JSON.stringify({
