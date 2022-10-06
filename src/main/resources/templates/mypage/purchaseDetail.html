@@ -136,7 +136,7 @@
 					                             </div>
 					                             <div class="col-12">
 													<div class="form-group button mb-0" align="center">
-														<form action="/kakaoPayCancel" method="post">
+														<form th:action="@{/kakaoPayCancel}" method="post">
 															<input type="hidden" name="p_tid" th:value="${dto.p_tid}">
 															<input type="hidden" name="p_total" th:value="${dto.p_total}">
 															<input type="hidden" name="p_num" th:value="${dto.p_num}">

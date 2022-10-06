@@ -63,6 +63,7 @@ public class KakaoPayService {
         params.add("approval_url", "http://localhost:8383/funding/fundingPurchaseResult");
         params.add("cancel_url", "http://localhost:8383/funding/fundingPurchaseCancel");
         params.add("fail_url", "http://localhost:8383/funding/fundingPurchaseFail");
+//      params.add("fail_url", "http://13.124.87.77:8080/sunam/funding/fundingPurchaseFail");
  
          HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
  
