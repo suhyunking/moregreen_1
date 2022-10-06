@@ -1,6 +1,6 @@
 package site.moregreen.basic.controller;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Setter;
-import lombok.extern.java.Log;
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.PurchaseDto;
@@ -31,7 +30,7 @@ import site.moregreen.basic.purchase.PurchaseService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
-@Log
+
 @Controller
 @RequestMapping("/funding")
 public class FundingController {

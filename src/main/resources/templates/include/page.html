@@ -36,6 +36,7 @@
 				</div>
 	</th:block>
 
+
 	<th:block th:fragment="adminFundingApplyList(pageName , pageVO)">
 				<div class="row">
 					<div class="col-12">
@@ -102,6 +103,7 @@
 			</div>
 		</div>
 	</div>
+>>>>>>> branch 'develop' of https://github.com/ciscons/moregreen.git
 </th:block>
 
 <th:block th:fragment="fundingList(pageName , pageVO)">
@@ -110,14 +112,7 @@
 		<div class="col-12">
 			<div class="pagination center">
 				<ul class="pagination-list">
-					<li class="page-item">
-						<a class="page-link" th:href="@{userList(page=1, 		
-														  amount=${pageVO.amount},
-														  searchId=${pageVO.cri.searchId},
-														  )}" aria-label="Previous"> 
-							<i class="lni-angle-double-left"></i>
-						</a>
-					</li>
+					
 					<th:block th:if="${pageVO.prev}">
 					<li><a class="page-link" th:href="@{fundingList(page=1, 		
 														  amount=${pageVO.amount},
