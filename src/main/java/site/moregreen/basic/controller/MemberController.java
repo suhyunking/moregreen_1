@@ -110,7 +110,7 @@ public class MemberController {
 	@PostMapping("/findId")
 	public String findId(MemberDto memberDto, Model model) throws Exception {
 		if(memberService.findIdCheck(memberDto)==0) {
-			model.addAttribute("msg",true);
+			model.addAttribute("msg","없는 이메일 주소입니다.");
 			return "/member/memberFindId";
 		}else {
 			model.addAttribute("member", memberService.findId(memberDto));
