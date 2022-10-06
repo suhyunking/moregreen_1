@@ -71,10 +71,8 @@ public class FundingServiceImpl implements FundingService{
 			long size = file.getSize();
 			//랜덤이름
 			String uuid = UUID.randomUUID().toString();
-			//upload 폴더 생성
-			String filepath = makeFolder();
 			//업로드경로
-			String saveName = uploadPath + "\\" + filepath + "\\main_" + uuid + "_" + filename;
+			String saveName = uploadPath + "/main_" + uuid + "_" + filename;
 			
 			try {
 				File saveFile = new File(saveName); 
@@ -107,10 +105,8 @@ public class FundingServiceImpl implements FundingService{
 			long size = file.getSize();
 			//랜덤이름
 			String uuid = UUID.randomUUID().toString();
-			//upload 폴더 생성
-			String filepath = makeFolder();
 			//업로드경로
-			String saveName = uploadPath +  "\\" + filepath + "\\content_" + uuid + "_" + filename;
+			String saveName = uploadPath + "/content_" + uuid + "_" + filename;
 			
 			try {
 				File saveFile = new File(saveName); 
@@ -144,10 +140,8 @@ public class FundingServiceImpl implements FundingService{
 					long size = file.getSize();
 					//랜덤이름
 					String uuid = UUID.randomUUID().toString();
-					//upload 폴더 생성
-					String filepath = makeFolder();
 					//업로드경로
-					String saveName = uploadPath + "\\" + filepath + "\\" + uuid + "_" + filename;
+					String saveName = uploadPath + "/" + uuid + "_" + filename;
 					//썸네일경로
 					//String thumbnailName = uploadPath + "\\" + filepath  + "\\thumb_" + uuid + "_" + filename;
 					

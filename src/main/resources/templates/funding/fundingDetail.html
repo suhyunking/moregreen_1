@@ -4,7 +4,6 @@
 <th:block th:replace="~{/include/mainLayout :: setContent( ~{:: #wrap}  ) }">
 
     <section id="wrap">
-
        <th:block th:each="dto : ${fundingList}">
              <section class="items-grid section custom-padding" style="padding-bottom: 0px;">
             <div class="container">
@@ -19,7 +18,6 @@
             </div>
            </section>
           <section class="items-grid section" style="padding-top: 10px;">
-          
             <section class="item-details section" style="padding-top: 10px;">
             <form id="purchaseForm" name="purchaseForm" action="purchaseForm" method="post">
                <input type="hidden" name="p_amount" value="1" id="p_amount">
@@ -51,7 +49,7 @@
                                        <th:block th:each="file, i : ${dto.files}">
                                           <th:block th:if="${file.i_type == 1}">
                                              <div class="carousel-item" th:classappend="${i.first} ? 'active' : ''" >
-                                                <img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" alt="#" style="height:500px; width:100%;">                                             </div>
+                                                <img th:src="@{'/upload/main_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" style="height:500px; width:100%;">                                             </div>
                                           </th:block>
                                        </th:block>
                                     </div>
@@ -94,13 +92,15 @@
                                  <div class="contact-info">
                                     <ul>
                                        <li>
-                                           <button class="btn heart" type="button">
-                                              <i class="lni lni-heart" id="heart"></i>
-                                              <span th:if="${dto.l_count != null and dto.l_count != ''}">[[${dto.l_count}]]</span>
-                                              <span th:unless="${dto.l_count != null and dto.l_count != ''}">0</span>
-                                           </button>
-                                           <a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()" >펀딩하기</a>
-                                           <a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
+
+	                                       <button class="btn heart" type="button">
+	                                          <i class="lni lni-heart" id="heart"></i>
+	                                          <span th:if="${dto.l_count != null and dto.l_count != ''}">[[${dto.l_count}]]</span>
+	                                          <span th:unless="${dto.l_count != null and dto.l_count != ''}">0</span>
+	                                       </button>
+	                                       <a th:if="${dto.f_status == 3}" class="btn" onClick="handleForm()" >펀딩하기</a>
+	                                       <a th:unless="${dto.f_status == 3}" class="btn disabled" onClick="handleForm()">펀딩하기</a>
+
                                        </li>
                                     </ul>
                                  </div>
@@ -113,34 +113,31 @@
                </div>
             </div>
 
-         
-               <div class="wow fadeInUp" data-wow-delay=".7s" id="item">
-               <div class="container" align="center">
-                  <div class="top-area" align="center">
+			<div class="wow fadeInUp" data-wow-delay=".7s">
+               <div class="container">
+                  <div class="top-area">
 
                      <div class="row">
-                         <div class="product-info" style="text-align: center">
-                            <main id="gallery">
-                               <div class="main-img" th:each="file : ${dto.files}">
-                               <th:block th:if="${file.i_type == 2}">
-                                  <img th:src="'/upload/content_' + ${file.uuid} + '_' + ${file.filename}" alt="#" >
-                               </div>
-                            </main>
-                         </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                           <div class="product-info">
+                              <main id="gallery">
+                                 <div class="main-img" th:each="file : ${dto.files}">
+                                 <th:block th:if="${file.i_type == 2}">
+                                    <img th:src="@{'/upload/content_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" >
+                                 </div>
+                              </main>
+                           </div>
+                        </div>
                      </div>
-
-                     <div class="row" align="center" id="item">
-                        <div class = "item-details-blocks" align="center">
-                           <div class="single-block description" style="width: 1200px;" align="center">
-                              [[${dto.f_content}]]
-
+                     <div class="row">
+                        <div class = "item-details-blocks">
+                           <div class="single-block description" th:utext="${dto.f_content}">
                            </div>
                         </div>         
                      </div>
                   </div>
                </div>
             </div>
-            
             </section>
             <a href="#" class="scroll-top btn-hover"> 
                <i class="lni lni-chevron-up"></i>
@@ -149,7 +146,7 @@
       </th:block>
       </section>
 </th:block>
-
+<script src="../js/jquery.js"></script>
 <script th:inline="javascript">
 
    //검색버튼
@@ -161,7 +158,9 @@
       //console.log("세션"+ session);
       if(session == null){
          alert("로그인 후 이용해주세요");
-         location.href = "/member/memberLogin";
+
+         location.href = [[@{/member/memberLogin}]];
+
       } else{
          document.purchaseForm.submit();
       }
@@ -220,12 +219,14 @@
      document.getElementById('p_total').value = total;
      
    }
-  
-	  
+
+
   $(window).on('load', function(){
       $('.comma').each(function(){
           var txt = $(this).text();
           $(this).html(txt.replace(/,/g,''));
+
+
 
           var len = $(this).text().length;
           for (i = 0; i < len; i ++){
@@ -247,7 +248,6 @@
           return str;
       }
   
-
   // 찜하기
   $(document).ready(function () {
 
@@ -259,7 +259,7 @@
       var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
       
       $.ajax({
-          url :'/like/checkFundingLike',
+          url :[[@{'/like/checkFundingLike'}]],
           type :'POST',
           data : sendData,
           success : function(data){
@@ -277,12 +277,16 @@
          
          if(session == null){
            alert("로그인 후 이용해주세요");
-           location.href = "/member/memberLogin";
+
+           
+
           } else {
             var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
               
               $.ajax({
-                  url :'/like/checkFundingLike',
+
+                  url :[[@{'/like/checkFundingLike'}]],
+
                   type :'POST',
                   data : sendData,
                   success : function(data){
@@ -294,7 +298,9 @@
                        var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val()};
                           
                           $.ajax({
-                              url :'/like/deleteFundingLike',
+
+                              url :[[@{'/like/deleteFundingLike'}]],
+
                               type :'POST',
                               data : sendData
                           });
@@ -308,7 +314,9 @@
                         var sendData = {'f_num' : fNumById.val(), 'm_num' : mNumById.val(), 'heart' : heartByClass.prop('name')};
                           
                           $.ajax({
-                              url :'/like/fundingLike',
+
+                              url :[[@{'/like/fundingLike'}]],
+
                               type :'POST',
                               data : sendData
                           });
@@ -322,5 +330,6 @@
 
 
 </script>
+
 
 </html>
