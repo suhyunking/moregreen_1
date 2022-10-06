@@ -148,9 +148,20 @@
 				f.f_bname,
 				f.f_rate,
 				f.f_regdate,
-				f.f_status
-		from funding f
-		where f.f_status in (1,2,3,4,5) and f.member_m_num = #{m_num}
+				f.f_status,
+				i.i_num as i_num,
+			    i.i_name as filename,
+			    i.i_uuid as uuid
+		from (select *
+			  from image
+			  where (funding_f_num, i_num) in (select r.*
+											   from (select funding_f_num, min(i_num) as i_num
+													 from image
+													 where i_type = 1
+													 group by funding_f_num) as r) )as i
+		inner join funding f 
+		on f.f_num = i.funding_f_num 
+		where f.member_m_num = #{m_num}
 	  	order by f.f_num desc
 	
 	</select>	
