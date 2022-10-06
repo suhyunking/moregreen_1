@@ -118,7 +118,7 @@
                               <main id="gallery">
                                  <div class="main-img" th:each="file : ${dto.files}">
                                  <th:block th:if="${file.i_type == 2}">
-                                    <img th:src="'/upload/content_' + ${file.uuid} + '_' + ${file.filename}" alt="#" >
+                                    <img th:src="@{'/upload/content_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" >
                                  </div>
                               </main>
                            </div>
