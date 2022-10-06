@@ -45,7 +45,7 @@
 			$.ajax({
 				type:"get",
 				async: false,
-				url: "/member/idCheck",
+				url: [[@{"/member/idCheck"}]],
 				data: {m_id:m_id},
 				success: function(data){
 					if(data==1){
@@ -94,7 +94,7 @@
 				$.ajax({
 					type:"get",
 					async: false,
-					url: "/member/emailCheck",
+					url: [[@{"/member/emailCheck"}]],
 					data: {m_email:m_email},
 					success: function(data){
 						if(data==1){
