@@ -25,7 +25,9 @@
   </style>
 <script src="../js/jquery.js"></script>
 <script th:inline="javascript">
+	
 	$(document).ready(function(){
+		
 		$("#overlappedID").click(function(){
 			var id_rule =  /^[a-z0-9]{8,20}/;
 			if(!id_rule.test($("#m_id").val().trim())){
