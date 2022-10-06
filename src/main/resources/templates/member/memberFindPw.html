@@ -5,8 +5,8 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
-<link rel="icon" type="image/png" href="../img/moregreen.ico">
+<link rel="apple-touch-icon" sizes="76x76" th:href="@{/img/apple-icon.png}">
+<link rel="icon" type="image/png" th:href="@{/img/moregreen.ico}">
 <title>비밀번호찾기</title>
 <!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css"
@@ -120,7 +120,7 @@ $(document).ready(function(){
 			<span class="mask opacity-6"></span>
 			<div class="container my-auto">
 				<div style="text-align: center;">
-					<a th:href="@{/index}"> <img src="../img/logo/logo1.png"
+					<a th:href="@{/index}"> <img th:src="@{/img/logo/logo1.png}"
 						alt="Logo">
 					</a>
 				</div>
@@ -146,11 +146,11 @@ $(document).ready(function(){
 											class="form-control">
 									</div>
 									<div class="text-center">
-										<button type="button" id="checkEmail" th:action="@{/member/memberLogin}"
+										<button type="button" id="checkEmail" th:action="@{/memberLogin}"
 											class="btn bg-gradient-primary w-100 my-4 mb-2">OK</button>
 									</div>
 									<p class="mt-4 text-sm text-center">
-										계정이 없으신가요? <a th:href="@{/member/memberReg}"
+										계정이 없으신가요? <a th:href="@{/memberReg}"
 											class="text-primary text-gradient font-weight-bold">가입하기</a>
 									</p>
 								</form>
@@ -162,10 +162,10 @@ $(document).ready(function(){
 		</div>
 	</main>
 	<!--   Core JS Files   -->
-	<script src="../js/core/popper.min.js"></script>
-	<script src="../js/core/bootstrap.min.js"></script>
-	<script src="../js/plugins/perfect-scrollbar.min.js"></script>
-	<script src="../js/plugins/smooth-scrollbar.min.js"></script>
+	<script th:src="@{/js/core/popper.min.js}"></script>
+	<script th:src="@{/js/core/bootstrap.min.js}"></script>
+	<script th:src="@{/js/plugins/perfect-scrollbar.min.js}"></script>
+	<script th:src="@{/js/plugins/smooth-scrollbar.min.js}"></script>
 	<script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -178,7 +178,7 @@ $(document).ready(function(){
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="../js/material-dashboard.min.js?v=3.0.4"></script>
+	<script th:src="@{/js/material-dashboard.min.js?v=3.0.4}"></script>
 </body>
 
 </html>
