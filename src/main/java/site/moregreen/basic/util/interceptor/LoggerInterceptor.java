@@ -21,7 +21,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 		String s = request.getServletPath();
 		
 		if(dto == null && !(s.contains("admin"))){
-			response.sendRedirect("/member/memberLogin");
+			response.sendRedirect(request.getServletContext().getContextPath() + "/member/memberLogin");
 		}
 		
 		if(dto != null) {
