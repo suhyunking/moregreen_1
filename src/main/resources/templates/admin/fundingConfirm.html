@@ -95,21 +95,14 @@ input[type=submit] {
     margin: 20px auto;
 }
 
-
 </style>
-    
-    
-<div class="container-fluid py-4">
 
+<div class="container-fluid py-4">
    <div class="container">
-      
-   
-   
-      <form name="actionForm" action="###" method="###" th:each="dto : ${fundingList}">
+      <form name="actionForm" th:each="dto : ${fundingList}">
            <div class="col-md-12 mb-lg-0 mb-4">
                  <div class="card mt-4 mb-2">
                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-
                        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                            <h4 class="text-white text-capitalize ps-3">프로젝트 승인 및 반려</h4>
                        </div>
@@ -125,7 +118,6 @@ input[type=submit] {
                                                     <th>번호</th>
                                                     <td colspan="5">
                                                         <input type="text" th:value="${dto.f_num}" readonly>
-                                                      
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -141,7 +133,7 @@ input[type=submit] {
                                                        <input type="text" class="inputw99p" id="f_title" th:value="${dto.f_title}">
                                                     </td>
                                                 </tr>
-                                                  <tr>
+                                                 <tr>
                                                     <th>프로젝트 기간</th>
                                                     <td colspan="5">
                                                         <input type="text" id="f_days" th:value="${dto.f_days} + '일'" readonly>
@@ -235,9 +227,11 @@ input[type=submit] {
                                 </li>
                             </ul>
                         </div>
-                    </form>
+                    </div>
                 </div>
-         </div>
+           </form>
+        </div>
+     </div>
 </th:block>
 <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
 <script th:inline="javascript">
