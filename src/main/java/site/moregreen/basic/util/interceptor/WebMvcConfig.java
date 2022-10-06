@@ -9,8 +9,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoggerInterceptor())
-        		.addPathPatterns("/funding/**")
+    	
+    	registry.addInterceptor(new LoggerInterceptor())
+        		.addPathPatterns("/fundingPurchase")
+        		.addPathPatterns("/mypage/**")
                 .excludePathPatterns("/css/**", "/fonts/**", "/plugin/**", "/scripts/**");
     }
 
