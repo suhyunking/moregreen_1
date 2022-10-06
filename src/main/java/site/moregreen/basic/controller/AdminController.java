@@ -49,8 +49,8 @@ public class AdminController {
 	}
 
 	@GetMapping
-	public String signIn() {
-		
+	public String admin() {
+      
 		return "admin/adminSignin";
 	}
 	
