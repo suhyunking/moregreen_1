@@ -12,8 +12,8 @@
 <link rel="stylesheet" type="text/css"
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 <!-- Nucleo Icons -->
-<link href="../css/nucleo-icons.css" rel="stylesheet" />
-<link href="../css/nucleo-svg.css" rel="stylesheet" />
+<link th:href="@{/css/nucleo-icons.css}" rel="stylesheet" />
+<link th:href="@{/css/nucleo-svg.css}" rel="stylesheet" />
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js"
 	crossorigin="anonymous"></script>
@@ -22,7 +22,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
 	rel="stylesheet">
 <!-- CSS Files -->
-<link id="pagestyle" href="../css/material-dashboard.css?v=3.0.4"
+<link id="pagestyle" th:href="@{/css/material-dashboard.css?v=3.0.4}"
 	rel="stylesheet" />
 <style>
 /* #overlappedID{:} */
@@ -71,7 +71,7 @@ $(document).ready(function(){
 		            if (result == "1") {
 		                sendEmail();
 		                 alert('임시비밀번호를 전송 했습니다.'); 
-		                 window.location.href="http://localhost:8383/member/memberLogin"; 
+		                 window.location.href=[[@{'/member/memberLogin'}]]; 
 		            } else if (result != "1") {
 		                alert('가입되지 않은 이메일입니다.');
 		            }	            
@@ -120,7 +120,7 @@ $(document).ready(function(){
 			<span class="mask opacity-6"></span>
 			<div class="container my-auto">
 				<div style="text-align: center;">
-					<a th:href="@{/index}"> <img src="/img/logo/logo1.png"
+					<a th:href="@{/index}"> <img src="../img/logo/logo1.png"
 						alt="Logo">
 					</a>
 				</div>
