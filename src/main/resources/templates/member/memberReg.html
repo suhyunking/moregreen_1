@@ -28,6 +28,15 @@
 <script th:inline="javascript">
 	
 	$(document).ready(function(){
+		$('#join').on('click', function(){
+			event.preventDefault();
+		if($("#m_id").val().length == 0 || $("#m_pw").val().length == 0 || $("#m_email").val().length == 0){
+            alert("회원가입 내용을 입력해주세요.");
+            return
+        } else{
+            $("#join").submit();
+        }
+		});
 		
 		$("#overlappedID").click(function(){
 			var id_rule =  /^[a-z0-9]{8,20}/;
