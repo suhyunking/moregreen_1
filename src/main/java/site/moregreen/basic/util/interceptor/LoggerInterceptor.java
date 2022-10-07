@@ -29,7 +29,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 				response.sendRedirect(request.getServletContext().getContextPath() + "/admin/adminSignin");
 				return false;
 			}
-		}else {
+		}else if(dto == null){
 			response.sendRedirect(request.getServletContext().getContextPath() + "/admin/adminSignin");
 			return false;
 		}
