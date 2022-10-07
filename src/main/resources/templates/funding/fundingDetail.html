@@ -197,6 +197,10 @@
         if(type == 'plus') {
            amount = parseInt(amount) + 1;
            total = parseInt(price) * parseInt(amount);
+           if(amount > 9){
+              alert("9개 이하로만 구매하실 수 있습니다.");
+              return false;
+           }
         }else if(amount >= 2 && type == 'minus')  {
            amount = parseInt(amount) - 1;
            total = parseInt(price) * parseInt(amount);

@@ -233,6 +233,7 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`funding` (
   `f_rate` DOUBLE NOT NULL NULL DEFAULT 0.0, #펀딩률
   `f_status` INT NOT NULL DEFAULT 1, #진행 상태
   `f_reward` VARCHAR(60) NOT NULL, #리워드 명칭
+  `f_likeCount` INT #찜하기 개수
   `f_price` INT NOT NULL, #리워드 금액
   `f_bname` VARCHAR(60) NOT NULL, #상호명
   `f_bnum` CHAR(12) NOT NULL, #사업자 번호
