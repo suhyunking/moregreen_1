@@ -29,13 +29,13 @@
 <script th:inline="javascript">
 	
 	$(document).ready(function(){
-		$("#join").on("click",function(){
+		$("#joinFormForm").on("click",function(){
 			event.preventDefault();
 		if($("#m_id").val().length == 0 || $("#m_pw").val().length == 0 || $("#m_email").val().length == 0){
             alert("회원가입 양식을 올바르게 입력해주세요.");
             return
 		} else{
-			$("#join").submit();
+			$("#joinFormForm").submit();
 		}
 		});
 		$("#overlappedID").click(function(){
@@ -50,7 +50,7 @@
 			if(m_id==null|| m_id==""){
 				alert("아이디를 입력해주세요")
 			} else{
-			$("#join").attr("type","button");
+			$("#joinFormForm").attr("type","button");
 			$.ajax({
 				type:"get",
 				async: false,
@@ -65,7 +65,7 @@
 						$("#olmessage").text("사용 가능한 ID입니다.");
 						$("#olmessage").addClass("olmessaget");
 						$("#olmessage").removeClass("olmessagef");
-						$("#join").attr("type", "submit");
+						$("#joinForm").attr("type", "submit");
 					}
 				}
 			})}
@@ -83,11 +83,11 @@
 	        if(password.value==passwordConfirm.value){
 	            confirmMsg.style.color=correctColor;
 	            confirmMsg.innerHTML="비밀번호 일치"
-	            	$("#join").attr("type", "submit");
+	            	$("#joinForm").attr("type", "submit");
 	        } else{
 	            confirmMsg.style.color=wrongColor;
 	            confirmMsg.innerHTML="비밀번호 불일치";
-	            $("#join").attr("type", "button");
+	            $("#joinForm").attr("type", "button");
 	        }
 	        
 
@@ -99,7 +99,7 @@
 				if(m_email==null|| m_email==""){
 					//alert("이메일을 입력해주세요")
 				} else{
-				$("#join").attr("type","button");
+				$("#joinForm").attr("type","button");
 				$.ajax({
 					type:"get",
 					async: false,
@@ -114,7 +114,7 @@
 							$("#olmessage1").text("사용 가능한 이메일입니다.");
 							$("#olmessage1").addClass("olmessaget");
 							$("#olmessage1").removeClass("olmessagef");
-							$("#join").attr("type", "submit");
+							$("#joinForm").attr("type", "submit");
 						}
 					}
 				})
@@ -191,7 +191,7 @@
                         <span th:style="${'color: red;'}" th:text="${valid_m_email}"></span>
                     	<span id="olmessage1"></span>
                     <div class="text-center">
-                        <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" id="join">가입하기</button>
+                        <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" id="joinForm">가입하기</button>
                     </div>
                 </form>
             </div>
