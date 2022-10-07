@@ -4,7 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="apple-touch-icon" sizes="76x76" th:href="@{/img/apple-icon.png}">
-<link rel="icon" type="image/png" th:href="@{/img/moregreen.ico}">
+<link rel="icon" type="image/png" href="../img/moregreen.ico">
+
   <title>
     회원가입
   </title>
@@ -28,16 +29,15 @@
 <script th:inline="javascript">
 	
 	$(document).ready(function(){
-		$('#join').on('click', function(){
+		$("#join").on("click",function(){
 			event.preventDefault();
 		if($("#m_id").val().length == 0 || $("#m_pw").val().length == 0 || $("#m_email").val().length == 0){
-            alert("회원가입 내용을 입력해주세요.");
+            alert("회원가입 양식을 올바르게 입력해주세요.");
             return
-        } else{
-            $("#join").submit();
-        }
+		} else{
+			$("#join").submit();
+		}
 		});
-		
 		$("#overlappedID").click(function(){
 			var id_rule =  /^[a-z0-9]{8,20}/;
 			if(!id_rule.test($("#m_id").val().trim())){
@@ -120,6 +120,8 @@
 				})
 				}
 			});
+		 
+		 
 		 
 		 $("#m_pw").focusout(function(){
 	          var pwcheck = /^(?=.*[0-9])(?=.*[a-zA-Z!@#$%^&*]).{8,20}$/;
