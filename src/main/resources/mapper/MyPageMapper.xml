@@ -99,8 +99,19 @@
 			   f.f_status,
 			   p.p_num,
 			   p.p_date,
-			   p.p_payment
-		from purchase p 
+			   p.p_payment,
+			   i.i_num as i_num,
+			   i.i_name as filename,
+			   i.i_uuid as uuid
+		from (select *
+			  from image
+			  where (funding_f_num, i_num) in (select r.*
+											   from (select funding_f_num, min(i_num) as i_num
+													 from image
+													 where i_type = 1
+													 group by funding_f_num) as r) )as i
+		inner join purchase p 
+		on p.funding_f_num = i.funding_f_num
 		left outer join funding f
 		on p.funding_f_num = f.f_num
 		where p.member_m_num = #{m_num} 
