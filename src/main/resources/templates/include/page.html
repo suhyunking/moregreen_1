@@ -156,7 +156,8 @@
 					<li><a class="page-link" th:href="@{fundingList(page=1,
 																	 amount=${pageVO.amount}, 
 																	 searchName=${pageVO.cri.searchName},
-												  					 searchStatus=${pageVO.cri.searchStatus} 
+												  					 searchStatus=${pageVO.cri.searchStatus}, 
+												  					 searchAlign=${pageVO.cri.searchAlign}
 												  					 )}" aria-label="Previous"> 
 										<span aria-hidden="true">&laquo;</span></a></li>
 					
@@ -164,7 +165,8 @@
 					<li><a class="page-link" th:href="@{fundingList(page=1, 		
 																	amount=${pageVO.amount},
 																	searchName=${pageVO.cri.searchName},
-																	searchStatus=${pageVO.cri.searchStatus} 
+																	searchStatus=${pageVO.cri.searchStatus}, 
+																	searchAlign=${pageVO.cri.searchAlign}
 																	)}"><i class="lni lni-chevron-left"></i></a></li>
 					</th:block>										  
 					<th:block th:each="num : ${pageVO.pageList}">	
@@ -172,7 +174,8 @@
 						<a class="page-link" th:href="@{fundingList(page=${num},
 																	amount=${pageVO.amount},
 																	searchName=${pageVO.cri.searchName},
-																	searchStatus=${pageVO.cri.searchStatus} 
+																	searchStatus=${pageVO.cri.searchStatus}, 
+																	searchAlign=${pageVO.cri.searchAlign}
 																	)}">[[${num}]]</a></li>
 					</th:block>		
 					<th:block th:if="${pageVO.next}">												 
@@ -180,7 +183,8 @@
 						<a class="page-link" th:href="@{fundingList(page=${pageVO.end + 1},
 																		   amount=${pageVO.amount},
 																		   searchName=${pageVO.cri.searchName},
-																		   searchStatus=${pageVO.cri.searchStatus} 
+																		   searchStatus=${pageVO.cri.searchStatus}, 
+																		   searchAlign=${pageVO.cri.searchAlign}
 																		   )}"><i class="lni lni-chevron-right"></i></a></li>
 																		   
 					</th:block>
@@ -188,7 +192,8 @@
 						<a class="page-link" th:href="@{fundingList(page=${pageVO.realEnd}, 
 																		 amount=${pageVO.amount}, 
 																		 searchName=${pageVO.cri.searchName}, 
-																	 	 searchStatus=${pageVO.cri.searchStatus}
+																	 	 searchStatus=${pageVO.cri.searchStatus},
+																	 	 searchAlign=${pageVO.cri.searchAlign}
 																	 	 )}" aria-label="Next"> 
 								<span aria-hidden="true">&raquo;</span></a></li>
 				</ul>

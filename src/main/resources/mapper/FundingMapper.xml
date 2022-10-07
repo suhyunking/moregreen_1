@@ -96,15 +96,25 @@
 	  and f.f_status = #{searchStatus}
 	  </if>
 	  order by 
- 			f.f_num desc,
+ 			f.f_status asc,
  	  <if test="searchAlign == 'asc'">
 	  		f.f_enddate asc,
  	  </if>
- 	  f.f_status asc,
+ 	  <if test="searchAlign == 'like'">
+	  		f.f_likeCount desc,
+ 	  </if>
  	  f.f_num desc
 	  limit #{pageStart}, #{amount}
 	    
   </select>
+  
+  <update id="updateFundingLike" parameterType="LikeDto">
+  	
+  	update funding f
+  	set f.f_likeCount = (select count(l.l_num) from likefunding l where l.funding_f_num = #{f_num})
+  	where f.f_num = #{f_num}
+  
+  </update>
   
   <select id="selectAdminFundingList" parameterType="site.moregreen.basic.util.Criteria" resultMap="selectFundingListMap">
 
