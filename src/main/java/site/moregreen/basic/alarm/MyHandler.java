@@ -22,21 +22,14 @@ public class MyHandler extends TextWebSocketHandler {
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		log.debug("=================session.toString()============" + session.toString());
-		log.debug("세션 연결");
 		
 		String senderId = getId(session);
 		userSessionsMap.put(senderId , session);
-		log.debug("senderId = " + senderId);
-		log.debug("userSessionsMap = " + userSessionsMap);
 		
 	}
 
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception{
-		System.out.println("메시지 준비중");
-		System.out.println(message.toString());
-		
 		String msg = message.getPayload();
 		
 		if(StringUtils.isNotEmpty(msg)) {
@@ -51,14 +44,8 @@ public class MyHandler extends TextWebSocketHandler {
 				//admin이 로그인해서 있다면
 				WebSocketSession boardWriterSession = userSessionsMap.get(receiver);
 				
-				log.debug("==============userSessionsMap==============" + userSessionsMap.get("admin"));
-				log.debug("==============cmd==============" + cmd);
-				log.debug("==============boardWriterSession==============" + boardWriterSession);
-				
 				if("fundingRegist".equals(cmd) && boardWriterSession != null) {
-					TextMessage tmpMsg = new TextMessage("<a type='external' th:href=@{'/admin/fundingConfirm?f_num=" + f_num + "'}>" + caller + "님이 " + f_num + "번 프로젝트를 개설했습니다.</a>");
-					log.debug("연결 성공!");
-					log.debug("메시지 = " + tmpMsg.getPayload());
+					TextMessage tmpMsg = new TextMessage(caller + "님이 " + f_num + "번 프로젝트를 개설했습니다.");
 					boardWriterSession.sendMessage(tmpMsg);
 					System.out.println("메시지 전송 완료!");
 				}
@@ -77,16 +64,9 @@ public class MyHandler extends TextWebSocketHandler {
 	private String getId(WebSocketSession session) {
 		Map<String, Object> httpSession = session.getAttributes();
 		MemberDto loginUser = (MemberDto)httpSession.get("member");
-		log.debug("==========session=================" + session);
-		log.debug("==========session.getAttributes()=================" + session.getAttributes());
-		log.debug("==========httpSession=================" + httpSession);
-		log.debug("==========httpSession.get(\"member\")=================" + httpSession.get("member"));
-		log.debug("==========loginUser=================" + loginUser);
 		if(loginUser == null) {
-			log.debug("==========session.getId()=================" + session.getId());
 			return session.getId();
 		} else {
-			log.debug("==========loginUser.getM_id();=================" + loginUser.getM_id());
 			return loginUser.getM_id();
 		}
 	}
