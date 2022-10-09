@@ -151,7 +151,6 @@
       //폼을 서브밋
       event.preventDefault(); //a의 이동이벤트를 막는다.   
       var session = [[${session.member}]];
-      //console.log("세션"+ session);
       if(session == null){
          alert("로그인 후 이용해주세요");
          location.href = [[@{'/member/memberLogin'}]];

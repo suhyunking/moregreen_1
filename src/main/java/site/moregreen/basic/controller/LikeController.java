@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import site.moregreen.basic.command.LikeDto;
 import site.moregreen.basic.like.LikeService;
 
-@Log
+@Slf4j
 @Controller
 @RequestMapping("/like")
 public class LikeController {

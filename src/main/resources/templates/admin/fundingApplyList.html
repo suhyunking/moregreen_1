@@ -91,13 +91,64 @@
 		</form>
 	</div>
 </th:block>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+<script th:inline="javascript">
+	
+//전역변수 선언-모든 홈페이지에서 사용 할 수 있게 index에 저장
+var socket = null;
 
-<script type="text/javascript">
-	//검색버튼
-	function handleForm() {
-		//폼을 서브밋
-		event.preventDefault(); //a의 이동이벤트를 막는다.
-		document.fundingForm.submit();
-	}
+$(document).ready(function (){
+	   connectWs();
+});
+
+function connectWs(){
+	sock = new SockJS([[@{'/myHandler'}]]);
+	socket = sock;
+
+	sock.onopen = function() {
+        console.log('myHandler와의 커넥션이 열렸습니다.');
+  };
+
+ sock.onmessage = function(event) {
+	 	var data = event.data;
+	   	console.log("ReceivMessage : " + data + "\n");
+	   	alert("프로젝트 개설이 신청되었습니다.")
+
+	   	/* $.ajax({
+			url : '/mentor/member/countAlarm',
+			type : 'POST',
+			dataType: 'text',
+			success : function(data) {
+				if(data == '0'){
+				}else{
+					$('#alarmCountSpan').addClass('bell-badge-danger bell-badge')
+					$('#alarmCountSpan').text(data);
+				}
+			},
+			error : function(err){
+				alert('err');
+			}
+	   	}); */
+
+       
+ };
+
+ sock.onclose = function() {
+   	console.log('connect close');
+   	/* setTimeout(function(){conntectWs();} , 1000); */
+ };
+
+ sock.onerror = function (err) {
+	 console.log('Errors : ' , err);
+ };
+
+}
+	
+//검색버튼
+function handleForm() {
+	//폼을 서브밋
+	event.preventDefault(); //a의 이동이벤트를 막는다.
+	document.fundingForm.submit();
+}
 </script>
 </html>
