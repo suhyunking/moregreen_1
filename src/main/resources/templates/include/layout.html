@@ -166,7 +166,7 @@
 						              <th:block th:each="alarmDto : ${alarmList}">
 							              <div class="alert alert-primary alert-dismissible text-white" role="alert" style="padding-right:0rem;">
 							                <input type="hidden" name="a_num" th:value="${alarmDto.a_num}">
-						                	<a onclick="deleteAlarm()" th:href="@{/admin/fundingConfirm(f_num=${alarmDto.funding_f_num})}">[[${alarmDto.a_message}]]</a>
+						                	<a th:onclick="|deleteAlarm('${alarmDto.a_num}')|" th:href="@{/admin/fundingConfirm(f_num=${alarmDto.funding_f_num})}">[[${alarmDto.a_message}]]</a>
 						              	  </div>
 						              </th:block>
 						            </div>
