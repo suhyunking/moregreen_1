@@ -17,10 +17,14 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
+			<div class="card-header p-0 position-relative mt-n3 mx-10 z-index-2">
+                <div class="bg-gradient-primary  border-radius-lg py-3 pe-1">
+                  <h4 class="text-white font-weight-bolder text-center mt-1 mb-0" style="font-size: 20px">회원 관리</h4>
+                </div>
+           	 </div>
             <div class="card-header pb-0">
 				<div class="d-lg-flex">
 					<div>
-						<h5 class="mb-0">회원 관리</h5>
 						<p class="text-sm mb-0">모든 회원 목록을 관리할 수 있습니다.</p>
 					</div>
 				</div>
@@ -30,11 +34,11 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">회원 번호</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">아이디</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">이메일</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">탈퇴여부</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">탈퇴날짜</th>
+                    <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">회원 번호</th>
+                      <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">아이디</th>
+                      <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 ps-2">이메일</th>
+                      <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">탈퇴여부</th>
+                      <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">탈퇴날짜</th>
                      
                     </tr>
                   </thead>
@@ -42,22 +46,22 @@
                     <tr th:each="list: ${list}">
                  
                     <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">[[${list.m_num}]]</span>
+                        <span class="text-secondary text-s font-weight-bold">[[${list.m_num}]]</span>
                       </td>
                     
                       <td>
                         
-                            <h6 class="mb-0 text-sm" th:href="@{###}" >[[${list.m_id}]]</h6>
+                            <h6 class="mb-0 text-s" th:href="@{###}" >[[${list.m_id}]]</h6>
                          
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">[[${list.m_email}]]</p>
+                        <p class="text-s font-weight-bold mb-0">[[${list.m_email}]]</p>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">[[${list.m_exit}]]</span>
+                        <span class="text-secondary text-s font-weight-bold">[[${list.m_exit}]]</span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">[[${list.m_exitdate}]]</span>
+                        <span class="text-secondary text-s font-weight-bold">[[${list.m_exitdate}]]</span>
                       </td>
                        
                       
