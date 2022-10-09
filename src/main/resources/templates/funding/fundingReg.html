@@ -172,7 +172,7 @@
 </th:block>
 <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
   
-<script>
+<script th:inline="javascript">
 
 $(document).on("keyup", "#bizno", function() { 
 	$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/([0-9]{3})([0-9]{2})([0-9]{5})$/,"$1-$2-$3").replace("--", "-") );
@@ -183,7 +183,6 @@ $("#fundingForm").on("blur", "input",  function(){
 		$(this).closest("div").next("span").html("");
 	}
 });
-
 
 $(".save").on("click", function() {
 	
@@ -307,7 +306,7 @@ $(".save").on("click", function() {
 	  	 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
 	  	 return false;
 	     }
-	}
+	} 
 	
 	//사업자 번호 유효성 검사
 	var pBizno = $("#bizno").val();	//사업자번호
@@ -342,7 +341,7 @@ $(".save").on("click", function() {
 	  	 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
 	  	 return false;
 	     }
-	} 
+	}
 	
     $("#fundingForm").submit();
 });
@@ -507,8 +506,6 @@ let editor;
  .catch( error => {
     	    console.error( error );
  });
-
- 
 
 </script>
 </html>

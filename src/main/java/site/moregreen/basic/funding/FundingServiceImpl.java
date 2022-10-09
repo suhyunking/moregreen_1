@@ -168,7 +168,7 @@ public class FundingServiceImpl implements FundingService{
 				}
 				
 		
-		return 0;
+		return f_num;
 	}
 
 	@Override
