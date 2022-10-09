@@ -52,9 +52,11 @@
 							aria-expanded="false"> <i class="fa fa-bell cursor-pointer"></i>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-								<li class="mb-2" th:each="alarmDto : ${alarmList}">
-									<h6 class="text-sm font-weight-normal mb-1" th:utext="${alarmDto.a_message}"></h6>
-								</li>
+								<th:block th:each="alarmDto : ${alarmList}">
+									<li id="test" class="mb-2">
+										<a th:onclick="|deleteAlarm('${alarmDto.a_num}')|" th:href="@{/admin/fundingConfirm(f_num=${alarmDto.funding_f_num})}">[[${alarmDto.a_message}]]</a>
+									</li>
+								</th:block>
 							</ul>
 						</li>
 					</ul>
@@ -123,7 +125,78 @@
 	</div>
 </th:block>
 
-<script type="text/javascript">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+<script th:inline="javascript">
+	
+//전역변수 선언-모든 홈페이지에서 사용 할 수 있게 index에 저장
+var socket = null;
+
+$(document).ready(function (){
+	   connectWs();
+});
+
+function connectWs(){
+	sock = new SockJS([[@{'/myHandler'}]]);
+	socket = sock;
+
+	sock.onopen = function() {
+        console.log('myHandler와의 커넥션이 열렸습니다.');
+  };
+
+ sock.onmessage = function(event) {
+	 	var data = event.data;
+	 	location.reload();
+	   	/* $.ajax({
+			url : '/mentor/member/countAlarm',
+			type : 'POST',
+			dataType: 'text',
+			success : function(data) {
+				if(data == '0'){
+				}else{
+					$('#alarmCountSpan').addClass('bell-badge-danger bell-badge')
+					$('#alarmCountSpan').text(data);
+				}
+			},
+			error : function(err){
+				alert('err');
+			}
+	   	});
+
+       
+ };
+
+ sock.onclose = function() {
+   	console.log('connect close');
+   	/* setTimeout(function(){conntectWs();} , 1000); */
+ };
+
+ sock.onerror = function (err) {
+	 console.log('Errors : ' , err);
+ };
+
+}
+var a_num = null;
+function deleteAlarm(a_num) {
+	console.log(a_num);
+	
+	var data = {
+		"a_num" : a_num
+	};
+	
+	$.ajax({
+		url : [[@{'/alarm/removeAlarm'}]],
+		type : 'POST',
+		data : JSON.stringify(data),
+ 		contentType: "application/json; charset=utf-8",
+ 		dataType : 'text',
+		success : function(data) {
+				console.log("삭제 완료");				
+		},
+		error : function(err){
+			alert('err');
+		}
+   	});
+}
 	//검색버튼
 	function handleForm() {
 		//폼을 서브밋
