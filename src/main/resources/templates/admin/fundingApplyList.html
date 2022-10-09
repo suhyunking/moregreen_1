@@ -30,25 +30,10 @@
 					</div>
 				</div>
 				<div class="ms-md-auto pe-md-3">
-					<div class="input-group input-group-outline">
+					<div class="input-group input-group-outline" style="padding-top: 25px;">
 						<input type="text" name="searchName" th:value="${pageVO.cri.searchName}" class="form-control" placeholder="펀딩 명칭 검색">
 						<a href="#" class="btn btn-icon btn-outline-dark ms-2 export" onclick="handleForm()">검색</a>
 					</div>	
-				</div>
-				<div>
-					<ul>
-						<li class="nav-item dropdown pe-2 d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body p-0"
-							id="dropdownMenuButton" data-bs-toggle="dropdown"
-							aria-expanded="false"> <i class="fa fa-bell cursor-pointer"></i>
-							</a>
-							<ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-								<li class="mb-2" th:each="alarmDto : ${alarmList}">
-									<h6 class="text-sm font-weight-normal mb-1" th:utext="${alarmDto.a_message}"></h6>
-								</li>
-							</ul>
-						</li>
-					</ul>
 				</div>
 			</div>
 			<div class="row">

@@ -208,5 +208,12 @@ public class AdminController {
 		return "redirect:/admin/fundingApplyList";
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		//logger.info("Logout success");
+		return "redirect:/adminSignIn";
+	}
+	
 
 }
