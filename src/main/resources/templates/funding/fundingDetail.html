@@ -118,22 +118,26 @@
 			  </li>
 			</ul> -->
 			<!-- 탭 메뉴 -->
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item" role="presentation">
-					<button class="nav-link active" id="userinfo-tab" data-bs-toggle="tab"
-						data-bs-target="#userinfo" type="button" role="tab" aria-controls="userinfo"
-						aria-selected="true">소식</button>
-				</li>
-				<li class="nav-item" role="presentation">
-					<button class="nav-link" id="myreview-tab" data-bs-toggle="tab"
-						data-bs-target="#myreview" type="button" role="tab"
-						aria-controls="myreview" aria-selected="false">커뮤니티</button>
-				</li>
-			</ul>
+			<div class="container">
+				<div class="wow fadeInUp" data-wow-delay=".6s">
+			        <div class="top-area">
+						<ul class="nav nav-tabs" id="myTab" role="tablist" >
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="userinfo-tab" data-bs-toggle="tab"data-bs-target="#userinfo" 
+								type="button" role="tab" aria-controls="userinfo" aria-selected="true">소식</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="myreview-tab" data-bs-toggle="tab" data-bs-target="#myreview" 
+								type="button" role="tab" aria-controls="myreview" aria-selected="false">커뮤니티</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<!-- 소식 탭 -->
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="userinfo" role="tabpanel" aria-labelledby="userinfo-tab">
-					<div class="wow fadeInUp" data-wow-delay=".7s">
+					<div class="wow fadeInUp" data-wow-delay=".6s">
 		               <div class="container">
 		                  <div class="top-area">
 		                     <div class="row">
@@ -160,7 +164,7 @@
 				</div>
 				<!-- 커뮤니티 탭 -->
 				<div class="tab-pane fade" id="myreview" role="tabpanel" aria-labelledby="myreview-tab">
-					<div class="wow fadeInUp" data-wow-delay=".7s">
+					<div class="wow fadeInUp" data-wow-delay=".3s">
 		               <div class="container">
 		                  <div class="top-area">
 		                     <div class="row">
@@ -171,42 +175,43 @@
 		                     </div>
 		                     <div class="row">
 		                        <div class = "item-details-blocks" id="community">
-		                           <table cellpadding="0" cellspacing="0" class="board_basic_view" width="100%;">
-                                            <tr>
-                                                <th colspan="2">여러분의 의견을 남겨주세요</th>
-                                            </tr>
-                                            <tr>
-                                                <th>댓글등록</th>
-                                                <td>
-                                                    <form name="replyForm" action="replyForm" method="post">
-                                                        <input type="hidden" class="inputw290" name="funding_f_num" th:value="dto.f_num">
-                                                        <input th:if="${session.member} == null" type="text" class="inputw290" disabled placeholder="로그인을 해주세요" style="margin-top:10px;">
-                                                        <input th:unless="${session.member} == null" type="text" class="inputw290" name="r_writer" disabled th:placeholder="${session.member.m_id}" style="margin-top:10px;">
-                                                        <textarea id="r_content" class="inputw99p" name="r_content" required style="height: 150px; margin-top:10px;"></textarea>
-                                                        <div class="btn_area">
-                                                            <button id="replySubmit" type="button" class="save">댓글등록</button>
-                                                        </div>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            <!-- 댓글영역 -->
-                                            <th:block th:each="reply : ${replyList}">
+		                        <h3>댓글</h3>
+		                        <hr>
+                                   <form name="replyForm" action="replyForm" method="post">
+                                       <input type="hidden" class="inputw290" name="funding_f_num" th:value="dto.f_num">
+                                       <input th:if="${session.member} == null" type="text" class="inputw290" disabled placeholder="로그인을 해주세요" style="margin-top:10px;">
+                                       <input th:unless="${session.member} == null" type="text" class="inputw290" name="r_writer" disabled th:placeholder="${session.member.m_id}" style="margin-top:10px;">
+                                       <textarea id="r_content" class="inputw99p" name="r_content" required style="height: 150px; width:950px; margin-top:10px;" placeholder="여러분의 의견을 남겨주세요" ></textarea>
+                                       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                           <button id="replySubmit" type="button" class="btn btn-outline-success">댓글등록</button>
+                                       </div>
+                                   </form>
+                                   <hr>
+		                           	  <table cellpadding="0" cellspacing="0" class="board_basic_view" width="100%;">
+                                         <!-- 댓글영역 -->
+                                          <th:block th:each="reply : ${replyList}">
                                             <tbody class="reply_area">
                                                 <tr>
-                                                    <th>[[${reply.r_writer}]]</th>
+                                                    <th style="padding-right: 40px; align-items: center;">[[${reply.r_writer}]]</th>
                                                     <td class="reply_content">
                                                         <div class="left">
-                                                            <span>[[${reply.r_moddate}]]</span>
+                                                            
                                                             <p>[[${reply.r_content}]]</p>
                                                         </div>
+                                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                        <span>[[${reply.r_moddate}]]</span>
                                                         <th:block th:if="${session.member != null}">
-	                                                        <input id="removeReply" th:if="${reply.r_writer == session.member.m_id}" type="button" class="right" value="삭제">
-	                                                        <input th:unless="${reply.r_writer == session.member.m_id}" type="button" class="right" value="삭제" disabled>
+	                                                        <input id="removeReply" th:if="${reply.r_writer == session.member.m_id}" type="button" class="btn btn-outline-danger" value="삭제">
+	                                                        <input th:unless="${reply.r_writer == session.member.m_id}" type="button" class="btn btn-outline-danger" value="삭제" disabled>
                                                         </th:block>
+                                                        
                                                         <th:block th:unless="${session.member != null}">
-	                                                        <input type="button" class="right" value="삭제" disabled>
+	                                                        <input type="button" class="btn btn-outline-danger" value="삭제" disabled>
                                                         </th:block>
                                                         <input type="hidden" id="r_num" th:value="${reply.r_num}">
+                                                       
+                                                        </div>
+                                                         <hr>
                                                     </td>
                                                 </tr>
                                             </tbody>
