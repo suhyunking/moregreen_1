@@ -44,23 +44,6 @@
 				</div>
 				<div>
 				</div>
-				<div>
-					<ul>
-						<li class="nav-item dropdown pe-2 d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body p-0"
-							id="dropdownMenuButton" data-bs-toggle="dropdown"
-							aria-expanded="false"> <i class="fa fa-bell cursor-pointer"></i>
-						</a>
-							<ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-								<th:block th:each="alarmDto : ${alarmList}">
-									<li id="test" class="mb-2">
-										<a th:onclick="|deleteAlarm('${alarmDto.a_num}')|" th:href="@{/admin/fundingConfirm(f_num=${alarmDto.funding_f_num})}">[[${alarmDto.a_message}]]</a>
-									</li>
-								</th:block>
-							</ul>
-						</li>
-					</ul>
-				</div>
 			</div>
 			<div class="row">
 				<div class="col-12">
