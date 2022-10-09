@@ -2445,3 +2445,18 @@ CREATE TABLE IF NOT EXISTS `moregreen`.`image` (
 );
 
 -- 20 -------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `moregreen`.`reply` (
+  `r_num` INT NOT NULL AUTO_INCREMENT,
+  `r_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `r_moddate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `r_writer` VARCHAR(60) NOT NULL,
+  `r_content` VARCHAR(300) NOT NULL,
+  `funding_f_num` INT NOT NULL,
+  PRIMARY KEY (`r_num`),
+  CONSTRAINT `fk_funding`
+    FOREIGN KEY (`funding_f_num`)
+    REFERENCES `moregreen`.`funding` (`f_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
