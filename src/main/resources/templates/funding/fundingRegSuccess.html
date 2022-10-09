@@ -59,9 +59,7 @@ function connectWs(){
  	
  	const f_num = [[${f_num}]];
  	const m_id = [[${session.member.m_id}]];
- 	const part1 = "<a type='external' th:href=@{'/admin/fundingConfirm?f_num=" + f_num + "'}>";
- 	const part2 = "님이 " + f_num + "번 프로젝트를 개설했습니다.</a>";
- 	const a_message =  part1 + m_id + part2;
+ 	const a_message = m_id + "님이 " + f_num + "번 프로젝트를 개설했습니다.";
 
  	var AlarmData = {
  			"alarm_receiver" : 'admin',

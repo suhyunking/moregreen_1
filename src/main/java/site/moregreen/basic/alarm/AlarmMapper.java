@@ -12,4 +12,6 @@ public interface AlarmMapper {
 	public void saveAlarm(AlarmDto dto); 		//알람 저장
 	
 	public List<AlarmDto> selectAlarmList();	//알람 목록 조회
+	public void deleteAlarm(AlarmDto dto); 	//선택한 알림 삭제
+	
 }

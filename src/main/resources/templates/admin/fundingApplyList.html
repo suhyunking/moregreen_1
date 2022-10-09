@@ -35,6 +35,23 @@
 						<a href="#" class="btn btn-icon btn-outline-dark ms-2 export" onclick="handleForm()">검색</a>
 					</div>	
 				</div>
+				<div>
+					<ul>
+						<li class="nav-item dropdown pe-2 d-flex align-items-center">
+							<a href="javascript:;" class="nav-link text-body p-0"
+							id="dropdownMenuButton" data-bs-toggle="dropdown"
+							aria-expanded="false"> <i class="fa fa-bell cursor-pointer"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+								<th:block th:each="alarmDto : ${alarmList}">
+									<li id="test" class="mb-2">
+										<a th:onclick="|deleteAlarm('${alarmDto.a_num}')|" th:href="@{/admin/fundingConfirm(f_num=${alarmDto.funding_f_num})}">[[${alarmDto.a_message}]]</a>
+									</li>
+								</th:block>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-12">
@@ -109,9 +126,7 @@ function connectWs(){
 
  sock.onmessage = function(event) {
 	 	var data = event.data;
-	   	console.log("ReceivMessage : " + data + "\n");
-	   	alert("프로젝트 개설이 신청되었습니다.")
-
+	 	location.reload();
 	   	/* $.ajax({
 			url : '/mentor/member/countAlarm',
 			type : 'POST',
@@ -126,7 +141,7 @@ function connectWs(){
 			error : function(err){
 				alert('err');
 			}
-	   	}); */
+	   	});
 
        
  };
@@ -141,6 +156,30 @@ function connectWs(){
  };
 
 }
+var a_num = null;
+function deleteAlarm(a_num) {
+	console.log(a_num);
+	
+	var data = {
+		"a_num" : a_num
+	};
+	
+	$.ajax({
+		url : [[@{'/alarm/removeAlarm'}]],
+		type : 'POST',
+		data : JSON.stringify(data),
+ 		contentType: "application/json; charset=utf-8",
+ 		dataType : 'text',
+		success : function(data) {
+				console.log("삭제 완료");				
+		},
+		error : function(err){
+			alert('err');
+		}
+   	});
+}
+
+
 	
 //검색버튼
 function handleForm() {

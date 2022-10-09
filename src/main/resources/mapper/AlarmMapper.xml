@@ -28,10 +28,17 @@
 		   a_message,
 		   funding_f_num
 	from alarm
-	order by a_num asc
+	order by a_num desc
 	limit 5
 
   </select>
+  
+  <delete id="deleteAlarm" parameterType="AlarmDto">
+  
+  	delete from alarm
+  	where a_num = #{a_num}
+  	
+  </delete>
 	
 	
   </mapper>
