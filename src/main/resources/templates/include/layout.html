@@ -148,6 +148,44 @@
 			
 			
 		<main class="main-content border-radius-lg ">
+		<div class="container-fluid py-4">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+				<div>
+					<ul>
+						<li class="nav-item dropdown pe-4 d-flex align-items-center">
+							<a class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"> 
+								<i class="fa fa-bell cursor-pointer"></i>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end px-2 py-4 me-sm-n0" style="width:310px;" aria-labelledby="dropdownMenuButton">
+						        <div class="col-lg-8 col-md-10 mx-auto" style="width:290px;">
+						            <div class="card-header" >
+						              <span class="mb-2">프로젝트 개설 알람</span>
+						            </div>
+						            <div class="card-body p-0 pb-0">
+						              <th:block th:each="alarmDto : ${alarmList}">
+							              <div class="alert alert-primary alert-dismissible text-white" role="alert" style="padding-right:0rem;">
+							                <input type="hidden" name="a_num" th:value="${alarmDto.a_num}">
+						                	<a onclick="deleteAlarm()" th:href="@{/admin/fundingConfirm(f_num=${alarmDto.funding_f_num})}">[[${alarmDto.a_message}]]</a>
+						              	  </div>
+						              </th:block>
+						            </div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<i class="fa fa-user me-sm-1"></i>
+	                <span class="d-sm-inline d-none" th:if="${session.member!=null}">[[${session.member.m_id}]]</span>
+            	</div>
+            	<div>
+            		<a th:href="@{/admin/logout}" class="nav-link text-body font-weight-bold px-3">  
+	                <span class=" ">로그아웃</span>
+              		</a>
+            	</div>
+			</div>
+			</div>
 			<th:block th:replace="${section}"></th:block>
 
 		</main>
