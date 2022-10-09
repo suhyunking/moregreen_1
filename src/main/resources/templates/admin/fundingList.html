@@ -46,10 +46,14 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
+						<div class="card-header p-0 position-relative mt-n3 mx-10 z-index-2">
+			                <div class="bg-gradient-primary  border-radius-lg py-3 pe-1">
+			                  <h4 class="text-white font-weight-bolder text-center mt-1 mb-0" style="font-size: 20px">펀딩 관리</h4>
+			                </div>
+		             	 </div>
 						<div class="card-header pb-0">
 							<div class="d-lg-flex">
 								<div>
-									<h5 class="mb-0">펀딩 관리</h5>
 									<p class="text-sm mb-0">모든 펀딩 목록을 관리할 수 있습니다.</p>
 								</div>
 							</div>
@@ -59,16 +63,16 @@
 								<table class="table align-middle" id="funding-list">
 									<thead class="thead-light">
 										<tr>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">번호</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩 명칭</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">등록일자</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">마감일자</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">리워드명</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">리워드 가격</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">목표 금액</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">모금된 금액</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">펀딩률</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">진행 상태</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">펀딩 번호</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">펀딩 명칭</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">등록일자</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">마감일자</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">리워드명</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">리워드 가격</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">목표 금액</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">모금된 금액</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">펀딩률</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">진행 상태</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -77,7 +81,7 @@
 											<td>
 												<div class="">
 													<a title="상세보기(클릭)" th:href="@{/admin/fundingModify(f_num=${dto.f_num})}">
-														<h6 class="ms-3 my-auto">[[${dto.f_title}]]</h6>
+														<h6 class="text-secondary text-s font-weight-bold">[[${dto.f_title}]]</h6>
 													</a>
 												</div>
 											</td>

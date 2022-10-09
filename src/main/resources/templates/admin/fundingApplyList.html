@@ -39,8 +39,12 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
+						<div class="card-header p-0 position-relative mt-n3 mx-10 z-index-2">
+			                <div class="bg-gradient-primary  border-radius-lg py-3 pe-1">
+			                  <h4 class="text-white font-weight-bolder text-center mt-1 mb-0" style="font-size: 20px">프로젝트 신청 내역</h4>
+			                </div>
+		             	 </div>
 						<div class="card-header pb-0">
-							<h5 class="mb-0">프로젝트 신청 내역</h5>
 							<p class="text-sm mb-0">모든 프로젝트 신청 목록을 관리할 수 있습니다.</p>
 						</div>
 						<div class="card-body px-0 pb-0"><!-- test -->
@@ -48,22 +52,22 @@
 								<table class="table align-middle" id="funding-list">
 									<thead class="thead-light">
 										<tr>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">번호</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">프로젝트 명칭</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">신청일</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">프로젝트 기간</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">상호명</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">신청자 아이디</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">진행 상태</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">프로젝트 번호</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">프로젝트 명칭</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">신청일</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">프로젝트 기간</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">상호명</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">신청자 아이디</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">진행 상태</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr th:each="dto : ${list}">
 											<td class="text-sm">[[${dto.f_num}]]</td><!--test -->
 											<td>
-												<div class="d-flex">
+												<div class="text-secondary text-s font-weight-bold">
 													<a title="상세보기(클릭)" th:href="@{/admin/fundingConfirm(f_num=${dto.f_num})}">
-														<h6 class="ms-3 my-auto">[[${dto.f_title}]]</h6>
+														<span class="text-secondary text-s font-weight-bold" >[[${dto.f_title}]]</span>
 													</a>
 												</div>
 											</td>
@@ -71,9 +75,8 @@
 											<td class="text-sm">[[${dto.f_days}]]일</td>
 											<td class="text-sm">[[${dto.f_bname}]]</td>
 											<td class="text-sm">[[${dto.m_id}]]</td>
-	
 											<td th:if="${dto.f_status} == 1" class="text-sm"><span class="badge text-bg-warning">심사중</span></td>
-											<td th:if="${dto.f_status} == 2" class="text-sm"><span class="badge text-bg-danger">반려</td>
+											<td th:if="${dto.f_status} == 2" class="text-sm"><span class="badge text-bg-danger">반려</span></td>
 	
 										</tr>
 									</tbody>

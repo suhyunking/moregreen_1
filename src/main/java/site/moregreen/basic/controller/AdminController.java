@@ -212,7 +212,7 @@ public class AdminController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		//logger.info("Logout success");
-		return "redirect:/adminSignIn";
+		return "redirect:/admin/adminSignin";
 	}
 	
 
