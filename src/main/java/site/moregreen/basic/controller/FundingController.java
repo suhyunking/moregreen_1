@@ -25,10 +25,12 @@ import lombok.extern.slf4j.Slf4j;
 import site.moregreen.basic.command.DeliveryDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.PurchaseDto;
+import site.moregreen.basic.command.ReplyDto;
 import site.moregreen.basic.funding.FundingService;
 import site.moregreen.basic.kakaoPay.KakaoPayService;
 import site.moregreen.basic.like.LikeService;
 import site.moregreen.basic.purchase.PurchaseService;
+import site.moregreen.basic.reply.ReplyService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
@@ -51,6 +53,10 @@ public class FundingController {
 	@Autowired
 	@Qualifier("likeService")
 	LikeService likeService;
+	
+	@Autowired
+	@Qualifier("replyService")
+	ReplyService replyService;
 	
 	
 	@GetMapping("/fundingList")
@@ -80,6 +86,9 @@ public class FundingController {
 			heart = fundingDto.getL_count();
 		}
 		
+		List<ReplyDto> replyList = replyService.retrieveReplyList(f_num);
+		
+		model.addAttribute("replyList", replyList);
 		model.addAttribute("heart", heart);
 		
 		return "/funding/fundingDetail"; 
