@@ -20,6 +20,18 @@
 							 #{a_message},
 							 #{funding_f_num}
 							 )
-	</insert>
+  </insert>
+	
+  <select id="selectAlarmList" resultType="AlarmDto">
+
+	select a_num,
+		   a_message,
+		   funding_f_num
+	from alarm
+	order by a_num asc
+	limit 5
+
+  </select>
+	
 	
   </mapper>

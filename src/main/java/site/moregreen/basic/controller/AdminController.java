@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import site.moregreen.basic.alarm.AlarmService;
+import site.moregreen.basic.command.AlarmDto;
 import site.moregreen.basic.command.FundingDto;
 import site.moregreen.basic.command.MemberDto;
 import site.moregreen.basic.command.PurchaseDto;
@@ -38,6 +40,10 @@ public class AdminController {
 	@Autowired
 	@Qualifier("purchaseService")
 	PurchaseService purchaseService;	
+	
+	@Autowired
+	@Qualifier("alarmService")
+	AlarmService alarmService;
 
 	@Autowired()
 	@Qualifier("memberService")
@@ -79,7 +85,11 @@ public class AdminController {
 		List<FundingDto> list = fundingService.retriveFundingList(cri);
 		int total = fundingService.retrieveTotal(cri);
 		PageVo pageVO = new PageVo(cri, total);
-
+		
+		List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+		
+		model.addAttribute("alarmList", alarmList);
+		
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);
 
@@ -93,6 +103,9 @@ public class AdminController {
 		int total = fundingService.retrieveApplyListTotal(cri);
 		PageVo pageVO = new PageVo(cri, total);
 
+		List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+		
+		model.addAttribute("alarmList", alarmList);
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);
 
@@ -142,6 +155,9 @@ public class AdminController {
 		int total = purchaseService.retrievePurchaseTotal(cri); 
 		PageVo pageVO= new PageVo(cri, total); 
 		
+		List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+		
+		model.addAttribute("alarmList", alarmList);
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);
 		
@@ -154,6 +170,9 @@ public class AdminController {
 		  List<MemberDto> list= memberService.retrieveMemberList(cri); 
 		  int total=memberService.retrieveTotal(cri); 
 		  PageVo pageVO= new PageVo(cri,total); 
+		  List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+			
+		  model.addAttribute("alarmList", alarmList);
 		  model.addAttribute("list", list); 
 		  model.addAttribute("pageVO", pageVO);
 		 

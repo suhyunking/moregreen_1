@@ -56,7 +56,7 @@ public class MyHandler extends TextWebSocketHandler {
 				log.debug("==============boardWriterSession==============" + boardWriterSession);
 				
 				if("fundingRegist".equals(cmd) && boardWriterSession != null) {
-					TextMessage tmpMsg = new TextMessage(caller + "님이 <a type='external' href='/admin/fundingConfirm?f_num=" + f_num + "'>" + f_num + "번 프로젝트를 개설했습니다.</a>");
+					TextMessage tmpMsg = new TextMessage("<a type='external' href='/admin/fundingConfirm?f_num=" + f_num + "'>" + caller + "님이 " + f_num + "번 프로젝트를 개설했습니다.</a>");
 					log.debug("연결 성공!");
 					log.debug("메시지 = " + tmpMsg.getPayload());
 					boardWriterSession.sendMessage(tmpMsg);
