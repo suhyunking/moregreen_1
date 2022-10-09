@@ -59,7 +59,7 @@ public class AdminController {
 		HttpSession session =req.getSession();
 		 MemberDto member=  memberService.loginMember(memberDto);
 		
-		 if(member.getM_id().equals("admin") && member.getM_pw().equals("admin")) {
+		 if(member.getM_id().equals("admin")) {
 			 session.setAttribute("member", member);
 				session.setMaxInactiveInterval(1800);
 
