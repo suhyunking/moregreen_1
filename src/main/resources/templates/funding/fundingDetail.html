@@ -140,11 +140,10 @@
 					<div class="wow fadeInUp" data-wow-delay=".6s">
 		               <div class="container">
 		                  <div class="top-area">
-		                     <div class="row">
-		                        <div class="col-lg-6 col-md-12 col-12">
+		                     <div class="">
 		                           <div class="product-info">
 		                              <main id="gallery">
-		                                 <div class="main-img" th:each="file : ${dto.files}">
+		                                 <div class="main-img" th:each="file : ${dto.files}" style="text-align: center;">
 		                                 <th:block th:if="${file.i_type == 2}">
 		                                    <img th:src="@{'/upload/content_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" >
 		                                 </div>
