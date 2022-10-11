@@ -79,7 +79,8 @@
 		inner join funding f 
 		on l.funding_f_num = f.f_num
 		where l.member_m_num = #{m_num}
-		order by l.l_num desc		
+		order by l.l_num desc
+		limit #{pageStart}, #{amount}		
 		
 	</select>
 		
@@ -87,6 +88,22 @@
 
 		select count(*) as total
 		from likefunding
+		where member_m_num = #{m_num}
+	    
+	</select>
+	
+	<select id="selectPurchaseTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
+
+		select count(*) as total
+		from purchase
+		where member_m_num = #{m_num}
+	    
+	</select>
+	
+	<select id="selectMyProjectTotal" parameterType="site.moregreen.basic.util.Criteria" resultType="int">
+
+		select count(*) as total
+		from funding
 		where member_m_num = #{m_num}
 	    
 	</select>
@@ -116,6 +133,7 @@
 		on p.funding_f_num = f.f_num
 		where p.member_m_num = #{m_num} 
 		order by p.p_num desc
+		limit #{pageStart}, #{amount}
 	
 	</select>
 	
@@ -174,6 +192,7 @@
 		on f.f_num = i.funding_f_num 
 		where f.member_m_num = #{m_num}
 	  	order by f.f_num desc
+	  	limit #{pageStart}, #{amount}
 	
 	</select>	
 	

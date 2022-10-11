@@ -74,6 +74,11 @@
 											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">결제 상태</th>
 											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">결제일시</th>
 											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">결제 정보</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">주문자명</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">휴대폰 번호</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">우편번호</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">도로명주소</th>
+											<th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">상세 주소</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -100,6 +105,11 @@
 											<td>
 												<span th:if="${dto.p_method} == 1" class="my-2 text-s">카카오페이</span>
 											</td>
+											<td class="text-sm">[[${dto.d_name}]]</td>
+											<td class="text-sm">[[${dto.d_phone}]]</td>
+											<td class="text-sm">[[${dto.d_zipcode}]]</td>
+											<td class="text-sm">[[${dto.d_addr}]]</td>
+											<td class="text-sm">[[${dto.d_detailaddr}]]</td>
 										</tr>
 									</tbody>
 								</table>

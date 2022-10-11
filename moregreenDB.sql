@@ -559,7 +559,7 @@ INSERT INTO funding (f_title, f_content, f_days, f_enddate, f_target, f_totalmon
 '2022-09-11',
 500000,
 100000,
-20,
+100,
 4,
 '친환경 종의 의자와 테이블',
 20000,
