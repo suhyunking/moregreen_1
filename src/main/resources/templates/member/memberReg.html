@@ -34,13 +34,15 @@
       if($("#m_id").val().length == 0 || $("#m_pw").val().length == 0 || $("#m_email").val().length == 0){
             alert("회원가입 양식을 올바르게 입력해주세요.");
             return
-
       } else if ($("#agree1").is(":checked")==false||$("#agree2").is(":checked")==false) {
           alert('이용 약관에 동의하지 않았습니다.');    
       } else{
     	  $("#form1").submit();
            
       }
+      
+       
+      
       });
       $("#overlappedID").click(function(){
          var id_rule =  /^[a-z0-9]{8,20}/;
@@ -53,8 +55,7 @@
          const m_id= $("#m_id").val().trim();
          if(m_id==null|| m_id==""){
             alert("아이디를 입력해주세요")
-         } else{
-
+         } else {
          $("#joinForm").attr("type","button");
          $.ajax({
             type:"get",
@@ -73,9 +74,8 @@
                   $("#joinForm").attr("type", "submit");
                }
             }
-
-         })}
-
+         })
+         }
          
       });
       
@@ -127,7 +127,7 @@
             })
             }
          });
-
+        
        
        $("#m_pw").focusout(function(){
              var pwcheck = /^(?=.*[0-9])(?=.*[a-zA-Z!@#$%^&*]).{8,20}$/;
@@ -153,17 +153,16 @@
     </div>
   </div>
   <main class="main-content  mt-0">
-    <div class="page-header align-items-start min-vh-100" style="background-color: honeydew; ">
+    <div class="page-header align-items-start min-vh-100" style="background-color: honeydew;">
       <span class="mask opacity-6"></span>
       <div class="container my-auto">
       <div style="text-align: center;">
          <a  th:href="@{/index}">
-
-         <img th:src="@{/img/logo/logo1.png}" alt="Logo" style="max-width:100%; height:auto;">         
+         <img th:src="@{/img/logo/logo1.png}" alt="Logo">         
          </a>
       </div>
         <div class="row">
-          <div class="col-lg-4 col-md-8 col-12 mx-auto" style="width:650px;">
+          <div class="col-lg-4 col-md-8 col-12 mx-auto" style=width:650px>
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary border-radius-lg py-3 pe-1">
@@ -172,7 +171,6 @@
               </div>
               <div class="card-body">
                 <form th:action="@{/member/MemberReg}" method="post" id="form1">
-
                     <div class="input-group input-group-outline mb-3">
                         <input type="text" id=m_id name=m_id class="form-control"
                             placeholder="아이디" >
@@ -199,20 +197,16 @@
                         </div>
                         <span th:style="${'color: red;'}" th:text="${valid_m_email}"></span>
                        <span id="olmessage1"></span>
-
                        
                        </form>
-
                        <p></p>
                        
                        <label for="agree_all"> <input type="checkbox" name="agree_all" id="agree_all"> <span>모두 동의합니다</span>
                </label> 
-
-               <textarea readonly="readonly" rows="5" cols="66" style="max-width:100%; height:auto;">
+               <textarea readonly="readonly" rows="5" cols="66">
 제 1 조 (목적)
 
-이 약관은 네이버 주식회사 ("회사" 또는 "네이버")가 제공하는 네이버 및 네이버 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
-
+이 약관은 모어그린이 제공하는 모어그린 및 모어그린 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
 
 
 제 2 조 (정의)
@@ -226,7 +220,6 @@
 ⑥"포인트"라 함은 서비스의 효율적 이용을 위해 회사가 임의로 책정 또는 지급, 조정할 수 있는 재산적 가치가 없는 "서비스" 상의 가상 데이터를 의미합니다.
 ⑦"게시물"이라 함은 "회원"이 "서비스"를 이용함에 있어 "서비스상"에 게시한 부호ㆍ문자ㆍ음성ㆍ음향ㆍ화상ㆍ동영상 등의 정보 형태의 글, 사진, 동영상 및 각종 파일과 링크 등을 의미합니다. 
    </textarea>
-
                <label for="agree"> <input  type="checkbox" name="agree" id="agree1" value="1"> 
                <span>이용약관 동의<strong>(필수)</strong></span>
                </label>
@@ -236,7 +229,6 @@
 
 
 1. 수집하는 개인정보
-
 
 이용자는 회원가입을 하지 않아도 펀딩 보기 등의 모어그린 서비스를 이용할 수 있습니다. 이용자가 구입 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 모어그린는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.
  
@@ -251,8 +243,7 @@
 
 
 제 1 조 (목적)
-이 약관은 모어그린 주식회사 (이하 “회사”)가 제공하는 위치정보사업 또는 위치기반서비스사업과 관련하여 회사와 개인위치정보주체와의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
-
+이 약관은 모어그린이 제공하는 위치정보사업 또는 위치기반서비스사업과 관련하여 회사와 개인위치정보주체와의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
 
 
 제 2 조 (약관 외 준칙)
@@ -267,9 +258,7 @@
 5.현재 위치를 활용한 광고정보 제공 서비스: 광고정보 제공 요청 시 개인위치정보주체의 현 위치를 이용하여 광고소재를 제시합니다.
 6. 이용자 보호 및 부정 이용 방지: 개인위치정보주체 또는 이동성 있는 기기의 위치를 이용하여 권한없는 자의 비정상적인 서비스 이용 시도 등을 차단합니다.
  </textarea>
-
                <label for="agree"> <input type="checkbox" name="agree" id="agree3" value="3"> 
-
                <span>개인정보 이용 동의<strong>(필수)</strong></span>
                </label> 
                
@@ -279,7 +268,8 @@
                     <div class="text-center">
                         <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" id="joinForm">가입하기</button>
                     </div>
-
+                    
+                
             </div>
             <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="mb-2 text-sm mx-auto"> 이미 계정이 있으신가요? 
