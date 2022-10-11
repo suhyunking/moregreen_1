@@ -120,6 +120,9 @@ public class AdminController {
 		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
 		model.addAttribute("fundingList", fundingList);
 
+		List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+		model.addAttribute("alarmList", alarmList);	
+		
 		return "admin/fundingConfirm";
 	}
 	
@@ -130,6 +133,9 @@ public class AdminController {
 		
 		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
 		model.addAttribute("fundingList", fundingList);
+		
+		List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+		model.addAttribute("alarmList", alarmList);	
 		
 		return "admin/fundingModify";
 	}
