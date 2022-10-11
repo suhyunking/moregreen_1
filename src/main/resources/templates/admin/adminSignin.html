@@ -19,8 +19,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" th:href="@{/css/material-dashboard.css?v=3.0.4}" rel="stylesheet" />
-<script src="../js/jquery-3.6.0.js"></script>
-<script src="../js/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/jquery-3.6.0.js}"></script>
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 <script th:inline="javascript">
 
 $(document).ready(function(){
@@ -30,7 +30,7 @@ $(document).ready(function(){
 		   
 	        if($("#idmsg").val().length == 0 || $("#pwmsg").val().length == 0){
 	            alert("관리자 아이디와 비밀번호를 확인해주세요.");
-	            return
+	            return;
 	        } else{
 	            $("#adminForm").submit();
 	        }
@@ -65,7 +65,7 @@ $(document).ready(function(){
                 </div>
               </div>
               <div class="card-body">
-                <form th:action="@{/admin/loginForm}" method="post" role="form" class="text-start" id="adminForm">
+                <form th:action="@{/admin/adminForm}" method="POST" role="form" class="text-start" id="adminForm">
                   <div>
                   <p class="mt-4 text-sm text-center">
                     <a th:if="${fail}==1" class="text-primary font-weight-bold">관리자 계정이 아닙니다.</a>

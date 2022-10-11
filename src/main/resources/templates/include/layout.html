@@ -101,11 +101,8 @@
 				  <div class="sidenav-header">
 					    <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
 						<a class="navbar-brand m-0" th:href="@{/admin/userList}"> 
-
 							<img src="../img/logo/logo3.png" class="navbar-brand-/img h-100" alt="main_logo"> 
-
 						</a>
-
 				  </div>
 		  		<hr class="horizontal light mt-0 mb-2">
 				  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style=" height: calc(100vh - 150px);">
@@ -143,14 +140,10 @@
 						</ul>
   					</div>
 				</aside>
-
-			<!-- End Navbar -->
-			
-			
-		<main class="main-content border-radius-lg ">
-		<div class="container-fluid py-4">
+				<!-- End Navbar -->
+				<main class="main-content border-radius-lg ">
+				<div class="container-fluid py-4">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
 				<div>
 					<ul>
 						<li class="nav-item dropdown pe-4 d-flex align-items-center">
@@ -187,7 +180,6 @@
 			</div>
 			</div>
 			<th:block th:replace="${section}"></th:block>
-
 		</main>
 	</body>
 
@@ -198,7 +190,79 @@
 <script src="../js/plugins/perfect-scrollbar.min.js"></script>
 <script src="../js/plugins/smooth-scrollbar.min.js"></script>
 
-<script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+<script th:inline="javascript">
+
+//전역변수 선언-모든 홈페이지에서 사용 할 수 있게 index에 저장
+var socket = null;
+
+$(document).ready(function (){
+	   connectWs();
+});
+
+function connectWs(){
+	sock = new SockJS([[@{'/myHandler'}]]);
+	socket = sock;
+
+	sock.onopen = function() {
+        console.log('myHandler와의 커넥션이 열렸습니다.');
+  };
+
+ sock.onmessage = function(event) {
+	 	var data = event.data;
+	 	location.reload();
+	   	/* $.ajax({
+			url : '/mentor/member/countAlarm',
+			type : 'POST',
+			dataType: 'text',
+			success : function(data) {
+				if(data == '0'){
+				}else{
+					$('#alarmCountSpan').addClass('bell-badge-danger bell-badge')
+					$('#alarmCountSpan').text(data);
+				}
+			},
+			error : function(err){
+				alert('err');
+			}
+	   	});
+
+       
+ };
+
+ sock.onclose = function() {
+   	console.log('connect close');
+   	/* setTimeout(function(){conntectWs();} , 1000); */
+ };
+
+ sock.onerror = function (err) {
+	 console.log('Errors : ' , err);
+ };
+
+}
+var a_num = null;
+function deleteAlarm(a_num) {
+	console.log(a_num);
+	
+	var data = {
+		"a_num" : a_num
+	};
+	
+	$.ajax({
+		url : [[@{'/alarm/removeAlarm'}]],
+		type : 'POST',
+		data : JSON.stringify(data),
+ 		contentType: "application/json; charset=utf-8",
+ 		dataType : 'text',
+		success : function(data) {
+				console.log("삭제 완료");				
+		},
+		error : function(err){
+			alert('err');
+		}
+   	});
+}
+
 	var win = navigator.platform.indexOf('Win') > -1;
 	if (win && document.querySelector('#sidenav-scrollbar')) {
 		var options = {

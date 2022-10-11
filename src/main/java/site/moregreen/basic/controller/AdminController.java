@@ -1,4 +1,6 @@
 package site.moregreen.basic.controller;
+
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import lombok.extern.slf4j.Slf4j;
 import site.moregreen.basic.alarm.AlarmService;
 import site.moregreen.basic.command.AlarmDto;
 import site.moregreen.basic.command.FundingDto;
@@ -26,6 +29,7 @@ import site.moregreen.basic.purchase.PurchaseService;
 import site.moregreen.basic.util.Criteria;
 import site.moregreen.basic.util.PageVo;
 
+@Slf4j
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -60,15 +64,16 @@ public class AdminController {
 		return "admin/adminSignin";
 	}
 	
-	@PostMapping("/loginForm")
+	@PostMapping("/adminForm")
 	public String loginForm(MemberDto memberDto, HttpServletRequest req, RedirectAttributes rttr, Model model ) throws Exception {
 		HttpSession session =req.getSession();
-		 MemberDto member=  memberService.loginMember(memberDto);
-		
-		 if(member.getM_id().equals("admin")) {
+		 MemberDto member = memberService.loginMember(memberDto);
+		System.out.println("========getContextPath========" + req.getContextPath());
+		System.out.println("========session========" + member.getM_id());
+		 if(member.getM_id().equals("admin") && member.getM_pw().equals("admin")) {
 			 session.setAttribute("member", member);
 				session.setMaxInactiveInterval(1800);
-
+				log.debug(""+ session.getAttribute("member"));
 				return"redirect:/admin/userList";
 		} else {
 			session.setAttribute("member", null);
@@ -120,6 +125,9 @@ public class AdminController {
 		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
 		model.addAttribute("fundingList", fundingList);
 
+		List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+		model.addAttribute("alarmList", alarmList);	
+		
 		return "admin/fundingConfirm";
 	}
 	
@@ -130,6 +138,9 @@ public class AdminController {
 		
 		List<FundingDto> fundingList = fundingService.retrieveFundingDetail(f_num);
 		model.addAttribute("fundingList", fundingList);
+		
+		List<AlarmDto> alarmList = alarmService.retrieveAlarmList();
+		model.addAttribute("alarmList", alarmList);	
 		
 		return "admin/fundingModify";
 	}

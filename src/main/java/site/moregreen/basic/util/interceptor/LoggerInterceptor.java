@@ -1,5 +1,6 @@
 package site.moregreen.basic.util.interceptor;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,19 +20,24 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		MemberDto dto = (MemberDto) request.getSession().getAttribute("member");
 		String s = request.getServletPath();
+		log.info("============1==============" + dto);
 		
 		if(dto == null && !(s.contains("admin"))){
+			log.info("===========2===============" + dto);
 			response.sendRedirect(request.getServletContext().getContextPath() + "/member/memberLogin");
 		}
 		
 		if(dto != null) {
 			if(!(dto.getM_id().equals("admin")) && s.contains("admin")) {
-				response.sendRedirect(request.getServletContext().getContextPath() + "/admin/adminSignin");
-				return false;
+				//response.sendRedirect(request.getServletContext().getContextPath() + "/admin/adminSignin");
+				log.info("===========3===============" + dto);
+				RequestDispatcher dispatcher= request.getRequestDispatcher("/admin/adminSignin");
+				dispatcher.forward(request, response);
 			}
 		}else if(dto == null){
+			log.info("===========4===============" + dto);
 			response.sendRedirect(request.getServletContext().getContextPath() + "/admin/adminSignin");
-			return false;
+
 		}
 		
 		return true;

@@ -30,7 +30,7 @@
                   <div class="top-area">
                      <div class="row">
                         <div class="col-md-8 col-12">
-                           <div class="product-images" style="height: 480px; width: 750px;">
+                           <div class="product-images" style="max-width:100%; height:auto; width:100%;">
                               <main id="gallery">
                                  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                                     <div class="carousel-indicators">
@@ -49,7 +49,7 @@
                                        <th:block th:each="file, i : ${dto.files}">
                                           <th:block th:if="${file.i_type == 1}">
                                              <div class="carousel-item" th:classappend="${i.first} ? 'active' : ''" >
-                                                <img th:src="@{'/upload/main_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" style="height:500px; width:100%;">                                             </div>
+                                                <img th:src="@{'/upload/main_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" style="height:500px; width:100%; max-width:100%; height:auto;">                                             </div>
                                           </th:block>
                                        </th:block>
                                     </div>
@@ -145,7 +145,7 @@
 		                              <main id="gallery">
 		                                 <div class="main-img" th:each="file : ${dto.files}" style="text-align: center;">
 		                                 <th:block th:if="${file.i_type == 2}">
-		                                    <img th:src="@{'/upload/content_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" >
+		                                    <img th:src="@{'/upload/content_' + ${file.uuid} + '_' + ${file.filename}}" alt="#" style="max-width:100%; height:auto;">
 		                                 </div>
 		                              </main>
 		                           </div>
@@ -179,7 +179,7 @@
                                        <input type="hidden" class="inputw290" name="funding_f_num" th:value="dto.f_num">
                                        <input th:if="${session.member} == null" type="text" class="inputw290" disabled placeholder="로그인을 해주세요" style="margin-top:10px;">
                                        <input th:unless="${session.member} == null" type="text" class="inputw290" name="r_writer" disabled th:placeholder="${session.member.m_id}" style="margin-top:10px;">
-                                       <textarea id="r_content" class="inputw99p" name="r_content" required style="height: 150px; width:950px; margin-top:10px;" placeholder="여러분의 의견을 남겨주세요" ></textarea>
+                                       <textarea id="r_content" class="inputw99p" name="r_content" required style="max-width:100%; height:auto; width:950px; margin-top:10px;" placeholder="여러분의 의견을 남겨주세요" ></textarea>
                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                            <button id="replySubmit" type="button" class="btn btn-outline-success">댓글등록</button>
                                        </div>

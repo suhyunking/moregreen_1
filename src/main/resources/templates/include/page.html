@@ -18,7 +18,7 @@
 																					 searchName=${pageVO.cri.searchName},
 																				  	 searchStatus=${pageVO.cri.searchStatus} 
 																				  	 )}">
-										<i class="lni lni-chevron-left"></i></a></li>
+										<span aria-hidden="true">&lt;</span></a></li>
 								</th:block>										  
 								<th:block th:each="num : ${pageVO.pageList}">	
 								<li th:classappend="${num} == ${pageVO.cri.page} ? 'active'" class="page-item ">
@@ -35,7 +35,7 @@
 																					 searchName=${pageVO.cri.searchName},
 																				  	 searchStatus=${pageVO.cri.searchStatus} 
 																					 )}">
-										<i class="lni lni-chevron-right"></i></a></li>
+										<span aria-hidden="true">&gt;</span></a></li>
 								</th:block>
 								<li class="page-item">
 									<a class="page-link" th:href="@{fundingList(page=${pageVO.realEnd}, 
@@ -69,7 +69,7 @@
 																						 searchName=${pageVO.cri.searchName},
 																					  	 searchStatus=${pageVO.cri.searchStatus} 
 																					  	 )}">
-										<i class="lni lni-chevron-left"></i></a></li>
+										<span aria-hidden="true">&lt;</span></a></li>
 								</th:block>										  
 								<th:block th:each="num : ${pageVO.pageList}">	
 								<li th:classappend="${num} == ${pageVO.cri.page} ? 'active'" class="page-item ">
@@ -86,7 +86,7 @@
 																						 searchName=${pageVO.cri.searchName},
 																					  	 searchStatus=${pageVO.cri.searchStatus} 
 																						 )}">
-										<i class="lni lni-chevron-right"></i></a></li>
+										<span aria-hidden="true">&gt;</span></a></li>
 								</th:block>
 								<li class="page-item">
 									<a class="page-link" th:href="@{fundingApplyList(page=${pageVO.realEnd}, 
@@ -117,7 +117,7 @@
 																					 amount=${pageVO.amount},
 																					 searchId=${pageVO.cri.searchId} 
 																				  	 )}">
-										<i class="lni lni-chevron-left"></i></a></li>
+										<span aria-hidden="true">&lt;</span></a></li>
 								</th:block>										  
 								<th:block th:each="num : ${pageVO.pageList}">	
 								<li th:classappend="${num} == ${pageVO.cri.page} ? 'active'" class="page-item ">
@@ -132,7 +132,7 @@
 																					 amount=${pageVO.amount}, 
 																					 searchId=${pageVO.cri.searchId}
 																					 )}">
-										<i class="lni lni-chevron-right"></i></a></li>
+										<span aria-hidden="true">&gt;</span></a></li>
 								</th:block>
 								<li class="page-item">
 									<a class="page-link" th:href="@{userList(page=${pageVO.realEnd}, 
@@ -167,7 +167,7 @@
 																	searchName=${pageVO.cri.searchName},
 																	searchStatus=${pageVO.cri.searchStatus}, 
 																	searchAlign=${pageVO.cri.searchAlign}
-																	)}"><i class="lni lni-chevron-left"></i></a></li>
+																	)}"><span aria-hidden="true">&lt;</span></a></li>
 					</th:block>										  
 					<th:block th:each="num : ${pageVO.pageList}">	
 					<li th:classappend="${num} == ${pageVO.cri.page} ? 'active'" class="page-item ">
@@ -185,7 +185,7 @@
 																		   searchName=${pageVO.cri.searchName},
 																		   searchStatus=${pageVO.cri.searchStatus}, 
 																		   searchAlign=${pageVO.cri.searchAlign}
-																		   )}"><i class="lni lni-chevron-right"></i></a></li>
+																		   )}"><span aria-hidden="true">&gt;</span></a></li>
 																		   
 					</th:block>
 					<li class="page-item">
@@ -253,7 +253,7 @@
 																					 searchName=${pageVO.cri.searchName},
 																				  	 searchStatus=${pageVO.cri.searchStatus} 
 																				  	 )}">
-										<i class="lni lni-chevron-left"></i></a></li>
+										<span aria-hidden="true">&lt;</span></a></li>
 								</th:block>										  
 								<th:block th:each="num : ${pageVO.pageList}">	
 								<li th:classappend="${num} == ${pageVO.cri.page} ? 'active'" class="page-item ">
@@ -270,7 +270,7 @@
 																					 searchName=${pageVO.cri.searchName},
 																				  	 searchStatus=${pageVO.cri.searchStatus} 
 																					 )}">
-										<i class="lni lni-chevron-right"></i></a></li>
+										<span aria-hidden="true">&gt;</span></a></li>
 								</th:block>
 								<li class="page-item">
 									<a class="page-link" th:href="@{fundingOrderList(page=${pageVO.realEnd}, 
